@@ -1,10 +1,12 @@
-# stay add.
+# Stay add.
 
 **Stay addicted, keep adding.** A free study site for Cambridge IGCSE science —
 Physics, Chemistry and Biology — where every idea is explained in plain words, tried in a
 small interactive lab, and finished with the cause → effect chain examiners want.
 
 No sign-up and no build step: your progress is saved only in your own browser.
+
+The website is available at [stay-add.skylarp520.workers.dev](https://stay-add.skylarp520.workers.dev).
 
 ## How a lesson works
 
