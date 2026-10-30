@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Electrolysis · stay add. Chemistry</title>
+<meta name="description" content="IGCSE Chemistry electrolysis in three short topics — molten compounds, solutions, copper and electroplating — each with an explanation, a lab and the cause → effect chains to remember.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="chemistry" data-page="lesson" data-lesson="electrolysis">
+<header data-site-header></header>
+
+<div class="l-app">
+  <!-- ================= Topic list ================= -->
+  <aside class="side">
+    <nav class="tabs" aria-label="Topics in this lesson">
+      <p class="nav-group"><span>4</span>Electrochemistry</p>
+      <a href="#molten" data-full="Molten compounds">Electrolysis</a>
+      <a href="#solutions" data-full="Which ion is discharged?">Solutions</a>
+      <a href="#copper" data-full="Purifying and plating">Copper &amp; plating</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Topics opened</span><span class="side-count">0 / 3</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0620</b> · each topic in three steps: understand, experiment, interpret.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+
+<!-- ======================= 1 Molten compounds ======================= -->
+<section class="topic" data-key="molten">
+  <header class="t-head">
+    <p class="eyebrow"><span>Topic 4</span>Electrochemistry</p>
+    <h1>Electrolysis of <em>molten</em> compounds</h1>
+    <p class="lede">How an electric current splits an ionic compound into its elements, and what forms at each electrode.</p>
+    <svg class="t-art" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="ax" d="M22 40V122H178V40"/>
+      <rect x="54" y="18" width="10" height="84" class="el"/><rect x="136" y="18" width="10" height="84" class="el"/>
+      <text x="55" y="12" class="sg">+</text><text x="138" y="12" class="sg">−</text>
+      <circle cx="40" cy="80" r="7" class="p-an"/><circle cx="82" cy="98" r="7" class="p-an"/><circle cx="80" cy="62" r="7" class="p-an"/>
+      <circle cx="118" cy="70" r="8" class="p-cat"/><circle cx="160" cy="92" r="8" class="p-cat"/><circle cx="118" cy="104" r="8" class="p-cat"/>
+      <path class="arr" d="M96 62H72M104 88H128"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>The idea, and what happens at each electrode</p></div></div>
+    <div class="notes">
+      <article class="note">
+        <h3>What is it?</h3>
+        <p><b>Electrolysis</b> is the breakdown of an ionic compound, when <b>molten or in aqueous solution</b>, by passing an <b>electric current</b> through it.</p>
+        <p>The compound being broken down is the <b>electrolyte</b>. The current enters and leaves through two <b>electrodes</b>, usually inert graphite (carbon) or platinum:</p>
+        <ul><li>the <b>anode</b> is the positive electrode</li><li>the <b>cathode</b> is the negative electrode</li></ul>
+        <p>The electrolyte must be molten or dissolved because the <b>ions must be free to move</b>. In a solid, the ions are held in a lattice, so it does not conduct.</p>
+        <p class="formula">PANIC — Positive Anode, Negative Is Cathode</p>
+      </article>
+      <article class="note">
+        <h3>What happens at the electrodes?</h3>
+        <p>Opposite charges attract, so the ions move:</p>
+        <ul>
+          <li><span class="kC">cations</span> (positive, such as Pb²⁺) move to the cathode and <b>gain electrons</b> — this is <b>reduction</b></li>
+          <li><span class="kA">anions</span> (negative, such as Br⁻) move to the anode and <b>lose electrons</b> — this is <b>oxidation</b></li>
+        </ul>
+        <p>For a molten compound of two elements, the <b>metal</b> forms at the cathode and the <b>non-metal</b> at the anode.</p>
+        <p>Electrons released at the anode travel round the wire to the cathode. Inside the electrolyte the charge is carried by <b>ions</b>, not electrons.</p>
+        <p class="formula">Pb²⁺ + 2e⁻ → Pb &nbsp;(cathode)<br>2Br⁻ → Br₂ + 2e⁻ &nbsp;(anode)</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Melt it, switch on, and follow one ion of each</p></div></div>
+    <div class="lab" data-lab data-configs="pbbr2" data-solid>
+      <div class="lab-h"><p class="lab-title" data-fig="4.1">Electrolysis of lead(II) bromide</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <svg data-cell-svg viewBox="0 0 640 400" role="img" aria-label="An electrolytic cell with lead(II) bromide: ions move to the electrodes and are discharged; electrons flow through the wire"></svg>
+          <p class="key" data-key></p>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>State <span class="hint">the ions must be able to move</span></p>
+              <div class="seg" role="group" aria-label="State"><button type="button" data-matter="solid" aria-pressed="true">Solid</button><button type="button" data-matter="molten" aria-pressed="false">Molten</button></div>
+            </div>
+            <div class="btns"><button class="sc" type="button" data-power aria-pressed="false">Switch power on</button><button class="sc" type="button" data-follow aria-pressed="false">Follow one ion of each</button></div>
+          </div>
+          <div class="block block-results">
+            <p class="block-h">Results</p>
+            <div class="rows" data-results></div>
+          </div>
+        </div>
+        <div class="explain">
+          <p class="block-h">What just happened</p>
+          <div class="result" data-explain aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>The cause → effect chains to remember</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"matter":"solid","power":true}'><span>Solid lead(II) bromide</span><span>ions held in a lattice</span><span>no current</span><span>no products</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"matter":"molten","power":true}'><span>Molten lead(II) bromide</span><span>ions free to move</span><span>current flows</span><span>it is decomposed</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"matter":"molten","power":true,"follow":true}'><span>Pb²⁺ ions</span><span>attracted to the cathode (−)</span><span>gain 2 electrons</span><span>lead forms (reduction)</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"matter":"molten","power":true,"follow":true}'><span>Br⁻ ions</span><span>attracted to the anode (+)</span><span>lose 1 electron</span><span>bromine forms (oxidation)</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Name the element, not the ion: <b>bromine</b> (Br₂), not “bromide”. In half-equations the electrons go on the <b>left</b> at the cathode and on the <b>right</b> at the anode.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 2 Solutions ======================= -->
+<section class="topic" data-key="solutions" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>Topic 4</span>Electrochemistry</p>
+    <h1>Electrolysis of <em>solutions</em></h1>
+    <p class="lede">Water adds its own ions, so two ions compete at each electrode. Two simple rules tell you which one wins.</p>
+    <svg class="t-art" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="ax" d="M22 40V122H178V40"/>
+      <rect x="54" y="18" width="10" height="84" class="el"/><rect x="136" y="18" width="10" height="84" class="el"/>
+      <circle cx="72" cy="88" r="4" class="bub"/><circle cx="74" cy="70" r="3" class="bub"/><circle cx="71" cy="54" r="3.5" class="bub"/>
+      <circle cx="128" cy="90" r="4" class="bub"/><circle cx="126" cy="72" r="3" class="bub"/><circle cx="129" cy="56" r="3.5" class="bub"/>
+      <circle cx="96" cy="108" r="6" class="p-cat"/><circle cx="104" cy="80" r="4" class="p-h"/><circle cx="38" cy="96" r="6" class="p-an"/><circle cx="160" cy="104" r="4.5" class="p-oh"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Why solutions are different, and the two rules</p></div></div>
+    <div class="notes">
+      <article class="note">
+        <h3>Why are solutions different?</h3>
+        <p>An aqueous solution also contains a few <b>H⁺</b> and <b>OH⁻</b> ions from water, so <b>two cations</b> compete at the cathode and <b>two anions</b> at the anode.</p>
+        <p>Only one of each is <b>discharged</b> — turned into an element. The other ion stays in the solution.</p>
+        <p>The ions left behind can change the solution. Electrolysing concentrated sodium chloride leaves <b>sodium hydroxide</b>.</p>
+        <p class="formula">2H⁺ + 2e⁻ → H₂ &nbsp;(cathode)<br>4OH⁻ → O₂ + 2H₂O + 4e⁻ &nbsp;(anode)</p>
+      </article>
+      <article class="note">
+        <h3>Which ion is discharged?</h3>
+        <p><b>At the cathode</b></p>
+        <ul>
+          <li>metal <b>less reactive than hydrogen</b> (copper, silver) → the <b>metal</b> forms</li>
+          <li>metal more reactive than hydrogen (sodium, potassium, magnesium) → <b>hydrogen</b> forms</li>
+        </ul>
+        <p><b>At the anode</b></p>
+        <ul>
+          <li><b>concentrated</b> halide (Cl⁻, Br⁻, I⁻) → the <b>halogen</b> forms</li>
+          <li>dilute halide, or no halide (sulfate, nitrate) → <b>oxygen</b> forms</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Choose a solution and see which ions win</p></div></div>
+    <div class="lab" data-lab data-configs="nacl nacld h2so4 cuso4c">
+      <div class="lab-h"><p class="lab-title" data-fig="4.2">Electrolysis of aqueous solutions</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <svg data-cell-svg viewBox="0 0 640 400" role="img" aria-label="An electrolytic cell with an aqueous solution: only one cation and one anion are discharged"></svg>
+          <p class="key" data-key></p>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Choose a solution</p>
+            <div class="btns">
+              <button class="sc" type="button" data-pick="nacl">Concentrated sodium chloride</button>
+              <button class="sc" type="button" data-pick="nacld">Dilute sodium chloride</button>
+              <button class="sc" type="button" data-pick="h2so4">Dilute sulfuric acid</button>
+              <button class="sc" type="button" data-pick="cuso4c">Copper(II) sulfate</button>
+            </div>
+            <div class="btns"><button class="sc" type="button" data-power aria-pressed="false">Switch power on</button><button class="sc" type="button" data-follow aria-pressed="false">Follow one ion of each</button></div>
+          </div>
+          <div class="block block-results">
+            <p class="block-h">Results</p>
+            <div class="rows" data-results></div>
+          </div>
+        </div>
+        <div class="explain">
+          <p class="block-h">What just happened</p>
+          <div class="result" data-explain aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>The cause → effect chains to remember</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"pick":"nacl","power":true}'><span>Concentrated NaCl(aq)</span><span>sodium more reactive than hydrogen</span><span>hydrogen at the cathode</span><span>chlorine at the anode</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"pick":"nacld","power":true}'><span>Dilute NaCl(aq)</span><span>chloride too dilute</span><span>hydrogen at the cathode</span><span>oxygen at the anode</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"pick":"h2so4","power":true}'><span>Dilute sulfuric acid</span><span>sulfate is not a halide</span><span>hydrogen and oxygen</span><span>twice as much hydrogen</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"pick":"cuso4c","power":true}'><span>Copper(II) sulfate</span><span>copper less reactive than hydrogen</span><span>copper at the cathode</span><span>oxygen at the anode, blue fades</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Know the gas tests: <b>hydrogen</b> pops with a lighted splint, <b>oxygen</b> relights a glowing splint, <b>chlorine</b> bleaches damp litmus paper.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 3 Copper & plating ======================= -->
+<section class="topic" data-key="copper" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>Topic 4</span>Electrochemistry</p>
+    <h1>Copper and <em>electroplating</em></h1>
+    <p class="lede">When the anode is made of the metal itself, it dissolves — which is how copper is purified and how objects are plated.</p>
+    <svg class="t-art" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="ax" d="M22 40V122H178V40"/>
+      <rect x="57" y="18" width="4" height="84" class="cu"/><rect x="132" y="18" width="18" height="84" class="cu"/>
+      <text x="55" y="12" class="sg">+</text><text x="138" y="12" class="sg">−</text>
+      <circle cx="84" cy="76" r="7" class="p-cat"/><circle cx="108" cy="96" r="7" class="p-cat"/><circle cx="96" cy="58" r="7" class="p-cat"/>
+      <path class="arr" d="M66 70H76M100 96H122"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Copper electrodes, purifying copper and electroplating</p></div></div>
+    <div class="notes">
+      <article class="note">
+        <h3>Copper electrodes <span class="tag">Supp.</span></h3>
+        <p>With <b>copper electrodes</b> in copper(II) sulfate solution, copper moves from the anode to the cathode.</p>
+        <ul>
+          <li>anode: copper atoms lose electrons and dissolve, so it <b>loses mass</b></li>
+          <li>cathode: Cu²⁺ ions gain electrons and copper builds up, so it <b>gains mass</b></li>
+          <li>the <b>blue colour stays the same</b>, because Cu²⁺ is replaced as fast as it is used</li>
+        </ul>
+        <p>To <b>purify copper</b>, make the impure copper the anode and pure copper the cathode. The impurities fall to the bottom as a sludge.</p>
+        <p class="formula">Cu → Cu²⁺ + 2e⁻ &nbsp;(anode)<br>Cu²⁺ + 2e⁻ → Cu &nbsp;(cathode)</p>
+      </article>
+      <article class="note">
+        <h3>Electroplating</h3>
+        <p>Electroplating coats an object with a thin layer of metal, using the same idea:</p>
+        <ul>
+          <li>the <b>object</b> to be plated is the <b>cathode</b></li>
+          <li>the <b>plating metal</b> is the <b>anode</b></li>
+          <li>the <b>electrolyte</b> contains ions of the plating metal</li>
+        </ul>
+        <p>Metals are electroplated to <b>improve their appearance</b> and to <b>resist corrosion</b>.</p>
+        <p>Compare inert carbon electrodes: oxygen forms at the anode instead, and the blue colour fades as Cu²⁺ is used up.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Swap the electrodes and compare</p></div></div>
+    <div class="lab" data-lab data-configs="cuso4cu cuso4c">
+      <div class="lab-h"><p class="lab-title" data-fig="4.3">Copper(II) sulfate with two kinds of electrode</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <svg data-cell-svg viewBox="0 0 640 400" role="img" aria-label="Copper(II) sulfate electrolysis with copper or carbon electrodes"></svg>
+          <p class="key" data-key></p>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Electrodes</p>
+            <div class="btns">
+              <button class="sc" type="button" data-pick="cuso4cu">Copper electrodes</button>
+              <button class="sc" type="button" data-pick="cuso4c">Inert carbon electrodes</button>
+            </div>
+            <div class="btns"><button class="sc" type="button" data-power aria-pressed="false">Switch power on</button><button class="sc" type="button" data-follow aria-pressed="false">Follow one ion of each</button></div>
+          </div>
+          <div class="block block-results">
+            <p class="block-h">Results</p>
+            <div class="rows" data-results></div>
+          </div>
+        </div>
+        <div class="explain">
+          <p class="block-h">What just happened</p>
+          <div class="result" data-explain aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>The cause → effect chains to remember</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"pick":"cuso4cu","power":true}'><span>Copper anode</span><span>atoms lose 2 electrons</span><span>Cu²⁺ goes into solution</span><span>anode loses mass</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"pick":"cuso4cu","power":true,"follow":true}'><span>Cu²⁺ ions</span><span>attracted to the cathode</span><span>gain 2 electrons</span><span>copper coats the cathode</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"pick":"cuso4c","power":true}'><span>Carbon electrodes</span><span>OH⁻ discharged at the anode</span><span>oxygen forms</span><span>blue colour fades</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> To copper-plate a key: the <b>key is the cathode</b>, a piece of <b>copper is the anode</b>, and the electrolyte is <b>copper(II) sulfate</b> solution.</p>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Topics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../js/electrolysis.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+</body>
+</html>

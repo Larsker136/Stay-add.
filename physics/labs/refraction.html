@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Refraction · stay add. Physics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="physics" data-page="lab" data-lesson="refraction">
+<header data-site-header></header>
+<header class="bar">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="../index.html#topics">Waves</a><span>/</span><a href="#">3.2 Light</a><span>/</span><b>Refraction</b></nav>
+  <nav class="stepper" aria-label="Lab steps">
+    <button class="done"><span class="s-n">1</span>Predict</button>
+    <button aria-current="step"><span class="s-n">2</span>Play</button>
+    <button><span class="s-n">3</span>Prove</button>
+  </nav>
+  <a class="btn btn-primary btn-sm" href="#">Continue to Prove <span class="arr" aria-hidden="true">→</span></a>
+</header>
+
+<div class="app">
+  <aside class="rail" aria-label="Lessons in 3.2 Light">
+    <p class="eyebrow">3.2 &nbsp;Light</p>
+    <ol class="lessons">
+      <li class="done"><a href="#"><span class="n">✓</span><span>Reflection<small>Plane mirrors</small></span></a></li>
+      <li class="on"><a href="#" aria-current="page"><span class="n">2</span><span>Refraction<small>Snell’s law</small></span></a></li>
+      <li><a href="#"><span class="n">3</span><span>Critical angle<small>Total internal reflection</small></span><span class="tag">Supp.</span></a></li>
+      <li><a href="#"><span class="n">4</span><span>Thin lenses<small>Ray diagrams</small></span></a></li>
+      <li><a href="#"><span class="n">5</span><span>Dispersion<small>Prism and spectrum</small></span></a></li>
+      <li><a href="#"><span class="n">6</span><span>Checkpoint<small>10 exam-style questions</small></span></a></li>
+    </ol>
+    <div class="mastery">
+      <div class="m-row"><span>Topic progress</span><span class="num">4 / 10</span></div>
+      <div class="steps" style="--tc:var(--c-waves)"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="now"></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p>Most missed: <b>measuring angles from the normal</b>, not from the surface.</p>
+    </div>
+  </aside>
+
+  <main class="center">
+    <section class="card stage" id="stage" aria-label="Refraction experiment">
+      <header class="stage-head">
+        <span><span class="eyebrow">Fig. 3.2</span> Refraction at a plane boundary</span>
+        <span class="head-read num" aria-live="polite"><span><i class="k-i">i</i> <b id="hI">40.0°</b></span><span><i class="k-r">r</i> <b id="hR">25.4°</b></span><span><i>n</i> <b id="hN">1.50</b></span></span>
+      </header>
+      <div class="stage-body">
+        <svg class="fig" id="svg" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice" aria-label="A laser ray refracting at the boundary between air and the chosen medium">
+          <defs><pattern id="sg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" class="gl"/></pattern></defs>
+          <rect x="-200" width="1200" height="520" fill="url(#sg)"/>
+          <rect x="-200" y="270" width="1200" height="250" class="medium"/>
+          <path d="M-200 270H1000" class="boundary"/>
+          <g id="prot"></g>
+          <g id="normal"><path d="M400 24V516" class="guide"/><text x="408" y="40">normal</text></g>
+          <g id="wf" style="display:none"></g>
+          <g id="angles">
+            <path id="wedgeI" class="wedge-i"/><path id="arcI" class="arc-i"/>
+            <path id="wedgeR" class="wedge-r"/><path id="arcR" class="arc-r"/>
+            <text id="valI" class="t-i" text-anchor="middle"></text>
+            <text id="valR" class="t-r" text-anchor="middle"></text>
+          </g>
+          <line id="refl" x1="400" y1="270" class="ray-refl"/>
+          <line id="inc" class="ray-i"/>
+          <line id="refr" x1="400" y1="270" class="ray-r"/>
+          <line id="pInc" pathLength="100" class="pulse" stroke-dasharray="4 200" stroke-dashoffset="4"/>
+          <line id="pRefr" x1="400" y1="270" pathLength="100" class="pulse" stroke-dasharray="4 200" stroke-dashoffset="4"/>
+          <circle cx="400" cy="270" r="2.5" class="ink"/>
+          <g id="laser"><rect x="-56" y="-10" width="50" height="20" rx="3" class="laser"/><rect x="-6" y="-4.5" width="6" height="9" class="laser-tip"/></g>
+          <circle id="handle" r="16" class="handle"/>
+          <text x="22" y="252" class="t-medium">Air <tspan>n = 1.00</tspan></text>
+          <text x="22" y="294" class="t-medium" id="medLabel">Glass <tspan id="medN">n = 1.50</tspan></text>
+        </svg>
+        <p class="hint">Drag the laser, or use the slider</p>
+      </div>
+      <footer class="stage-tools">
+        <button class="btn btn-ghost btn-sm" id="slow" aria-pressed="false">Slow motion</button>
+        <button class="btn btn-ghost btn-sm" id="reset">Reset</button>
+        <button class="btn btn-primary btn-sm" id="rec">Record reading</button>
+      </footer>
+    </section>
+
+    <div class="data">
+      <section class="card graph">
+        <header class="card-h"><h2>sin i against sin r</h2><span class="num" id="gGrad">gradient = 1.50</span></header>
+        <svg class="fig" viewBox="0 0 440 190" role="img" aria-label="Graph of sin i against sin r; the gradient equals the refractive index">
+          <g id="gAxes"></g>
+          <line id="gLine" x1="44" y1="160" class="fit"/>
+          <path id="gGuide" class="guide"/>
+          <g id="gPts"></g>
+          <circle id="gCur" r="5" class="cur"/>
+        </svg>
+      </section>
+      <section class="card results">
+        <header class="card-h"><h2>Results</h2><span class="num" id="tCount"></span></header>
+        <table class="num"><thead><tr><th>i / °</th><th>r / °</th><th>sin i</th><th>sin r</th><th>n</th></tr></thead><tbody id="rows"></tbody></table>
+      </section>
+    </div>
+  </main>
+
+  <aside class="panel" aria-label="Controls">
+    <section class="group">
+      <h2 class="eyebrow">Your prediction</h2>
+      <p class="prediction">The ray bends <b>towards the normal</b> <span class="verdict">Correct</span></p>
+    </section>
+    <section class="group">
+      <h2 class="eyebrow">Medium</h2>
+      <div class="seg" id="seg" role="group" aria-label="Medium">
+        <button data-n="1.33" data-name="Water" data-c="var(--c-water)" style="--sc:var(--c-water)" aria-pressed="false">Water<small>n 1.33</small></button>
+        <button data-n="1.50" data-name="Glass" data-c="var(--c-glass)" style="--sc:var(--c-glass)" aria-pressed="true">Glass<small>n 1.50</small></button>
+        <button data-n="2.42" data-name="Diamond" data-c="var(--c-diamond)" style="--sc:var(--c-diamond)" aria-pressed="false">Diamond<small>n 2.42</small></button>
+      </div>
+    </section>
+    <section class="group">
+      <div class="g-row"><h2 class="eyebrow"><label for="ang">Angle of incidence</label></h2><output class="big num" id="angOut" for="ang">40.0°</output></div>
+      <div class="rng" id="rng"><input class="range" id="ang" type="range" min="0" max="85" step="0.5" value="40"><span class="crit" aria-hidden="true"></span></div>
+      <div class="scale num" id="scale"><span>0°</span><span class="cl" id="critLbl">c 41.8°</span><span>85°</span></div>
+    </section>
+    <section class="group">
+      <h2 class="eyebrow">Show</h2>
+      <div class="checks">
+        <label><input type="checkbox" data-g="normal" checked>Normal</label>
+        <label><input type="checkbox" data-g="refl" checked>Reflected ray</label>
+        <label><input type="checkbox" data-g="angles" checked>Angles</label>
+        <label><input type="checkbox" data-g="prot" checked>Protractor</label>
+        <label><input type="checkbox" data-g="wf">Wavefronts</label>
+      </div>
+    </section>
+    <section class="group">
+      <div class="g-row"><h2 class="eyebrow">Snell’s law</h2><span class="tag">Supp.</span></div>
+      <p class="formula">n = <span class="k-i">sin i</span> ⁄ <span class="k-r">sin r</span></p>
+      <p class="subst num">= sin <span id="eqI">40.0</span>° ⁄ sin <span id="eqR">25.4</span>°<br>= <span id="eqSI">0.643</span> ⁄ <span id="eqSR">0.429</span> = <b id="eqN">1.50</b></p>
+      <dl class="facts-dl">
+        <dt>Angle of refraction</dt><dd class="num" id="dR">25.4°</dd>
+        <dt>Speed in medium</dt><dd class="num"><span id="dV">2.00</span> × 10⁸ m/s</dd>
+        <dt>Critical angle</dt><dd class="num" id="dC">41.8°</dd>
+      </dl>
+    </section>
+    <section class="group marks">
+      <div class="g-row"><h2 class="eyebrow">Mark scheme</h2><span class="num muted">2 / 3</span></div>
+      <ul>
+        <li class="got">Light slows down entering the medium</li>
+        <li class="got">Bends towards the normal</li>
+        <li>Angles are measured from the normal</li>
+      </ul>
+    </section>
+    <section class="group">
+      <div class="ask">Ask about this lab<kbd>/</kbd></div>
+    </section>
+  </aside>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../js/refraction.js"></script>
+</body>
+</html>

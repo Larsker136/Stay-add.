@@ -1,0 +1,116 @@
+/* ==========================================================================
+   stay add. chemistry — slide-in menu
+   Based on React Bits <StaggeredMenu />. Paper-toned layers sweep in, then the
+   panel; rows rise in with a stagger. Same type and colour rules as the rest
+   of the site: serif names, mono numbers, no glow.
+   ========================================================================== */
+
+/* ---------- Toggle (in the nav) ---------- */
+.sm-toggle {
+  display: inline-flex; align-items: center; gap: 9px;
+  height: 34px; padding: 0 12px 0 14px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line-2); color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1;
+  transition: border-color .15s, background-color .15s;
+}
+.sm-toggle:hover { border-color: var(--ink-3); }
+.sm-toggle[aria-expanded="true"] { border-color: var(--ink); background: var(--bg-2); }
+.sm-toggle-textWrap { position: relative; display: inline-block; height: 1em; overflow: hidden; white-space: nowrap; width: var(--sm-toggle-width, auto); }
+.sm-toggle-textInner { display: flex; flex-direction: column; line-height: 1; }
+.sm-toggle-line { display: block; height: 1em; line-height: 1; }
+.sm-icon { position: relative; width: 10px; height: 10px; flex: 0 0 10px; color: var(--ink-2); will-change: transform; }
+.sm-icon-line { position: absolute; left: 0; top: 50%; width: 100%; height: 1.5px; margin-top: -.75px; background: currentColor; border-radius: 1px; }
+.sm-icon-line-v { transform: rotate(90deg); }
+
+/* ---------- Overlay ---------- */
+.staggered-menu {
+  --sm-width: clamp(340px, 34vw, 460px);
+  position: fixed; inset: 0; z-index: 45; pointer-events: none; overflow: hidden;
+}
+.staggered-menu::before {
+  content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--ink) 18%, transparent);
+  opacity: 0; transition: opacity .4s ease;
+}
+.staggered-menu[data-open]::before { opacity: 1; pointer-events: auto; }
+.sm-prelayers, .staggered-menu-panel { position: absolute; top: 0; right: 0; height: 100%; width: var(--sm-width); }
+.staggered-menu[data-position="left"] .sm-prelayers,
+.staggered-menu[data-position="left"] .staggered-menu-panel { right: auto; left: 0; }
+.sm-prelayers { z-index: 5; pointer-events: none; }
+.sm-prelayer { position: absolute; inset: 0; transform: translateX(100%); }
+
+.staggered-menu-panel {
+  z-index: 10; pointer-events: auto; display: flex; flex-direction: column;
+  padding: calc(var(--header-h) + 32px) 32px 28px;
+  overflow-y: auto; overscroll-behavior: contain;
+  background: var(--bg); border-left: 1px solid var(--line-2);
+  transform: translateX(100%);
+}
+.sm-panel-inner { flex: 1; display: flex; flex-direction: column; }
+.sm-panel-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.sm-panel-title { font: 500 11px var(--font-mono); letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
+.sm-esc { font-size: 12px; color: var(--ink-3); }
+.sm-esc kbd { font: 11px var(--font-mono); padding: 1px 5px; margin-right: 4px; border: 1px solid var(--line-2); border-radius: 4px; color: var(--ink-2); }
+
+/* ---------- Home row: back to the STEM home ---------- */
+.sm-home { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 12px; margin-bottom: 26px; padding: 12px 14px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--surface); color: var(--ink); text-decoration: none; transition: border-color .15s, background-color .15s; }
+.sm-home:hover { border-color: var(--ink-3); }
+.sm-home-ic { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: var(--bg); }
+.sm-home-ic .ic { width: 16px; height: 16px; }
+.sm-home-t { display: grid; gap: 1px; }
+.sm-home-t b { font: 400 22px/1.1 var(--font-display); letter-spacing: -0.01em; }
+.sm-home-t small { font: 11px var(--font-mono); letter-spacing: .04em; color: var(--ink-3); }
+.sm-home-go { display: grid; place-items: center; font: 500 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.sm-home-go .ic { width: 15px; height: 15px; }
+.sm-home:hover .sm-home-go { color: var(--ink); }
+.sm-home[aria-current="page"] { background: var(--bg-2); }
+
+/* ---------- Rows ---------- */
+.sm-panel-list { list-style: none; margin: 0 0 32px; }
+.sm-row { position: relative; }
+.sm-row:last-child { border-bottom: 1px solid var(--line); }
+.sm-rule { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); }
+.sm-panel-item {
+  display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 8px;
+  padding: 16px 0 15px; color: var(--ink); text-decoration: none;
+}
+.sm-num { align-self: start; padding-top: 8px; font: 12px var(--font-mono); color: var(--ink-3); }
+.sm-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.sm-mask { display: block; overflow: hidden; padding-bottom: .08em; }
+.sm-panel-itemLabel {
+  display: inline-block; transform-origin: 0% 100%; will-change: transform;
+  font: 400 clamp(28px, 2.6vw, 34px)/1.08 var(--font-display); letter-spacing: -0.015em; white-space: nowrap;
+}
+.sm-hint { font-size: 13px; color: var(--ink-3); }
+.sm-go { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line-2); color: var(--ink-3); transition: background-color .15s, border-color .15s, color .15s; }
+.sm-go .ic { width: 14px; height: 14px; }
+.sm-panel-item:hover .sm-panel-itemLabel, .sm-panel-item:focus-visible .sm-panel-itemLabel { font-style: italic; }
+.sm-panel-item:hover .sm-go, .sm-panel-item:focus-visible .sm-go { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.sm-panel-item:focus-visible { outline: none; }
+.sm-panel-item[aria-current="page"] .sm-num { color: var(--ink); }
+.sm-panel-item[aria-current="page"] .sm-go { width: auto; height: auto; border: 0; background: none; color: inherit; }
+.sm-here { font: 500 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); display: inline-flex; align-items: center; gap: 7px; }
+.sm-here::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+
+/* ---------- Bottom: one lesson to go to ---------- */
+.sm-feature {
+  position: relative; display: grid; gap: 4px; margin-top: auto; padding: 18px 64px 18px 18px;
+  border-radius: var(--radius); text-decoration: none; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line);
+  transition: border-color .15s;
+}
+.sm-feature:hover { border-color: var(--line-2); }
+.sm-feature-eyebrow { display: inline-flex; align-items: center; gap: 7px; font: 500 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.sm-feature-eyebrow i { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--ink-4); }
+.sm-feature.is-live .sm-feature-eyebrow i { border: 0; background: var(--ok); }
+.sm-feature-title { font: 400 22px/1.2 var(--font-display); letter-spacing: -0.01em; margin-top: 4px; }
+.sm-feature-text { font-size: 13px; color: var(--ink-3); line-height: 1.5; }
+.sm-feature-go { position: absolute; right: 18px; top: 50%; margin-top: -16px; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--bg); }
+.sm-feature-go .ic { width: 14px; height: 14px; }
+.sm-sign { display: flex; align-items: baseline; gap: 10px; margin-top: 18px; font-size: 12.5px; color: var(--ink-3); }
+.sm-sign strong { font: 600 15px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); }
+.sm-sign b { color: var(--blue); }
+
+@media (max-width: 640px) {
+  .staggered-menu { --sm-width: 100%; }
+  .staggered-menu-panel { padding: calc(var(--header-h) + 24px) 20px 24px; border: 0; }
+  .sm-esc { display: none; }
+}

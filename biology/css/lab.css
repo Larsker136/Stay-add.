@@ -1,0 +1,187 @@
+/* Biology figures, shared by the Biology home (Fig. 1) and the lessons:
+   graph parts in the subject accent, and the enzyme, its substrate and
+   products drawn in their colour roles (base.css). */
+.fig .plot { fill: none; stroke: var(--c-bio); stroke-width: 2; stroke-linejoin: round; }
+.fig .plot.dim { stroke: var(--ink-4); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.fig .area { fill: color-mix(in srgb, var(--c-bio) 9%, transparent); }
+.fig .pt { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+.fig .enz { fill: color-mix(in srgb, var(--c-enzyme) 16%, var(--surface)); stroke: var(--c-enzyme); stroke-width: 1.75; transition: fill .3s, stroke .3s; }
+.fig .enz.is-bad { fill: color-mix(in srgb, var(--c-denat) 12%, var(--surface)); stroke: var(--c-denat); }
+.fig .subs { fill: color-mix(in srgb, var(--c-substrate) 22%, var(--surface)); stroke: var(--c-substrate); stroke-width: 1.75; }
+.fig .prod { fill: color-mix(in srgb, var(--c-product) 22%, var(--surface)); stroke: var(--c-product); stroke-width: 1.75; }
+.fig .lbl-enz { fill: var(--c-enzyme); }
+.fig .lbl-sub { fill: var(--c-substrate); }
+.fig .lbl-prod { fill: var(--c-product); }
+.fig .lbl-bad { fill: var(--c-denat); }
+.fig .zone { fill: color-mix(in srgb, var(--c-denat) 7%, transparent); }
+.fig .t-name { font: italic 400 17px var(--font-display); fill: var(--ink); }
+
+/* a slider with its value: label · track · output (the label is optional) */
+.ctl { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; font-size: 13px; color: var(--ink-2); }
+.ctl:not(:has(> span)) { grid-template-columns: 1fr auto; }
+.ctl output { font-size: 12.5px; color: var(--ink-3); min-width: 52px; text-align: right; white-space: nowrap; }
+.ctl output b { font-weight: 500; color: var(--ink); }
+
+/* lessons */
+[data-subject="biology"] { --t-accent: var(--c-bio); }
+.b-enz { color: var(--c-enzyme); font-weight: 600; }
+.b-sub { color: var(--c-substrate); font-weight: 600; }
+.b-prod { color: var(--c-product); font-weight: 600; }
+.tag-s { font: 500 10.5px var(--font-mono); padding: 1px 5px; border: 1px solid var(--line-2); border-radius: 4px; color: var(--ink-3); font-weight: 500; }
+.t-art .enz, .t-art .subs { stroke-width: 2; }
+
+/* ---------- Reproduction & inheritance figures ---------- */
+.fig .muted { fill: var(--ink-3); }
+.muted-t { color: var(--ink-3); }
+.fig .ar { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.fig .ar.dash { stroke-dasharray: 5 4; }
+.fig .ar-h { fill: var(--ink-3); }
+.fig .pn-t { font: italic 400 17px var(--font-display); fill: var(--ink); }
+.fig .side-l { font: 500 10.5px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; fill: var(--ink-3); }
+/* organisms and cells */
+.fig .org { fill: color-mix(in srgb, var(--ink) 4%, var(--surface)); stroke: var(--ink-3); stroke-width: 1.5; }
+.fig .org.kid { fill: color-mix(in srgb, var(--c-bio) 12%, var(--surface)); stroke: var(--c-bio); }
+.fig .dna { fill: none; stroke: var(--c-par1); stroke-width: 1.5; }
+.fig .nuc { fill: color-mix(in srgb, var(--c-par1) 18%, var(--surface)); stroke: var(--c-par1); stroke-width: 1.5; }
+.fig .leaf { fill: color-mix(in srgb, var(--c-bio) 22%, var(--surface)); stroke: var(--c-bio); stroke-width: 1.25; }
+.fig .stem { fill: none; stroke: var(--c-bio); stroke-width: 2; stroke-linecap: round; }
+.fig .root { fill: none; stroke: var(--ink-3); stroke-width: 1.25; }
+.fig .ground { stroke: var(--ink-4); stroke-dasharray: 3 4; }
+.fig .cell { fill: color-mix(in srgb, var(--ink) 3%, var(--surface)); stroke: var(--ink-3); stroke-width: 1.5; }
+.fig .cell.gam { stroke-dasharray: 4 3; }
+.fig .cell.zyg { stroke: var(--c-bio); fill: color-mix(in srgb, var(--c-bio) 8%, var(--surface)); }
+.fig .gam.p1, .fig .gam.p2 { stroke-width: 1.75; }
+.fig .gam.p1 { fill: color-mix(in srgb, var(--c-par1) 14%, var(--surface)); stroke: var(--c-par1); }
+.fig .gam.p2 { fill: color-mix(in srgb, var(--c-par2) 14%, var(--surface)); stroke: var(--c-par2); }
+.fig .zyg { fill: color-mix(in srgb, var(--c-bio) 8%, var(--surface)); stroke: var(--c-bio); stroke-width: 1.75; }
+/* chromosomes: parent 1 / parent 2, dark and light copies */
+.fig .chr { stroke: none; }
+.fig .chr.p1 { fill: var(--c-par1); }
+.fig .chr.p2 { fill: var(--c-par2); }
+.fig .chr.p1.lt { fill: color-mix(in srgb, var(--c-par1) 42%, var(--surface)); }
+.fig .chr.p2.lt { fill: color-mix(in srgb, var(--c-par2) 42%, var(--surface)); }
+.fig .pop { animation: pop .45s var(--ease); transform-box: fill-box; transform-origin: center; }
+@keyframes pop { from { opacity: 0; transform: scale(.9); } }
+/* the flower */
+.fig .petal { fill: color-mix(in srgb, var(--c-oes) 22%, var(--surface)); stroke: var(--c-oes); stroke-width: 1.5; }
+.fig .petal.dull { fill: color-mix(in srgb, var(--c-bio) 14%, var(--surface)); stroke: var(--c-bio); }
+.fig .sepal { fill: color-mix(in srgb, var(--c-bio) 24%, var(--surface)); stroke: var(--c-bio); stroke-width: 1.5; }
+.fig .nectar { fill: color-mix(in srgb, var(--amber) 40%, var(--surface)); stroke: var(--amber); }
+.fig .fil { fill: none; stroke: var(--c-par2); stroke-width: 2.5; stroke-linecap: round; }
+.fig .anther { fill: color-mix(in srgb, var(--c-par2) 30%, var(--surface)); stroke: var(--c-par2); stroke-width: 1.75; }
+.fig .ovary { fill: color-mix(in srgb, var(--c-par1) 12%, var(--surface)); stroke: var(--c-par1); stroke-width: 1.75; }
+.fig .ovule { fill: color-mix(in srgb, var(--c-par1) 35%, var(--surface)); stroke: var(--c-par1); stroke-width: 1.25; }
+.fig .style { fill: none; stroke: var(--c-par1); stroke-width: 5; stroke-linecap: round; opacity: .75; }
+.fig .stigma { fill: color-mix(in srgb, var(--c-par1) 30%, var(--surface)); stroke: var(--c-par1); stroke-width: 1.75; }
+.fig .stigma.feather { fill: none; stroke-width: 1.5; stroke-linecap: round; }
+.fig .pollen { fill: var(--amber); }
+.fig .pollen-air circle { fill: var(--amber); opacity: .8; }
+.fig .tube { fill: none; stroke: var(--amber); stroke-width: 1.75; stroke-dasharray: 4 3; }
+.fig .hit { fill: none; stroke: transparent; stroke-width: 16; }
+.fig .pt-g, .fig .pl { cursor: pointer; }
+.fig .pt-g.on > :not(.hit) { stroke-width: 3; filter: none; }
+.fig .pt-g.on .style { stroke-width: 7; opacity: 1; }
+.fig .lead { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.fig .lead.on { stroke: var(--ink); }
+.fig .pl { fill: var(--ink-3); font-size: 13px; }
+.fig .pl.male { fill: color-mix(in srgb, var(--c-par2) 70%, var(--ink-3)); }
+.fig .pl.female { fill: color-mix(in srgb, var(--c-par1) 70%, var(--ink-3)); }
+.fig .pl.on { fill: var(--ink); font-weight: 600; }
+/* egg and sperm */
+.fig .jelly { fill: none; stroke: var(--ink-4); stroke-width: 1.5; stroke-dasharray: 3 4; }
+.fig .egg { fill: color-mix(in srgb, var(--c-oes) 10%, var(--surface)); stroke: var(--c-oes); stroke-width: 1.75; }
+.fig .yolk circle { fill: color-mix(in srgb, var(--amber) 55%, var(--surface)); }
+.fig .sperm { fill: color-mix(in srgb, var(--c-par1) 12%, var(--surface)); stroke: var(--c-par1); stroke-width: 1.75; }
+.fig .acro { fill: none; stroke: var(--amber); stroke-width: 3; }
+.fig .mid { fill: color-mix(in srgb, var(--c-par1) 10%, var(--surface)); stroke: var(--c-par1); stroke-width: 1.5; }
+.fig .mito { stroke: var(--amber); stroke-width: 3; stroke-linecap: round; }
+.fig .tail { fill: none; stroke: var(--c-par1); stroke-width: 1.75; stroke-linecap: round; }
+/* hormones */
+.fig .hm { fill: none; stroke-width: 2; stroke-linejoin: round; }
+.fig .hm.fsh { stroke: var(--c-fsh); } .fig .hm.lh { stroke: var(--c-lh); } .fig .hm.oes { stroke: var(--c-oes); } .fig .hm.prog { stroke: var(--c-prog); }
+.fig .hm-pt { stroke: var(--surface); stroke-width: 1.5; }
+.fig .hm-pt.fsh { fill: var(--c-fsh); } .fig .hm-pt.lh { fill: var(--c-lh); } .fig .hm-pt.oes { fill: var(--c-oes); } .fig .hm-pt.prog { fill: var(--c-prog); }
+.fig .men { fill: color-mix(in srgb, var(--c-denat) 8%, transparent); }
+.fig .lining { fill: color-mix(in srgb, var(--c-oes) 22%, var(--surface)); stroke: var(--c-oes); stroke-width: 1.25; }
+.fig .blood circle { fill: var(--c-denat); }
+.fig .today { stroke: var(--ink); stroke-width: 1.25; }
+.fig .ov { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.fig .ov.fol { fill: color-mix(in srgb, var(--c-fsh) 12%, var(--surface)); stroke: var(--c-fsh); }
+.fig .ov.eggd { fill: var(--c-oes); stroke: none; }
+.fig .ov.cl { fill: color-mix(in srgb, var(--c-prog) 22%, var(--surface)); stroke: var(--c-prog); }
+.t-art .hm { stroke-width: 2.5; }
+
+/* a gene: bases, mRNA and amino acids */
+.fig .strand { fill: none; stroke-width: 2.5; }
+.fig .strand.s1 { stroke: var(--c-par1); } .fig .strand.s2 { stroke: var(--c-par2); }
+.fig .rung { stroke: var(--ink-4); stroke-width: 2; }
+.fig .trip { fill: color-mix(in srgb, var(--ink) 3%, transparent); stroke: var(--line); }
+.fig .trip.off { opacity: .35; }
+.fig .base { stroke-width: 1.5; }
+.fig .base.bA { fill: color-mix(in srgb, var(--teal) 20%, var(--surface)); stroke: var(--teal); }
+.fig .base.bT { fill: color-mix(in srgb, var(--rose) 20%, var(--surface)); stroke: var(--rose); }
+.fig .base.bC { fill: color-mix(in srgb, var(--blue) 20%, var(--surface)); stroke: var(--blue); }
+.fig .base.bG { fill: color-mix(in srgb, var(--violet) 20%, var(--surface)); stroke: var(--violet); }
+.fig .base.dim { opacity: .55; }
+.fig .base.rna { fill: var(--surface); stroke: var(--ink-3); stroke-dasharray: 3 2; }
+.fig .base.changed { stroke: var(--amber); stroke-width: 3; }
+.fig .base-g { cursor: pointer; }
+.fig .base-g:hover .base { stroke-width: 2.5; }
+.fig .base-t { font: 500 15px var(--font-mono); fill: var(--ink); pointer-events: none; }
+.fig .hbond { stroke: var(--ink-4); stroke-width: 1.5; stroke-dasharray: 2 2; }
+.fig .copy { stroke: var(--ink-4); stroke-width: 1; }
+.fig .pep { stroke: var(--ink-3); stroke-width: 2.5; }
+.fig .aa { stroke-width: 1.75; }
+.fig .aa.aa0 { fill: color-mix(in srgb, var(--teal) 22%, var(--surface)); stroke: var(--teal); }
+.fig .aa.aa1 { fill: color-mix(in srgb, var(--amber) 22%, var(--surface)); stroke: var(--amber); }
+.fig .aa.aa2 { fill: color-mix(in srgb, var(--rose) 22%, var(--surface)); stroke: var(--rose); }
+.fig .aa.aa3 { fill: color-mix(in srgb, var(--violet) 22%, var(--surface)); stroke: var(--violet); }
+.fig .aa.aa4 { fill: color-mix(in srgb, var(--blue) 22%, var(--surface)); stroke: var(--blue); }
+.fig .aa.aa5 { fill: color-mix(in srgb, var(--green) 22%, var(--surface)); stroke: var(--green); }
+.fig .aa.stop { fill: color-mix(in srgb, var(--c-denat) 14%, var(--surface)); stroke: var(--c-denat); }
+.fig .aa-t { font: 500 13px var(--font-mono); fill: var(--ink); }
+
+/* mitosis and meiosis: positions are CSS transforms set by inheritance.js */
+.divide .cellv { fill: color-mix(in srgb, var(--c-bio) 6%, var(--surface)); stroke: var(--c-bio); stroke-width: 1.75; vector-effect: non-scaling-stroke; }
+.divide.ready .cellv { transition: transform .8s var(--ease), opacity .5s; }
+.divide.ready .cv { transition: transform .8s var(--ease); }
+.seg-5 button { padding-left: 2px; padding-right: 2px; }
+
+/* germination tubes */
+.fig .ttube { fill: none; stroke: var(--ink-3); stroke-width: 1.75; }
+.fig .wool { stroke: var(--ink-4); stroke-width: 1; }
+.fig .wool.dry { fill: color-mix(in srgb, var(--ink) 6%, var(--surface)); }
+.fig .wool.wet { fill: color-mix(in srgb, var(--blue) 18%, var(--surface)); }
+.fig .seed ellipse { fill: color-mix(in srgb, var(--amber) 55%, var(--surface)); stroke: var(--amber); }
+.fig .bung { fill: color-mix(in srgb, var(--ink) 18%, var(--surface)); stroke: var(--ink-3); }
+.fig .chem { fill: color-mix(in srgb, var(--violet) 20%, var(--surface)); stroke: var(--violet); }
+.fig .wire { stroke: var(--ink-3); stroke-width: 1.25; }
+/* HIV */
+.fig .virus { fill: color-mix(in srgb, var(--c-denat) 16%, var(--surface)); stroke: var(--c-denat); stroke-width: 2; }
+.fig .spike { stroke: var(--c-denat); stroke-width: 2.5; stroke-linecap: round; }
+.fig .lymph { fill: color-mix(in srgb, var(--c-par1) 12%, var(--surface)); stroke: var(--c-par1); stroke-width: 2; }
+.fig .hiv-l { fill: none; stroke: var(--c-par1); stroke-width: 2.25; }
+.fig .hiv-v { fill: none; stroke: var(--c-denat); stroke-width: 2; stroke-dasharray: 6 4; }
+.fig .lbl-l { fill: var(--c-par1); }
+.fig .lbl-v { fill: var(--c-denat); }
+
+/* genetic crosses and pedigrees */
+.fig .pq { fill: color-mix(in srgb, var(--c-bio) 14%, var(--surface)); stroke: var(--ink-3); }
+.fig .pq.rec { fill: color-mix(in srgb, var(--amber) 24%, var(--surface)); }
+.fig .pq-t text { font: 500 14px var(--font-mono); fill: var(--ink); }
+.fig .pq-cell { fill: color-mix(in srgb, var(--pc) 16%, var(--surface)); stroke: var(--ink-3); stroke-width: 1.25; }
+.fig .pq-g { font: 500 17px var(--font-mono); fill: var(--ink); }
+.fig .pq-p { font-size: 12px; fill: var(--ink-2); }
+.fig .pq-a { font: 500 13px var(--font-mono); fill: var(--ink); }
+.fig .pq-h { font-size: 13px; fill: var(--ink); font-weight: 500; }
+.fig .pq-l { font-size: 12.5px; fill: var(--ink-2); }
+.fig .pq-n { font: 500 12px var(--font-mono); fill: var(--ink); }
+.fig .pq-bar-bg { fill: var(--line); }
+.fig .gam-c { fill: var(--surface); stroke: var(--ink-3); stroke-dasharray: 3 2; }
+.fig .sup { font-size: .68em; }
+.fig .ped path { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.fig .pm, .fig .pf { fill: var(--surface); stroke: var(--ink-2); stroke-width: 1.75; }
+.fig .pm.aff, .fig .pf.aff { fill: var(--c-denat); stroke: var(--c-denat); }
+.fig .ped-n { font: 500 12px var(--font-mono); fill: var(--ink-3); }
+.fig .ped-g { font: italic 400 17px var(--font-display); fill: var(--ink-3); }
+.fig .ped-gt { font: 500 12px var(--font-mono); fill: var(--ink); }

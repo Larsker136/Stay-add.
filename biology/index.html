@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>stay add. Biology</title>
+<meta name="description" content="Interactive Cambridge IGCSE Biology: friendly explanations of how living things work, with small labs and the cause → effect chains examiners reward.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/lab.css">
+<link rel="stylesheet" href="../assets/css/menu.css">
+</head>
+<body data-root="../" data-subject="biology" data-page="home">
+<header data-site-header></header>
+
+<main>
+  <!-- ================= Hero ================= -->
+  <section class="wrap hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow">Cambridge IGCSE Biology &nbsp;·&nbsp; 0610 / 0970</p>
+      <h1 class="display">Living things run on <em>shape</em>.</h1>
+      <p class="lead">An enzyme works because its active site fits one molecule. Change the temperature or the pH and the shape changes too — that one idea explains digestion, fever and why a boiled enzyme never works again. Biology here starts from ideas like that.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="lessons/enzymes.html">Start with Enzymes <span class="arr" aria-hidden="true">→</span></a>
+        <a class="text-link" href="#topics">All 21 topics</a>
+      </div>
+      <dl class="facts">
+        <div><dt>Syllabus topics</dt><dd class="display" data-bio-fact="topics">21</dd></div>
+        <div><dt>Strands</dt><dd class="display" data-bio-fact="strands">5</dd></div>
+        <div><dt>Live lessons</dt><dd class="display" data-bio-fact="live">1</dd></div>
+      </dl>
+    </div>
+
+    <figure class="instrument" data-hero aria-label="Enzyme activity against temperature, with the active site drawn">
+      <figcaption class="inst-head">
+        <span><span class="eyebrow">Fig. 1</span> Enzyme activity and temperature</span>
+        <span class="status" data-hero-status>Sweeping</span>
+      </figcaption>
+      <svg class="fig" viewBox="0 0 640 320" role="img" aria-label="Rate of reaction against temperature, rising to an optimum at 37 °C then falling to zero as the enzyme denatures; beside it the enzyme's active site, which loses its shape when hot" data-hero-svg></svg>
+      <div class="inst-ctl">
+        <label class="ctl"><span>Temperature</span><input class="range" type="range" min="0" max="70" step="1" value="37" data-hero-temp style="--rc:var(--c-temp)"><output class="num"><b data-hero-out>37</b> °C</output></label>
+      </div>
+      <dl class="readouts">
+        <div><dt>T</dt><dd><b data-hero-r="t">37</b> °C</dd></div>
+        <div><dt>activity</dt><dd><b data-hero-r="rate">100</b> % of max</dd></div>
+        <div><dt>active site</dt><dd><b data-hero-r="site">fits</b></dd></div>
+      </dl>
+      <div class="working">
+        <div><span class="w-k">below 37 °C</span><span>more kinetic energy → more collisions → faster</span></div>
+        <div><span class="w-k">above 40 °C</span><span>active site changes shape → denatured</span></div>
+      </div>
+    </figure>
+  </section>
+
+  <!-- ================= Topics ================= -->
+  <section class="topics-band" id="topics">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div><p class="eyebrow">§1 &nbsp;The syllabus</p><h2 class="display">Twenty-one topics, <em>five</em> strands.</h2></div>
+        <div class="sec-aside">
+          <p>The syllabus moves from the smallest scale to the largest: molecules and cells, then whole organisms, then genes passed between generations, then ecosystems. Lessons go live one topic at a time.</p>
+          <ul class="legend"><li><span class="status" style="--sc:var(--c-bio)">Live</span></li><li><span class="status paused">Coming soon</span></li></ul>
+        </div>
+      </header>
+      <div class="strands" data-strands></div>
+    </div>
+  </section>
+
+  <!-- ================= Method ================= -->
+  <section class="wrap method-sec" id="method">
+    <header class="method-intro reveal">
+      <p class="eyebrow">§2 &nbsp;How a lesson works</p>
+      <h2 class="display">Understand, try, <em>explain.</em></h2>
+      <p>Every Biology lesson has the same three steps as the rest of stay add. Here is one topic of the Enzymes lesson.</p>
+    </header>
+    <ol class="method">
+      <li class="reveal">
+        <span class="m-n display">i.</span>
+        <div><h3 class="display">Understand</h3><p>The idea in plain words, with the exam definition beside it.</p></div>
+        <div class="m-eg"><span class="eyebrow">From the lesson</span><p class="quote">“An <b>enzyme</b> is a protein that acts as a <b>biological catalyst</b>: it speeds up a reaction without being changed by it.”</p></div>
+      </li>
+      <li class="reveal">
+        <span class="m-n display">ii.</span>
+        <div><h3 class="display">Experiment</h3><p>Change one thing — the temperature, the pH, the substrate — and read what happens to the active site.</p></div>
+        <div class="m-eg"><span class="eyebrow">Readings</span>
+          <table class="num"><tr><th>T / °C</th><th>activity</th></tr><tr><td>20</td><td>40 %</td></tr><tr><td>37</td><td>100 %</td></tr><tr><td>60</td><td>0 %</td></tr></table>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="m-n display">iii.</span>
+        <div><h3 class="display">Interpret</h3><p>The cause → effect chain to remember, and one exam tip.</p></div>
+        <div class="m-eg"><span class="eyebrow">Chain</span><p class="m-chain"><span>above 40 °C</span><span>active site changes shape</span><span>substrate no longer fits</span><span>denatured</span></p></div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ================= Closing ================= -->
+  <section class="closing">
+    <div class="wrap closing-in">
+      <h2 class="display">Your first topic takes <em>five minutes.</em></h2>
+      <div>
+        <p>No sign-up. Open the Enzymes lesson and change the temperature yourself — progress stays on this device.</p>
+        <a class="btn btn-primary" href="lessons/enzymes.html">Open Enzymes <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../assets/js/catalog.js"></script>
+<script src="../assets/js/menu.js"></script>
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/fx.js"></script>
+<script src="js/enzyme.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

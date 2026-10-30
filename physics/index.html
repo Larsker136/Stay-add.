@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>stay add. Physics</title>
+<meta name="description" content="Interactive Cambridge IGCSE Physics: every law in the syllabus as a working lab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="../assets/css/menu.css">
+</head>
+<body data-root="../" data-subject="physics" data-page="home">
+<header data-site-header></header>
+
+<main>
+  <!-- ================= Hero ================= -->
+  <section class="hero-band" id="top">
+  <div class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Cambridge IGCSE Physics &nbsp;·&nbsp; 0625 / 0972</p>
+      <h1 class="display">Physics you can <em>touch</em>, not just read.</h1>
+      <p class="lead">Every law in the syllabus becomes a working lab. Change a variable, predict the result, then learn exactly how to write it for full marks.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="labs/refraction.html">Start with Motion <span class="arr" aria-hidden="true">→</span></a>
+        <a class="text-link" href="#topics">Browse all 48 labs</a>
+      </div>
+      <dl class="facts rv">
+        <div><dt>Syllabus topics</dt><dd class="display" data-count="6">6</dd></div>
+        <div><dt>Interactive labs</dt><dd class="display" data-count="48">48</dd></div>
+        <div><dt>Exam-style questions</dt><dd class="display" data-count="1200">1,200</dd></div>
+      </dl>
+    </div>
+
+    <figure class="instrument" aria-label="Projectile motion simulation">
+      <figcaption class="inst-head">
+        <span><span class="eyebrow">Fig. 1</span> Projectile, horizontal launch</span>
+        <span class="status" id="pStatus">Running</span>
+      </figcaption>
+
+      <svg class="fig" viewBox="0 0 640 340" role="img" aria-label="Ball launched horizontally from a 10 metre cliff, with velocity components">
+        <defs>
+          <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" class="hatch"/></pattern>
+          <marker id="ah-x" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="m-vx"/></marker>
+          <marker id="ah-y" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="m-vy"/></marker>
+        </defs>
+        <g id="pGrid"></g>
+        <rect x="52" y="67.7" width="62.7" height="238.3" fill="url(#hatch)"/>
+        <path d="M52 67.7H114.7V306" class="ax"/>
+        <path d="M52 20V306H616" class="ax"/>
+        <g id="pTicks"></g>
+        <text x="52" y="12">h / m</text>
+        <text x="616" y="334" text-anchor="end">x / m</text>
+        <g id="pProjX"></g><g id="pProjY"></g>
+        <g id="pStrobe"></g>
+        <path id="pTrail" class="trail"/>
+        <line id="pVx" class="v-x" marker-end="url(#ah-x)"/>
+        <line id="pVy" class="v-y" marker-end="url(#ah-y)"/>
+        <text id="pVxT" class="t-vx"></text>
+        <text id="pVyT" class="t-vy"></text>
+        <circle id="pBall" r="6" class="ink"/>
+        <g id="pLand" style="display:none"><path d="M0 0L-5 -8H5Z" class="ink"/><text id="pLandT" y="-13" text-anchor="middle" class="lbl-ink"></text></g>
+      </svg>
+
+      <div class="inst-controls">
+        <button class="icon-btn play" id="pPlay" type="button" aria-label="Pause">
+          <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="3" y="2" width="3" height="10" rx=".5"/><rect x="8" y="2" width="3" height="10" rx=".5"/></svg>
+          <svg class="i-play" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M4 2.2v9.6L11.5 7z"/></svg>
+        </button>
+        <button class="icon-btn" id="pReplay" type="button" aria-label="Replay"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+        <label class="speed"><span>Launch speed</span><input class="range" id="pSpeed" type="range" min="6" max="16" step="0.5" value="12"><output class="num"><b id="pSpeedOut">12.0</b> m/s</output></label>
+      </div>
+
+      <dl class="readouts">
+        <div><dt>t</dt><dd><b id="rT">0.00</b> s</dd></div>
+        <div><dt>x</dt><dd><b id="rX">0.00</b> m</dd></div>
+        <div><dt>fallen</dt><dd><b id="rY">0.00</b> m</dd></div>
+        <div><dt>|v|</dt><dd><b id="rV">12.00</b> m/s</dd></div>
+      </dl>
+      <div class="working num">
+        <div><span class="w-k">x = vₓt</span><span id="eqX"></span></div>
+        <div><span class="w-k">s = ½gt²</span><span id="eqY"></span></div>
+      </div>
+    </figure>
+  </div>
+  </section>
+
+  <!-- ================= Scenes: sticky, scroll-driven ================= -->
+  <section class="scenes" id="scenes" data-scene="thermal" aria-label="Physics in motion">
+    <div class="scenes-sticky">
+      <div class="wrap scenes-in">
+        <p class="eyebrow scenes-k">Physics in motion</p>
+        <div class="scenes-grid">
+        <div class="scene-cards">
+          <article class="scene-card" data-scene="thermal" data-cap="Kinetic particle model" data-fig="Fig. 2" style="--tc:var(--c-thermal)">
+            <p class="eyebrow"><span class="sc-n">02</span>Thermal physics</p>
+            <h2 class="display">Heat is <em>motion</em>.</h2>
+            <p>Each dot is a particle of gas in a closed box. As the temperature rises the particles move faster: their average kinetic energy grows with the absolute temperature.</p>
+            <dl class="scene-data"><div><dt>Rule</dt><dd>higher T → faster particles</dd></div><div><dt>Now</dt><dd class="scene-live num">300 K</dd></div></dl>
+            <a class="text-link" href="#topics">Kinetic particle model</a>
+          </article>
+          <article class="scene-card" data-scene="field" data-cap="Field of a bar magnet" data-fig="Fig. 3" style="--tc:var(--c-elec)">
+            <p class="eyebrow"><span class="sc-n">04</span>Electricity &amp; magnetism</p>
+            <h2 class="display">Fields you can <em>see</em>.</h2>
+            <p>Field lines leave the north pole and enter the south pole, crowding together where the field is strongest.</p>
+            <dl class="scene-data"><div><dt>Strongest</dt><dd>at the poles</dd></div><div><dt>Force on a wire</dt><dd class="num">F = BIL</dd></div></dl>
+            <a class="text-link" href="#topics">Magnetic fields</a>
+          </article>
+          <article class="scene-card" data-scene="nuclear" data-cap="Random decay and half-life" data-fig="Fig. 4" style="--tc:var(--c-nuclear)">
+            <p class="eyebrow"><span class="sc-n">05</span>Nuclear physics</p>
+            <h2 class="display">Decay is <em>random</em>.</h2>
+            <p>Every nucleus has the same chance of decaying each second. You cannot say which one goes next, yet half of them always go within one half-life.</p>
+            <dl class="scene-data"><div><dt>After n half-lives</dt><dd class="num">N = N₀ ⁄ 2ⁿ</dd></div><div><dt>Now</dt><dd class="scene-live num">100% remain</dd></div></dl>
+            <a class="text-link" href="#topics">Half-life</a>
+          </article>
+          <article class="scene-card" data-scene="orbits" data-cap="Planetary orbits" data-fig="Fig. 5" style="--tc:var(--c-space)">
+            <p class="eyebrow"><span class="sc-n">06</span>Space physics</p>
+            <h2 class="display">Further out, <em>slower</em>.</h2>
+            <p>Planets further from the Sun travel more slowly and take far longer to complete one orbit. The outer planet here needs about five inner-planet years for one orbit.</p>
+            <dl class="scene-data"><div><dt>Orbital speed</dt><dd class="num">v = 2πr ⁄ T</dd></div><div><dt>Held by</dt><dd>the Sun’s gravity</dd></div></dl>
+            <a class="text-link" href="#topics">The Solar System</a>
+          </article>
+        </div>
+        <figure class="scene-stage">
+          <figcaption><span><span class="eyebrow" id="sceneFig">Fig. 2</span> <span id="sceneCap">Kinetic particle model</span></span><span class="status" id="sceneStatus" style="--sc:var(--sc)">Live</span></figcaption>
+          <canvas class="scene-canvas" id="sceneCanvas" aria-hidden="true"></canvas>
+        </figure>
+        </div>
+        <nav class="scene-index" aria-label="Scenes">
+          <button><span class="num">02</span>Thermal</button><button><span class="num">04</span>Fields</button><button><span class="num">05</span>Decay</button><button><span class="num">06</span>Orbits</button>
+          <span class="scene-bar" aria-hidden="true"><i></i></span>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Topics ================= -->
+  <section class="topics-sec wrap" id="topics">
+    <header class="sec-head rv">
+      <div>
+        <p class="eyebrow">§1 &nbsp;The syllabus</p>
+        <h2 class="display">Six topics, <em>one</em> syllabus.</h2>
+      </div>
+      <div class="sec-aside">
+        <p>Core and Supplement content are marked separately, so you only study what your paper needs. Each topic is a run of short labs followed by exam-style checks.</p>
+        <ul class="legend">
+          <li><span class="status">In progress</span></li>
+          <li><span class="status paused">Not started</span></li>
+          <li><span class="tag">Supp.</span> Supplement only</li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="topics">
+      <!-- six topics, one equal card each (3 × 2) -->
+      <article class="rv topic" style="--tc:var(--c-mech)">
+        <div class="t-meta"><span class="t-num">01</span><span class="status" style="--sc:var(--tc)">Continue here</span></div>
+        <h3 class="display">Motion, forces &amp; energy</h3>
+        <p class="t-desc">Speed–time graphs, momentum, moments, work and power.</p>
+        <svg class="fig t-fig" viewBox="0 0 560 250" role="img" aria-label="Velocity–time graph: accelerate, constant velocity, decelerate; the area is the distance travelled">
+          <path class="gl" d="M48 172H540M48 134H540M48 96H540M48 58H540M48 20H540"/>
+          <path class="area" d="M48 210L188.6 58H399.4L540 210Z"/>
+          <path class="plot" d="M48 210L188.6 58H399.4L540 210"/>
+          <path class="ax" d="M48 14V210H546"/>
+          <path class="tk" d="M48 210v5M118.3 210v5M188.6 210v5M258.9 210v5M329.1 210v5M399.4 210v5M469.7 210v5M540 210v5M43 210h5M43 172h5M43 134h5M43 96h5M43 58h5M43 20h5"/>
+          <path class="tk-m" d="M83.1 210v3M153.4 210v3M223.7 210v3M294 210v3M364.3 210v3M434.6 210v3M504.9 210v3"/>
+          <g text-anchor="middle"><text x="48" y="228">0</text><text x="118.3" y="228">2</text><text x="188.6" y="228">4</text><text x="258.9" y="228">6</text><text x="329.1" y="228">8</text><text x="399.4" y="228">10</text><text x="469.7" y="228">12</text><text x="540" y="228">14</text></g>
+          <g text-anchor="end"><text x="38" y="213">0</text><text x="38" y="175">2</text><text x="38" y="137">4</text><text x="38" y="99">6</text><text x="38" y="61">8</text><text x="38" y="23">10</text></g>
+          <text x="48" y="8">v / m s⁻¹</text>
+          <text x="546" y="246" text-anchor="end">t / s</text>
+          <text x="294" y="48" text-anchor="middle">constant velocity</text>
+          <text x="104" y="184" class="lbl-ink">a = +2.0 m/s²</text>
+          <text x="500" y="196" text-anchor="end" class="lbl-ink">a = −2.0 m/s²</text>
+          <text x="294" y="138" text-anchor="middle" class="ser big">distance = area = 80 m</text>
+          <circle cx="188.6" cy="58" r="3.5" class="pt"/><circle cx="399.4" cy="58" r="3.5" class="pt"/>
+        </svg>
+        <div class="t-foot">
+          <div class="t-progress"><div class="steps"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="now"></i><i></i><i></i><i></i><i></i></div><span class="num">7 / 12 labs</span></div>
+          <a class="text-link" href="#">Continue: 1.8 Momentum</a>
+        </div>
+      </article>
+
+      <article class="rv topic" style="--tc:var(--c-thermal)">
+        <div class="t-meta"><span class="t-num">02</span><span class="status" style="--sc:var(--tc)">In progress</span></div>
+        <h3 class="display">Thermal physics</h3>
+        <p class="t-desc">Kinetic particle model, gas pressure, specific heat capacity.</p>
+        <svg class="fig t-fig" viewBox="0 0 420 190" role="img" aria-label="Heating curve of water: temperature stays constant while melting at 0 degrees and boiling at 100 degrees">
+          <path class="gl" d="M44 139.4H410M44 36.6H410"/>
+          <path class="plot" d="M44 160L71.5 139.4H144.7L236.2 36.6H364.3L400.9 16"/>
+          <path class="ax" d="M44 10V160H414"/>
+          <path class="tk" d="M39 160h5M39 139.4h5M39 36.6h5M39 16h5M44 160v5M135.5 160v5M227 160v5M318.5 160v5M410 160v5"/>
+          <g text-anchor="end"><text x="34" y="163">−20</text><text x="34" y="142.4">0</text><text x="34" y="39.6">100</text></g>
+          <g text-anchor="middle"><text x="44" y="177">0</text><text x="135.5" y="177">5</text><text x="227" y="177">10</text><text x="318.5" y="177">15</text><text x="410" y="177">20</text></g>
+          <text x="44" y="6">θ / °C</text>
+          <text x="414" y="189" text-anchor="end">t / min</text>
+          <path class="bracket" d="M71.5 147v4H144.7v-4M236.2 44v4H364.3v-4"/>
+          <text x="108" y="131" text-anchor="middle" class="lbl-ink">melting</text>
+          <text x="300" y="28" text-anchor="middle" class="lbl-ink">boiling</text>
+          <text x="300" y="62" text-anchor="middle" class="ser">latent heat: θ constant</text>
+        </svg>
+        <div class="t-foot">
+          <div class="t-progress"><div class="steps"><i class="done"></i><i class="done"></i><i class="now"></i><i></i><i></i><i></i><i></i></div><span class="num">2 / 7 labs</span></div>
+          
+        </div>
+      </article>
+
+      <article class="rv topic" style="--tc:var(--c-waves)">
+        <div class="t-meta"><span class="t-num">03</span><span class="status" style="--sc:var(--tc)">In progress</span></div>
+        <h3 class="display">Waves, light &amp; sound</h3>
+        <p class="t-desc">Refraction, lenses, the electromagnetic spectrum, sound.</p>
+        <svg class="fig t-fig" viewBox="0 0 420 190" role="img" aria-label="Refraction at an air–glass boundary: angle of incidence 40 degrees, angle of refraction 25.4 degrees">
+          <rect x="0" y="100" width="420" height="90" class="medium"/>
+          <path d="M0 100H420" class="boundary"/>
+          <path d="M210 8V188" class="guide"/>
+          <path d="M210 100L287.1 8.1" class="ray-r"/>
+          <path d="M132.9 8.1L210 100" class="ray"/>
+          <path d="M210 100L248.6 181.3" class="ray-t"/>
+          <path d="M210 60A40 40 0 0 0 184.3 69.4" class="arc-i"/>
+          <path d="M210 140A40 40 0 0 0 227.2 136.1" class="arc-t"/>
+          <text x="168" y="62" text-anchor="end" class="t-ray">i = 40.0°</text>
+          <text x="246" y="150" class="t-med">r = 25.4°</text>
+          <text x="12" y="92">air · n = 1.00</text>
+          <text x="12" y="118">glass · n = 1.50</text>
+          <text x="408" y="176" text-anchor="end" class="ser">n = sin i ⁄ sin r</text>
+        </svg>
+        <div class="t-foot">
+          <div class="t-progress"><div class="steps"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="now"></i><i></i><i></i><i></i><i></i><i></i></div><span class="num">4 / 10 labs</span></div>
+          <a class="text-link" href="labs/refraction.html">Open 3.2 Refraction</a>
+        </div>
+      </article>
+
+      <article class="rv topic" style="--tc:var(--c-elec)">
+        <div class="t-meta"><span class="t-num">04</span><span class="status" style="--sc:var(--tc)">In progress</span></div>
+        <h3 class="display">Electricity &amp; magnetism</h3>
+        <p class="t-desc">Circuits, Ohm’s law, the motor effect, transformers.</p>
+        <svg class="fig t-fig" viewBox="0 0 320 160" role="img" aria-label="Current against voltage for an ohmic resistor (straight line) and a filament lamp (curve)">
+          <path class="gl" d="M40 100.4H305M40 65.8H305M40 31.2H305"/>
+          <path class="plot-2" d="M40 135L305 31.3"/>
+          <path class="plot" d="M40 135L62.1 120.4L84.2 106.2L106.2 92.9L128.3 80.7L150.4 69.8L172.5 60.3L194.6 52.2L216.6 45.5L238.7 39.9L260.8 35.3L282.9 31.5L305 28.6"/>
+          <path class="ax" d="M40 10V135H310"/>
+          <path class="tk" d="M35 135h5M35 100.4h5M35 65.8h5M35 31.2h5M40 135v5M128.3 135v5M216.6 135v5M305 135v5"/>
+          <g text-anchor="end"><text x="31" y="138">0</text><text x="31" y="103.4">0.2</text><text x="31" y="68.8">0.4</text><text x="31" y="34.2">0.6</text></g>
+          <g text-anchor="middle"><text x="40" y="152">0</text><text x="128.3" y="152">4</text><text x="216.6" y="152">8</text><text x="305" y="152">12</text></g>
+          <text x="40" y="6">I / A</text><text x="310" y="126" text-anchor="end">V / V</text>
+          <text x="140" y="62" text-anchor="end" class="lbl-ink">filament lamp</text>
+          <text x="210" y="96" class="lbl-ink">resistor</text>
+        </svg>
+        <div class="t-foot">
+          <div class="t-progress"><div class="steps"><i class="done"></i><i class="now"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="num">1 / 11 labs</span></div>
+          
+        </div>
+      </article>
+
+      <article class="rv topic" style="--tc:var(--c-nuclear)">
+        <div class="t-meta"><span class="t-num">05</span><span class="status paused">Not started</span></div>
+        <h3 class="display">Nuclear physics</h3>
+        <p class="t-desc">The nuclear atom, radioactive decay, half-life.</p>
+        <svg class="fig t-fig" viewBox="0 0 320 160" role="img" aria-label="Radioactive decay curve: the number of nuclei halves every half-life">
+          <path class="guide" d="M40 73H106.3V132M40 102.5H172.5V132M40 117.3H238.8V132"/>
+          <path class="plot" d="M40 14L56.6 32.8L73.1 48.6L89.7 61.8L106.3 73L123 82.4L139.4 90.3L155.9 96.9L172.5 102.5L189.1 107.2L205.6 111.1L222.2 114.5L238.8 117.3L255.3 119.6L271.9 121.6L288.4 123.2L305 124.6"/>
+          <path class="ax" d="M40 8V132H310"/>
+          <path class="tk" d="M35 14h5M35 73h5M35 102.5h5M106.3 132v5M172.5 132v5M238.8 132v5"/>
+          <g text-anchor="end"><text x="31" y="17">N₀</text><text x="31" y="76">N₀/2</text><text x="31" y="105.5">N₀/4</text></g>
+          <g text-anchor="middle"><text x="106.3" y="150">t½</text><text x="172.5" y="150">2t½</text><text x="238.8" y="150">3t½</text></g>
+          <text x="305" y="36" text-anchor="end" class="ser">halves every half-life</text>
+        </svg>
+        <div class="t-foot">
+          <div class="t-progress"><div class="steps"><i></i><i></i><i></i><i></i><i></i></div><span class="num">0 / 5 labs</span></div>
+          
+        </div>
+      </article>
+
+      <article class="rv topic" style="--tc:var(--c-space)">
+        <div class="t-meta"><span class="t-num">06</span><span class="status paused">Not started</span></div>
+        <h3 class="display">Space physics</h3>
+        <p class="t-desc">The Solar System, orbits, stars and the Universe.</p>
+        <svg class="fig t-fig" viewBox="0 0 320 160" role="img" aria-label="Elliptical comet orbit: the comet moves fastest when closest to the Sun">
+          <ellipse cx="160" cy="80" rx="125" ry="62" class="orbit"/>
+          <path class="guide" d="M35 80H285"/>
+          <circle cx="51.5" cy="80" r="7" class="sun"/>
+          <circle cx="35" cy="80" r="3.5" class="ink"/>
+          <circle cx="285" cy="80" r="3.5" class="ink"/>
+          <line x1="35" y1="80" x2="35" y2="44" class="vec" marker-end="url(#ah-s)"/>
+          <line x1="285" y1="80" x2="285" y2="92" class="vec" marker-end="url(#ah-s)"/>
+          <defs><marker id="ah-s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1L10 5L0 9z" class="m-space"/></marker></defs>
+          <text x="44" y="40" class="lbl-ink">fastest</text>
+          <text x="276" y="110" text-anchor="end" class="lbl-ink">slowest</text>
+          <text x="58" y="98">Sun</text>
+          <text x="300" y="152" text-anchor="end" class="ser">closer to the Sun → faster</text>
+        </svg>
+        <div class="t-foot">
+          <div class="t-progress"><div class="steps"><i></i><i></i><i></i></div><span class="num">0 / 3 labs</span></div>
+          
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= Method ================= -->
+  <section class="method-sec wrap">
+    <header class="method-intro rv">
+      <p class="eyebrow">§2 &nbsp;How a lab works</p>
+      <h2 class="display">Predict, play, <em>prove.</em></h2>
+      <p>Every lab follows the same three steps, built around how examiners award marks: intuition first, then the exact wording that scores.</p>
+    </header>
+    <ol class="method">
+      <li>
+        <span class="m-n display">i.</span>
+        <div><h3>Predict</h3><p>Commit to an answer before anything moves. A wrong guess is where the idea sticks.</p></div>
+        <div class="m-eg"><span class="eyebrow">Example</span><p>Double the launch speed. Does the flight time halve, stay the same, or double?</p><div class="choice"><span>Halves</span><span class="is-on">Same</span><span>Doubles</span></div></div>
+      </li>
+      <li>
+        <span class="m-n display">ii.</span>
+        <div><h3>Play</h3><p>Change variables, pause time, take readings. Graphs and equations update as you go.</p></div>
+        <div class="m-eg"><span class="eyebrow">Your readings</span>
+          <table class="num"><tr><th>vₓ / m s⁻¹</th><th>t / s</th></tr><tr><td>8.0</td><td>1.43</td></tr><tr><td>12.0</td><td>1.43</td></tr><tr><td>16.0</td><td>1.43</td></tr></table>
+        </div>
+      </li>
+      <li>
+        <span class="m-n display">iii.</span>
+        <div><h3>Prove</h3><p>Build a full-mark answer from mark-scheme keywords, then try past-paper questions.</p></div>
+        <div class="m-eg"><span class="eyebrow">Mark scheme · 2 marks</span><p class="quote">“Horizontal velocity is <mark>constant</mark>; the vertical motion depends only on <mark>gravity</mark>, so the time is unchanged.”</p></div>
+      </li>
+    </ol>
+  </section>
+
+
+  <!-- ================= Command words ================= -->
+  <section class="cmd-sec wrap" id="command">
+    <header class="sec-head rv">
+      <div><p class="eyebrow">§3 &nbsp;Exam technique</p><h2 class="display">Read the <em>command</em> word.</h2></div>
+      <div class="sec-aside"><p>The first word of a question tells you how much to write. Demand rises from recalling a fact to applying physics in a new situation — and so do the marks. Choose a level to see a model answer.</p></div>
+    </header>
+    <div class="cmd rv" id="cmd">
+      <svg class="fig cmd-curve" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="cmdFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" class="cmd-stop-a"/><stop offset="1" class="cmd-stop-b"/></linearGradient></defs>
+        <path class="gl" d="M0 50H1000M0 100H1000M0 150H1000"/>
+        <path class="cmd-area" d="M0 196C60 194 90 188 125 180C210 162 300 154 375 140C460 124 545 110 625 90C710 70 800 52 875 36C920 27 960 20 1000 14V200H0Z" fill="url(#cmdFill)"/>
+        <path class="cmd-line" d="M0 196C60 194 90 188 125 180C210 162 300 154 375 140C460 124 545 110 625 90C710 70 800 52 875 36C920 27 960 20 1000 14"/>
+        <path class="cmd-line cmd-line-on" d="M0 196C60 194 90 188 125 180C210 162 300 154 375 140C460 124 545 110 625 90C710 70 800 52 875 36C920 27 960 20 1000 14"/>
+        <path class="ax" d="M0 199.5H1000"/>
+      </svg>
+      <div class="cmd-pts" aria-hidden="true"><i class="cmd-pt" style="--x:12.5%;--y:90%"></i><i class="cmd-pt" style="--x:37.5%;--y:70%"></i><i class="cmd-pt" style="--x:62.5%;--y:45%"></i><i class="cmd-pt" style="--x:87.5%;--y:18%"></i></div>
+      <span class="cmd-axis">demand</span>
+      <div class="cmd-tabs" role="tablist" aria-label="Command word levels">
+        <button class="cmd-tab" role="tab"><span class="num">1</span><b>Recall</b><small>State · Define · Name</small></button>
+        <button class="cmd-tab" role="tab"><span class="num">2</span><b>Describe</b><small>Describe · Sketch · Compare</small></button>
+        <button class="cmd-tab" role="tab"><span class="num">3</span><b>Explain &amp; calculate</b><small>Explain · Calculate · Determine</small></button>
+        <button class="cmd-tab" role="tab"><span class="num">4</span><b>Apply</b><small>Suggest · Predict · Deduce</small></button>
+      </div>
+      <div class="cmd-card" id="cmdCard" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <!-- ================= Daily quiz ================= -->
+  <section class="quiz-sec" id="quiz-sec">
+    <div class="wrap">
+      <header class="sec-head rv">
+        <div><p class="eyebrow">§4 &nbsp;Daily six</p><h2 class="display">Six questions, <em>one</em> from each topic.</h2></div>
+        <div class="sec-aside"><p>Everyone gets the same six today, so you can compare scores with your class. Your answers are kept on this device until tomorrow’s set.</p></div>
+      </header>
+      <div class="quiz rv" id="quiz">
+        <aside class="q-side">
+          <div class="q-ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="q-track"/><circle cx="60" cy="60" r="52" class="q-prog" id="qRing" transform="rotate(-90 60 60)"/></svg>
+            <div><b class="display" id="qScore">0</b><span>/ 6 correct</span></div>
+          </div>
+          <ol class="q-dots" id="qDots" aria-label="Progress by topic"></ol>
+          <p class="q-date"><span class="eyebrow">Set for</span> <span id="qDate"></span></p>
+        </aside>
+        <div class="q-main" id="qMain" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Closing ================= -->
+  <section class="closing">
+    <div class="wrap closing-in">
+      <h2 class="display">Your first lab takes <em>five minutes.</em></h2>
+      <div>
+        <p>No sign-up needed. Open a lab and start experimenting.</p>
+        <a class="btn btn-primary" href="labs/refraction.html">Open the refraction lab <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-site-footer></footer>
+
+
+<nav class="tabbar" aria-label="Sections">
+  <a href="#top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="#topics"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>Topics</a>
+  <a href="labs/refraction.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/></svg>Labs</a>
+  <a href="#quiz-sec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg>Quiz</a>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../assets/js/catalog.js"></script>
+<script src="../assets/js/menu.js"></script>
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/fx.js"></script>
+<script src="js/projectile.js"></script>
+<script src="js/field.js"></script>
+<script src="js/quiz-data.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
