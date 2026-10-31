@@ -185,3 +185,33 @@
 .fig .ped-n { font: 500 12px var(--font-mono); fill: var(--ink-3); }
 .fig .ped-g { font: italic 400 17px var(--font-display); fill: var(--ink-3); }
 .fig .ped-gt { font: 500 12px var(--font-mono); fill: var(--ink); }
+
+/* practice: parts and functions quiz (16.3–16.5) */
+.t-art .pq-card { fill: var(--surface); stroke: var(--ink-3); stroke-width: 1.5; }
+.t-art .pq-opt { fill: none; stroke: var(--line-2); stroke-width: 1.25; }
+.t-art .pq-opt.is-ok { fill: color-mix(in srgb, var(--ok) 14%, transparent); stroke: var(--ok); }
+.t-art .pq-tick { fill: none; stroke: var(--ok); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.pq-setup { display: grid; gap: 18px; justify-items: start; }
+.pq-setup .group { justify-self: stretch; }
+.pq-go { padding: 9px 16px; border-radius: var(--radius-sm); background: var(--ink); border: 1px solid var(--ink); color: var(--bg); font-size: 14px; font-weight: 500; transition: opacity .15s, transform .1s; }
+.pq-go:hover { opacity: .88; }
+.pq-go:disabled { opacity: .35; cursor: default; }
+.pq-go:active:not(:disabled) { transform: translateY(.5px); }
+.pq { display: grid; gap: 12px; scroll-margin-top: 90px; }
+.pq-empty { padding: 28px 24px; border: 1px dashed var(--line-2); border-radius: var(--radius); font-size: 14px; color: var(--ink-3); text-align: center; }
+.pq-empty b { color: var(--ink); font-weight: 500; }
+.pq-top { display: flex; align-items: center; gap: 12px; }
+.pq-score { margin-left: auto; font: 500 12.5px var(--font-mono); color: var(--ink-3); }
+.pq-bar { height: 3px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.pq-bar i { display: block; height: 100%; background: var(--c-bio); transition: width .35s var(--ease); }
+.pq-ask { font: 500 11px/1.4 var(--font-mono); letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
+.pq-q h3 { text-wrap: balance; }
+.pq-q.is-long .q-options button { font-size: 14px; line-height: 1.45; }
+.pq-src { font: 500 11px var(--font-mono); letter-spacing: .04em; color: var(--ink-3); white-space: nowrap; }
+.pq-foot { display: flex; justify-content: flex-end; }
+.pq-end { display: grid; gap: 12px; padding: 24px 26px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.pq-big { font-size: 44px; line-height: 1; letter-spacing: -.03em; color: var(--ink); }
+.pq-big span { font-size: 22px; color: var(--ink-3); }
+.pq-verdict { font: 400 20px/1.3 var(--font-display); color: var(--ink); }
+.pq-end .block-h:not(:first-child) { margin-top: 8px; }
+@media (max-width: 640px) { .pq-q { padding: 18px 16px; } .pq-end { padding: 20px 16px; } .pq-src { white-space: normal; } }

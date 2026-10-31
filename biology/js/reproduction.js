@@ -4,10 +4,13 @@
    in assets/js/lesson.js. The asexual and human topics have figures only.)
    Labs: mix (gametes → zygote, or a clone), flower (parts, insect vs wind),
    cycle (the menstrual cycle, day by day). Each exposes lab.applyState(state).
+   Practice: the parts quiz — random multiple choice from the part / function
+   tables of 16.3–16.5 (function → part, or part → function).
    ========================================================================== */
 (function () {
   "use strict";
 
+  const SA = window.StayAdd || {};
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const still = new URLSearchParams(location.search).has("still") || matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -307,6 +310,152 @@
     render();
   }
 
+  /* =======================================================================
+     Practice: parts and functions quiz
+     Each item is one row of a table in 16.3–16.5. Wrong options always come
+     from the same table, so a flower part is never offered against a hormone.
+     ======================================================================= */
+  const PQ_SETS = {
+    flower: { name: "Flower", ask: "Which part of the flower does this?", what: "part" },
+    human: { name: "Human", ask: "Which part of the reproductive system does this?", what: "part" },
+    hormone: { name: "Hormone", ask: "Which hormone does this?", what: "hormone" },
+  };
+  const PQ_ITEMS = [
+    ["flower", "Sepal", "protects the flower while it is still a bud", "16.3.1"],
+    ["flower", "Petal", "large and brightly coloured to attract insects", "16.3.1"],
+    ["flower", "Anther", "makes pollen grains, which contain the male gametes", "16.3.1 · male, part of the stamen"],
+    ["flower", "Filament", "a stalk that holds the anther in position", "16.3.1 · male, part of the stamen"],
+    ["flower", "Stigma", "sticky surface at the top of the carpel that catches pollen", "16.3.1 · female, part of the carpel"],
+    ["flower", "Style", "joins the stigma to the ovary", "16.3.1 · female, part of the carpel"],
+    ["flower", "Ovary", "contains and protects the ovules; becomes the fruit", "16.3.1 · female, part of the carpel"],
+    ["flower", "Ovule", "contains the female gamete; becomes the seed", "16.3.1 · female, part of the carpel"],
+    ["flower", "Nectary", "makes sugary nectar, a reward that keeps insects coming back", "16.3.1"],
+    ["human", "Testis", "makes sperm, the male gametes, and the hormone testosterone", "16.4.1 · male"],
+    ["human", "Scrotum", "a sac of skin holding the testes outside the body, where it is slightly cooler — better for making sperm", "16.4.1 · male"],
+    ["human", "Sperm duct", "carries sperm from the testis towards the urethra", "16.4.1 · male"],
+    ["human", "Prostate gland", "adds fluid to the sperm to make semen; the fluid gives sperm nutrients and lets them swim", "16.4.1 · male"],
+    ["human", "Urethra", "tube through the penis that carries semen — or urine, but never both at once", "16.4.1 · male"],
+    ["human", "Penis", "passes urine out of the body; becomes erect and deposits semen in the vagina during intercourse", "16.4.1 · male"],
+    ["human", "Ovary", "contains immature eggs, one of which matures and is released each month; makes oestrogen and progesterone", "16.4.1 · female"],
+    ["human", "Oviduct", "carries the egg towards the uterus, moved by cilia; fertilisation happens here", "16.4.1 · female"],
+    ["human", "Uterus", "a muscular organ with a soft, thick lining in which the embryo implants and the fetus develops", "16.4.1 · female"],
+    ["human", "Cervix", "a ring of muscle at the lower end of the uterus that holds the fetus in place during pregnancy", "16.4.1 · female"],
+    ["human", "Vagina", "muscular tube where sperm are deposited during intercourse; the birth canal", "16.4.1 · female"],
+    ["hormone", "Testosterone", "causes male secondary sexual characteristics at puberty: sperm production starts, the voice deepens, facial hair grows, muscles develop", "16.5.1 · made in the testes"],
+    ["hormone", "Oestrogen", "causes female secondary sexual characteristics (breasts develop, hips widen) and makes the uterus lining grow and repair", "16.5.1, 16.5.3 · made in the ovaries (the follicle)"],
+    ["hormone", "FSH", "makes an egg mature inside a follicle and stimulates the ovary to make oestrogen", "16.5.3 · made in the pituitary gland"],
+    ["hormone", "LH", "causes ovulation, about day 14; the empty follicle becomes the corpus luteum", "16.5.3 · made in the pituitary gland"],
+    ["hormone", "Progesterone", "maintains the thick uterus lining; when its level falls, the lining breaks down", "16.5.3 · made in the corpus luteum, later the placenta"],
+  ].map(([set, part, fn, src], id) => ({ id, set, part, fn, src }));
+
+  function partsQuiz(root) {
+    const box = $("[data-pq]", root), startBtn = $("[data-pq-start]", root);
+    const setBtns = $$("[data-set-id]", root), modeBtns = $$("[data-mode-id]", root), countBtns = $$("[data-count]", root);
+    const shuffle = (a) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+    const low = (t) => (t === t.toUpperCase() ? t : t.toLowerCase());   // "FSH" stays "FSH"
+    let deck = [], at = 0, score = 0, missed = [], answered = false, opts = [];
+
+    // set-up: tables toggle (at least one stays on); type and count pick one
+    setBtns.forEach((b) => b.addEventListener("click", () => {
+      if (b.getAttribute("aria-pressed") === "true" && setBtns.filter((o) => o.getAttribute("aria-pressed") === "true").length === 1) return;
+      b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true");
+    }));
+    [modeBtns, countBtns].forEach((group) => group.forEach((b) => b.addEventListener("click", () => press(group, (o) => o === b))));
+    const picked = (group, attr) => group.find((b) => b.getAttribute("aria-pressed") === "true").dataset[attr];
+
+    // one question: what to ask, the right answer and three from the same table
+    function makeQuestion(item, mode) {
+      const kind = mode === "mixed" ? (Math.random() < 0.5 ? "part" : "function") : mode;
+      const others = shuffle(PQ_ITEMS.filter((o) => o.set === item.set && o.id !== item.id)).slice(0, 3);
+      return { item, kind, options: shuffle([item, ...others]) };
+    }
+    function begin(items) {
+      const mode = picked(modeBtns, "modeId");
+      deck = items.map((it) => makeQuestion(it, mode));
+      at = 0; score = 0; missed = [];
+      startBtn.textContent = "Restart with these settings";
+      render();
+      const y = box.getBoundingClientRect().top + scrollY - 90;
+      SA.smoothScroll ? SA.smoothScroll.to(y) : scrollTo({ top: y, behavior: "smooth" });
+    }
+    startBtn.addEventListener("click", () => {
+      const sets = setBtns.filter((b) => b.getAttribute("aria-pressed") === "true").map((b) => b.dataset.setId);
+      const count = picked(countBtns, "count"), pool = shuffle(PQ_ITEMS.filter((it) => sets.includes(it.set)));
+      begin(count === "all" ? pool : pool.slice(0, +count));
+    });
+
+    function render() {
+      const q = deck[at], set = PQ_SETS[q.item.set];
+      answered = false;
+      const prompt = q.kind === "part"
+        ? `<p class="pq-ask">${set.ask}</p><h3>${cap(q.item.fn)}</h3>`
+        : `<p class="pq-ask">What is the function of this ${set.what}?</p><h3><em>${q.item.part}</em></h3>`;
+      box.innerHTML = `
+        <div class="pq-top"><span class="q-num">Question ${at + 1} / ${deck.length}</span>${chips([[set.name]])}<span class="pq-score num">${score} correct</span></div>
+        <div class="pq-bar"><i style="width:${(at / deck.length) * 100}%"></i></div>
+        <div class="q pq-q${q.kind === "function" ? " is-long" : ""}">
+          ${prompt}
+          <div class="q-options">${q.options.map((o, i) => `<button type="button" data-key="${String.fromCharCode(65 + i)}" data-i="${i}">${q.kind === "part" ? o.part : cap(o.fn)}</button>`).join("")}</div>
+          <p class="q-why"></p>
+        </div>
+        <div class="pq-foot"><button class="pq-go" type="button" data-next disabled>${at + 1 < deck.length ? "Next question" : "See my score"}</button></div>`;
+      opts = $$(".q-options button", box);
+      opts.forEach((b) => b.addEventListener("click", () => answer(+b.dataset.i)));
+      $("[data-next]", box).addEventListener("click", next);
+    }
+    function answer(i) {
+      if (answered) return;
+      answered = true;
+      const q = deck[at], ok = q.options[i] === q.item, card = $(".pq-q", box);
+      card.classList.add("is-answered");
+      opts.forEach((b, k) => { b.disabled = true; if (q.options[k] === q.item) b.classList.add("is-correct"); });
+      if (!ok) { opts[i].classList.add("is-wrong"); missed.push(q.item); } else score++;
+      const pick = q.options[i];
+      $(".q-why", box).innerHTML = (ok ? "<b>Correct.</b> " : `<b>Not quite.</b> ${q.kind === "part" ? `${pick.set === "hormone" ? pick.part : `The ${low(pick.part)}`}: ${pick.fn}.` : `That is the function of ${pick.set === "hormone" ? "" : "the "}${low(pick.part)}.`} `)
+        + `<b>${q.item.part}</b>: ${q.item.fn}. <span class="pq-src">${q.item.src}</span>`;
+      $(".pq-score", box).textContent = `${score} correct`;
+      $(".pq-bar i", box).style.width = `${((at + 1) / deck.length) * 100}%`;
+      const nextBtn = $("[data-next]", box);
+      nextBtn.disabled = false;
+      nextBtn.focus({ preventScroll: true });
+    }
+    function next() {
+      if (!answered) return;
+      if (++at < deck.length) return render();
+      finish();
+    }
+    function finish() {
+      answered = false; opts = [];
+      const n = deck.length, pct = Math.round((score / n) * 100);
+      const verdict = score === n ? "Perfect — every part and function." : pct >= 70 ? "Good. Go over the ones you missed." : "Read the tables again, then retry the ones you missed.";
+      box.innerHTML = `
+        <div class="pq-end">
+          <p class="block-h">Your score</p>
+          <p class="pq-big num">${score} <span>/ ${n}</span></p>
+          <p class="pq-verdict">${verdict}</p>
+          ${missed.length ? `<p class="block-h">To review · ${missed.length}</p><dl class="terms pq-missed">${missed.map((m) => `<dt>${m.part} <span class="pq-src">${PQ_SETS[m.set].name}</span></dt><dd>${m.fn}</dd>`).join("")}</dl>` : ""}
+          <div class="btns">${missed.length ? `<button class="pq-go" type="button" data-retry>Retry the ${missed.length} missed</button>` : ""}<button class="sc" type="button" data-again>New quiz</button></div>
+        </div>`;
+      SA.progress?.mark(document.body.dataset.lesson, { quiz: `${score}/${n}` });
+      const retry = $("[data-retry]", box), again = $("[data-again]", box);
+      const wrong = [...missed];
+      retry?.addEventListener("click", () => begin(shuffle(wrong)));
+      again.addEventListener("click", () => startBtn.click());
+      (retry || again).focus({ preventScroll: true });
+    }
+
+    // keys: A–D or 1–4 answer, Enter goes on — only while this topic is open
+    document.addEventListener("keydown", (e) => {
+      if (root.hidden || e.metaKey || e.ctrlKey || e.altKey || e.target.closest("input, textarea, select")) return;
+      const k = e.key.toLowerCase(), i = "abcd".indexOf(k) >= 0 ? "abcd".indexOf(k) : "1234".indexOf(k);
+      if (opts.length && !answered && i >= 0 && i < opts.length) { e.preventDefault(); answer(i); }
+      else if (answered && e.key === "Enter" && e.target.tagName !== "BUTTON") { e.preventDefault(); next(); }
+    });
+  }
+
   const LABS = { mix: mixLab, flower: flowerLab, cycle: cycleLab };
   $$("[data-lab]").forEach((lab) => LABS[lab.dataset.mode]?.(lab));
+  const pq = $('.topic[data-key="parts-quiz"]');
+  if (pq) partsQuiz(pq);
 })();
