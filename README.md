@@ -6,7 +6,7 @@ small interactive lab, and finished with the cause → effect chain examiners wa
 
 No sign-up and no build step: your progress is saved only in your own browser.
 
-The website is available at [stay-add.skylarp520.workers.dev](https://stay-add.skylarp520.workers.dev).
+The website is available at [stay-add.pages.dev](https://stay-add.pages.dev).
 
 ## How a lesson works
 
