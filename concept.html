@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>stay add. — Concept preview</title>
+  <meta name="description" content="Concept preview: what stay add. could feel like with a living particle universe, predict-observe-explain labs, a knowledge constellation and an exam answer builder.">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("stayadd-theme")||"dark"}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/menu.css">
+  <style>
+    /* ===== Concept-only styles (one file so it can be thrown away or folded in later) ===== */
+    body { cursor: none; }
+    a, button { cursor: none; }
+    @media (hover: none) { body, a, button { cursor: auto; } .cursor { display: none; } }
+
+    /* Custom "catalyst" cursor */
+    .cursor { position: fixed; left: 0; top: 0; z-index: 100; pointer-events: none; mix-blend-mode: screen; }
+    .cursor-dot { position: absolute; width: 6px; height: 6px; margin: -3px; border-radius: 50%; background: #fff; }
+    .cursor-ring { position: absolute; width: 120px; height: 120px; margin: -60px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,92,255,.22), rgba(124,92,255,0) 70%);
+      border: 1px solid rgba(166,140,255,.35); transition: width .3s var(--ease), height .3s var(--ease), margin .3s var(--ease); }
+    .cursor.is-hover .cursor-ring { width: 56px; height: 56px; margin: -28px; border-color: var(--amber); background: radial-gradient(circle, rgba(255,181,71,.25), transparent 70%); }
+    .cursor-tag { position: absolute; left: 20px; top: 20px; font: 600 10px var(--font-mono); letter-spacing: .1em; color: var(--violet-hi); white-space: nowrap; opacity: .8; }
+
+    .concept-flag { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 60;
+      padding: 8px 14px; border-radius: 999px; font-size: .78rem; font-weight: 600; color: var(--text-2);
+      background: color-mix(in srgb, var(--bg) 80%, transparent); border: 1px solid var(--border-strong); backdrop-filter: blur(10px); }
+    .concept-flag b { color: var(--violet-hi); }
+
+    /* ---------- 1. Living universe hero ---------- */
+    .uni { position: relative; min-height: calc(100vh - var(--header-h)); display: grid; align-items: center; overflow: hidden; }
+    .uni canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .uni .container { position: relative; z-index: 2; pointer-events: none; }
+    .uni .container * { pointer-events: auto; }
+    .uni h1 { font-size: clamp(3rem, 8.4vw, 7.2rem); letter-spacing: -.05em; line-height: .95; margin: 20px 0 26px; }
+    .uni h1 em { font-style: normal; position: relative; }
+    .uni h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .1em; border-radius: 99px; background: var(--violet-grad); box-shadow: 0 0 24px var(--violet); }
+    .uni .lead { max-width: 520px; }
+    .uni-cta { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+    .magnetic { transition: transform .25s var(--ease); }
+
+    .hud { position: absolute; right: 24px; top: 24px; z-index: 3; display: grid; gap: 10px; width: 250px; }
+    .hud-card { padding: 14px 16px; border-radius: 16px; background: color-mix(in srgb, var(--bg-2) 70%, transparent); border: 1px solid var(--border-strong); backdrop-filter: blur(12px); }
+    .hud-row { display: flex; align-items: center; justify-content: space-between; font-size: .8rem; color: var(--text-2); }
+    .hud-row b { font-family: var(--font-mono); color: var(--text); }
+    .hud-level { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin: 2px 0 10px; }
+    .hud-bar { height: 6px; border-radius: 6px; background: var(--surface-2); overflow: hidden; }
+    .hud-bar i { display: block; width: 68%; height: 100%; background: linear-gradient(90deg, #7c5cff, #3ee0d0); box-shadow: 0 0 12px #7c5cff; }
+    .streak { display: flex; gap: 5px; margin-top: 10px; }
+    .streak span { flex: 1; height: 22px; border-radius: 6px; background: var(--surface-2); }
+    .streak span.on { background: linear-gradient(180deg, #ffb547, #ff8a5b); box-shadow: 0 0 10px rgba(255,181,71,.5); }
+    .reactions-live { font-family: var(--font-mono); font-size: .75rem; color: var(--amber); }
+
+    .scroll-cue { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 2; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); display: grid; justify-items: center; gap: 10px; }
+    .scroll-cue i { width: 1px; height: 40px; background: linear-gradient(var(--violet), transparent); animation: drip 2s infinite; }
+    @keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    /* ---------- 2. Powers-of-ten zoom (scroll-driven) ---------- */
+    .zoom { height: 320vh; position: relative; }
+    .zoom-stage { position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h)); overflow: hidden; display: grid; place-items: center; }
+    .zoom-layer { position: absolute; display: grid; place-items: center; will-change: transform, opacity; }
+    .zoom-caption { position: absolute; left: 24px; bottom: 40px; z-index: 3; max-width: 380px; }
+    .zoom-caption h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 10px 0 8px; }
+    .zoom-steps { position: absolute; right: 24px; top: 50%; transform: translateY(-50%); display: grid; gap: 14px; z-index: 3; }
+    .zoom-steps span { display: flex; align-items: center; gap: 10px; font-size: .8rem; font-weight: 600; color: var(--text-3); transition: color .3s; }
+    .zoom-steps span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid currentColor; transition: background .3s, box-shadow .3s; }
+    .zoom-steps span.on { color: var(--text); }
+    .zoom-steps span.on::before { background: var(--violet); border-color: var(--violet); box-shadow: 0 0 10px var(--violet); }
+    .scale-badge { position: absolute; top: 24px; left: 24px; z-index: 3; font-family: var(--font-mono); font-size: .85rem; color: var(--violet-hi); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--surface); }
+
+    /* ---------- Shared concept section chrome ---------- */
+    .idea-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 34px; }
+    .idea-tag { flex: none; font-family: var(--font-mono); font-size: .8rem; color: var(--violet-hi); padding: 6px 10px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--violet) 40%, transparent); background: var(--violet-soft); }
+    .idea-head h2 { margin: 0 0 8px; }
+
+    /* ---------- 3. Knowledge constellation ---------- */
+    .galaxy { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 20px; }
+    .sky { position: relative; aspect-ratio: 16 / 10; border-radius: var(--radius-lg); overflow: hidden;
+      background: radial-gradient(600px 400px at 30% 30%, rgba(124,92,255,.16), transparent 70%), radial-gradient(500px 300px at 80% 80%, rgba(62,224,208,.08), transparent 70%), var(--stage-bg); border: 1px solid var(--border); }
+    .sky svg { width: 100%; height: 100%; }
+    .sky .link { stroke: var(--border-strong); stroke-width: 1.2; }
+    .sky .link.lit { stroke: url(#litGrad); stroke-width: 2; filter: drop-shadow(0 0 4px #7c5cff); }
+    .star circle.core { fill: var(--text-3); transition: r .3s; }
+    .star.lit circle.core { fill: #fff; filter: drop-shadow(0 0 8px #a68cff) drop-shadow(0 0 18px #7c5cff); }
+    .star.next circle.core { fill: var(--amber); filter: drop-shadow(0 0 10px #ffb547); }
+    .star.next circle.halo { fill: none; stroke: var(--amber); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: halo 2s infinite; }
+    @keyframes halo { from { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(3); } }
+    .star text { fill: var(--text-3); font: 600 11px var(--font-body); }
+    .star.lit text { fill: var(--text); }
+    .star.next text { fill: var(--amber); }
+    .star { cursor: none; }
+    .star:hover circle.core { r: 9; }
+    .galaxy-side { display: grid; gap: 14px; align-content: start; }
+    .galaxy-side .card { padding: 18px; }
+    .big-num { font-family: var(--font-display); font-weight: 800; font-size: 2.6rem; letter-spacing: -.04em; }
+    .big-num small { font-size: 1rem; color: var(--text-3); font-weight: 600; }
+    .next-star b { display: block; font-family: var(--font-display); font-size: 1.15rem; margin: 4px 0 2px; color: var(--amber); }
+
+    /* ---------- 4. Predict → Observe → Explain ---------- */
+    .poe { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .poe-steps { display: flex; gap: 8px; margin-bottom: 18px; }
+    .poe-steps span { flex: 1; padding: 8px 10px; border-radius: 10px; font-size: .78rem; font-weight: 700; text-align: center; color: var(--text-3); background: var(--surface); border: 1px solid var(--border); }
+    .poe-steps span.on { color: #fff; background: var(--violet-grad); border-color: transparent; box-shadow: var(--shadow-violet); }
+    .poe-q { padding: 26px; }
+    .poe-q h3 { font-family: var(--font-body); font-weight: 650; font-size: 1.2rem; line-height: 1.4; margin-bottom: 18px; }
+    .poe-opts { display: grid; gap: 10px; }
+    .poe-opts button { text-align: left; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border-strong); background: var(--surface); font-size: .95rem; transition: border-color .2s, background .2s; }
+    .poe-opts button:hover { border-color: var(--violet); }
+    .poe-opts button.picked { border-color: var(--violet); background: var(--violet-soft); }
+    .poe-opts button.right { border-color: var(--green); background: color-mix(in srgb, var(--green) 12%, transparent); }
+    .confidence { margin-top: 18px; font-size: .82rem; color: var(--text-3); }
+    .confidence .seg { margin-left: 8px; display: inline-flex; padding: 3px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); }
+    .confidence .seg button { padding: 5px 10px; border-radius: 999px; font-size: .75rem; font-weight: 600; color: var(--text-3); }
+    .confidence .seg button.is-active { background: var(--surface-solid); color: var(--text); }
+    .poe-lab { padding: 16px; display: grid; gap: 12px; }
+    .poe-lab canvas { width: 100%; aspect-ratio: 16 / 10; border-radius: 14px; background: var(--stage-bg); }
+    .poe-result { padding: 14px 16px; border-radius: 12px; font-size: .9rem; background: var(--surface-2); border-left: 3px solid var(--amber); min-height: 74px; }
+    .xp-toast { position: fixed; left: 50%; top: 90px; z-index: 70; transform: translate(-50%, -20px); opacity: 0; padding: 10px 18px; border-radius: 999px; font-weight: 700; color: #1b1200; background: linear-gradient(90deg, #ffb547, #ff8a5b); box-shadow: 0 10px 30px -8px rgba(255,138,91,.7); transition: all .5s var(--ease); }
+    .xp-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ---------- 5. Answer builder ---------- */
+    .builder { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; }
+    .builder .card { padding: 24px; }
+    .slots { display: grid; gap: 10px; margin-top: 16px; }
+    .slot { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 10px 14px; border-radius: 12px; border: 1.5px dashed var(--border-strong); color: var(--text-3); font-size: .9rem; transition: all .3s var(--ease); }
+    .slot .mark { flex: none; font-family: var(--font-mono); font-size: .74rem; padding: 3px 8px; border-radius: 8px; background: var(--surface-2); }
+    .slot.filled { border-style: solid; color: var(--text); border-color: color-mix(in srgb, var(--violet) 50%, transparent); background: var(--violet-soft); }
+    .slot.ok .mark { background: var(--green); color: #04130c; }
+    .slot.bad { border-color: var(--rose); }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .chips button { padding: 10px 14px; border-radius: 12px; font-size: .88rem; border: 1px solid var(--border-strong); background: var(--surface); transition: transform .2s var(--ease), border-color .2s, opacity .3s; }
+    .chips button:hover { transform: translateY(-2px); border-color: var(--violet); }
+    .chips button.used { opacity: .25; pointer-events: none; }
+    .score-ring { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+    .score-ring svg { width: 64px; height: 64px; transform: rotate(-90deg); }
+    .score-ring circle { fill: none; stroke-width: 6; }
+    .score-ring .bg { stroke: var(--surface-2); }
+    .score-ring .fg { stroke: var(--green); stroke-linecap: round; stroke-dasharray: 163; stroke-dashoffset: 163; transition: stroke-dashoffset .6s var(--ease); }
+
+    /* ---------- 6. Ask stay add. (AI tutor) ---------- */
+    .tutor { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+    .palette { padding: 0; overflow: hidden; }
+    .palette-top { display: flex; align-items: center; gap: 10px; padding: 16px 18px; border-bottom: 1px solid var(--border); color: var(--text-3); }
+    .palette-top span { flex: 1; color: var(--text); font-size: .95rem; }
+    .palette-top kbd { font-family: var(--font-mono); font-size: .7rem; padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border-strong); }
+    .palette-ctx { margin: 14px 18px 0; display: flex; gap: 8px; flex-wrap: wrap; }
+    .palette-ctx .chip { font-size: .72rem; }
+    .bubble { margin: 14px 18px 18px; padding: 16px; border-radius: 14px; font-size: .92rem; background: var(--surface-2); line-height: 1.6; }
+    .bubble b { color: var(--violet-hi); }
+    .bubble .typing::after { content: "▍"; color: var(--violet-hi); animation: pulse 1s infinite; }
+
+    /* ---------- Idea index ---------- */
+    .idea-index { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .idea-index .card { padding: 20px; }
+    .idea-index b { display: block; font-family: var(--font-display); font-size: 1.02rem; margin: 10px 0 6px; }
+    .idea-index p { font-size: .84rem; }
+    .idea-index .num { font-family: var(--font-mono); font-size: .75rem; color: var(--violet-hi); }
+
+    @media (max-width: 960px) {
+      .galaxy, .poe, .builder, .tutor { grid-template-columns: minmax(0, 1fr); }
+      .idea-index { grid-template-columns: repeat(2, 1fr); }
+      .hud { position: relative; right: auto; top: auto; width: auto; margin: 0 16px 24px; }
+      .uni { align-items: start; padding-top: 40px; }
+      .zoom-steps { display: none; }
+    }
+    @media (max-width: 600px) { .idea-index { grid-template-columns: minmax(0, 1fr); } }
+  </style>
+</head>
+<body data-root="" data-page="concept">
+  <header data-site-header></header>
+  <div class="cursor" aria-hidden="true"><span class="cursor-ring"></span><span class="cursor-dot"></span><span class="cursor-tag">CATALYST</span></div>
+  <div class="concept-flag"><b>Concept preview</b> · what stay add. could become</div>
+  <div class="xp-toast" data-xp>+40 XP · Prediction locked in</div>
+
+  <main>
+    <!-- ===== 1. Living particle universe ===== -->
+    <section class="uni">
+      <canvas data-universe aria-hidden="true"></canvas>
+      <aside class="hud">
+        <div class="hud-card">
+          <div class="hud-row"><span>Level 4</span><b>1,240 XP</b></div>
+          <div class="hud-level">Catalyst</div>
+          <div class="hud-bar"><i></i></div>
+        </div>
+        <div class="hud-card">
+          <div class="hud-row"><span>Streak</span><b>6 days</b></div>
+          <div class="streak"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+        </div>
+        <div class="hud-card">
+          <div class="hud-row"><span>Reactions you caused</span><b class="reactions-live" data-react-count>0</b></div>
+        </div>
+      </aside>
+      <div class="container">
+        <span class="eyebrow">Move your cursor — you are the catalyst</span>
+        <h1>Don’t read<br>chemistry. <em class="grad-text">Play</em> it.</h1>
+        <p class="lead">Every particle on this page is real physics. Wave your cursor through them: anything inside your glow needs less energy to react.</p>
+        <div class="uni-cta">
+          <a class="btn btn-primary magnetic" href="topics/chemistry/collision-theory.html">Enter the lab <i data-icon="arrowRight"></i></a>
+          <a class="btn btn-ghost magnetic" href="#zoom">Zoom into a beaker</a>
+        </div>
+      </div>
+      <div class="scroll-cue"><span>Scroll to shrink</span><i></i></div>
+    </section>
+
+    <!-- ===== 2. Powers-of-ten zoom ===== -->
+    <section class="zoom" id="zoom">
+      <div class="zoom-stage">
+        <span class="scale-badge" data-scale>×1 · 10 cm</span>
+        <div class="zoom-layer" data-zl="beaker">
+          <svg width="360" height="420" viewBox="0 0 360 420" aria-hidden="true">
+            <defs>
+              <linearGradient id="liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7c5cff" stop-opacity=".55"/><stop offset="1" stop-color="#3ee0d0" stop-opacity=".35"/></linearGradient>
+            </defs>
+            <path d="M70 30 H290 M90 30 V360 Q90 395 125 395 H235 Q270 395 270 360 V30" fill="none" stroke="var(--text-2)" stroke-width="4" stroke-linecap="round"/>
+            <path d="M94 170 Q180 155 266 170 V360 Q266 391 235 391 H125 Q94 391 94 360 Z" fill="url(#liq)"/>
+            <g fill="#fff" opacity=".6"><circle cx="140" cy="300" r="4"/><circle cx="210" cy="250" r="3"/><circle cx="180" cy="340" r="5"/><circle cx="230" cy="320" r="3"/></g>
+            <circle cx="180" cy="280" r="34" fill="none" stroke="var(--amber)" stroke-width="2" stroke-dasharray="4 5"/>
+          </svg>
+        </div>
+        <div class="zoom-layer" data-zl="particles"><canvas width="900" height="560" data-zoom-canvas style="width:min(90vw,900px);height:auto"></canvas></div>
+        <div class="zoom-caption">
+          <span class="eyebrow" data-zoom-eyebrow>Scale 1 of 4</span>
+          <h2 data-zoom-title>A beaker of acid.</h2>
+          <p data-zoom-text>What you see in the lab. Nothing seems to be happening… yet.</p>
+        </div>
+        <div class="zoom-steps"><span class="on">Beaker</span><span>Solution</span><span>Particles</span><span>Collision</span></div>
+      </div>
+    </section>
+
+    <!-- ===== 3. Knowledge constellation ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="idea-head"><span class="idea-tag">03</span><div><h2>Your chemistry universe.</h2><p>Every lesson you finish lights a star. Lines show how ideas connect — so you see the subject as one system, not 12 chapters.</p></div></div>
+        <div class="galaxy">
+          <div class="sky" data-sky></div>
+          <div class="galaxy-side">
+            <div class="card"><span class="eyebrow">Universe lit</span><div class="big-num">14<small> / 48 stars</small></div><div class="hud-bar"><i style="width:29%"></i></div></div>
+            <div class="card next-star"><span class="eyebrow">Next star</span><b>Acids, bases &amp; salts</b><p style="font-size:.85rem">Builds on Atoms &amp; compounds — unlocks The Periodic Table. ~12 min.</p></div>
+            <div class="card"><span class="eyebrow">Weakest link</span><p style="font-size:.88rem;margin-top:6px"><strong>The mole</strong> — you missed 3 of 5 questions last week. A 4-minute refresher is ready.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. Predict → Observe → Explain ===== -->
+    <section class="section" style="padding-top:20px">
+      <div class="container">
+        <div class="idea-head"><span class="idea-tag">04</span><div><h2>Predict first. Then watch.</h2><p>Before every experiment you commit to a prediction. Being wrong — and seeing why — is how ideas stick.</p></div></div>
+        <div class="poe">
+          <div class="card poe-q">
+            <div class="poe-steps"><span class="on" data-poe-step="0">Predict</span><span data-poe-step="1">Observe</span><span data-poe-step="2">Explain</span></div>
+            <h3>You heat the mixture from 25 °C to 150 °C. What happens to the <em>fraction</em> of collisions that succeed?</h3>
+            <div class="poe-opts" data-poe>
+              <button type="button">It stays the same — only collision frequency rises</button>
+              <button type="button" data-right>It increases — more collisions have energy ≥ Eₐ</button>
+              <button type="button">It decreases — particles bounce off faster</button>
+            </div>
+            <div class="confidence">How sure are you?<span class="seg"><button type="button">Guessing</button><button type="button" class="is-active">Fairly</button><button type="button">Certain</button></span></div>
+          </div>
+          <div class="card poe-lab">
+            <canvas data-poe-canvas width="640" height="400"></canvas>
+            <div class="poe-result" data-poe-result>Make a prediction to run the experiment.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. Exam answer builder ===== -->
+    <section class="section" style="padding-top:20px">
+      <div class="container">
+        <div class="idea-head"><span class="idea-tag">05</span><div><h2>Build the full-mark answer.</h2><p>Snap ideas into the examiner’s chain. Each slot is a real mark-scheme point, checked instantly.</p></div></div>
+        <div class="builder">
+          <div class="card">
+            <span class="chip">3 marks</span>
+            <h3 style="font-family:var(--font-body);font-weight:650;margin-top:14px;line-height:1.4">Explain why a catalyst increases the rate of reaction.</h3>
+            <div class="slots" data-slots>
+              <div class="slot" data-want="a"><span class="mark">M1</span><span>Tap an idea below…</span></div>
+              <div class="slot" data-want="b"><span class="mark">M2</span><span>…</span></div>
+              <div class="slot" data-want="c"><span class="mark">M3</span><span>…</span></div>
+            </div>
+            <div class="score-ring"><svg viewBox="0 0 64 64"><circle class="bg" cx="32" cy="32" r="26"/><circle class="fg" cx="32" cy="32" r="26" data-ring/></svg><div><b data-score style="font-family:var(--font-mono);font-size:1.2rem">0 / 3</b><p style="font-size:.82rem">marks</p></div></div>
+          </div>
+          <div class="card">
+            <span class="eyebrow">Idea bank</span>
+            <div class="chips" data-chips>
+              <button type="button" data-id="x">Particles gain more kinetic energy</button>
+              <button type="button" data-id="a">Provides an alternative pathway</button>
+              <button type="button" data-id="c">More successful collisions per unit time</button>
+              <button type="button" data-id="y">The catalyst is used up</button>
+              <button type="button" data-id="b">With a lower activation energy</button>
+              <button type="button" data-id="z">More particles per unit volume</button>
+            </div>
+            <p style="font-size:.85rem;margin-top:18px">Distractors are the classic mistakes from real examiner reports — picking one explains <em>why</em> it loses the mark.</p>
+            <button class="btn btn-ghost btn-sm" type="button" data-reset-builder style="margin-top:14px">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. Ask stay add. ===== -->
+    <section class="section" style="padding-top:20px">
+      <div class="container tutor">
+        <div>
+          <div class="idea-head" style="margin-bottom:0"><span class="idea-tag">06</span><div><h2>Ask about what’s on screen.</h2><p>Press <kbd style="font-family:var(--font-mono);padding:2px 6px;border-radius:6px;border:1px solid var(--border-strong)">⌘K</kbd> anywhere. The tutor sees the lab’s current settings and answers about <em>your</em> experiment, in IGCSE language — then hands you a question to check.</p></div></div>
+        </div>
+        <div class="card palette">
+          <div class="palette-top"><i data-icon="search"></i><span>Why didn’t ΔH change when I added the catalyst?</span><kbd>↵</kbd></div>
+          <div class="palette-ctx"><span class="chip">Lab: 150 °C</span><span class="chip">1.00 mol/dm³</span><span class="chip">Catalyst ON</span><span class="chip">Tab: Energy profile</span></div>
+          <div class="bubble"><span class="typing" data-typing></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Idea index ===== -->
+    <section class="section" style="padding-top:20px">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">Everything in this preview</span><h2>Eight upgrades.</h2></div></div>
+        <div class="idea-index">
+          <div class="card"><span class="num">01</span><b>Living particle universe</b><p>The background is a real simulation. Your cursor is a catalyst.</p></div>
+          <div class="card"><span class="num">02</span><b>Powers-of-ten zoom</b><p>Scroll from a beaker down to a single collision.</p></div>
+          <div class="card"><span class="num">03</span><b>Knowledge constellation</b><p>Progress as a star map of connected ideas.</p></div>
+          <div class="card"><span class="num">04</span><b>Predict → Observe → Explain</b><p>Commit to a guess before every experiment.</p></div>
+          <div class="card"><span class="num">05</span><b>Answer builder</b><p>Assemble mark-scheme chains; distractors teach.</p></div>
+          <div class="card"><span class="num">06</span><b>Context-aware tutor</b><p>⌘K questions answered about your live lab state.</p></div>
+          <div class="card"><span class="num">07</span><b>Streaks, XP &amp; levels</b><p>Levels named after chemistry: Reactant → Catalyst.</p></div>
+          <div class="card"><span class="num">08</span><b>Tactile details</b><p>Catalyst cursor, magnetic buttons, sound of collisions.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="assets/js/catalog.js"></script>
+  <script src="assets/js/menu.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const mouse = { x: -999, y: -999 };
+
+    /* ---------- Catalyst cursor + magnetic buttons ---------- */
+    const cursor = $(".cursor");
+    addEventListener("pointermove", (e) => {
+      mouse.x = e.clientX; mouse.y = e.clientY;
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      cursor.classList.toggle("is-hover", !!e.target.closest("a, button"));
+    });
+    $$(".magnetic").forEach((b) => {
+      b.addEventListener("pointermove", (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .25}px, ${(e.clientY - r.top - r.height / 2) * .35}px)`;
+      });
+      b.addEventListener("pointerleave", () => (b.style.transform = ""));
+    });
+
+    /* ---------- Shared mini particle engine ---------- */
+    function swarm(canvas, { count, r = 5, speed = 60, catalystAtMouse = false, ea = 1.8, onReact }) {
+      const ctx = canvas.getContext("2d");
+      let W, H, dpr, ps = [], fx = [];
+      function size() {
+        dpr = Math.min(devicePixelRatio || 1, 2);
+        const b = canvas.getBoundingClientRect();
+        W = b.width; H = b.height;
+        canvas.width = W * dpr; canvas.height = H * dpr;
+      }
+      function seed(n) {
+        ps = [];
+        for (let i = 0; i < n; i++) ps.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * 2 * speed, vy: (Math.random() - .5) * 2 * speed, t: i % 2, p: false });
+      }
+      size(); seed(count);
+      addEventListener("resize", size);
+      const api = { speed, ea, reseed: seed };
+      let last = performance.now();
+      function frame(now) {
+        const dt = Math.min(.04, (now - last) / 1000); last = now;
+        const b = canvas.getBoundingClientRect();
+        if (b.bottom > 0 && b.top < innerHeight) {
+          const mx = mouse.x - b.left, my = mouse.y - b.top;
+          for (const p of ps) {
+            const k = api.speed / speed;
+            p.x += p.vx * dt * k; p.y += p.vy * dt * k;
+            if (p.x < r || p.x > W - r) { p.vx *= -1; p.x = Math.max(r, Math.min(W - r, p.x)); }
+            if (p.y < r || p.y > H - r) { p.vy *= -1; p.y = Math.max(r, Math.min(H - r, p.y)); }
+          }
+          for (let i = 0; i < ps.length; i++) for (let j = i + 1; j < ps.length; j++) {
+            const a = ps[i], c = ps[j], dx = c.x - a.x, dy = c.y - a.y, d2 = dx * dx + dy * dy;
+            if (d2 > 4 * r * r || d2 === 0) continue;
+            const d = Math.sqrt(d2), nx = dx / d, ny = dy / d, vn = (c.vx - a.vx) * nx + (c.vy - a.vy) * ny;
+            if (vn >= 0) continue;
+            a.vx += vn * nx; a.vy += vn * ny; c.vx -= vn * nx; c.vy -= vn * ny;
+            if (a.t !== c.t && !a.p && !c.p) {
+              const inField = catalystAtMouse && (a.x - mx) ** 2 + (a.y - my) ** 2 < 60 * 60;
+              const e = (vn * vn) / (speed * speed);
+              if (e > (inField ? api.ea * .3 : api.ea)) {
+                a.p = c.p = true; fx.push({ x: (a.x + c.x) / 2, y: (a.y + c.y) / 2, age: 0 });
+                onReact && onReact(inField);
+                setTimeout(() => { a.p = c.p = false; }, 2500);   // products drift, then "reform" so the page stays alive
+              }
+            }
+          }
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          ctx.clearRect(0, 0, W, H);
+          for (const p of ps) {
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.p ? r * 1.25 : r, 0, 7);
+            ctx.fillStyle = p.p ? "#ffb547" : p.t ? "#3ee0d0" : "#8b6bff";
+            ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = 12; ctx.globalAlpha = p.p ? 1 : .8; ctx.fill();
+          }
+          ctx.shadowBlur = 0;
+          fx = fx.filter((f) => (f.age += dt) < .6);
+          for (const f of fx) {
+            ctx.globalAlpha = 1 - f.age / .6; ctx.strokeStyle = "#ffb547"; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.arc(f.x, f.y, 6 + f.age * 60, 0, 7); ctx.stroke();
+          }
+          ctx.globalAlpha = 1;
+        }
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+      return api;
+    }
+
+    /* ---------- 1. Universe ---------- */
+    let caused = 0;
+    const countEl = $("[data-react-count]");
+    swarm($("[data-universe]"), {
+      count: innerWidth < 700 ? 60 : 140, r: 4, speed: 55, catalystAtMouse: true, ea: 2.2,
+      onReact: (byYou) => { if (byYou) countEl.textContent = ++caused; }
+    });
+
+    /* ---------- 2. Zoom ---------- */
+    const zoom = $(".zoom"), beaker = $('[data-zl="beaker"]'), parts = $('[data-zl="particles"]');
+    const zoomSwarm = swarm($("[data-zoom-canvas]"), { count: 90, r: 9, speed: 70, ea: 1.4 });
+    const steps = [
+      ["×1 · 10 cm", "A beaker of acid.", "What you see in the lab. Nothing seems to be happening… yet."],
+      ["×10⁴ · 10 µm", "Zoom into the solution.", "Still looks calm. But it’s already crowded down there."],
+      ["×10⁸ · 1 nm", "Particles, everywhere.", "Billions of them, moving fast and colliding constantly."],
+      ["×10⁹ · 0.1 nm", "Only some collisions count.", "The gold flashes had enough energy — Eₐ. That’s the whole of collision theory."]
+    ];
+    function onScroll() {
+      const r = zoom.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+      const bp = Math.min(1, p / .45);
+      beaker.style.transform = `scale(${1 + bp * bp * 14})`;
+      beaker.style.opacity = String(1 - Math.max(0, (bp - .6) / .4));
+      const pp = Math.max(0, (p - .3) / .4);
+      parts.style.opacity = String(Math.min(1, pp));
+      parts.style.transform = `scale(${.4 + Math.min(1, pp) * .6 + Math.max(0, p - .7) * 1.2})`;
+      zoomSwarm.speed = 70 + Math.max(0, p - .7) * 160;
+      const i = Math.min(3, Math.floor(p * 4));
+      $("[data-scale]").textContent = steps[i][0];
+      $("[data-zoom-eyebrow]").textContent = `Scale ${i + 1} of 4`;
+      $("[data-zoom-title]").textContent = steps[i][1];
+      $("[data-zoom-text]").textContent = steps[i][2];
+      $$(".zoom-steps span").forEach((s, k) => s.classList.toggle("on", k <= i));
+    }
+    addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+    /* ---------- 3. Constellation ---------- */
+    const topics = SA_TOPICS();
+    function SA_TOPICS() {
+      const t = window.StayAdd.catalog.subjects[0].topics;
+      const pos = [[12,22],[26,48],[20,78],[44,70],[52,38],[66,58],[38,16],[80,24],[86,52],[70,84],[50,92],[82,74]];
+      return t.map((x, i) => ({ ...x, x: pos[i][0], y: pos[i][1], state: [1,2,3,5,6].includes(x.num) ? "lit" : x.num === 7 ? "next" : "" }));
+    }
+    const links = [[1,2],[2,3],[2,4],[3,5],[5,6],[2,7],[6,8],[7,8],[8,9],[9,10],[11,10],[6,11],[3,12],[4,9]];
+    const byNum = (n) => topics.find((t) => t.num === n);
+    $("[data-sky]").innerHTML = `
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0">
+        <defs><linearGradient id="litGrad"><stop offset="0" stop-color="#a68cff"/><stop offset="1" stop-color="#3ee0d0"/></linearGradient></defs>
+        ${links.map(([a, b]) => { const A = byNum(a), B = byNum(b), lit = A.state === "lit" && B.state === "lit";
+          return `<line class="link ${lit ? "lit" : ""}" x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" vector-effect="non-scaling-stroke"/>`; }).join("")}
+      </svg>
+      <svg viewBox="0 0 1000 625" style="position:absolute;inset:0">
+        ${Array.from({ length: 70 }, () => `<circle cx="${Math.random() * 1000}" cy="${Math.random() * 625}" r="${Math.random() * 1.2 + .3}" fill="var(--text-3)" opacity="${Math.random() * .6 + .2}"/>`).join("")}
+        ${topics.map((t) => `
+          <g class="star ${t.state}" transform="translate(${t.x * 10} ${t.y * 6.25})">
+            ${t.state === "next" ? '<circle class="halo" r="7"/>' : ""}
+            <circle class="core" r="${t.state ? 7 : 4.5}"/>
+            <text x="14" y="4">${t.title}</text>
+          </g>`).join("")}
+      </svg>`;
+
+    /* ---------- 4. Predict → Observe → Explain ---------- */
+    const poeSwarm = swarm($("[data-poe-canvas]"), { count: 50, r: 7, speed: 45, ea: 2.4 });
+    const poeSteps = $$("[data-poe-step]");
+    $$("[data-poe] button").forEach((b) => b.addEventListener("click", () => {
+      if ($("[data-poe]").dataset.done) return;
+      $("[data-poe]").dataset.done = "1";
+      b.classList.add("picked");
+      $("[data-xp]").classList.add("show"); setTimeout(() => $("[data-xp]").classList.remove("show"), 1800);
+      poeSteps[1].classList.add("on");
+      $("[data-poe-result]").innerHTML = "<b>Observing…</b> heating to 150 °C. Watch the gold flashes.";
+      poeSwarm.speed = 95; poeSwarm.ea = 1.1;
+      setTimeout(() => {
+        poeSteps[2].classList.add("on");
+        $("[data-poe] [data-right]").classList.add("right");
+        $("[data-poe-result]").innerHTML = (b.hasAttribute("data-right") ? "<b>You called it.</b> " : "<b>Not quite — and that’s useful.</b> ")
+          + "Success went from about <b>14%</b> to <b>32%</b>. Faster particles mean more collisions reach Eₐ — that matters more than the extra collisions.";
+      }, 2600);
+    }));
+    $$(".confidence .seg button").forEach((b) => b.addEventListener("click", () => {
+      $$(".confidence .seg button").forEach((x) => x.classList.toggle("is-active", x === b));
+    }));
+
+    /* ---------- 5. Answer builder ---------- */
+    const slots = $$("[data-slots] .slot"), ring = $("[data-ring]");
+    const WHY = { x: "Catalysts don’t change particle energy.", y: "A catalyst is not used up.", z: "That’s concentration, not catalysts." };
+    let filled = 0, marks = 0;
+    $$("[data-chips] button").forEach((c) => c.addEventListener("click", () => {
+      if (filled >= slots.length) return;
+      const s = slots[filled++], ok = s.dataset.want === c.dataset.id;
+      s.classList.add("filled", ok ? "ok" : "bad");
+      s.lastElementChild.textContent = ok ? c.textContent : `${c.textContent} — ✗ ${WHY[c.dataset.id] || "Right idea, wrong place in the chain."}`;
+      c.classList.add("used");
+      if (ok) marks++;
+      $("[data-score]").textContent = `${marks} / 3`;
+      ring.style.strokeDashoffset = String(163 - (163 * marks) / 3);
+    }));
+    $("[data-reset-builder]").addEventListener("click", () => {
+      filled = marks = 0;
+      slots.forEach((s, i) => { s.className = "slot"; s.lastElementChild.textContent = i ? "…" : "Tap an idea below…"; });
+      $$("[data-chips] button").forEach((c) => c.classList.remove("used"));
+      $("[data-score]").textContent = "0 / 3"; ring.style.strokeDashoffset = "163";
+    });
+
+    /* ---------- 6. Tutor typing ---------- */
+    const answer = "Good spot. In your lab the catalyst lowered <b>Eₐ</b> (the hump), but the reactants and products are the same substances at the same energy — so <b>ΔH can’t change</b>. A catalyst only gives an alternative route over the hill. <br><br><b>Check:</b> would a catalyst change the final amount of product?";
+    const typing = $("[data-typing]");
+    let started = false;
+    new IntersectionObserver(([en]) => {
+      if (!en.isIntersecting || started) return;
+      started = true;
+      let i = 0;
+      const tick = () => {
+        if (answer[i] === "<") i = answer.indexOf(">", i) + 1; else i++;
+        typing.innerHTML = answer.slice(0, i);
+        if (i < answer.length) setTimeout(tick, 14); else typing.classList.remove("typing");
+      };
+      tick();
+    }, { threshold: .4 }).observe(typing);
+  })();
+  </script>
+</body>
+</html>

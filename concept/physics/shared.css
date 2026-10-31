@@ -1,0 +1,141 @@
+/* ==========================================================================
+   stay add. physics — shared design system
+   Warm paper, ink text, one accent. Colour is reserved for physics content
+   (rays, vectors, topic marks); the interface itself stays neutral.
+   ========================================================================== */
+:root {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --ink: #15161c;
+  --ink-2: #4a4d57;
+  --ink-3: #8a8c94;
+  --line: #e5e3dc;
+  --line-2: #d4d1c8;
+  --ink-4: #b9b6ad;
+  --grid: #f1efe9;
+  --sunk: #efede7;
+  --hover: #efede7;
+  --ink-hover: #2c2e38;
+  --shadow: 0 1px 2px rgba(20, 20, 30, .04), 0 12px 32px -16px rgba(20, 20, 30, .12);
+  --accent: #3b3fd8;
+  --accent-soft: #eeeefc;
+  --ok: #2f7d4f;
+
+  /* physics content colours */
+  --c-mech: #3b3fd8;
+  --c-thermal: #c2671d;
+  --c-waves: #0e8a7e;
+  --c-elec: #2f67c8;
+  --c-nuclear: #3e8e41;
+  --c-space: #a2457a;
+  --c-ray: #d9822b;
+  --c-down: #c8463d;
+  --c-water: #2f67c8;
+  --c-glass: #0e8a7e;
+  --c-diamond: #6d4ae0;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  color-scheme: light;
+}
+
+/* Dark theme: the same neutral ink-on-paper logic, inverted. Physics colours
+   are lifted so they keep their contrast on the dark ground. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { 
+    --bg: #111214; --surface: #18191c; --ink: #ecebe7; --ink-2: #b3b4b8; --ink-3: #82848a; --ink-4: #5e6066;
+    --line: #26272b; --line-2: #36373c; --grid: #1c1d20; --sunk: #1d1e21; --hover: #202124; --ink-hover: #ffffff;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 16px 40px -20px rgba(0, 0, 0, .6);
+    --accent: #9396f2; --accent-soft: #23243a; --ok: #6cc28c;
+    --c-mech: #9396f2; --c-thermal: #e3914f; --c-waves: #45c2b1; --c-elec: #73a2f2; --c-nuclear: #72c475; --c-space: #d683b0;
+    --c-ray: #eba552; --c-down: #ec7a72; --c-water: #73a2f2; --c-glass: #45c2b1; --c-diamond: #a892f7;
+    color-scheme: dark;
+   }
+}
+:root[data-theme="dark"] { 
+    --bg: #111214; --surface: #18191c; --ink: #ecebe7; --ink-2: #b3b4b8; --ink-3: #82848a; --ink-4: #5e6066;
+    --line: #26272b; --line-2: #36373c; --grid: #1c1d20; --sunk: #1d1e21; --hover: #202124; --ink-hover: #ffffff;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 16px 40px -20px rgba(0, 0, 0, .6);
+    --accent: #9396f2; --accent-soft: #23243a; --ok: #6cc28c;
+    --c-mech: #9396f2; --c-thermal: #e3914f; --c-waves: #45c2b1; --c-elec: #73a2f2; --c-nuclear: #72c475; --c-space: #d683b0;
+    --c-ray: #eba552; --c-down: #ec7a72; --c-water: #73a2f2; --c-glass: #45c2b1; --c-diamond: #a892f7;
+    color-scheme: dark;
+   }
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+body { font-family: var(--font-sans); font-size: 15px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; font-feature-settings: "cv11", "ss01"; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- Navigation ---------- */
+.nav { height: 64px; border-bottom: 1px solid var(--line); background: var(--bg); }
+.nav-in { display: flex; align-items: center; height: 100%; gap: 40px; }
+.logo { font-weight: 600; font-size: 17px; letter-spacing: -0.02em; display: flex; align-items: center; white-space: nowrap; }
+.logo span { color: var(--accent); }
+.logo em { font-style: normal; font-weight: 400; color: var(--ink-3); margin-left: 12px; padding-left: 12px; border-left: 1px solid var(--line-2); line-height: 1; }
+.links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-2); }
+.links a:hover, .links a.on { color: var(--ink); }
+.links a.on { font-weight: 500; }
+.nav-r { margin-left: auto; display: flex; gap: 16px; align-items: center; }
+.search { display: flex; gap: 8px; align-items: center; width: 240px; padding: 7px 10px; font-size: 13px; color: var(--ink-3); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.search:hover { border-color: var(--line-2); }
+.search kbd { margin-left: auto; font: 11px var(--font-mono); color: var(--ink-3); }
+.avatar { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 600; background: var(--ink); color: var(--bg); }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: var(--radius-sm); transition: background-color .15s, border-color .15s; }
+.btn-primary { background: var(--ink); color: var(--bg); }
+.btn-primary:hover { background: var(--ink-hover); }
+.btn-secondary { border: 1px solid var(--line-2); background: var(--surface); }
+.btn-secondary:hover { border-color: var(--ink-3); }
+.link { font-size: 14px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--line-2); padding-bottom: 1px; }
+.link:hover { border-color: var(--ink); }
+
+.label { font-size: 12px; font-weight: 500; color: var(--ink-3); letter-spacing: .01em; }
+
+/* ---------- Theme toggle ---------- */
+.theme { width: 32px; height: 32px; display: grid; place-items: center; border-radius: var(--radius-sm); color: var(--ink-2); border: 1px solid transparent; }
+.theme:hover { color: var(--ink); border-color: var(--line-2); }
+.theme .sun { display: none; }
+:root[data-theme="dark"] .theme .sun { display: block; }
+:root[data-theme="dark"] .theme .moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme .sun { display: block; }
+  :root:not([data-theme="light"]) .theme .moon { display: none; }
+}
+
+/* ---------- SVG diagrams follow the theme ----------
+   Diagrams are authored with literal light-theme colours; these rules map each
+   one onto its token so the same markup works in both themes. */
+svg [stroke="#f0eee8"], svg [stroke="#f3f1ec"] { stroke: var(--grid); }
+svg [stroke="#e5e3dc"] { stroke: var(--line); }
+svg [stroke="#d4d1c8"] { stroke: var(--line-2); }
+svg [stroke="#b9b6ad"] { stroke: var(--ink-4); }
+svg [fill="#b9b6ad"] { fill: var(--ink-4); }
+svg [stroke="#8a8c94"] { stroke: var(--ink-3); }
+svg [fill="#8a8c94"] { fill: var(--ink-3); }
+svg [fill="#4a4d57"] { fill: var(--ink-2); }
+svg [fill="#15161c"] { fill: var(--ink); }
+svg [stroke="#15161c"] { stroke: var(--ink); }
+svg [fill="#fff"] { fill: var(--surface); }
+svg [stroke="#fff"] { stroke: var(--surface); }
+svg [fill="#efede7"] { fill: var(--sunk); }
+svg [stroke="#3b3fd8"] { stroke: var(--c-mech); }  svg [fill="#3b3fd8"] { fill: var(--c-mech); }
+svg [stroke="#c2671d"] { stroke: var(--c-thermal); } svg [fill="#c2671d"] { fill: var(--c-thermal); }
+svg [stroke="#0e8a7e"] { stroke: var(--c-waves); } svg [fill="#0e8a7e"] { fill: var(--c-waves); }
+svg [stroke="#2f67c8"] { stroke: var(--c-elec); }
+svg [stroke="#3e8e41"] { stroke: var(--c-nuclear); }
+svg [fill="#a2457a"] { fill: var(--c-space); }
+svg [stroke="#d9822b"] { stroke: var(--c-ray); }   svg [fill="#d9822b"] { fill: var(--c-ray); }
+svg [fill="#b5651a"] { fill: var(--c-ray); }
+svg [stroke="#c8463d"] { stroke: var(--c-down); }  svg [fill="#c8463d"] { fill: var(--c-down); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }

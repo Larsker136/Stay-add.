@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Collision theory · stay add. Chemistry</title>
+<meta name="description" content="An interactive collision theory lab for IGCSE Chemistry: see how temperature, concentration, pressure and catalysts change the rate of reaction.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="chemistry" data-page="lab" data-lesson="collision-theory">
+<header data-site-header></header>
+
+<div class="lesson-bar">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="../index.html#topics">Chemistry</a><span>/</span><a href="../index.html#topics">6 Chemical reactions</a><span>/</span><b>Collision theory</b></nav>
+  <nav class="stepper" aria-label="Lesson steps">
+    <a href="#lab" aria-current="step"><span class="s-n">1</span>See it</a>
+    <a href="#explain"><span class="s-n">2</span>Explain it</a>
+    <a href="#check"><span class="s-n">3</span>Write it</a>
+  </nav>
+  <span class="bar-r num" aria-live="polite">t = <b data-clock>0.0</b> s</span>
+</div>
+
+<!-- ================= The lab ================= -->
+<div class="app" id="lab" data-sim="collision-theory">
+  <aside class="rail" aria-label="Lessons in 6 Chemical reactions">
+    <p class="eyebrow">6 &nbsp;Chemical reactions</p>
+    <ol class="lessons">
+      <li class="on"><a href="#" aria-current="page"><span class="n">1</span><span>Collision theory<small>Rate and activation energy</small></span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">2</span><span>Measuring rate<small>Gas volume, mass loss</small></span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">3</span><span>Surface area<small>Powders and lumps</small></span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">4</span><span>Reversible reactions<small>Equilibrium</small></span><span class="tag">Supp.</span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">5</span><span>Redox<small>Oxidation and reduction</small></span></a></li>
+    </ol>
+    <div class="mastery">
+      <div class="m-row"><span>Topic progress</span><span class="num">1 / 5</span></div>
+      <div class="steps" style="--tc:var(--c-energy)"><i class="now"></i><i></i><i></i><i></i><i></i></div>
+      <p>Most missed: <b>“more collisions”</b> without <b>“per second”</b>, and forgetting that heating raises the share of collisions with E ≥ Eₐ.</p>
+    </div>
+  </aside>
+
+  <main class="center">
+    <section class="card stage" aria-label="Collision experiment">
+      <header class="stage-head">
+        <span><span class="eyebrow">Fig. 6.1</span> A + B → AB in a closed box</span>
+        <span class="legend">
+          <span><i class="key key-a"></i>A</span>
+          <span><i class="key key-b"></i>B</span>
+          <span><i class="key key-a"></i><i class="key key-b key-pair"></i>AB</span>
+          <span><i class="key key-hit"></i>reacted</span>
+          <span class="cat-badge" data-cat-badge hidden>catalyst on</span>
+        </span>
+      </header>
+      <div class="stage-body"><canvas data-stage role="img" aria-label="Particles of reactants A and B moving and colliding in a container. Successful collisions form product AB."></canvas></div>
+      <footer class="stage-tools">
+        <button class="icon-btn play" type="button" data-action="play" aria-label="Pause"></button>
+        <button class="icon-btn" type="button" data-action="restart" aria-label="Restart"><i data-icon="restart"></i></button>
+        <div class="seg speed" role="group" aria-label="Simulation speed">
+          <button type="button" data-speed="0.25">¼×</button><button type="button" data-speed="0.5">½×</button><button type="button" data-speed="1">1×</button><button type="button" data-speed="2">2×</button>
+        </div>
+        <label class="sw-row"><button class="switch" type="button" role="switch" aria-checked="true" data-control="fx" aria-label="Show collision rings"></button>Rings</label>
+        <label class="sw-row"><button class="switch" type="button" role="switch" aria-checked="false" data-control="sound" aria-label="Collision sounds"></button>Sound</label>
+      </footer>
+    </section>
+
+    <div class="data">
+      <section class="card graph">
+        <header class="card-h">
+          <div class="tabs" role="tablist">
+            <button role="tab" type="button" data-tab="rate" aria-selected="true">Rate curve</button>
+            <button role="tab" type="button" data-tab="energy" aria-selected="false">Energy distribution</button>
+            <button role="tab" type="button" data-tab="profile" aria-selected="false">Energy profile</button>
+          </div>
+        </header>
+        <div class="panel-c" data-panel="rate">
+          <svg class="fig chart" data-chart="rate" viewBox="0 0 640 290" role="img" aria-label="Graph of product formed against time"></svg>
+          <div class="chart-foot">
+            <div class="pin-legend" data-pin-legend></div>
+            <div class="chart-actions">
+              <button class="btn btn-ghost btn-sm" type="button" data-action="clear-pins" hidden>Clear</button>
+              <button class="btn btn-ghost btn-sm" type="button" data-action="pin">Keep curve &amp; rerun</button>
+            </div>
+          </div>
+          <p class="caption">Steeper = faster. The curve flattens as reactants are used up.<span class="done-note" data-rate-done hidden> 60 s recorded — restart to run again.</span></p>
+        </div>
+        <div class="panel-c" data-panel="energy" hidden>
+          <svg class="fig chart" data-chart="energy" viewBox="0 0 640 290" role="img" aria-label="Distribution of particle energies with the activation energy marked"></svg>
+          <p class="caption">Only particles in the shaded area can react. Heating flattens the curve; a catalyst moves Eₐ left.</p>
+        </div>
+        <div class="panel-c" data-panel="profile" hidden>
+          <svg class="fig chart profile" data-chart="profile" viewBox="0 0 640 290" role="img" aria-label="Energy profile diagram showing activation energy with and without a catalyst">
+            <path class="ax" d="M50 20V250H620"/>
+            <text x="50" y="12">energy</text>
+            <text x="620" y="272" text-anchor="end">progress of reaction →</text>
+            <path class="guide" d="M190 170H600M205 50H320"/>
+            <path class="guide cat-only" d="M245 118H320"/>
+            <path class="pf-main" d="M70 170H190C255 170 270 50 320 50C370 50 390 215 460 215H600"/>
+            <path class="pf-cat" d="M190 170C255 170 270 118 320 118C370 118 390 215 460 215"/>
+            <path class="pf-arrow" d="M215 166V54M210 62L215 52L220 62"/>
+            <text class="t-ea" x="205" y="114" text-anchor="end">Eₐ</text>
+            <path class="pf-arrow-cat cat-only" d="M255 166V122M250 130L255 120L260 130"/>
+            <text class="t-cat cat-only" x="262" y="192">Eₐ with catalyst</text>
+            <path class="pf-dh" d="M575 174V211M570 205L575 215L580 205"/>
+            <text class="lbl-ink" x="585" y="198">ΔH</text>
+            <text class="ser" x="120" y="160" text-anchor="middle">reactants</text>
+            <text class="ser" x="520" y="236" text-anchor="middle">products</text>
+            <text class="cat-off-hint" x="340" y="138">turn the catalyst on to see</text>
+            <text class="cat-off-hint" x="340" y="154">the alternative pathway</text>
+          </svg>
+          <p class="caption">A catalyst gives a lower hill. Reactants, products and ΔH stay exactly the same.</p>
+        </div>
+      </section>
+
+      <section class="card readings">
+        <header class="card-h"><h2>Readings</h2><span class="num">last 3 s</span></header>
+        <dl class="stats">
+          <div><dt>A–B collisions</dt><dd><b data-stat="collisions">—</b> /s</dd></div>
+          <div><dt>with E ≥ Eₐ</dt><dd><b data-stat="fraction">…</b></dd></div>
+          <div class="is-key"><dt>successful = rate</dt><dd><b data-stat="success">—</b> /s</dd></div>
+          <div><dt>product AB</dt><dd><b data-stat="products">0</b> / <span data-stat="max">40</span></dd><span class="meter"><i data-stat-bar></i></span></div>
+        </dl>
+      </section>
+    </div>
+  </main>
+
+  <aside class="panel" aria-label="Controls">
+    <section class="group">
+      <div class="g-row"><h2 class="eyebrow">Factors</h2><button class="text-btn" type="button" data-action="reset"><i data-icon="restart"></i>Start conditions</button></div>
+
+      <div class="factor" data-factor="temp">
+        <div class="f-row"><label for="ctl-temp"><i class="dot" style="--d:var(--c-temp)"></i>Temperature</label><output class="big num" data-out="temp"></output></div>
+        <input id="ctl-temp" class="range" style="--rc:var(--c-temp)" type="range" min="0" max="300" step="5" data-control="temp">
+        <div class="scale num"><span>0 °C</span><span>300 °C</span></div>
+      </div>
+      <div class="factor" data-factor="conc">
+        <div class="f-row"><label for="ctl-conc"><i class="dot" style="--d:var(--c-conc)"></i>Concentration of A</label><output class="big num" data-out="conc"></output></div>
+        <input id="ctl-conc" class="range" style="--rc:var(--c-conc)" type="range" min="0.25" max="2" step="0.25" data-control="conc">
+        <div class="scale num"><span>0.25</span><span>2.00 mol/dm³</span></div>
+      </div>
+      <div class="factor" data-factor="pressure">
+        <div class="f-row"><label for="ctl-pressure"><i class="dot" style="--d:var(--c-press)"></i>Pressure <span class="tag">gases</span></label><output class="big num" data-out="pressure"></output></div>
+        <input id="ctl-pressure" class="range" style="--rc:var(--c-press)" type="range" min="1" max="3" step="0.25" data-control="pressure">
+        <div class="scale num"><span>1 atm</span><span>3 atm</span></div>
+      </div>
+      <div class="factor" data-factor="catalyst">
+        <div class="f-row"><span class="lbl" id="lbl-cat"><i class="dot" style="--d:var(--c-cat)"></i>Catalyst</span><button class="switch" style="--sw:var(--c-cat)" type="button" role="switch" aria-checked="false" aria-labelledby="lbl-cat" data-control="catalyst"></button></div>
+      </div>
+    </section>
+
+    <section class="group explain" data-explain aria-live="polite"></section>
+
+    <section class="group">
+      <div class="g-row"><h2 class="eyebrow">Compared with start</h2><span class="num muted">25 °C · 1.00 M · 1 atm</span></div>
+      <div data-compare-rows></div>
+      <p class="note">Predicted at the start of a run. Rate = frequency × share.</p>
+    </section>
+  </aside>
+</div>
+
+<!-- ================= Notes ================= -->
+<main class="notes">
+  <section class="wrap note-sec" id="explain">
+    <header class="sec-head reveal">
+      <div><p class="eyebrow">§1 &nbsp;The big idea</p><h2 class="display">Two conditions for a <em>reaction</em>.</h2></div>
+      <div class="sec-aside"><p>The rate of reaction depends on the number of <b>successful collisions per unit time</b>. Anything that makes successful collisions happen more often makes the reaction faster.</p></div>
+    </header>
+    <ol class="conditions">
+      <li class="reveal">
+        <span class="m-n display">i.</span>
+        <div><h3>Particles must collide</h3><p>Reactant particles can only react if they actually meet. The more often they collide — the higher the <b>collision frequency</b> — the more chances they have.</p></div>
+        <svg class="fig cond-fig" viewBox="0 0 260 90" aria-hidden="true"><circle cx="70" cy="45" r="16" class="p-a"/><circle cx="190" cy="45" r="16" class="p-b"/><path d="M96 45h26M164 45h-26M116 39l7 6-7 6M144 39l-7 6 7 6" class="ax"/></svg>
+      </li>
+      <li class="reveal">
+        <span class="m-n display">ii.</span>
+        <div><h3>With at least the activation energy</h3><p>A collision only succeeds if it has enough energy. <b>Activation energy, Eₐ,</b> is the minimum energy colliding particles need in order to react.</p></div>
+        <svg class="fig cond-fig" viewBox="0 0 260 90" aria-hidden="true"><path d="M10 74H70C100 74 105 16 130 16S160 82 190 82H250" class="ax"/><path d="M60 74V20M56 26L60 18L64 26" class="ea"/><text x="66" y="40" class="t-ea">Eₐ</text></svg>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap note-sec">
+    <header class="sec-head reveal">
+      <div><p class="eyebrow">§2 &nbsp;Factor by factor</p><h2 class="display">What changes, and <em>why</em>.</h2></div>
+      <div class="sec-aside"><p>Each factor works through one or both conditions. <b>Try it</b> loads that change into the lab above.</p></div>
+    </header>
+    <div class="factors">
+      <article class="fx reveal" style="--tc:var(--c-temp)">
+        <div class="fx-h"><h3>Temperature</h3><span class="works">frequency + energy</span></div>
+        <ol class="flow"><li>Particles gain <b>kinetic energy</b> and move faster</li><li>More frequent collisions</li><li>A <b>greater proportion</b> of collisions have E ≥ Eₐ</li><li>More successful collisions per unit time</li></ol>
+        <p class="watch">The energy effect is the big one — don’t stop at “they collide more often”.</p>
+        <button class="text-link" type="button" data-try='{"temp":150}'>Try it: 150 °C</button>
+      </article>
+      <article class="fx reveal" style="--tc:var(--c-conc)">
+        <div class="fx-h"><h3>Concentration</h3><span class="works">frequency</span></div>
+        <ol class="flow"><li>More particles <b>per unit volume</b></li><li>Particles closer together</li><li>More frequent collisions</li><li>More successful collisions per unit time</li></ol>
+        <p class="watch">Say “per unit volume”, not just “more particles”. The share of successful collisions doesn’t change.</p>
+        <button class="text-link" type="button" data-try='{"conc":2}'>Try it: 2.00 mol/dm³</button>
+      </article>
+      <article class="fx reveal" style="--tc:var(--c-press)">
+        <div class="fx-h"><h3>Pressure</h3><span class="works">frequency</span></div>
+        <ol class="flow"><li>Same gas particles in a <b>smaller volume</b></li><li>More particles per unit volume</li><li>More frequent collisions</li><li>More successful collisions per unit time</li></ol>
+        <p class="watch">Only for reactions involving <b>gases</b>. It works exactly like higher concentration.</p>
+        <button class="text-link" type="button" data-try='{"pressure":2.5}'>Try it: 2.5 atm</button>
+      </article>
+      <article class="fx reveal" style="--tc:var(--c-cat)">
+        <div class="fx-h"><h3>Catalyst</h3><span class="works">energy</span></div>
+        <ol class="flow"><li>Provides an <b>alternative pathway</b></li><li>…with a <b>lower activation energy</b></li><li>A greater proportion of collisions succeed</li><li>More successful collisions per unit time</li></ol>
+        <p class="watch">A catalyst does <b>not</b> give particles more energy, and it is not used up.</p>
+        <button class="text-link" type="button" data-try='{"catalyst":true}'>Try it: add a catalyst</button>
+      </article>
+    </div>
+    <table class="summary reveal">
+      <thead><tr><th>Increase…</th><th>Collision frequency</th><th>Share with E ≥ Eₐ</th><th>Rate</th></tr></thead>
+      <tbody>
+        <tr><td>Temperature</td><td>↑</td><td>↑ <span class="muted">big effect</span></td><td>↑</td></tr>
+        <tr><td>Concentration</td><td>↑</td><td class="muted">no change</td><td>↑</td></tr>
+        <tr><td>Pressure (gases)</td><td>↑</td><td class="muted">no change</td><td>↑</td></tr>
+        <tr><td>Catalyst</td><td class="muted">no change</td><td>↑ <span class="muted">lower Eₐ</span></td><td>↑</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="wrap note-sec exam" id="check">
+    <header class="sec-head reveal">
+      <div><p class="eyebrow">§3 &nbsp;Exam technique</p><h2 class="display">Write it for <em>full marks</em>.</h2></div>
+      <div class="sec-aside"><p>Examiners look for a complete chain: change → particles → collisions → successful collisions per unit time → rate.</p></div>
+    </header>
+    <article class="model reveal">
+      <div><p class="eyebrow">Model answer · 3 marks</p><p class="model-q display">Explain, in terms of particles, why increasing the temperature increases the rate of reaction.</p></div>
+      <ol class="marks">
+        <li><span class="mk num">M1</span>Particles have more (kinetic) energy / move faster.</li>
+        <li><span class="mk num">M2</span>Collisions are more frequent (more collisions per second).</li>
+        <li><span class="mk num">M3</span>A greater proportion of collisions have energy greater than or equal to the activation energy — so more successful collisions per second.</li>
+      </ol>
+    </article>
+  </section>
+
+  <section class="wrap note-sec">
+    <header class="sec-head reveal">
+      <div><p class="eyebrow">§4 &nbsp;Quick check</p><h2 class="display">Did it <em>stick</em>?</h2></div>
+      <div class="sec-aside"><p>Five questions. Your score is saved on this device and fills in the topic on the syllabus map.</p></div>
+    </header>
+    <div class="quiz" data-quiz>
+      <article class="q" data-q>
+        <p class="q-num"></p>
+        <h3>What is meant by activation energy?</h3>
+        <div class="q-options">
+          <button type="button">The energy released when a reaction happens</button>
+          <button type="button" data-correct>The minimum energy colliding particles need in order to react</button>
+          <button type="button">The average kinetic energy of the particles</button>
+          <button type="button">The energy needed to break all the bonds in the products</button>
+        </div>
+        <p class="q-why">Eₐ is a <b>minimum</b> — a threshold. Collisions with less energy than this just bounce apart.</p>
+      </article>
+      <article class="q" data-q>
+        <p class="q-num"></p>
+        <h3>Which change increases the rate <em>without</em> changing the share of collisions that succeed?</h3>
+        <div class="q-options">
+          <button type="button">Increasing the temperature</button>
+          <button type="button">Adding a catalyst</button>
+          <button type="button" data-correct>Increasing the concentration</button>
+          <button type="button">None of these</button>
+        </div>
+        <p class="q-why">Concentration only changes how <b>often</b> particles collide. Temperature and catalysts both change the proportion with energy ≥ Eₐ.</p>
+      </article>
+      <article class="q" data-q>
+        <p class="q-num"></p>
+        <h3>How does a catalyst increase the rate of reaction?</h3>
+        <div class="q-options">
+          <button type="button">It gives the particles more kinetic energy</button>
+          <button type="button">It increases the number of particles per unit volume</button>
+          <button type="button" data-correct>It provides an alternative pathway with a lower activation energy</button>
+          <button type="button">It reacts with the products so they form faster</button>
+        </div>
+        <p class="q-why">Particle energies are unchanged — the <b>energy hill is lower</b>, so more collisions get over it. The catalyst is chemically unchanged at the end.</p>
+      </article>
+      <article class="q" data-q>
+        <p class="q-num"></p>
+        <h3>Increasing the pressure would speed up which reaction?</h3>
+        <div class="q-options">
+          <button type="button">Magnesium ribbon reacting with hydrochloric acid</button>
+          <button type="button" data-correct>Nitrogen gas reacting with hydrogen gas</button>
+          <button type="button">Sodium hydroxide solution neutralising hydrochloric acid</button>
+          <button type="button">Zinc reacting with copper(II) sulfate solution</button>
+        </div>
+        <p class="q-why">Pressure only matters when the <b>reactants are gases</b>: squeezing them puts more particles in each unit of volume.</p>
+      </article>
+      <article class="q" data-q>
+        <p class="q-num"></p>
+        <h3>On a graph of product against time, what shows the fastest rate?</h3>
+        <div class="q-options">
+          <button type="button">The highest final value</button>
+          <button type="button" data-correct>The steepest gradient</button>
+          <button type="button">The flattest part of the curve</button>
+          <button type="button">The longest time to finish</button>
+        </div>
+        <p class="q-why">Rate is how quickly product forms — the <b>gradient</b>. The final height depends on how much reactant there was.</p>
+      </article>
+    </div>
+    <p class="quiz-score" data-quiz-score></p>
+  </section>
+
+  <section class="closing">
+    <div class="wrap closing-in">
+      <h2 class="display">Next: <em>measuring</em> the rate.</h2>
+      <div>
+        <p>Gas syringes, mass loss and drawing tangents are the next lesson in this topic.</p>
+        <a class="btn btn-primary" href="../index.html#topics">Back to all topics <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../js/collision-theory.js"></script>
+</body>
+</html>

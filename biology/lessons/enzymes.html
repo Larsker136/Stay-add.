@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Enzymes · stay add. Biology</title>
+<meta name="description" content="IGCSE Biology: how enzymes work — the active site and lock and key, then how temperature and pH change its shape — with a lab for each.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="biology" data-page="lesson" data-lesson="enzymes">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Topics in this lesson">
+      <p class="nav-group"><span>05</span>Enzymes</p>
+      <a href="#fit" data-full="The active site">Lock and key</a>
+      <a href="#temp" data-full="Optimum and denaturing">Temperature</a>
+      <a href="#ph" data-full="Where each enzyme works">pH</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Topics opened</span><span class="side-count">0 / 3</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0610</b> · each topic in three steps: understand, experiment, interpret.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+
+<!-- ======================= 1 Lock and key ======================= -->
+<section class="topic" data-key="fit">
+  <header class="t-head">
+    <p class="eyebrow"><span>Topic 5</span>Enzymes</p>
+    <h1>Enzymes: a <em>perfect</em> fit</h1>
+    <p class="lede">Almost every reaction in a cell would be far too slow at body temperature on its own. Enzymes speed them up — and each one works on just one kind of molecule, because of its shape.</p>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false" data-art="fit"></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>What an enzyme is, and why shape matters</p></div></div>
+    <div class="notes">
+      <article class="note">
+        <h3>Biological catalysts</h3>
+        <p>An <b>enzyme</b> is a <b>protein</b> that acts as a <b>biological catalyst</b>: it speeds up a chemical reaction in a living thing and is <b>not changed</b> by the reaction.</p>
+        <ul>
+          <li>a <b>catalyst</b> is a substance that increases the rate of a reaction and is not used up</li>
+          <li>the molecule an enzyme works on is its <span class="b-sub">substrate</span>; what it turns into are the <span class="b-prod">products</span></li>
+          <li>because the enzyme is unchanged, one molecule of it can be used again and again — cells need only small amounts</li>
+          <li>without enzymes, reactions such as digestion and respiration would be too slow to keep you alive</li>
+        </ul>
+        <p class="formula"><span class="b-sub">substrate</span> + <span class="b-enz">enzyme</span> → enzyme–substrate complex → <span class="b-prod">products</span> + <span class="b-enz">enzyme</span></p>
+      </article>
+      <article class="note">
+        <h3>The active site: lock and key</h3>
+        <p>Part of the enzyme, the <b>active site</b>, has a shape that is <b>complementary</b> to its substrate, like a lock and its key.</p>
+        <ul>
+          <li>the substrate fits into the active site and forms an <b>enzyme–substrate complex</b></li>
+          <li>the reaction happens, the <span class="b-prod">products</span> leave, and the active site is free again</li>
+          <li>a different molecule does not fit, so it is not changed: each enzyme is <b>specific</b> to one substrate</li>
+        </ul>
+        <p class="formula">amylase: starch → maltose<br>protease: protein → amino acids<br>lipase: fat → fatty acids + glycerol</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Offer each enzyme a substrate and see which ones fit</p></div></div>
+    <div class="lab" data-lab data-mode="fit">
+      <div class="lab-h"><p class="lab-title" data-fig="5.1">Lock and key</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <svg class="fig" data-svg viewBox="0 0 640 300" role="img" aria-label="An enzyme with its active site; a substrate moves towards it and either fits and is split into products, or does not fit and bounces away"></svg>
+          <p class="key"><span><i style="background:var(--c-enzyme)"></i>enzyme</span><span><i style="background:var(--c-substrate)"></i>substrate</span><span><i style="background:var(--c-product)"></i>products</span></p>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Enzyme</p>
+              <div class="seg" role="group" aria-label="Enzyme"><button type="button" data-enz="amylase">amylase</button><button type="button" data-enz="protease">protease</button><button type="button" data-enz="lipase">lipase</button></div>
+            </div>
+            <div class="group"><p>Substrate</p>
+              <div class="seg" role="group" aria-label="Substrate"><button type="button" data-sub="starch">starch</button><button type="button" data-sub="protein">protein</button><button type="button" data-sub="fat">fat</button></div>
+            </div>
+            <div class="btns"><button class="btn btn-primary btn-sm" type="button" data-go>Add the substrate <span class="arr" aria-hidden="true">→</span></button></div>
+          </div>
+          <div class="block block-results">
+            <p class="block-h">Results</p>
+            <div class="rows" data-results></div>
+          </div>
+        </div>
+        <div class="explain">
+          <p class="block-h">What just happened</p>
+          <div class="result" data-explain aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>From shape to specificity</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"enz":"amylase","sub":"starch","go":true}'><span>Starch meets amylase</span><span>shapes are complementary</span><span>enzyme–substrate complex</span><span>maltose</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"enz":"amylase","sub":"protein","go":true}'><span>Protein meets amylase</span><span>does not fit the active site</span><span>no complex</span><span>no reaction</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"enz":"lipase","sub":"fat","go":true}'><span>Fat meets lipase</span><span>fits the active site</span><span>split</span><span>fatty acids + glycerol</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"enz":"protease","sub":"protein","go":true,"repeat":3}'><span>Products leave</span><span>active site is free again</span><span>enzyme unchanged</span><span>used again and again</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Write that the active site and the substrate have <b>complementary</b> shapes — not the “same” shape. Name the <b>enzyme–substrate complex</b>, and say the enzyme is <b>unchanged</b> at the end.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 2 Temperature ======================= -->
+<section class="topic" data-key="temp" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>Topic 5</span>Enzymes</p>
+    <h1>Temperature: faster, then <em>denatured</em></h1>
+    <p class="lede">Warming an enzyme speeds it up — until the active site starts to lose its shape. Past that point the rate falls fast, and cooling it down again does not bring it back.</p>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false" data-art="temp"></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two effects of heating, pulling in opposite directions</p></div></div>
+    <div class="notes">
+      <article class="note">
+        <h3>Up to the optimum: more collisions</h3>
+        <p>As the temperature rises, enzyme and substrate molecules gain <b>kinetic energy</b>, so they move faster and <b>collide more often</b>.</p>
+        <ul>
+          <li>more collisions → more enzyme–substrate complexes form each second → a faster rate</li>
+          <li>the rate is highest at the <b>optimum temperature</b> — about <b>37 °C</b> for human enzymes</li>
+          <li>when cold, enzymes are <b>inactive</b> but not damaged: warm them up and they work again</li>
+        </ul>
+        <p class="formula">higher T → more kinetic energy → more collisions → more complexes → faster</p>
+      </article>
+      <article class="note">
+        <h3>Past the optimum: denaturing <span class="tag-s">Supp.</span></h3>
+        <p>Above the optimum the enzyme vibrates so much that the bonds holding its shape break. The <b>active site changes shape</b>.</p>
+        <ul>
+          <li>the substrate is no longer <b>complementary</b>, so it cannot fit and fewer complexes form</li>
+          <li>the rate falls steeply; when no active sites fit, the enzyme is <b>denatured</b></li>
+          <li>denaturing is <b>permanent</b>: cooling does not restore the shape</li>
+          <li>enzymes are molecules, not living things — say <b>denatured</b>, never “killed”</li>
+        </ul>
+        <p class="formula">too hot → active site changes shape → substrate does not fit → denatured</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Heat it, cool it, and watch the active site</p></div></div>
+    <div class="lab" data-lab data-mode="temp">
+      <div class="lab-h"><p class="lab-title" data-fig="5.2">Amylase at different temperatures</p><button class="ghost" type="button" data-reset>New sample</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <svg class="fig" data-svg viewBox="0 0 640 320" role="img" aria-label="Rate against temperature for amylase, with the current reading marked and the active site drawn beside it"></svg>
+          <p class="key"><span><i style="background:var(--c-bio)"></i>fresh enzyme</span><span><i style="background:var(--ink-4)"></i>after heating</span><span><i style="background:var(--c-denat)"></i>denaturing</span></p>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Temperature</p>
+              <label class="ctl"><input class="range" type="range" min="0" max="70" step="1" value="37" data-t style="--rc:var(--c-temp)" aria-label="Temperature"><output class="num"><b data-t-out>37</b> °C</output></label>
+            </div>
+            <div class="btns"><button class="sc" type="button" data-cool>Cool it to 20 °C</button></div>
+          </div>
+          <div class="block block-results">
+            <p class="block-h">Results</p>
+            <div class="rows" data-results></div>
+          </div>
+        </div>
+        <div class="explain">
+          <p class="block-h">What just happened</p>
+          <div class="result" data-explain aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Reading the temperature curve</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"t":10}'><span>10 °C</span><span>little kinetic energy</span><span>few collisions</span><span>slow, but not denatured</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"t":37}'><span>37 °C</span><span>many collisions, active site fits</span><span>most complexes per second</span><span>optimum</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"t":50}'><span>50 °C</span><span>active site changing shape</span><span>fewer substrates fit</span><span>rate falls</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"t":20,"max":60}'><span>Heated to 60 °C, then cooled</span><span>active site stays the wrong shape</span><span>still no complexes</span><span>denaturing is permanent</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Explain both halves of the curve separately: below the optimum use <b>kinetic energy</b> and <b>collisions</b>; above it use <b>active site</b>, <b>shape</b> and <b>denatured</b>. Read the optimum from the peak of the graph.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 3 pH ======================= -->
+<section class="topic" data-key="ph" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>Topic 5</span>Enzymes</p>
+    <h1>pH: each enzyme has its <em>own</em> optimum</h1>
+    <p class="lede">The stomach is acidic, the small intestine slightly alkaline. Each digestive enzyme has the shape that works best where it is found, and the wrong pH changes that shape.</p>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false" data-art="ph"></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Optimum pH, and what goes wrong either side</p></div></div>
+    <div class="notes">
+      <article class="note">
+        <h3>Optimum pH matches the place</h3>
+        <p>Every enzyme works fastest at its <b>optimum pH</b>, and that is usually the pH of the place where it works.</p>
+        <ul>
+          <li><b>protease in the stomach</b> (pepsin): optimum about pH <b>2</b> — the stomach makes hydrochloric acid</li>
+          <li><b>amylase</b> in saliva: optimum about pH <b>7</b> — neutral</li>
+          <li><b>lipase</b> and protease in the small intestine: optimum about pH <b>8</b> — bile and pancreatic juice are alkaline and neutralise the stomach acid</li>
+        </ul>
+        <p class="formula">stomach pH 2 · mouth pH 7 · small intestine pH 8</p>
+      </article>
+      <article class="note">
+        <h3>Away from the optimum <span class="tag-s">Supp.</span></h3>
+        <p>A pH that is too high or too low changes the shape of the <b>active site</b>, in the same way that too much heat does.</p>
+        <ul>
+          <li>a small change: some active sites change shape, so the rate drops</li>
+          <li>a large change: the substrate no longer fits at all — the enzyme is <b>denatured</b></li>
+          <li>the curve is bell-shaped, with the rate falling on <b>both</b> sides of the optimum</li>
+        </ul>
+        <p class="formula">wrong pH → active site changes shape → substrate does not fit → slower, then denatured</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Pick an enzyme and change the pH</p></div></div>
+    <div class="lab" data-lab data-mode="ph">
+      <div class="lab-h"><p class="lab-title" data-fig="5.3">Three digestive enzymes and pH</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <svg class="fig" data-svg viewBox="0 0 640 320" role="img" aria-label="Rate against pH for protease, amylase and lipase, each with its own optimum; the chosen enzyme's active site is drawn beside the graph"></svg>
+          <p class="key"><span><i style="background:var(--c-bio)"></i>chosen enzyme</span><span><i style="background:var(--ink-4)"></i>the other two</span><span><i style="background:var(--c-ph)"></i>pH now</span></p>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Enzyme</p>
+              <div class="seg" role="group" aria-label="Enzyme"><button type="button" data-enz="protease">protease<small>stomach</small></button><button type="button" data-enz="amylase">amylase<small>mouth</small></button><button type="button" data-enz="lipase">lipase<small>intestine</small></button></div>
+            </div>
+            <div class="group"><p>pH</p>
+              <label class="ctl"><input class="range" type="range" min="1" max="13" step="0.5" value="7" data-ph style="--rc:var(--c-ph)" aria-label="pH"><output class="num">pH <b data-ph-out>7.0</b></output></label>
+            </div>
+          </div>
+          <div class="block block-results">
+            <p class="block-h">Results</p>
+            <div class="rows" data-results></div>
+          </div>
+        </div>
+        <div class="explain">
+          <p class="block-h">What just happened</p>
+          <div class="result" data-explain aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Matching enzymes to places</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"enz":"protease","ph":2}'><span>Protease at pH 2</span><span>its optimum</span><span>active site fits protein</span><span>fast digestion in the stomach</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"enz":"amylase","ph":2}'><span>Amylase swallowed into the stomach</span><span>pH 2 is far from its optimum</span><span>active site changes shape</span><span>starch digestion stops</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"enz":"amylase","ph":7}'><span>Amylase at pH 7</span><span>its optimum</span><span>starch fits</span><span>maltose forms fastest</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"enz":"lipase","ph":8}'><span>Bile makes the intestine alkaline</span><span>pH 8</span><span>lipase at its optimum</span><span>fats digested fastest</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> If a graph shows two enzymes, give each optimum as a <b>number read from the peak</b>, then link it to where the enzyme works. Explain the fall on either side with the <b>shape of the active site</b>, just as for temperature.</p>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Topics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../js/enzyme.js"></script>
+<script src="../js/enzymes.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+</body>
+</html>
