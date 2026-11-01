@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>The internet and its uses · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 5: the internet and the World Wide Web, URLs, HTTP and HTTPS, browsers, DNS, cookies, digital currency and blockchain, and cyber security threats and how to keep data safe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-internet">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>5</span>The internet &amp; its uses</p>
+      <a href="#web" data-full="5.1 · URLs, DNS, browsers, cookies">Internet and the WWW</a>
+      <a href="#currency" data-full="5.2 · blockchain">Digital currency</a>
+      <a href="#security" data-full="5.3 · threats and defences">Cyber security</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 3</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 5.1 The internet and the WWW ======================= -->
+<section class="topic" data-key="web">
+  <header class="t-head">
+    <p class="eyebrow"><span>5.1</span>The internet &amp; its uses</p>
+    <h1>The internet is the roads; the web is one kind of <em>traffic</em></h1>
+    <p class="lede">The internet is the worldwide network of connected computers. The World Wide Web is the collection of web pages carried over it — found by URL, translated by DNS, delivered by HTTP.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s511"><span>5.1.1</span>Internet and World Wide Web</button><button type="button" data-goto="s512"><span>5.1.2</span>URLs</button><button type="button" data-goto="s513"><span>5.1.3</span>HTTP and HTTPS</button><button type="button" data-goto="s514"><span>5.1.4</span>Web browsers</button><button type="button" data-goto="s515"><span>5.1.5</span>Retrieving a web page</button><button type="button" data-goto="s516"><span>5.1.6</span>Cookies</button><button type="button" data-goto="ck51"><span>5.1.7</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <circle class="f cb lt" cx="100" cy="70" r="54"/><path class="l cb" d="M46 70H154M100 16V124M60 34C90 54 110 54 140 34M60 106C90 86 110 86 140 106"/><ellipse class="l cb" cx="100" cy="70" rx="24" ry="54"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Six sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s511"><span class="sec-n">5.1.1</span><div class="sec-b">
+        <h3>The internet and the World Wide Web</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Internet</th><th>World Wide Web (WWW)</th></tr>
+          <tr><td>a global <b>network of interconnected networks</b> — the <b>infrastructure</b> (cables, routers, servers)</td><td>a collection of <b>websites and web pages</b>, accessed using the internet</td></tr>
+          <tr><td>carries email, file transfer, video calls, online games … and the web</td><td>pages are written in HTML and linked by hyperlinks</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s512"><span class="sec-n">5.1.2</span><div class="sec-b">
+        <h3>Uniform resource locators (URLs)</h3>
+        <p>A <b>URL</b> is a text-based address for a web page. It has three main parts:</p>
+        <p class="formula">https:// · www.example.com · /learn/binary.html</p>
+        <ul>
+          <li><b>protocol</b> — http or https</li>
+          <li><b>domain name</b> — the name of the web server</li>
+          <li><b>web page / file name</b> — the path to the resource on that server</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s513"><span class="sec-n">5.1.3</span><div class="sec-b">
+        <h3>HTTP and HTTPS</h3>
+        <ul>
+          <li><b>HTTP</b> (hypertext transfer protocol) is the set of rules for transferring web pages between a web server and a browser</li>
+          <li><b>HTTPS</b> is the secure version: data is <b>encrypted</b> using <b>SSL/TLS</b>, so it is meaningless if intercepted — shown by a padlock in the browser</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s514"><span class="sec-n">5.1.4</span><div class="sec-b">
+        <h3>Web browsers</h3>
+        <p>A <b>web browser</b> is software that requests, receives and <b>renders</b> HTML into a viewable web page. Other functions:</p>
+        <ul>
+          <li>storing <b>bookmarks</b> and favourites; recording user <b>history</b></li>
+          <li>allowing multiple <b>tabs</b>; navigation with forward and back buttons</li>
+          <li>storing <b>cookies</b>; providing an <b>address bar</b></li>
+          <li>running active scripts such as JavaScript</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s515"><span class="sec-n">5.1.5</span><div class="sec-b">
+        <h3>Retrieving a web page</h3>
+        <ol>
+          <li>the user types a URL into the browser (or clicks a link)</li>
+          <li>the browser sends the domain name to a <b>DNS (domain name server)</b></li>
+          <li>the DNS looks up the matching <b>IP address</b>; if it doesn’t have it, it asks another DNS server</li>
+          <li>the IP address is returned to the browser</li>
+          <li>the browser sends an HTTP(S) request to the <b>web server</b> at that IP address</li>
+          <li>the web server sends back the web page as HTML</li>
+          <li>the browser <b>renders</b> the HTML and displays the page</li>
+        </ol>
+      </div></article>
+
+      <article class="sec" id="s516"><span class="sec-n">5.1.6</span><div class="sec-b">
+        <h3>Cookies</h3>
+        <ul>
+          <li>a <b>cookie</b> is a small text file stored by the browser on the user’s device, created by a website</li>
+          <li><b>session cookies</b> are temporary — deleted when the browser closes (e.g. items in a shopping basket while you browse)</li>
+          <li><b>persistent cookies</b> stay until they expire or are deleted</li>
+          <li>uses: saving login details, remembering preferences and language, keeping items in a shopping basket, tracking browsing to show targeted adverts</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Follow a request from URL to page</p></div></div>
+    <div class="lab" data-lab data-mode="dns">
+      <div class="lab-h"><p class="lab-title" data-fig="5.1">From URL to web page</p><div class="btns"><button class="btn btn-primary btn-sm" type="button" data-go>Go</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-parts></div><svg class="fig" data-svg viewBox="0 0 640 310" role="img" aria-label="The browser, two DNS servers and a web server. Messages move between them: the domain name to DNS, the IP address back, the request to the web server and the HTML back."></svg></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Controls</p><label class="field">URL<input type="text" data-k="url"></label></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"url":"https://www.cambridge.org/igcse","go":true}'><span>URL typed</span><span>DNS gives the IP address</span><span>HTTPS request to web server</span><span>HTML rendered</span><em>Show in the lab</em></button>
+        <p class="chain"><span>HTTPS</span><span>SSL/TLS encryption</span><span>intercepted data is meaningless</span></p>
+        <p class="chain"><span>Persistent cookie</span><span>stores login and preferences</span><span>site remembers you next visit</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> The DNS gives the browser an <b>IP address</b> — it does not send the web page. The web page comes from the <b>web server</b>.</p>
+      <div class="checklist" data-check="5.1" id="ck51">
+        <div class="checklist-h"><p>5.1.7 Checklist · I can…</p><span class="num">0 / 6</span></div>
+        <label><input type="checkbox"><span>explain the difference between the internet and the WWW</span></label>
+        <label><input type="checkbox"><span>identify the parts of a URL</span></label>
+        <label><input type="checkbox"><span>describe HTTP and HTTPS</span></label>
+        <label><input type="checkbox"><span>describe the functions of a web browser</span></label>
+        <label><input type="checkbox"><span>describe how a web page is located and retrieved using DNS</span></label>
+        <label><input type="checkbox"><span>explain session and persistent cookies and their uses</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 5.2 Digital currency ======================= -->
+<section class="topic" data-key="currency" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>5.2</span>The internet &amp; its uses</p>
+    <h1>Money that exists only as <em>data</em></h1>
+    <p class="lede">Digital currency is never printed. Many digital currencies keep their records on a blockchain: a shared, chained list of transactions that is very hard to change once written.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s521"><span>5.2.1</span>Digital currency</button><button type="button" data-goto="s522"><span>5.2.2</span>Blockchain</button><button type="button" data-goto="ck52"><span>5.2.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <g class="f ca"><rect x="10" y="50" width="46" height="40" rx="5"/><rect x="77" y="50" width="46" height="40" rx="5"/><rect x="144" y="50" width="46" height="40" rx="5"/></g>
+      <path class="l w3" d="M56 70H77M123 70H144"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s521"><span class="sec-n">5.2.1</span><div class="sec-b">
+        <h3>Digital currency</h3>
+        <ul>
+          <li>a <b>digital currency</b> exists only <b>electronically</b> — there are no physical coins or notes</li>
+          <li>it is used to pay for goods and services online, transferred between digital wallets</li>
+          <li>some (cryptocurrencies) are <b>decentralised</b>: not controlled by a bank or government</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s522"><span class="sec-n">5.2.2</span><div class="sec-b">
+        <h3>Blockchain</h3>
+        <ul>
+          <li>a <b>blockchain</b> is a digital ledger: a <b>time-stamped</b> series of records of transactions that cannot be altered</li>
+          <li>each block holds transaction data, a timestamp, its own <b>hash</b> and the <b>hash of the previous block</b>, linking the blocks into a chain</li>
+          <li>copies of the blockchain are held on many computers in the network, so a change on one copy is noticed and rejected</li>
+          <li>changing a block would change its hash and break every later link — this makes tampering very difficult</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Try to change history</p></div></div>
+    <div class="lab" data-lab data-mode="chain">
+      <div class="lab-h"><p class="lab-title" data-fig="5.2">A blockchain</p><div class="btns"><button class="ghost" type="button" data-add>Add a block</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><div class="blocks" data-blocks></div><p class="key"><span>edit any block’s data and press Enter</span></p></figure>
+        <div class="dock"><div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div></div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"tamper":true}'><span>Block 2 edited</span><span>its hash changes</span><span>block 3’s “previous hash” no longer matches</span><span>tampering detected</span><em>Show in the lab</em></button>
+        <p class="chain"><span>New transaction</span><span>added as a new block</span><span>linked by the previous block’s hash</span><span>copied to every computer</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Key words for blockchain: <b>decentralised</b>, <b>time-stamped</b>, <b>hash of the previous block</b>, copies held by many computers.</p>
+      <div class="checklist" data-check="5.2" id="ck52">
+        <div class="checklist-h"><p>5.2.3 Checklist · I can…</p><span class="num">0 / 2</span></div>
+        <label><input type="checkbox"><span>explain what a digital currency is</span></label>
+        <label><input type="checkbox"><span>describe how a blockchain records and protects transactions</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 5.3 Cyber security ======================= -->
+<section class="topic" data-key="security" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>5.3</span>The internet &amp; its uses</p>
+    <h1>Threats online, and how to <em>defend</em> against them</h1>
+    <p class="lede">Some attacks guess passwords, some flood a server, some trick a person into handing over details. Each one has defences — some technical, some just careful habits.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s531"><span>5.3.1</span>Cyber security threats</button><button type="button" data-goto="s532"><span>5.3.2</span>Keeping data safe</button><button type="button" data-goto="ck53"><span>5.3.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="f cg" d="M100 14L160 36V74C160 104 132 122 100 130C68 122 40 104 40 74V36Z"/><path class="l cg w5" d="M76 72L94 90L126 54"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s531"><span class="sec-n">5.3.1</span><div class="sec-b">
+        <h3>Cyber security threats</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Threat</th><th>What it is · aim</th></tr>
+          <tr><td>Brute-force attack</td><td>trying every possible password combination until one works · to gain access</td></tr>
+          <tr><td>Data interception</td><td>stealing data while it is being transmitted, e.g. with a packet sniffer or on unsecured wi-fi</td></tr>
+          <tr><td>Distributed denial of service (DDoS)</td><td>many computers (often a <b>botnet</b> of infected machines) flood a server with requests so it cannot respond to genuine users</td></tr>
+          <tr><td>Hacking</td><td>gaining <b>unauthorised access</b> to a computer system, to steal, change or delete data</td></tr>
+          <tr><td>Malware</td><td>malicious software: <b>virus</b> (attaches to files, replicates when run), <b>worm</b> (replicates by itself across networks), <b>Trojan horse</b> (disguised as useful software), <b>spyware</b> (records activity, e.g. keystrokes), <b>adware</b> (unwanted adverts), <b>ransomware</b> (encrypts files and demands payment)</td></tr>
+          <tr><td>Phishing</td><td>fake emails or messages that look genuine, persuading the user to click a link and enter personal details</td></tr>
+          <tr><td>Pharming</td><td>malicious code redirects the user from a genuine website to a fake one, even if the correct URL was typed</td></tr>
+          <tr><td>Social engineering</td><td>manipulating people into giving away information or access, e.g. pretending to be IT support on the phone</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s532"><span class="sec-n">5.3.2</span><div class="sec-b">
+        <h3>Keeping data safe</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Defence</th><th>How it helps</th></tr>
+          <tr><td>Access levels</td><td>users can only see and change the data they need</td></tr>
+          <tr><td>Anti-malware (anti-virus, anti-spyware)</td><td>scans files for known malware and quarantines or deletes it</td></tr>
+          <tr><td>Authentication</td><td><b>passwords</b> (long, mixed characters), <b>biometrics</b> (fingerprint, face), <b>two-step verification</b> (a code sent to a phone as well as the password)</td></tr>
+          <tr><td>Automatic software updates</td><td>patch security weaknesses quickly</td></tr>
+          <tr><td>Checking emails and URLs</td><td>look for spelling mistakes, odd tone and suspicious links before clicking</td></tr>
+          <tr><td>Firewall</td><td>monitors traffic in and out of a network and blocks traffic that doesn’t meet set rules</td></tr>
+          <tr><td>Privacy settings</td><td>control who can see personal information on social media and websites</td></tr>
+          <tr><td>Proxy server</td><td>sits between users and the internet: hides the user’s IP address, filters traffic and can absorb DDoS attacks</td></tr>
+          <tr><td>Secure socket layer (SSL)</td><td>encrypts data between browser and server (HTTPS) using digital certificates</td></tr>
+        </table></div>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>How long would a brute-force attack take?</p></div></div>
+    <div class="lab" data-lab data-mode="password">
+      <div class="lab-h"><p class="lab-title" data-fig="5.3">Password strength</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><label class="field">try a password (stays on this page, never sent)<input type="text" data-pw autocomplete="off" spellcheck="false"></label><div class="meter"><i data-bar></i></div></figure>
+        <div class="dock"><div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div></div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"pw":"cat"}'><span>Short password</span><span>few combinations</span><span>brute-forced almost instantly</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"pw":"Tr4in-Kite-Moon!"}'><span>Long, mixed characters</span><span>enormous number of combinations</span><span>brute force impractical</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Phishing email</span><span>fake link</span><span>user enters details on a fake site</span><span>check sender, spelling and URL</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Phishing needs the user to <b>click a link</b>; pharming redirects them <b>without</b> it, through code on their computer or a DNS server.</p>
+      <div class="checklist" data-check="5.3" id="ck53">
+        <div class="checklist-h"><p>5.3.3 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>describe each cyber security threat and its aim</span></label>
+        <label><input type="checkbox"><span>describe the types of malware</span></label>
+        <label><input type="checkbox"><span>explain how each solution keeps data safe</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../js/kit.js"></script>
+<script src="../js/internet.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+</body>
+</html>

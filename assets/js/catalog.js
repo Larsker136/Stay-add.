@@ -405,6 +405,157 @@ window.StayAdd.catalog = {
           ]
         }
       ]
+    },
+    {
+      id: "computer-science",
+      name: "Computer Science",
+      syllabus: "Cambridge IGCSE 0478 / 0984",
+      home: "computer-science/index.html",
+      hint: "Data, hardware, algorithms and logic",
+      nav: [
+        { id: "topics", label: "Topics", href: "computer-science/index.html#topics" },
+        { id: "cs-data-representation", label: "Binary", href: "computer-science/lessons/data-representation.html" },
+        { id: "cs-algorithms", label: "Algorithms", href: "computer-science/lessons/algorithms.html" },
+        { id: "cs-boolean-logic", label: "Logic gates", href: "computer-science/lessons/boolean-logic.html" },
+        { id: "method", label: "How it works", href: "computer-science/index.html#method" }
+      ],
+      // the two strands are the two exam papers
+      strands: [
+        { id: "systems", title: "Computer systems", paper: "Paper 1" },
+        { id: "code", title: "Algorithms, programming & logic", paper: "Paper 2" }
+      ],
+      topics: [
+        {
+          num: 1, strand: "systems", id: "data-representation-topic", title: "Data representation", blurb: "Binary, hexadecimal, text, sound, images and compression",
+          lessons: [
+            {
+              id: "cs-data-representation",
+              title: "Data representation",
+              blurb: "1.1\u20131.3: binary and hexadecimal, binary addition, shifts and two\u2019s complement, character sets, sound and images, file sizes and compression.",
+              href: "computer-science/lessons/data-representation.html",
+              status: "live",
+              tags: ["binary", "denary", "hexadecimal", "bit", "byte", "binary addition", "overflow", "logical shift", "two's complement", "ASCII", "Unicode", "sample rate", "sample resolution", "pixel", "colour depth", "resolution", "file size", "lossy", "lossless", "run-length encoding"]
+            }
+          ]
+        },
+        {
+          num: 2, strand: "systems", id: "data-transmission-topic", title: "Data transmission", blurb: "Packets, serial and parallel, USB, error checks and encryption",
+          lessons: [
+            {
+              id: "cs-data-transmission",
+              title: "Data transmission",
+              blurb: "2.1\u20132.3: packets and packet switching, serial and parallel, simplex and duplex, USB, parity, checksums, echo checks, check digits, ARQ and encryption.",
+              href: "computer-science/lessons/data-transmission.html",
+              status: "live",
+              tags: ["packet", "packet switching", "router", "serial", "parallel", "simplex", "half-duplex", "full-duplex", "USB", "parity check", "parity byte", "checksum", "echo check", "check digit", "ARQ", "encryption", "symmetric", "asymmetric", "public key", "private key"]
+            }
+          ]
+        },
+        {
+          num: 3, strand: "systems", id: "hardware-topic", title: "Hardware", blurb: "The CPU, input and output, storage and network hardware",
+          lessons: [
+            {
+              id: "cs-hardware",
+              title: "Hardware",
+              blurb: "3.1\u20133.4: the CPU and the fetch\u2013decode\u2013execute cycle, embedded systems, input and output devices, primary and secondary storage, and network hardware.",
+              href: "computer-science/lessons/hardware.html",
+              status: "live",
+              tags: ["CPU", "von Neumann", "ALU", "control unit", "register", "PC", "MAR", "MDR", "CIR", "accumulator", "bus", "fetch-decode-execute", "clock speed", "cores", "cache", "embedded system", "sensor", "RAM", "ROM", "virtual memory", "SSD", "HDD", "optical", "cloud", "NIC", "MAC address", "IP address", "router"]
+            }
+          ]
+        },
+        {
+          num: 4, strand: "systems", id: "software-topic", title: "Software", blurb: "System and application software, interrupts and translators",
+          lessons: [
+            {
+              id: "cs-software",
+              title: "Software",
+              blurb: "4.1\u20134.2: system and application software, the operating system, interrupts, high- and low-level languages, compilers, interpreters, assemblers and IDEs.",
+              href: "computer-science/lessons/software.html",
+              status: "live",
+              tags: ["operating system", "application software", "utility", "interrupt", "ISR", "firmware", "high-level language", "low-level language", "assembly", "machine code", "compiler", "interpreter", "assembler", "IDE"]
+            }
+          ]
+        },
+        {
+          num: 5, strand: "systems", id: "internet-topic", title: "The internet & its uses", blurb: "The web, URLs, cookies, digital currency and cyber security",
+          lessons: [
+            {
+              id: "cs-internet",
+              title: "The internet & its uses",
+              blurb: "5.1\u20135.3: the internet and the World Wide Web, URLs, HTTP and HTTPS, browsers, DNS, cookies, blockchain and digital currency, and cyber security threats and defences.",
+              href: "computer-science/lessons/internet.html",
+              status: "live",
+              tags: ["internet", "World Wide Web", "URL", "HTTP", "HTTPS", "browser", "DNS", "web server", "cookies", "digital currency", "blockchain", "cyber security", "brute force", "DDoS", "hacking", "malware", "phishing", "pharming", "firewall", "proxy server", "SSL", "two-step verification"]
+            }
+          ]
+        },
+        {
+          num: 6, strand: "systems", id: "emerging-tech-topic", title: "Automated & emerging technologies", blurb: "Sensors and actuators, robots and artificial intelligence",
+          lessons: [
+            {
+              id: "cs-emerging-tech",
+              title: "Automated & emerging technologies",
+              blurb: "6.1\u20136.3: automated systems with sensors, microprocessors and actuators, robotics, and artificial intelligence, expert systems and machine learning.",
+              href: "computer-science/lessons/emerging-tech.html",
+              status: "live",
+              tags: ["automated system", "sensor", "microprocessor", "actuator", "robotics", "robot", "artificial intelligence", "expert system", "knowledge base", "rule base", "inference engine", "machine learning"]
+            }
+          ]
+        },
+        {
+          num: 7, strand: "code", id: "algorithms-topic", title: "Algorithm design & problem-solving", blurb: "Development life cycle, pseudocode, flowcharts, searching, sorting and testing",
+          lessons: [
+            {
+              id: "cs-algorithms",
+              title: "Algorithm design & problem-solving",
+              blurb: "7.1\u20137.6: the program development life cycle, decomposition, pseudocode and flowcharts, linear search and bubble sort, validation, verification, test data and trace tables.",
+              href: "computer-science/lessons/algorithms.html",
+              status: "live",
+              tags: ["development life cycle", "decomposition", "structure diagram", "abstraction", "pseudocode", "flowchart", "linear search", "bubble sort", "totalling", "counting", "validation", "verification", "range check", "presence check", "test data", "normal", "abnormal", "extreme", "boundary", "trace table"]
+            }
+          ]
+        },
+        {
+          num: 8, strand: "code", id: "programming-topic", title: "Programming", blurb: "Variables, selection, loops, procedures, arrays and files",
+          lessons: [
+            {
+              id: "cs-programming",
+              title: "Programming",
+              blurb: "8.1\u20138.3: variables and data types, input and output, selection and iteration, string handling, procedures and functions, arrays and file handling.",
+              href: "computer-science/lessons/programming.html",
+              status: "live",
+              tags: ["variable", "constant", "data type", "integer", "real", "string", "Boolean", "IF", "CASE", "FOR", "WHILE", "REPEAT", "string handling", "MOD", "DIV", "procedure", "function", "parameter", "local", "global", "array", "2D array", "file handling"]
+            }
+          ]
+        },
+        {
+          num: 9, strand: "code", id: "databases-topic", title: "Databases", blurb: "Tables, fields, records, primary keys and SQL",
+          lessons: [
+            {
+              id: "cs-databases",
+              title: "Databases",
+              blurb: "9.1\u20139.2: single-table databases, fields, records, data types and primary keys, and SQL queries with SELECT, FROM, WHERE, ORDER BY, SUM and COUNT.",
+              href: "computer-science/lessons/databases.html",
+              status: "live",
+              tags: ["database", "table", "record", "field", "data type", "primary key", "validation", "SQL", "SELECT", "FROM", "WHERE", "ORDER BY", "SUM", "COUNT", "AND", "OR"]
+            }
+          ]
+        },
+        {
+          num: 10, strand: "code", id: "boolean-logic-topic", title: "Boolean logic", blurb: "Logic gates, truth tables, expressions and circuits",
+          lessons: [
+            {
+              id: "cs-boolean-logic",
+              title: "Boolean logic",
+              blurb: "10.1\u201310.3: the six logic gates, truth tables, logic expressions and logic circuits built from a problem statement.",
+              href: "computer-science/lessons/boolean-logic.html",
+              status: "live",
+              tags: ["logic gate", "NOT", "AND", "OR", "NAND", "NOR", "XOR", "truth table", "logic expression", "logic circuit", "Boolean"]
+            }
+          ]
+        }
+      ]
     }
   ]
 };

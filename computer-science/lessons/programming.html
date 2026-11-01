@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Programming · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 8: variables, constants and data types, input and output, selection and iteration, string handling and operators, procedures and functions, local and global variables, arrays and file handling — with live labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-programming">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>8</span>Programming</p>
+      <a href="#concepts" data-full="8.1 · variables to functions">Programming concepts</a>
+      <a href="#arrays" data-full="8.2 · 1D and 2D arrays">Arrays</a>
+      <a href="#files" data-full="8.3 · read, write, append">File handling</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 3</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 8.1 Programming concepts ======================= -->
+<section class="topic" data-key="concepts">
+  <header class="t-head">
+    <p class="eyebrow"><span>8.1</span>Programming</p>
+    <h1>The building blocks of every <em>program</em></h1>
+    <p class="lede">Every program, in every language, is built from the same few ideas: store values in variables, take input, make decisions, repeat, and split the work into named subroutines.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s811"><span>8.1.1</span>Variables, constants and data types</button><button type="button" data-goto="s812"><span>8.1.2</span>Input, output and sequence</button><button type="button" data-goto="s813"><span>8.1.3</span>Selection</button><button type="button" data-goto="s814"><span>8.1.4</span>Iteration</button><button type="button" data-goto="s815"><span>8.1.5</span>String handling and operators</button><button type="button" data-goto="s816"><span>8.1.6</span>Procedures and functions</button><button type="button" data-goto="s817"><span>8.1.7</span>Local and global variables</button><button type="button" data-goto="s818"><span>8.1.8</span>Library routines and maintainable code</button><button type="button" data-goto="ck81"><span>8.1.9</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cp lt" x="20" y="30" width="70" height="44" rx="6"/><text x="55" y="22" text-anchor="middle">Score</text><text x="55" y="58" text-anchor="middle" class="mono-b">42</text>
+      <rect class="f ct lt" x="110" y="30" width="70" height="44" rx="6"/><text x="145" y="22" text-anchor="middle">Name</text><text x="145" y="58" text-anchor="middle" class="mono-b">"Asha"</text>
+      <text x="100" y="110" text-anchor="middle" class="k">variables: named boxes</text>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Eight sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s811"><span class="sec-n">8.1.1</span><div class="sec-b">
+        <h3>Variables, constants and data types</h3>
+        <ul>
+          <li>a <b>variable</b> is a named memory location whose value <b>can change</b> while the program runs</li>
+          <li>a <b>constant</b> is a named value that <b>does not change</b> (e.g. VAT rate, π) — makes the code easier to read and to update in one place</li>
+        </ul>
+<pre class="code"><span class="kw">DECLARE</span> Score : INTEGER
+<span class="kw">CONSTANT</span> Pi ← 3.142</pre>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Data type</th><th>Holds</th><th>Example</th></tr>
+          <tr><td>INTEGER</td><td>whole numbers</td><td>42, −7</td></tr>
+          <tr><td>REAL</td><td>numbers with a decimal part</td><td>3.14</td></tr>
+          <tr><td>CHAR</td><td>a single character</td><td>'A'</td></tr>
+          <tr><td>STRING</td><td>text: a sequence of characters</td><td>"Hello"</td></tr>
+          <tr><td>BOOLEAN</td><td>TRUE or FALSE</td><td>TRUE</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s812"><span class="sec-n">8.1.2</span><div class="sec-b">
+        <h3>Input, output and sequence</h3>
+        <ul>
+          <li><b>INPUT</b> takes data from the user; <b>OUTPUT</b> displays data</li>
+          <li><b>sequence</b>: statements run one after another, in order</li>
+        </ul>
+<pre class="code"><span class="kw">OUTPUT</span> "Enter your name"
+<span class="kw">INPUT</span> Name
+<span class="kw">OUTPUT</span> "Hello ", Name</pre>
+      </div></article>
+
+      <article class="sec" id="s813"><span class="sec-n">8.1.3</span><div class="sec-b">
+        <h3>Selection: IF and CASE</h3>
+<pre class="code"><span class="kw">IF</span> Mark >= 70 <span class="kw">THEN</span>
+   <span class="kw">OUTPUT</span> "A"
+<span class="kw">ELSE</span>
+   <span class="kw">IF</span> Mark >= 50 <span class="kw">THEN</span>
+      <span class="kw">OUTPUT</span> "Pass"
+   <span class="kw">ELSE</span>
+      <span class="kw">OUTPUT</span> "Fail"
+   <span class="kw">ENDIF</span>
+<span class="kw">ENDIF</span>
+
+<span class="kw">CASE OF</span> Choice
+   1 : <span class="kw">OUTPUT</span> "Start"
+   2 : <span class="kw">OUTPUT</span> "Help"
+   <span class="kw">OTHERWISE</span> <span class="kw">OUTPUT</span> "Invalid"
+<span class="kw">ENDCASE</span></pre>
+        <p>An IF inside another IF is <b>nested</b>. CASE is neater when one variable is compared with many fixed values.</p>
+      </div></article>
+
+      <article class="sec" id="s814"><span class="sec-n">8.1.4</span><div class="sec-b">
+        <h3>Iteration: three kinds of loop</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Loop</th><th>Type</th><th>Use when</th></tr>
+          <tr><td>FOR … TO … NEXT</td><td>count-controlled</td><td>you know how many times to repeat</td></tr>
+          <tr><td>WHILE … DO … ENDWHILE</td><td>pre-condition (checked first)</td><td>it may need to run zero times</td></tr>
+          <tr><td>REPEAT … UNTIL</td><td>post-condition (checked last)</td><td>it must run at least once, e.g. input validation</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s815"><span class="sec-n">8.1.5</span><div class="sec-b">
+        <h3>String handling and operators</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Operation</th><th>Example</th><th>Result</th></tr>
+          <tr><td>LENGTH(s)</td><td>LENGTH("Hello")</td><td>5</td></tr>
+          <tr><td>SUBSTRING(s, start, length)</td><td>SUBSTRING("Hello", 2, 3)</td><td>"ell" (first character is position 1)</td></tr>
+          <tr><td>UCASE(s) / LCASE(s)</td><td>UCASE("Hi")</td><td>"HI"</td></tr>
+          <tr><td>DIV(a, b)</td><td>DIV(17, 5)</td><td>3 (integer division)</td></tr>
+          <tr><td>MOD(a, b)</td><td>MOD(17, 5)</td><td>2 (remainder)</td></tr>
+          <tr><td>ROUND(x, n)</td><td>ROUND(3.14159, 2)</td><td>3.14</td></tr>
+          <tr><td>RANDOM()</td><td>RANDOM()</td><td>a random real number 0 to 1</td></tr>
+        </table></div>
+        <p>Arithmetic: <code class="i">+ − * / ^</code> · comparison: <code class="i">= &lt;&gt; &lt; &lt;= &gt; &gt;=</code> · Boolean: <code class="i">AND OR NOT</code></p>
+      </div></article>
+
+      <article class="sec" id="s816"><span class="sec-n">8.1.6</span><div class="sec-b">
+        <h3>Procedures and functions</h3>
+        <ul>
+          <li>a <b>subroutine</b> is a named block of code that can be <b>called</b> from anywhere in the program</li>
+          <li>a <b>procedure</b> does a task; a <b>function</b> does a task and <b>returns a value</b></li>
+          <li><b>parameters</b> pass values into the subroutine</li>
+          <li>benefits: code written once and reused, shorter programs, easier to test and maintain, work shared between programmers</li>
+        </ul>
+<pre class="code"><span class="kw">PROCEDURE</span> Greet(Name : STRING)
+   <span class="kw">OUTPUT</span> "Hello ", Name
+<span class="kw">ENDPROCEDURE</span>
+
+<span class="kw">FUNCTION</span> Square(N : INTEGER) <span class="kw">RETURNS</span> INTEGER
+   <span class="kw">RETURN</span> N * N
+<span class="kw">ENDFUNCTION</span>
+
+<span class="kw">CALL</span> Greet("Asha")
+Area ← Square(5)</pre>
+      </div></article>
+
+      <article class="sec" id="s817"><span class="sec-n">8.1.7</span><div class="sec-b">
+        <h3>Local and global variables</h3>
+        <ul>
+          <li>a <b>global variable</b> is declared in the main program and can be used <b>anywhere</b></li>
+          <li>a <b>local variable</b> is declared inside a subroutine and can only be used <b>inside that subroutine</b>; it disappears when the subroutine ends</li>
+          <li>local variables avoid accidental changes from other parts of the program and save memory</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s818"><span class="sec-n">8.1.8</span><div class="sec-b">
+        <h3>Library routines and maintainable programs</h3>
+        <ul>
+          <li><b>library routines</b> are ready-made, tested subroutines supplied with the language: MOD, DIV, ROUND, RANDOM …</li>
+          <li>a <b>maintainable</b> program is easy for another programmer to understand and change:</li>
+        </ul>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Technique</th><th>Why</th></tr>
+          <tr><td>meaningful identifiers (TotalScore, not x)</td><td>shows what each variable holds</td></tr>
+          <tr><td>comments</td><td>explain what sections of code do</td></tr>
+          <tr><td>procedures and functions</td><td>break the program into understandable parts</td></tr>
+          <tr><td>indentation and white space</td><td>shows the structure of loops and selections</td></tr>
+        </table></div>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Try the string functions and operators, then compare loops</p></div></div>
+    <div class="lab" data-lab data-mode="ops">
+      <div class="lab-h"><p class="lab-title" data-fig="8.1">String handling and operators</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-expr></div></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <label class="field">operation<select data-k="op"><option value="length">LENGTH</option><option value="substring">SUBSTRING</option><option value="ucase">UCASE</option><option value="lcase">LCASE</option><option value="div">DIV</option><option value="mod">MOD</option><option value="divide">/ (divide)</option><option value="power">^ (power)</option><option value="round">ROUND</option></select></label>
+            <div data-for="str"><label class="field">string<input type="text" maxlength="30" data-k="s"></label><div class="inline-f"><label class="field">start<input type="number" min="1" max="30" data-k="start"></label><label class="field">length<input type="number" min="0" max="30" data-k="len"></label></div></div>
+            <div data-for="num" hidden><div class="inline-f"><label class="field">a<input type="number" data-k="a"></label><label class="field">b<input type="number" data-k="b"></label></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+    <div class="lab" data-lab data-mode="loops">
+      <div class="lab-h"><p class="lab-title" data-fig="8.2">FOR, WHILE or REPEAT?</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div class="codelist" data-code></div><div data-trace></div></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Loop</p><div class="seg" data-k="kind" role="group" aria-label="Loop"><button type="button" data-v="for">FOR</button><button type="button" data-v="while">WHILE</button><button type="button" data-v="repeat">REPEAT</button></div></div>
+            <div class="group"><p>N</p><label class="ctl"><input class="range" type="range" min="0" max="8" step="1" data-k="n" style="--rc:var(--c-cs)"><output class="num"><b data-out="n"></b></output></label></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"op":"mod","a":14,"b":2}'><span>MOD(n, 2) = 0</span><span>no remainder</span><span>n is even</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"kind":"repeat","n":0}'><span>REPEAT with a false start</span><span>condition checked at the end</span><span>body still runs once</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"kind":"while","n":0}'><span>WHILE with a false start</span><span>condition checked first</span><span>body never runs</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Choose the loop and say why: “a REPEAT loop, because the user must enter a value at least once before it can be checked”.</p>
+      <div class="checklist" data-check="8.1" id="ck81">
+        <div class="checklist-h"><p>8.1.9 Checklist · I can…</p><span class="num">0 / 7</span></div>
+        <label><input type="checkbox"><span>declare and use variables and constants with the five data types</span></label>
+        <label><input type="checkbox"><span>use input, output, sequence and selection (IF and CASE)</span></label>
+        <label><input type="checkbox"><span>use and choose FOR, WHILE and REPEAT loops</span></label>
+        <label><input type="checkbox"><span>use string handling and arithmetic, logical and Boolean operators</span></label>
+        <label><input type="checkbox"><span>write and call procedures and functions with parameters</span></label>
+        <label><input type="checkbox"><span>explain local and global variables</span></label>
+        <label><input type="checkbox"><span>use library routines and write maintainable code</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 8.2 Arrays ======================= -->
+<section class="topic" data-key="arrays" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>8.2</span>Programming</p>
+    <h1>One name, many <em>values</em></h1>
+    <p class="lede">Instead of thirty variables for thirty marks, use one array with thirty elements. A 2D array is a table: rows and columns.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s821"><span>8.2.1</span>One-dimensional arrays</button><button type="button" data-goto="s822"><span>8.2.2</span>Two-dimensional arrays</button><button type="button" data-goto="ck82"><span>8.2.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <g class="f cp lt"><rect x="20" y="30" width="36" height="26" rx="3"/><rect x="60" y="30" width="36" height="26" rx="3"/><rect x="100" y="30" width="36" height="26" rx="3"/><rect x="140" y="30" width="36" height="26" rx="3"/><rect x="20" y="60" width="36" height="26" rx="3"/><rect x="60" y="60" width="36" height="26" rx="3"/><rect x="140" y="60" width="36" height="26" rx="3"/><rect x="20" y="90" width="36" height="26" rx="3"/><rect x="60" y="90" width="36" height="26" rx="3"/><rect x="100" y="90" width="36" height="26" rx="3"/><rect x="140" y="90" width="36" height="26" rx="3"/></g>
+      <rect class="f cp dk" x="100" y="60" width="36" height="26" rx="3"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s821"><span class="sec-n">8.2.1</span><div class="sec-b">
+        <h3>One-dimensional arrays</h3>
+        <ul>
+          <li>an <b>array</b> is a data structure that stores many values of the <b>same data type</b> under one identifier</li>
+          <li>each value is an <b>element</b>, found by its <b>index</b>; Cambridge pseudocode often starts at 1</li>
+        </ul>
+<pre class="code"><span class="kw">DECLARE</span> Names : ARRAY[1:30] <span class="kw">OF</span> STRING
+Names[1] ← "Asha"
+<span class="kw">FOR</span> Index ← 1 <span class="kw">TO</span> 30
+   <span class="kw">OUTPUT</span> Names[Index]
+<span class="kw">NEXT</span> Index</pre>
+      </div></article>
+
+      <article class="sec" id="s822"><span class="sec-n">8.2.2</span><div class="sec-b">
+        <h3>Two-dimensional arrays</h3>
+        <ul>
+          <li>a <b>2D array</b> is like a table: <code class="i">Marks[row, column]</code></li>
+          <li>to process every element, use <b>nested loops</b>: an outer loop for the rows, an inner loop for the columns</li>
+        </ul>
+<pre class="code"><span class="kw">DECLARE</span> Marks : ARRAY[1:4, 1:3] <span class="kw">OF</span> INTEGER
+<span class="kw">FOR</span> Row ← 1 <span class="kw">TO</span> 4
+   <span class="kw">FOR</span> Col ← 1 <span class="kw">TO</span> 3
+      <span class="kw">INPUT</span> Marks[Row, Col]
+   <span class="kw">NEXT</span> Col
+<span class="kw">NEXT</span> Row</pre>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Index a 2D array, then walk it with nested loops</p></div></div>
+    <div class="lab" data-lab data-mode="array">
+      <div class="lab-h"><p class="lab-title" data-fig="8.3">A 2D array of test marks</p><div class="btns"><button class="btn btn-primary btn-sm" type="button" data-walk>Walk with nested loops</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-grid style="overflow-x:auto"></div><div class="codelist" data-code style="margin-top:10px"></div></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Controls</p>
+            <div class="group"><p>Row</p><div class="seg" data-k="r" role="group" aria-label="Row"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button></div></div>
+            <div class="group"><p>Column</p><div class="seg" data-k="c" role="group" aria-label="Column"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"r":4,"c":1}'><span>Marks[4, 1]</span><span>row 4, column 1</span><span>one element</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"walk":true}'><span>Outer loop: rows</span><span>inner loop: columns</span><span>every element visited</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> When declaring an array give its <b>identifier, bounds and data type</b>: <code class="i">DECLARE Scores : ARRAY[1:10] OF INTEGER</code>.</p>
+      <div class="checklist" data-check="8.2" id="ck82">
+        <div class="checklist-h"><p>8.2.3 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>declare and use 1D arrays</span></label>
+        <label><input type="checkbox"><span>declare and use 2D arrays</span></label>
+        <label><input type="checkbox"><span>use loops (and nested loops) to process arrays</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 8.3 File handling ======================= -->
+<section class="topic" data-key="files" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>8.3</span>Programming</p>
+    <h1>Data that survives when the program <em>ends</em></h1>
+    <p class="lede">Variables live in RAM and vanish when a program stops. Writing data to a file keeps it, ready to be read back next time.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s831"><span>8.3.1</span>Why use files?</button><button type="button" data-goto="s832"><span>8.3.2</span>Reading and writing files</button><button type="button" data-goto="ck83"><span>8.3.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="f cp" d="M60 14H120L144 38V126H60Z"/><path class="l" d="M120 14V38H144M74 60H130M74 78H130M74 96H116"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s831"><span class="sec-n">8.3.1</span><div class="sec-b">
+        <h3>Why use files?</h3>
+        <ul>
+          <li>data stored in a file is kept <b>permanently</b> (on secondary storage) after the program closes</li>
+          <li>it can be read again later, or by another program, and shared or backed up</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s832"><span class="sec-n">8.3.2</span><div class="sec-b">
+        <h3>Reading and writing files</h3>
+<pre class="code"><span class="kw">OPENFILE</span> "Students.txt" <span class="kw">FOR WRITE</span>     <span class="cm">// starts a new, empty file</span>
+<span class="kw">WRITEFILE</span> "Students.txt", "Asha,15"
+<span class="kw">CLOSEFILE</span> "Students.txt"
+
+<span class="kw">OPENFILE</span> "Students.txt" <span class="kw">FOR READ</span>
+<span class="kw">WHILE NOT EOF</span>("Students.txt") <span class="kw">DO</span>
+   <span class="kw">READFILE</span> "Students.txt", Line
+   <span class="kw">OUTPUT</span> Line
+<span class="kw">ENDWHILE</span>
+<span class="kw">CLOSEFILE</span> "Students.txt"</pre>
+        <ul>
+          <li><b>READ</b> reads lines in order; <b>WRITE</b> creates a new file (overwriting any old one); <b>APPEND</b> adds to the end</li>
+          <li><b>EOF</b> (end of file) is TRUE when there is nothing left to read</li>
+          <li>always <b>CLOSE</b> the file when finished</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Open, write, read, close</p></div></div>
+    <div class="lab" data-lab data-mode="files">
+      <div class="lab-h"><p class="lab-title" data-fig="8.4">A text file</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><p class="key"><span>Students.txt on the disk</span></p><div class="codelist" data-file></div><p class="key"><span>program log</span></p><div class="log" data-log></div></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Controls</p>
+            <div class="btns"><button class="sc" type="button" data-open="READ">OPENFILE … FOR READ</button><button class="sc" type="button" data-open="WRITE">FOR WRITE</button><button class="sc" type="button" data-open="APPEND">FOR APPEND</button></div>
+            <label class="field">line to write<input type="text" maxlength="30" data-line value="Chen,15"></label>
+            <div class="btns"><button class="sc" type="button" data-write>WRITEFILE</button><button class="sc" type="button" data-read>READFILE</button><button class="sc" type="button" data-close>CLOSEFILE</button></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <p class="chain"><span>OPENFILE FOR WRITE</span><span>old contents erased</span><span>use APPEND to keep them</span></p>
+        <p class="chain"><span>WHILE NOT EOF</span><span>READFILE one line</span><span>until the end of the file</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Write all four parts in order: <b>OPENFILE</b> (with the mode), <b>READFILE</b> or <b>WRITEFILE</b>, and <b>CLOSEFILE</b>.</p>
+      <div class="checklist" data-check="8.3" id="ck83">
+        <div class="checklist-h"><p>8.3.3 Checklist · I can…</p><span class="num">0 / 2</span></div>
+        <label><input type="checkbox"><span>explain why programs store data in files</span></label>
+        <label><input type="checkbox"><span>write pseudocode to open, read, write, append and close a file</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../js/kit.js"></script>
+<script src="../js/programming.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+</body>
+</html>

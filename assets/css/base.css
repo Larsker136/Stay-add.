@@ -37,6 +37,7 @@
   --bio: #91e3b5;
   --phys: #9dc4ff;
   --math: #ffc59d;
+  --cs: #f4b8d4;
 
   --blue: #2f5fc4;
   --amber: #b06c17;
@@ -117,6 +118,15 @@
   --c-lh: var(--amber);
   --c-oes: var(--rose);
   --c-prog: var(--violet);
+
+  /* computer science */
+  --c-cs: var(--rose);         /* the subject accent */
+  --c-bit: var(--teal);        /* a 1 bit, a TRUE signal */
+  --c-off: var(--ink-4);       /* a 0 bit, a FALSE signal */
+  --c-data: var(--blue);       /* data moving: packets, buses */
+  --c-addr: var(--amber);      /* addresses, the address bus */
+  --c-ctrl: var(--violet);     /* control signals */
+  --c-err: var(--red);         /* errors, flipped bits */
 }
 
 .on-dark { --ok: var(--lime); color: var(--ink); background: var(--bg); }

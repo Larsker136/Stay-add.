@@ -33,7 +33,7 @@
     $$(".side-steps i").forEach((tick, k) => (tick.className = k === i ? "now" : opened.includes(topics[k]?.dataset.key) ? "done" : ""));
     const count = $(".side-count");
     if (count) count.textContent = `${opened.filter((o) => topics.some((t) => t.dataset.key === o)).length} / ${topics.length}`;
-    const prev = topics[i - 1], next = topics[i + 1], pPrev = $("[data-prev]"), pNext = $("[data-next]");
+    const prev = topics[i - 1], next = topics[i + 1], pPrev = $(".pager [data-prev]"), pNext = $(".pager [data-next]");   // labs may have their own Next buttons
     if (pPrev && pNext) {
       pPrev.hidden = !prev; pNext.hidden = !next;
       if (prev) { pPrev.href = `#${prev.dataset.key}`; pPrev.querySelector("span").textContent = `← ${tabs[i - 1].textContent}`; }

@@ -65,11 +65,18 @@
         <text x="188" y="20" text-anchor="end" class="lbl-ink">37 °C</text>
         <text x="250" y="30" text-anchor="middle" style="fill:var(--c-denat)">denatured</text>
         <text x="96" y="62" class="ser">more collisions</text>
+      </svg>`,
+    "computer-science": `
+      <svg class="fig st-art" viewBox="0 0 300 140" role="img" aria-label="One byte, 01001101: place values 128 down to 1; the 1 bits add up to 77, which is 4D in hexadecimal">
+        <rect x="36" y="44" width="26" height="30" rx="4" style="fill:var(--surface);stroke:var(--line-2);stroke-width:1.5"/><text x="49" y="64" text-anchor="middle" class="lbl-ink" style="font-size:13px">0</text><text x="49" y="34" text-anchor="middle">128</text><rect x="68" y="44" width="26" height="30" rx="4" style="fill:color-mix(in srgb, var(--c-bit) 18%, var(--surface));stroke:var(--c-bit);stroke-width:1.5"/><text x="81" y="64" text-anchor="middle" class="lbl-ink" style="font-size:13px">1</text><text x="81" y="34" text-anchor="middle">64</text><rect x="100" y="44" width="26" height="30" rx="4" style="fill:var(--surface);stroke:var(--line-2);stroke-width:1.5"/><text x="113" y="64" text-anchor="middle" class="lbl-ink" style="font-size:13px">0</text><text x="113" y="34" text-anchor="middle">32</text><rect x="132" y="44" width="26" height="30" rx="4" style="fill:var(--surface);stroke:var(--line-2);stroke-width:1.5"/><text x="145" y="64" text-anchor="middle" class="lbl-ink" style="font-size:13px">0</text><text x="145" y="34" text-anchor="middle">16</text><rect x="164" y="44" width="26" height="30" rx="4" style="fill:color-mix(in srgb, var(--c-bit) 18%, var(--surface));stroke:var(--c-bit);stroke-width:1.5"/><text x="177" y="64" text-anchor="middle" class="lbl-ink" style="font-size:13px">1</text><text x="177" y="34" text-anchor="middle">8</text><rect x="196" y="44" width="26" height="30" rx="4" style="fill:color-mix(in srgb, var(--c-bit) 18%, var(--surface));stroke:var(--c-bit);stroke-width:1.5"/><text x="209" y="64" text-anchor="middle" class="lbl-ink" style="font-size:13px">1</text><text x="209" y="34" text-anchor="middle">4</text><rect x="228" y="44" width="26" height="30" rx="4" style="fill:var(--surface);stroke:var(--line-2);stroke-width:1.5"/><text x="241" y="64" text-anchor="middle" class="lbl-ink" style="font-size:13px">0</text><text x="241" y="34" text-anchor="middle">2</text><rect x="260" y="44" width="26" height="30" rx="4" style="fill:color-mix(in srgb, var(--c-bit) 18%, var(--surface));stroke:var(--c-bit);stroke-width:1.5"/><text x="273" y="64" text-anchor="middle" class="lbl-ink" style="font-size:13px">1</text><text x="273" y="34" text-anchor="middle">1</text>
+        <path class="guide" d="M36 92H284"/>
+        <text x="36" y="112" class="lbl-ink">64 + 8 + 4 + 1 = 77</text><text x="284" y="112" text-anchor="end" class="ser">= 4D in hex</text>
+        <text x="36" y="134">place value</text><text x="284" y="134" text-anchor="end">one byte →</text>
       </svg>`
   };
   // each subject is one large row: number, kicker, name, its graph, how much is live, an arrow
-  const TINT = { chemistry: "chem", physics: "phys", biology: "bio" };
-  const KICKER = { chemistry: "Matter & change", physics: "Energy & the universe", biology: "Life & living systems" };
+  const TINT = { chemistry: "chem", physics: "phys", biology: "bio", "computer-science": "cs" };
+  const KICKER = { chemistry: "Matter & change", physics: "Energy & the universe", biology: "Life & living systems", "computer-science": "Data, machines & logic" };
   const ARROW = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
   const rows = $("[data-subjects]");
   if (rows) {

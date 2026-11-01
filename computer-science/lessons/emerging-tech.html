@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Automated and emerging technologies · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 6: automated systems with sensors, microprocessors and actuators, robotics, artificial intelligence, expert systems and machine learning — with live labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-emerging-tech">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>6</span>Automated &amp; emerging tech</p>
+      <a href="#automated" data-full="6.1 · sensors to actuators">Automated systems</a>
+      <a href="#robotics" data-full="6.2 · characteristics and uses">Robotics</a>
+      <a href="#ai" data-full="6.3 · expert systems, learning">Artificial intelligence</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 3</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 6.1 Automated systems ======================= -->
+<section class="topic" data-key="automated">
+  <header class="t-head">
+    <p class="eyebrow"><span>6.1</span>Automated &amp; emerging technologies</p>
+    <h1>Systems that run <em>themselves</em></h1>
+    <p class="lede">An automated system measures, decides and acts with no human in the loop: sensors feed a microprocessor, which compares readings with stored values and drives actuators — round and round.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s611"><span>6.1.1</span>What is an automated system?</button><button type="button" data-goto="s612"><span>6.1.2</span>Automated systems in use</button><button type="button" data-goto="ck61"><span>6.1.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cb" x="6" y="50" width="54" height="30" rx="5"/><rect class="f cp" x="73" y="50" width="54" height="30" rx="5"/><rect class="f ca" x="140" y="50" width="54" height="30" rx="5"/>
+      <path class="l w3" d="M60 65H73M127 65H140"/><path class="l dash" d="M167 80V110H33V80"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s611"><span class="sec-n">6.1.1</span><div class="sec-b">
+        <h3>What is an automated system?</h3>
+        <p>An <b>automated system</b> is a combination of <b>software and hardware</b> designed to carry out a task <b>without human intervention</b>. It is made of:</p>
+        <ul>
+          <li><b>sensors</b> — measure physical conditions (temperature, light …) and send data</li>
+          <li>a <b>microprocessor</b> — receives the data (converted to digital by an ADC), compares it with stored <b>preset values</b> and decides what to do</li>
+          <li><b>actuators</b> — motors, valves, pumps, heaters: carry out the action</li>
+        </ul>
+        <p>The process repeats continuously, so the system keeps correcting itself — a <b>feedback loop</b>.</p>
+      </div></article>
+
+      <article class="sec" id="s612"><span class="sec-n">6.1.2</span><div class="sec-b">
+        <h3>Automated systems in use</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Area</th><th>Example</th></tr>
+          <tr><td>Industry</td><td>a chemical plant keeping reaction temperature and pressure safe; assembly-line machines</td></tr>
+          <tr><td>Transport</td><td>self-driving cars, automatic train systems, traffic lights that respond to traffic</td></tr>
+          <tr><td>Agriculture</td><td>automatic irrigation using soil moisture sensors; greenhouse climate control</td></tr>
+          <tr><td>Weather</td><td>automated weather stations recording and transmitting readings</td></tr>
+          <tr><td>Gaming</td><td>sensors in controllers and headsets responding to movement</td></tr>
+          <tr><td>Lighting</td><td>street and security lights switching on in darkness or with movement</td></tr>
+          <tr><td>Science</td><td>experiments that take readings automatically over long periods</td></tr>
+        </table></div>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Advantages</th><th>Disadvantages</th></tr>
+          <tr><td>faster and more accurate than humans; work 24/7</td><td>expensive to set up and maintain</td></tr>
+          <tr><td>safer — can work in dangerous places</td><td>can fail, or be hacked; may not cope with unexpected situations</td></tr>
+          <tr><td>consistent results; lower long-term costs</td><td>can replace human jobs</td></tr>
+        </table></div>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Keep a greenhouse at its preset temperature</p></div></div>
+    <div class="lab" data-lab data-mode="control">
+      <div class="lab-h"><p class="lab-title" data-fig="6.1">An automated greenhouse</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 300" role="img" aria-label="A live graph of the greenhouse temperature with lines for the preset value and the outside temperature; below, whether the heater is on and the window open."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Outside temperature</p><label class="ctl"><input class="range" type="range" min="-5" max="40" step="1" data-k="outside" style="--rc:var(--teal)"><output class="num"><b data-out="outside"></b> °C</output></label></div>
+            <div class="group"><p>Preset value</p><label class="ctl"><input class="range" type="range" min="10" max="35" step="1" data-k="preset" style="--rc:var(--green)"><output class="num"><b data-out="preset"></b> °C</output></label></div>
+            <div class="btns"><button class="sc" type="button" data-toggle="auto">Microprocessor control</button></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div><div class="log" data-log></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"outside":-2,"auto":true}'><span>Cold outside</span><span>sensor reading below preset</span><span>microprocessor signals heater</span><span>temperature rises</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"outside":38,"auto":true}'><span>Hot outside</span><span>reading above preset</span><span>motor opens the window</span><span>temperature falls</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"auto":false}'><span>No microprocessor control</span><span>nothing responds</span><span>temperature drifts</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> For a “describe how the automated system works” question, name the sensor, say the data is <b>compared with a stored value</b>, name the actuator and its action, and say it <b>repeats continuously</b>.</p>
+      <div class="checklist" data-check="6.1" id="ck61">
+        <div class="checklist-h"><p>6.1.3 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>describe how sensors, microprocessors and actuators work together</span></label>
+        <label><input type="checkbox"><span>describe automated systems in different scenarios</span></label>
+        <label><input type="checkbox"><span>give advantages and disadvantages of automated systems</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 6.2 Robotics ======================= -->
+<section class="topic" data-key="robotics" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>6.2</span>Automated &amp; emerging technologies</p>
+    <h1>Robots: built, wired and <em>programmed</em></h1>
+    <p class="lede">A robot is a machine with a body, sensors, a processor and motors — and a program that tells it what to do. It can repeat a task perfectly, but it only does what it was programmed to do.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s621"><span>6.2.1</span>What is robotics?</button><button type="button" data-goto="s622"><span>6.2.2</span>Characteristics of a robot</button><button type="button" data-goto="s623"><span>6.2.3</span>Roles, pros and cons</button><button type="button" data-goto="ck62"><span>6.2.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cp" x="70" y="30" width="60" height="44" rx="8"/><circle class="f lt" cx="88" cy="50" r="6"/><circle class="f lt" cx="112" cy="50" r="6"/>
+      <rect class="f" x="60" y="80" width="80" height="34" rx="6"/><circle class="f dk" cx="76" cy="118" r="8"/><circle class="f dk" cx="124" cy="118" r="8"/><path class="l w3" d="M100 30V18"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s621"><span class="sec-n">6.2.1</span><div class="sec-b">
+        <h3>What is robotics?</h3>
+        <p><b>Robotics</b> is the branch of computer science that combines the design, construction and operation of robots. Robots are used in factories, homes, hospitals, farms, space and more.</p>
+      </div></article>
+
+      <article class="sec" id="s622"><span class="sec-n">6.2.2</span><div class="sec-b">
+        <h3>Characteristics of a robot</h3>
+        <ul>
+          <li>a <b>mechanical structure or framework</b> — a body, arms, wheels or legs</li>
+          <li><b>electrical components</b> — <b>sensors</b> to detect the environment, a <b>microprocessor</b> to process the data, and <b>actuators</b> (motors) to move</li>
+          <li><b>programmable</b> — it follows a program; some can be re-programmed for a new task</li>
+        </ul>
+        <p class="note-k"><b>Not a robot</b> A device with no program controlling its movement — a remote-controlled toy driven only by a human — is not a robot.</p>
+      </div></article>
+
+      <article class="sec" id="s623"><span class="sec-n">6.2.3</span><div class="sec-b">
+        <h3>Roles, advantages and disadvantages</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Area</th><th>Examples</th></tr>
+          <tr><td>Industry</td><td>welding and painting car bodies, packing, bomb disposal</td></tr>
+          <tr><td>Transport</td><td>driverless cars and delivery vehicles</td></tr>
+          <tr><td>Agriculture</td><td>harvesting, weeding, milking robots</td></tr>
+          <tr><td>Medicine</td><td>surgical robots for precise operations</td></tr>
+          <tr><td>Domestic</td><td>robot vacuum cleaners and lawnmowers</td></tr>
+          <tr><td>Entertainment</td><td>robot toys, theme-park animatronics</td></tr>
+        </table></div>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Advantages</th><th>Disadvantages</th></tr>
+          <tr><td>work in dangerous places; never tire; work 24/7</td><td>expensive to buy, program and maintain</td></tr>
+          <tr><td>precise and consistent, fewer errors</td><td>struggle with tasks they weren’t programmed for</td></tr>
+          <tr><td>can be faster than humans</td><td>replace some jobs; need skilled technicians</td></tr>
+        </table></div>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Program a robot to reach the goal</p></div></div>
+    <div class="lab" data-lab data-mode="robot">
+      <div class="lab-h"><p class="lab-title" data-fig="6.2">A programmable robot</p><div class="btns"><button class="btn btn-primary btn-sm" type="button" data-run>Run</button><button class="ghost" type="button" data-clear>Clear</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 450 290" role="img" aria-label="An eight by eight grid with walls. The robot starts in the top-left corner; the goal is in the bottom-right corner. Its path is drawn as it follows the program."></svg></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Add a command</p><div class="btns"><button class="sc" type="button" data-cmd="FORWARD">FORWARD</button><button class="sc" type="button" data-cmd="LEFT">LEFT</button><button class="sc" type="button" data-cmd="RIGHT">RIGHT</button></div><p class="block-h" style="margin-top:8px">Program</p><div class="prog" data-prog></div></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"cmds":["FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD"]}'><span>Wall ahead</span><span>proximity sensor detects it</span><span>microprocessor stops the motors</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"cmds":["LEFT","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","RIGHT","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD","FORWARD"]}'><span>A correct program</span><span>followed exactly</span><span>goal reached</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Give all three characteristics: mechanical structure, electrical components (sensors, microprocessor, actuators) and programmable.</p>
+      <div class="checklist" data-check="6.2" id="ck62">
+        <div class="checklist-h"><p>6.2.4 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>explain what robotics is</span></label>
+        <label><input type="checkbox"><span>describe the characteristics of a robot</span></label>
+        <label><input type="checkbox"><span>describe the roles of robots and their advantages and disadvantages</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 6.3 Artificial intelligence ======================= -->
+<section class="topic" data-key="ai" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>6.3</span>Automated &amp; emerging technologies</p>
+    <h1>Machines that <em>reason</em> and learn</h1>
+    <p class="lede">Artificial intelligence imitates human thinking. An expert system reasons with rules written by experts; machine learning finds its own patterns in data and gets better with more of it.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s631"><span>6.3.1</span>What is AI?</button><button type="button" data-goto="s632"><span>6.3.2</span>Expert systems</button><button type="button" data-goto="s633"><span>6.3.3</span>Machine learning</button><button type="button" data-goto="ck63"><span>6.3.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <g class="f cv"><circle cx="40" cy="40" r="10"/><circle cx="40" cy="100" r="10"/><circle cx="100" cy="30" r="10"/><circle cx="100" cy="70" r="10"/><circle cx="100" cy="110" r="10"/><circle cx="160" cy="70" r="10"/></g>
+      <path class="l cv" d="M50 40L90 30M50 40L90 70M50 40L90 110M50 100L90 30M50 100L90 70M50 100L90 110M110 30L150 70M110 70L150 70M110 110L150 70"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s631"><span class="sec-n">6.3.1</span><div class="sec-b">
+        <h3>What is artificial intelligence?</h3>
+        <p><b>Artificial intelligence (AI)</b> is a branch of computer science dealing with the simulation of intelligent behaviour by computers. Characteristics of AI:</p>
+        <ul>
+          <li>the <b>collection of data</b> and the <b>rules</b> for using that data</li>
+          <li>the ability to <b>reason</b> — to draw conclusions from the data</li>
+          <li>it can include the ability to <b>learn and adapt</b> (machine learning)</li>
+        </ul>
+        <p>Examples: voice assistants, chatbots, face recognition, recommendation systems, self-driving cars.</p>
+      </div></article>
+
+      <article class="sec" id="s632"><span class="sec-n">6.3.2</span><div class="sec-b">
+        <h3>Expert systems</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Part</th><th>Role</th></tr>
+          <tr><td>Knowledge base</td><td>a database of <b>facts</b> about the subject, collected from human experts</td></tr>
+          <tr><td>Rule base</td><td>a set of <b>rules</b> (IF … THEN …) for using the facts</td></tr>
+          <tr><td>Inference engine</td><td>applies the rules to the facts to reach <b>conclusions</b>; decides which questions to ask</td></tr>
+          <tr><td>Interface</td><td>lets the user enter answers and see the results, often with an <b>explanation</b> of how the conclusion was reached</td></tr>
+        </table></div>
+        <p>Used for medical diagnosis, fault finding in cars or machines, mineral prospecting, financial planning, chess.</p>
+      </div></article>
+
+      <article class="sec" id="s633"><span class="sec-n">6.3.3</span><div class="sec-b">
+        <h3>Machine learning</h3>
+        <ul>
+          <li>in <b>machine learning</b> a program is not given explicit rules: it is trained on large amounts of <b>data</b>, finds <b>patterns</b>, and uses them to make predictions or decisions</li>
+          <li>it can <b>change its own rules</b> and improve its performance as it is given more data — it learns from experience</li>
+          <li>examples: spam filters that learn which emails are junk, product recommendations, image and speech recognition</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Let an expert system diagnose a computer fault</p></div></div>
+    <div class="lab" data-lab data-mode="expert">
+      <div class="lab-h"><p class="lab-title" data-fig="6.3">An expert system for computer faults</p><button class="ghost" type="button" data-reset>Restart</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-q></div><p class="key"><span>rule base</span></p><div class="rules" data-kb></div></figure>
+        <div class="dock"><div class="block block-results"><p class="block-h">Knowledge base</p><div class="rows" data-results></div></div></div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"facts":["screen on","very slow","few programs open","pop-up adverts"]}'><span>User answers questions</span><span>facts in the knowledge base</span><span>inference engine applies a rule</span><span>diagnosis with explanation</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Machine learning</span><span>trained on lots of data</span><span>finds patterns, adapts its rules</span><span>improves over time</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Name all four parts of an expert system and say what each <b>does</b>; for machine learning, stress that it <b>changes its own rules</b> from data.</p>
+      <div class="checklist" data-check="6.3" id="ck63">
+        <div class="checklist-h"><p>6.3.4 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>describe the characteristics of AI</span></label>
+        <label><input type="checkbox"><span>describe the parts of an expert system and how they work together</span></label>
+        <label><input type="checkbox"><span>describe machine learning with examples</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../js/kit.js"></script>
+<script src="../js/emerging-tech.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+</body>
+</html>

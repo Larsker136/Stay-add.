@@ -47,18 +47,25 @@ stay add./
 │   ├── labs/refraction.html
 │   ├── css/  home.css · lab.css
 │   └── js/   home.js · projectile.js · field.js · refraction.js · quiz-data.js
-└── biology/
-    ├── index.html           Biology home: Fig. 1 enzyme activity, 21 topics in five strands, method
-    ├── lessons/
-    │   ├── enzymes.html       lock and key · temperature · pH
-    │   ├── reproduction.html  16.1–16.6: asexual · sexual · plants · humans · sex hormones · STIs · parts quiz
-    │   ├── inheritance.html   17.1–17.4: genes · mitosis · meiosis · monohybrid crosses
-    │   └── (figure lessons, no lab script) classification · organisation · movement · molecules ·
-    │       plant-nutrition · human-nutrition · transport-plants · transport-animals · disease-immunity ·
-    │       gas-exchange · respiration · excretion · coordination · drugs · variation · ecology ·
-    │       human-influences · biotechnology
-    ├── css/  home.css · lab.css (all Biology figures, shared by home and lessons)
-    └── js/   enzyme.js (the model, shared) · home.js · enzymes.js · reproduction.js · inheritance.js
+├── biology/
+│   ├── index.html           Biology home: Fig. 1 enzyme activity, 21 topics in five strands, method
+│   ├── lessons/
+│   │   ├── enzymes.html       lock and key · temperature · pH
+│   │   ├── reproduction.html  16.1–16.6: asexual · sexual · plants · humans · sex hormones · STIs · parts quiz
+│   │   ├── inheritance.html   17.1–17.4: genes · mitosis · meiosis · monohybrid crosses
+│   │   └── (figure lessons, no lab script) classification · organisation · movement · molecules ·
+│   │       plant-nutrition · human-nutrition · transport-plants · transport-animals · disease-immunity ·
+│   │       gas-exchange · respiration · excretion · coordination · drugs · variation · ecology ·
+│   │       human-influences · biotechnology
+│   ├── css/  home.css · lab.css (all Biology figures, shared by home and lessons)
+│   └── js/   enzyme.js (the model, shared) · home.js · enzymes.js · reproduction.js · inheritance.js
+└── computer-science/
+    ├── index.html           CS home: Fig. 1 one byte, 10 topics in two papers, method
+    ├── lessons/             one lesson per topic, numbered like the syllabus (1.1.1 …), no “big picture”:
+    │   data-representation · data-transmission · hardware · software · internet · emerging-tech ·
+    │   algorithms · programming · databases · boolean-logic
+    ├── css/  home.css · lab.css (figure parts, pseudocode, bit switches, gates, trace tables)
+    └── js/   home.js · kit.js (lab helpers shared by every lesson) · one script per lesson, same name
 ```
 
 Rule of thumb: anything two subjects use goes in `assets/`; anything only one subject uses
@@ -110,10 +117,13 @@ New lessons follow the simple IGCSE Econ Lab form, in any subject. Copy
 followed by `assets/js/lesson.js`. Each `.lab[data-lab]` should define `lab.applyState(state)` so the
 Interpret chains can drive it. The parts:
 
-- a short topic list on the left (`.tabs a[href="#key"]`); one `<section class="topic" data-key>`
+- a topic list on the left (`.tabs a[href="#key" data-full="9.1 · what it covers"]`, numbered, with
+  "opened" progress at the foot); one `<section class="topic" data-key>`
   per topic, shown one at a time, with Previous / Next filled in automatically;
 - each topic: a header (`.t-head`: eyebrow, title with one italic word, lede; an old `svg.t-art`
-  drawing is hidden), then three steps, each opened by a heavy rule and a quiet label —
+  drawing is hidden) and, for long topics, the "In this topic" contents (`.toc`), then three
+  numbered steps (`.step-h`: number, name, what it holds). A 64px number column (`--gut`) holds
+  step and section numbers; text keeps `--measure` (720px), figures and labs use the full width —
   **1 Understand** (`.notes` with two `.note` columns and a `.formula` line),
   **2 Experiment** (one `.lab`: figure, Controls / Results in the dock, “What just happened”),
   **3 Interpret** (`.chain` buttons with `data-set` that load the lab, and one `.tip`).

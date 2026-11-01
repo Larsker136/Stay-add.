@@ -13,7 +13,7 @@
      APP_FILES, so they are ready offline before anyone visits them.
    ========================================================================== */
 
-const CACHE_VERSION = "v5";
+const CACHE_VERSION = "v7";
 const APP_CACHE = `stayadd-app-${CACHE_VERSION}`;   // the site's own files
 const LIB_CACHE = "stayadd-libs";                   // Google Fonts and GSAP: kept across versions
 
@@ -39,7 +39,12 @@ const APP_FILES = [
   "./biology/js/blood.js", "./biology/js/molecules.js", "./biology/js/movement.js",
   ...["classification", "organisation", "movement", "molecules", "enzymes", "plant-nutrition", "human-nutrition", "transport-plants",
       "transport-animals", "disease-immunity", "gas-exchange", "respiration", "excretion", "coordination", "drugs", "reproduction",
-      "inheritance", "variation", "ecology", "human-influences", "biotechnology"].map((l) => `./biology/lessons/${l}.html`)
+      "inheritance", "variation", "ecology", "human-influences", "biotechnology"].map((l) => `./biology/lessons/${l}.html`),
+  // computer science
+  "./computer-science/index.html", "./computer-science/css/home.css", "./computer-science/css/lab.css",
+  "./computer-science/js/home.js", "./computer-science/js/kit.js",
+  ...["data-representation", "data-transmission", "hardware", "software", "internet", "emerging-tech", "algorithms",
+      "programming", "databases", "boolean-logic"].flatMap((l) => [`./computer-science/lessons/${l}.html`, `./computer-science/js/${l}.js`])
 ];
 const isLib = (url) => ["fonts.googleapis.com", "fonts.gstatic.com", "cdn.jsdelivr.net"].includes(url.hostname);
 

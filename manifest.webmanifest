@@ -21,6 +21,7 @@
   "shortcuts": [
     { "name": "Chemistry", "url": "chemistry/index.html", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] },
     { "name": "Physics", "url": "physics/index.html", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Biology", "url": "biology/index.html", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] }
+    { "name": "Biology", "url": "biology/index.html", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Computer Science", "url": "computer-science/index.html", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] }
   ]
 }

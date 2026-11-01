@@ -3,7 +3,7 @@
 # stay add.
 
 **Stay addicted, keep adding.** A free study site for Cambridge IGCSE science —
-Physics, Chemistry and Biology — where every idea is explained in plain words, tried in a
+Physics, Chemistry, Biology and Computer Science — where every idea is explained in plain words, tried in a
 small interactive lab, and finished with the cause → effect chain examiners want.
 
 No sign-up and no build step: your progress is saved only in your own browser.
@@ -24,6 +24,7 @@ Each topic follows the same three steps, so you always know where you are:
 | Chemistry | 0620 / 0971 | Electrolysis · Collision theory · Naming organic compounds |
 | Physics | 0625 / 0972 | Refraction |
 | Biology | 0610 / 0970 | All 21 topics: Enzymes and Reproduction / Inheritance with labs; topics 1–4, 6–15, 18–21 as figure lessons |
+| Computer Science | 0478 / 0984 | All 10 topics, each with numbered sections and live labs (bits, packets, the CPU cycle, sorting, SQL, logic gates …) |
 
 Some of the labs:
 - **Electrolysis:** what forms at each electrode, for molten and dissolved compounds.

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Databases · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 9: single-table databases, records, fields, data types, primary keys and validation, and SQL queries with SELECT, FROM, WHERE, ORDER BY, AND, OR, SUM and COUNT — with live labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-databases">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>9</span>Databases</p>
+      <a href="#database" data-full="9.1 · tables, fields, keys">Databases</a>
+      <a href="#sql" data-full="9.2 · SELECT, WHERE, ORDER BY">SQL</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 2</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 9.1 Databases ======================= -->
+<section class="topic" data-key="database">
+  <header class="t-head">
+    <p class="eyebrow"><span>9.1</span>Databases</p>
+    <h1>Records in rows, fields in <em>columns</em></h1>
+    <p class="lede">A database stores data in tables so it can be searched, sorted and updated quickly. Every record needs one field that is never repeated — the primary key.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s911"><span>9.1.1</span>What is a database?</button><button type="button" data-goto="s912"><span>9.1.2</span>Tables, records and fields</button><button type="button" data-goto="s913"><span>9.1.3</span>Data types and primary keys</button><button type="button" data-goto="ck91"><span>9.1.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f lt" x="14" y="20" width="172" height="100" rx="4"/><rect class="f cp lt" x="14" y="20" width="172" height="22" rx="4"/><path class="l" d="M14 62H186M14 82H186M14 102H186M70 20V120M128 20V120"/>
+      <rect class="f cp dk no-s" x="15" y="63" width="170" height="18"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s911"><span class="sec-n">9.1.1</span><div class="sec-b">
+        <h3>What is a database?</h3>
+        <ul>
+          <li>a <b>database</b> is a structured, persistent collection of data</li>
+          <li>it lets users <b>search</b>, <b>sort</b>, <b>add</b>, <b>edit</b> and <b>delete</b> data quickly and accurately</li>
+          <li>at IGCSE you work with <b>single-table</b> databases</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s912"><span class="sec-n">9.1.2</span><div class="sec-b">
+        <h3>Tables, records and fields</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Term</th><th>Meaning</th></tr>
+          <tr><td>Table</td><td>a collection of related records, e.g. Students</td></tr>
+          <tr><td>Record</td><td>all the data about <b>one item</b> — one row</td></tr>
+          <tr><td>Field</td><td>one piece of data about each item — one column, e.g. Surname</td></tr>
+        </table></div>
+        <p>Validation (range, presence, format, length, type checks) can be set on fields so that only sensible data is stored.</p>
+      </div></article>
+
+      <article class="sec" id="s913"><span class="sec-n">9.1.3</span><div class="sec-b">
+        <h3>Data types and primary keys</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Data type</th><th>Use for</th></tr>
+          <tr><td>text / alphanumeric</td><td>names, IDs, phone numbers (not used for calculations)</td></tr>
+          <tr><td>character</td><td>a single character, e.g. a grade</td></tr>
+          <tr><td>Boolean</td><td>yes/no, true/false</td></tr>
+          <tr><td>integer</td><td>whole numbers</td></tr>
+          <tr><td>real</td><td>numbers with decimals, e.g. price</td></tr>
+          <tr><td>date / time</td><td>dates and times</td></tr>
+        </table></div>
+        <p>A <b>primary key</b> is a field that <b>uniquely identifies</b> each record. Telephone numbers are stored as text because they may start with 0 and are never used in calculations.</p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Choose the primary key</p></div></div>
+    <div class="lab" data-lab data-mode="keys">
+      <div class="lab-h"><p class="lab-title" data-fig="9.1">Which field can be the primary key?</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-table style="overflow-x:auto"></div></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Controls</p><div class="group"><p>Primary key</p><div class="bench-grid seg-like" data-k="key"><button class="sc" type="button" data-v="StudentID">StudentID</button><button class="sc" type="button" data-v="FirstName">FirstName</button><button class="sc" type="button" data-v="Surname">Surname</button><button class="sc" type="button" data-v="Form">Form</button><button class="sc" type="button" data-v="Age">Age</button><button class="sc" type="button" data-v="Score">Score</button><button class="sc" type="button" data-v="Library">Library</button></div></div></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"key":"FirstName"}'><span>FirstName as key</span><span>two students called Asha</span><span>not unique: not a primary key</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"key":"StudentID"}'><span>StudentID</span><span>different for every record</span><span>a good primary key</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Count carefully: the number of <b>records</b> is the number of rows (not counting the field names); the number of <b>fields</b> is the number of columns.</p>
+      <div class="checklist" data-check="9.1" id="ck91">
+        <div class="checklist-h"><p>9.1.4 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>define table, record and field</span></label>
+        <label><input type="checkbox"><span>choose suitable data types for fields</span></label>
+        <label><input type="checkbox"><span>identify and justify a primary key</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 9.2 SQL ======================= -->
+<section class="topic" data-key="sql" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>9.2</span>Databases</p>
+    <h1>Ask the database a <em>question</em></h1>
+    <p class="lede">Structured Query Language (SQL) asks a database for exactly the records and fields you want, in the order you want them.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s921"><span>9.2.1</span>SELECT, FROM, WHERE</button><button type="button" data-goto="s922"><span>9.2.2</span>ORDER BY, AND, OR</button><button type="button" data-goto="s923"><span>9.2.3</span>SUM and COUNT</button><button type="button" data-goto="ck92"><span>9.2.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f lt" x="14" y="30" width="172" height="80" rx="6"/><text x="26" y="58" class="mono-b"><tspan class="tc cp">SELECT</tspan> Name</text><text x="26" y="80" class="mono-b"><tspan class="tc cp">FROM</tspan> Students</text><text x="26" y="102" class="mono-b"><tspan class="tc cp">WHERE</tspan> Age=15</text>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s921"><span class="sec-n">9.2.1</span><div class="sec-b">
+        <h3>SELECT, FROM, WHERE</h3>
+<pre class="code"><span class="kw">SELECT</span> FirstName, Score
+<span class="kw">FROM</span> Students
+<span class="kw">WHERE</span> Form = '10A';</pre>
+        <ul>
+          <li><b>SELECT</b>: the fields to show (<code class="i">*</code> means all fields)</li>
+          <li><b>FROM</b>: the table</li>
+          <li><b>WHERE</b>: the condition records must meet; text in single quotes, numbers without</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s922"><span class="sec-n">9.2.2</span><div class="sec-b">
+        <h3>ORDER BY, AND, OR</h3>
+<pre class="code"><span class="kw">SELECT</span> FirstName, Surname
+<span class="kw">FROM</span> Students
+<span class="kw">WHERE</span> Age = 15 <span class="kw">AND</span> Score > 80
+<span class="kw">ORDER BY</span> Surname <span class="kw">ASC</span>;</pre>
+        <p><b>AND</b>: both conditions true · <b>OR</b>: at least one true · <b>ORDER BY … ASC</b> (A→Z, smallest first) or <b>DESC</b>.</p>
+      </div></article>
+
+      <article class="sec" id="s923"><span class="sec-n">9.2.3</span><div class="sec-b">
+        <h3>SUM and COUNT</h3>
+<pre class="code"><span class="kw">SELECT</span> <span class="kw">COUNT</span>(*) <span class="kw">FROM</span> Students <span class="kw">WHERE</span> Library = TRUE;
+<span class="kw">SELECT</span> <span class="kw">SUM</span>(Score) <span class="kw">FROM</span> Students <span class="kw">WHERE</span> Form = '10B';</pre>
+        <p><b>COUNT</b> gives the number of matching records; <b>SUM</b> adds up a numeric field over the matching records.</p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Build a query and run it</p></div></div>
+    <div class="lab" data-lab data-mode="sql">
+      <div class="lab-h"><p class="lab-title" data-fig="9.2">SQL query builder</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><p class="sql" data-sql></p><div data-table style="overflow-x:auto;margin-top:10px"></div><p class="key"><span>green rows match WHERE · tinted columns are SELECTed</span></p></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">SELECT</p><div class="bench-grid"><button class="sc" type="button" data-pick="StudentID">StudentID</button><button class="sc" type="button" data-pick="FirstName">FirstName</button><button class="sc" type="button" data-pick="Surname">Surname</button><button class="sc" type="button" data-pick="Form">Form</button><button class="sc" type="button" data-pick="Age">Age</button><button class="sc" type="button" data-pick="Score">Score</button><button class="sc" type="button" data-pick="Library">Library</button></div>
+            <div class="group"><p>or a function</p><div class="seg" data-k="agg" role="group" aria-label="Aggregate"><button type="button" data-v="none">fields</button><button type="button" data-v="count">COUNT(*)</button><button type="button" data-v="sum">SUM(Score)</button></div></div>
+            <p class="block-h">WHERE <span class="hint">(clear the value for no WHERE)</span></p>
+            <div class="inline-f"><select data-k="f1" class="field-s"><option value="StudentID">StudentID</option><option value="FirstName">FirstName</option><option value="Surname">Surname</option><option value="Form">Form</option><option value="Age">Age</option><option value="Score">Score</option><option value="Library">Library</option></select><select data-k="op1" class="field-s"><option value="=">=</option><option value="<>">&lt;&gt;</option><option value=">">&gt;</option><option value="<">&lt;</option><option value=">=">&gt;=</option><option value="<=">&lt;=</option></select><input type="text" data-k="v1" class="field-s"></div>
+            <div class="inline-f"><select data-k="join" class="field-s"><option value="none">—</option><option value="AND">AND</option><option value="OR">OR</option></select><select data-k="f2" class="field-s"><option value="StudentID">StudentID</option><option value="FirstName">FirstName</option><option value="Surname">Surname</option><option value="Form">Form</option><option value="Age">Age</option><option value="Score">Score</option><option value="Library">Library</option></select><select data-k="op2" class="field-s"><option value="=">=</option><option value="<>">&lt;&gt;</option><option value=">">&gt;</option><option value="<">&lt;</option><option value=">=">&gt;=</option><option value="<=">&lt;=</option></select><input type="text" data-k="v2" class="field-s"></div>
+            <p class="block-h">ORDER BY</p>
+            <div class="inline-f"><select data-k="order" class="field-s"><option value="none">—</option><option value="StudentID">StudentID</option><option value="FirstName">FirstName</option><option value="Surname">Surname</option><option value="Form">Form</option><option value="Age">Age</option><option value="Score">Score</option><option value="Library">Library</option></select><div class="seg" data-k="dir" role="group" aria-label="Direction"><button type="button" data-v="ASC">ASC</button><button type="button" data-v="DESC">DESC</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Query result</p><div data-results style="overflow-x:auto"></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"pick":["FirstName","Surname"],"f1":"Age","op1":"=","v1":"15","join":"AND","f2":"Score","op2":">","v2":"80","order":"Surname","dir":"ASC"}'><span>WHERE … AND …</span><span>both conditions true</span><span>fewer records</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"agg":"count","f1":"Library","op1":"=","v1":"TRUE"}'><span>COUNT(*) with WHERE</span><span>number of matching records</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"agg":"sum","f1":"Form","op1":"=","v1":"10B"}'><span>SUM(Score)</span><span>adds the field over matching records</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> List the fields in SELECT in the order asked, put text values in quotes, and don’t forget the table name after FROM.</p>
+      <div class="checklist" data-check="9.2" id="ck92">
+        <div class="checklist-h"><p>9.2.4 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>write SELECT … FROM … WHERE queries</span></label>
+        <label><input type="checkbox"><span>use ORDER BY, AND and OR</span></label>
+        <label><input type="checkbox"><span>use SUM and COUNT, and complete the output of a given query</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../js/kit.js"></script>
+<script src="../js/databases.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+</body>
+</html>
