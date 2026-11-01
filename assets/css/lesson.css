@@ -1,9 +1,10 @@
-/* Lesson pages: the chapter's topics on the left; one topic at a time, read like a good
-   textbook — a title and lede, then the content in one comfortable column (Understand),
-   a figure or lab set wider than the text (Look closely / Experiment), and the chains,
-   exam tip and checklist to finish (Interpret), then a clear way on to the next topic. */
+/* Lesson pages: the chapter's topics on the left (number, name, what it covers, and how
+   many you have opened); one topic at a time. Each topic opens with its title, lede and
+   "In this topic" contents, then three numbered steps — Understand, Look closely or
+   Experiment, Interpret. A 64px number column on the left holds the step and section
+   numbers; text keeps a reading width, figures and labs use the full width. */
 
-:root { --side-w: 260px; --gutter: clamp(20px, 4vw, 64px); --measure: 680px; }
+:root { --side-w: 272px; --gutter: clamp(20px, 3.6vw, 56px); --measure: 720px; --gut: 64px; }
 :root, .on-dark { --paper: var(--surface); --focus: var(--blue); --mark: var(--amber); }   /* re-resolved inside carbon labs */
 
 /* ---------- Page ---------- */
@@ -11,23 +12,34 @@
 .l-app b, .l-app strong { color: var(--ink); font-weight: 600; }
 .l-app p, .l-app li { text-wrap: pretty; }
 
-/* ---------- Topic list: the chapter's contents, nothing else ---------- */
-.side { position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h)); overflow-y: auto; padding: 40px 24px 24px 28px; border-right: 1px solid var(--line); scrollbar-width: thin; }
-.tabs { display: flex; flex-direction: column; }
+/* ---------- Topic list: number, name and what it covers; progress at the foot ---------- */
+.side { position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h)); overflow-y: auto; display: flex; flex-direction: column; padding: 36px 24px 24px 28px; border-right: 1px solid var(--line); scrollbar-width: thin; }
+.tabs { display: flex; flex-direction: column; counter-reset: lab; }
 .nav-group { margin-bottom: 18px; font: 600 17px/1.25 var(--font-display); letter-spacing: -.025em; color: var(--ink); }
 .nav-group span { display: block; margin-bottom: 6px; font: 400 11px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
 .nav-group span::before { content: "Topic "; }
-.tabs a { padding: 10px 0 10px 16px; border-left: 1px solid var(--line-2); font-size: 15px; line-height: 1.35; color: var(--ink-2); transition: color .15s, border-color .15s; }
+.tabs a { counter-increment: lab; display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 10px; padding: 11px 0 11px 14px; border-left: 1px solid var(--line-2); font-size: 15px; line-height: 1.35; color: var(--ink-2); transition: color .15s, border-color .15s; }
+.tabs a::before { content: counter(lab); grid-row: span 2; font: 12px/1.75 var(--font-mono); color: var(--ink-3); }
+.tabs a::after { content: attr(data-full); grid-column: 2; margin-top: 3px; font-size: 12.5px; line-height: 1.4; color: var(--ink-3); }
 .tabs a:hover { color: var(--ink); border-left-color: var(--ink-3); }
-.tabs a[aria-current="page"] { padding-left: 14px; border-left: 3px solid var(--ink); color: var(--ink); font-weight: 600; }
-.side-foot { display: none; }
+.tabs a[aria-current="page"] { padding-left: 12px; border-left: 3px solid var(--ink); color: var(--ink); font-weight: 600; }
+.tabs a[aria-current="page"]::before { color: var(--ink); }
+.tabs a[aria-current="page"]::after { font-weight: 400; color: var(--ink-2); }
+.side-foot { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); font-size: 12.5px; line-height: 1.55; color: var(--ink-3); }
+.side-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-size: 13px; color: var(--ink-2); }
+.side-count { font: 500 12px var(--font-mono); color: var(--ink); }
+.side-steps { display: flex; gap: 3px; margin-bottom: 14px; }
+.side-steps i { flex: 1; height: 3px; background: var(--line); }
+.side-steps i.done { background: var(--ink-3); }
+.side-steps i.now { background: var(--ink); }
+.side-foot b { font: 500 12px var(--font-mono); color: var(--ink-2); }
 
 /* ---------- Topic ---------- */
-.l-main { width: 100%; max-width: 1060px; margin: 0; padding: 64px var(--gutter) 104px; min-width: 0; }
+.l-main { width: 100%; max-width: 1140px; margin: 0; padding: 56px var(--gutter) 104px; min-width: 0; }
 .topic { scroll-margin-top: var(--header-h); }
 
 /* title, lede and (for long topics) the contents — no decoration */
-.t-head { display: grid; gap: 18px; max-width: var(--measure); }
+.t-head { display: grid; gap: 18px; max-width: calc(var(--gut) + var(--measure)); }
 .t-head > .t-art { display: none; }
 .t-head .eyebrow span { color: var(--ink); }
 .t-head .eyebrow span::after { content: "  ·  "; white-space: pre; color: var(--ink-4); }
@@ -45,25 +57,29 @@
 .t-art .bub { fill: none; stroke: var(--ink-3); stroke-width: 1.25; }
 .t-art .arr { fill: none; stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 3 3; }
 
-/* the three steps: a heavy rule and a quiet label, so the content's own headings lead */
-.step { display: grid; gap: 28px; margin-top: 80px; }
+/* the three steps: a heavy rule, the step number in the number column, its name and what it holds.
+   Everything under a step hangs from the content column; sections put their own number in the
+   number column. No rail and no animation. */
+.step { display: grid; gap: 28px; margin-top: 88px; }
 .t-head + .step { margin-top: 56px; }
-.step-h { display: flex; align-items: baseline; gap: 12px; max-width: var(--measure); padding-top: 12px; border-top: 2px solid var(--ink); }
-.step-n { font: 500 12px var(--font-mono); color: var(--ink-3); }
+.step-h { display: grid; grid-template-columns: var(--gut) minmax(0, 1fr); align-items: baseline; padding-top: 14px; border-top: 2px solid var(--ink); }
+.step-n { font: 500 13px var(--font-mono); color: var(--ink-3); }
 .step-n::before { content: "0"; }
-.step-h h2 { font: 500 12px/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
-.step-h p { display: none; }
+.step-h > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+.step-h h2 { font: 600 30px/1.15 var(--font-display); letter-spacing: -.035em; color: var(--ink); }
+.step-h p { font-size: 15px; color: var(--ink-3); }
+.step > :not(.step-h):not(.secs) { margin-left: var(--gut); }
 
-/* Understand: one column of notes at a reading width */
-.notes { display: grid; gap: 44px; max-width: var(--measure); }
-.note { display: grid; gap: 14px; min-width: 0; font-size: 17px; color: var(--text); }
-.note h3 { font: 600 23px/1.2 var(--font-display); letter-spacing: -.03em; color: var(--ink); }
-.note p, .note li { line-height: 1.72; }
+/* Understand (lab lessons): the notes side by side when there is room, each at a reading width */
+.notes { display: grid; gap: 40px 48px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); align-items: start; }
+.note { display: grid; gap: 14px; min-width: 0; max-width: var(--measure); font-size: 16.5px; color: var(--text); }
+.note h3 { font: 600 22px/1.2 var(--font-display); letter-spacing: -.03em; color: var(--ink); }
+.note p, .note li { line-height: 1.7; }
 .note ul { list-style: none; display: grid; gap: 6px; }
 .note li { position: relative; padding-left: 22px; }
 .note li::before { content: ""; position: absolute; left: 4px; top: .78em; width: 6px; height: 6px; background: var(--ink-3); }
 /* the definition that opens a topic */
-.notes .note:first-child > p:first-of-type { padding: 18px 22px; background: var(--bg-2); border-left: 3px solid var(--ink); font-size: 19px; line-height: 1.6; color: var(--ink); }
+.notes .note:first-child > p:first-of-type { padding: 16px 20px; background: var(--bg-2); border-left: 3px solid var(--ink); font-size: 18px; line-height: 1.6; color: var(--ink); }
 .kC { color: var(--c-cation); font-weight: 600; }
 .kA { color: var(--c-anion); font-weight: 600; }
 .note .formula { font: 400 15px/1.6 var(--font-mono); color: var(--ink); background: var(--bg-2); padding: 12px 16px; }
@@ -142,8 +158,10 @@
 
 /* ---------- Interpret: chains to remember, one tip, the checklist ---------- */
 .interpret { display: grid; gap: 32px; max-width: var(--measure); }
-.chains { display: grid; border-top: 1px solid var(--line-2); }
-.chain { width: 100%; padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.55; color: var(--text); text-align: left; }
+.chains { display: grid; border-top: 1px solid var(--line-2); counter-reset: chain; }
+/* the number hangs in its own 36px column, so a chain that wraps stays aligned */
+.chain { position: relative; width: 100%; padding: 15px 0 15px 36px; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.55; color: var(--text); text-align: left; }
+.chain::before { counter-increment: chain; content: counter(chain, decimal-leading-zero); position: absolute; left: 0; top: 15px; font: 12px/1.95 var(--font-mono); color: var(--ink-3); }
 .chain em { margin-left: auto; padding-left: 16px; font-style: normal; font-size: 13px; font-weight: 500; color: var(--ink-3); white-space: nowrap; transition: color .15s; }
 .chain em::after { content: "\00a0↗"; }
 button.chain:hover em { color: var(--ink); }
@@ -154,19 +172,20 @@ button.chain:hover em { color: var(--ink); }
    For subtopics with a lot to learn (Biology 16–17): Understand holds the big picture and
    several numbered sections instead of two note columns. */
 /* "In this topic": a plain list of the sections, each a jump link */
-.toc { display: grid; margin-top: 10px; border-top: 1px solid var(--line-2); }
+.toc { display: grid; max-width: var(--measure); margin-top: 10px; border-top: 1px solid var(--line-2); }
 .toc button { display: flex; gap: 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; color: var(--ink); text-align: left; transition: padding .2s var(--ease); }
 .toc button span { min-width: 44px; font: 12px var(--font-mono); color: var(--ink-3); }
 .toc button::after { content: "↓"; margin-left: auto; color: var(--ink-4); transition: color .15s; }
 .toc button:hover { padding-left: 6px; }
 .toc button:hover::after { color: var(--ink); }
-.secs { display: grid; gap: 52px; max-width: var(--measure); }
-.sec { scroll-margin-top: calc(var(--header-h) + 24px); }
-.sec-n { display: none; }
-.sec-b { display: grid; gap: 14px; min-width: 0; font-size: 17px; color: var(--text); }
+.secs { display: grid; max-width: calc(var(--gut) + var(--measure)); }
+.sec { display: grid; grid-template-columns: var(--gut) minmax(0, 1fr); padding: 34px 0; border-top: 1px solid var(--line); scroll-margin-top: calc(var(--header-h) + 24px); }
+.sec:first-child { padding-top: 6px; border-top: 0; }
+.sec-n { font: 12px/2.7 var(--font-mono); color: var(--ink-3); }
+.sec-b { display: grid; gap: 14px; min-width: 0; font-size: 16.5px; color: var(--text); }
 .sec-b h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font: 600 26px/1.18 var(--font-display); letter-spacing: -.03em; color: var(--ink); }
 .sec-b h4 { font-size: 17px; font-weight: 600; color: var(--ink); margin-top: 6px; }
-.sec-b p, .sec-b li { line-height: 1.72; }
+.sec-b p, .sec-b li { line-height: 1.7; }
 .sec-b ul, .sec-b ol { display: grid; gap: 6px; }
 .sec-b ul { list-style: none; }
 .sec-b ul li { position: relative; padding-left: 22px; }
@@ -303,22 +322,27 @@ p.chain span:last-child { color: var(--ink); font-weight: 600; }
 .opt:disabled { cursor: default; }
 
 /* ---------- Small screens ---------- */
+@media (max-width: 1100px) { :root { --side-w: 236px; } }
 @media (max-width: 900px) {
   .l-app { grid-template-columns: minmax(0, 1fr); }
   .side { position: sticky; top: var(--header-h); z-index: 20; height: auto; padding: 0 16px; border-right: 0; border-bottom: 1px solid var(--line); background: var(--bg); overflow: visible; }
   .tabs { flex-direction: row; gap: 22px; overflow-x: auto; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
   .tabs::-webkit-scrollbar { display: none; }
-  .nav-group { display: none; }
-  .tabs a, .tabs a[aria-current="page"] { flex: none; padding: 14px 0 12px; border-left: 0; border-bottom: 2px solid transparent; white-space: nowrap; font-size: 14.5px; }
+  .nav-group, .side-foot, .tabs a::before, .tabs a::after { display: none; }
+  .tabs a, .tabs a[aria-current="page"] { display: block; flex: none; padding: 14px 0 12px; border-left: 0; border-bottom: 2px solid transparent; white-space: nowrap; font-size: 14.5px; }
   .tabs a[aria-current="page"] { border-bottom-color: var(--ink); }
   .l-main { padding: 36px var(--gutter) 64px; }
   .lab { scroll-margin-top: calc(var(--header-h) + 64px); }
 }
 @media (max-width: 640px) {
-  :root { --gutter: 18px; }
+  :root { --gutter: 18px; --gut: 0px; }
   .t-head h1 { font-size: 36px; }
   .lede { font-size: 17.5px; }
   .step, .t-head + .step { margin-top: 56px; }
+  .step-h { grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; }
+  .step-h h2 { font-size: 25px; }
+  .sec { grid-template-columns: minmax(0, 1fr); padding: 28px 0; }
+  .sec-n { line-height: 1.6; margin-bottom: 4px; }
   .note, .sec-b { font-size: 16.5px; }
   .sec-b h3 { font-size: 23px; }
   .lab-h { padding: 8px 10px 8px 12px; }
