@@ -6,7 +6,7 @@
 Physics, Chemistry, Biology and Computer Science — where every idea is explained in plain words, tried in a
 small interactive lab, and finished with the cause → effect chain examiners want.
 
-No sign-up and no build step: your progress is saved only in your own browser.
+The website is available at [stay-add.pages.dev](https://stay-add.pages.dev).
 
 ## How a lesson works
 
