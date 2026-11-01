@@ -12,6 +12,11 @@
 .l-app b, .l-app strong { color: var(--ink); font-weight: 600; }
 .l-app p, .l-app li { text-wrap: pretty; }
 
+::selection {
+  background-color: #b5ef45;
+  color: #000000;
+}
+
 /* ---------- Topic list: number, name and what it covers; progress at the foot ---------- */
 .side { position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h)); overflow-y: auto; display: flex; flex-direction: column; padding: 36px 24px 24px 28px; border-right: 1px solid var(--line); scrollbar-width: thin; }
 .tabs { display: flex; flex-direction: column; counter-reset: lab; }
