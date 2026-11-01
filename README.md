@@ -1,3 +1,5 @@
+<img src="assets/icons/icon-512.png" alt="" width="72" height="72">
+
 # stay add.
 
 **Stay addicted, keep adding.** A free study site for Cambridge IGCSE science —
@@ -21,7 +23,7 @@ Each topic follows the same three steps, so you always know where you are:
 |---|---|---|
 | Chemistry | 0620 / 0971 | Electrolysis · Collision theory · Naming organic compounds |
 | Physics | 0625 / 0972 | Refraction |
-| Biology | 0610 / 0970 | Enzymes · Reproduction (16.1–16.6) · Inheritance (17.1–17.4) |
+| Biology | 0610 / 0970 | All 21 topics: Enzymes and Reproduction / Inheritance with labs; topics 1–4, 6–15, 18–21 as figure lessons |
 
 Some of the labs:
 - **Electrolysis:** what forms at each electrode, for molten and dissolved compounds.
@@ -45,6 +47,11 @@ python3 -m http.server 5174
 then visit <http://localhost:5174>. Any static host works, such as GitHub Pages, Netlify or
 Cloudflare Pages: upload the folder as it is.
 
+**Install it as an app.** stay add. is a PWA: on a phone or iPad choose *Add to Home Screen*
+(Safari: Share → Add to Home Screen), or use the install button in Chrome or Edge. Once it has
+opened online, every lesson also works offline. This needs `https://` or `localhost`; it does not
+work when `index.html` is opened as a file.
+
 Handy URL options: `?theme=dark` or `?theme=light` forces a theme, and `?still` turns off
 animation.
 
@@ -66,8 +73,8 @@ add a lesson or a subject, and the design system.
 
 ## Built with
 
-Plain HTML, CSS and JavaScript, with the [Newsreader](https://fonts.google.com/specimen/Newsreader),
-[Inter](https://fonts.google.com/specimen/Inter) and
+Plain HTML, CSS and JavaScript, with the [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk),
+[IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans), [Newsreader](https://fonts.google.com/specimen/Newsreader) and
 [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) fonts from Google Fonts, and
 [GSAP](https://gsap.com) for the menu animation.
 

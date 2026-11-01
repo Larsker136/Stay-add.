@@ -1,8 +1,8 @@
 /* ==========================================================================
    stay add. — feel
    · SA.sound — a tiny Web Audio synth for the lab (off until the learner turns it on)
-   · eased wheel scrolling on every page, as in IGCSE Econ Lab and Physics
-     (touch, keys and the scrollbar stay native; off for reduced motion)
+   · SA.smoothScroll — in-page moves glide with the browser's own smooth scroll
+     (wheel, trackpad, touch and keys are never intercepted; jumps for reduced motion)
    ========================================================================== */
 (function () {
   "use strict";
@@ -51,51 +51,17 @@
     }
   };
 
-  /* ---------- Eased wheel scrolling (every page) ----------
-     Each frame moves 10% of the distance still to go, and once it is within half a
-     pixel it simply lands there — the same feel as IGCSE Econ Lab and Physics.
-     Touch, keyboard and the scrollbar stay native. A panel that can scroll itself
-     (lesson list, lab controls, menu) keeps its own native scrolling.
+  /* ---------- Scrolling ----------
+     Wheel, trackpad, touch and keys scroll natively; only moves the page asks for
+     (in-page links, lab chains, contents buttons) glide, with the browser's own easing.
      SA.smoothScroll.to(y) glides there; .jump(y) goes at once. */
-  let target = scrollY, cur = scrollY, raf = 0;
-  const max = () => document.documentElement.scrollHeight - innerHeight;
-  const step = () => {
-    cur += (target - cur) * 0.1;                     // 10% of what is left
-    if (Math.abs(target - cur) < 0.5) cur = target;  // close enough: just arrive
-    scrollTo(0, cur);
-    raf = cur === target ? 0 : requestAnimationFrame(step);
-  };
-  const jump = (y) => { cancelAnimationFrame(raf); raf = 0; scrollTo(0, y); target = cur = scrollY; };
-  const to = (y) => {
-    target = Math.max(0, Math.min(max(), y));
-    if (reduced) return jump(target);
-    if (!raf) { cur = scrollY; raf = requestAnimationFrame(step); }
-  };
+  const behavior = reduced ? "instant" : "smooth";
+  const jump = (y) => scrollTo({ top: y, behavior: "instant" });
+  const to = (y) => scrollTo({ top: y, behavior });
   SA.smoothScroll = { to, jump };
 
-  // does an element between the pointer and the page want this wheel turn for itself?
-  const ownScroller = (node, dy) => {
-    for (let n = node; n && n !== document.body && n.nodeType === 1; n = n.parentElement) {
-      const oy = getComputedStyle(n).overflowY;
-      if ((oy === "auto" || oy === "scroll") && n.scrollHeight > n.clientHeight + 1) {
-        if (dy < 0 ? n.scrollTop > 0 : n.scrollTop + n.clientHeight < n.scrollHeight - 1) return true;
-      }
-    }
-    return false;
-  };
-
-  if (!reduced && !matchMedia("(pointer: coarse)").matches) {
-    addEventListener("wheel", (e) => {
-      if (e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY) || ownScroller(e.target, e.deltaY)) return;
-      e.preventDefault();
-      const d = e.deltaMode === 1 ? e.deltaY * 18 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
-      to((raf ? target : scrollY) + d);
-    }, { passive: false });
-  }
-  // moved by keyboard or the scrollbar: start again from there
-  addEventListener("scroll", () => { if (!raf) target = cur = scrollY; }, { passive: true });
-
-  // in-page links glide the same way
+  // in-page links glide the same way; scrollIntoView also reaches targets inside
+  // a scrolling panel (the lab layouts), and html's scroll-padding clears the header
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href*="#"]');
     if (!a) return;
@@ -104,7 +70,10 @@
     const el = document.getElementById(decodeURIComponent(url.hash.slice(1)));
     if (!el) return;
     e.preventDefault();
-    to(el.getBoundingClientRect().top + scrollY - parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")));
+    el.scrollIntoView({ behavior, block: "start" });
     history.replaceState(null, "", url.hash);
+    // keyboard focus follows the view, so Tab carries on from the section
+    if (!el.matches("a, button, input, select, textarea, [tabindex]")) el.setAttribute("tabindex", "-1");
+    el.focus({ preventScroll: true });
   });
 })();

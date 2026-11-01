@@ -24,12 +24,14 @@ stay add./
 │   │   ├── menu.css         the slide-in menu (Home row + subjects)
 │   │   ├── lesson.css       the standard lesson form, for any subject
 │   │   └── landing.css      the STEM home only
+│   ├── icons/               icon.svg (the favicon, dark version), icon-32.png,
+│   │                        apple-touch-icon.png (home screen), icon-512.png (README)
 │   └── js/
 │       ├── catalog.js       subjects → topics → lessons, plus each subject's home and nav links
 │       ├── core.js          header (adapts to the subject), footer, theme, search across subjects,
 │       │                    subject cards, topic lists, progress, reveals, quizzes
 │       ├── menu.js          slide-in menu (GSAP) — Home row, then the subjects
-│       ├── fx.js            eased wheel scrolling (every page) and lab sounds
+│       ├── fx.js            in-page smooth scrolling (SA.smoothScroll) and lab sounds
 │       ├── lesson.js        the standard lesson form: one topic at a time, step rail, chains
 │       └── landing.js       the STEM home only: facts, subject cards, Fig. 0
 ├── chemistry/
@@ -49,14 +51,29 @@ stay add./
     ├── index.html           Biology home: Fig. 1 enzyme activity, 21 topics in five strands, method
     ├── lessons/
     │   ├── enzymes.html       lock and key · temperature · pH
-    │   ├── reproduction.html  16.1–16.6: asexual · sexual · plants · humans · sex hormones · STIs
-    │   └── inheritance.html   17.1–17.4: genes · mitosis · meiosis · monohybrid crosses
+    │   ├── reproduction.html  16.1–16.6: asexual · sexual · plants · humans · sex hormones · STIs · parts quiz
+    │   ├── inheritance.html   17.1–17.4: genes · mitosis · meiosis · monohybrid crosses
+    │   └── (figure lessons, no lab script) classification · organisation · movement · molecules ·
+    │       plant-nutrition · human-nutrition · transport-plants · transport-animals · disease-immunity ·
+    │       gas-exchange · respiration · excretion · coordination · drugs · variation · ecology ·
+    │       human-influences · biotechnology
     ├── css/  home.css · lab.css (all Biology figures, shared by home and lessons)
     └── js/   enzyme.js (the model, shared) · home.js · enzymes.js · reproduction.js · inheritance.js
 ```
 
 Rule of thumb: anything two subjects use goes in `assets/`; anything only one subject uses
 stays in that subject's `css/` and `js/`. One CSS and one JS file per kind of page, not per widget.
+
+## Web app (PWA)
+
+- `manifest.webmanifest` (site root): the app's name, colours, icons and shortcuts to each subject.
+- `sw.js` (site root): the service worker, registered by `core.js` on every page. Pages are
+  fetched network-first; site files use stale-while-revalidate; Google Fonts and GSAP keep their
+  own cache. On install it saves every file in `APP_FILES`, so all lessons open offline.
+- **After changing site files, raise `CACHE_VERSION`** in `sw.js` (v1 → v2 …), and add any new
+  page, script or stylesheet to `APP_FILES`.
+- Icons in `assets/icons/`: `icon-192/512.png` for the manifest; `icon-maskable-*.png` keep the
+  tiles inside the safe zone for Android's round masks.
 
 ## Every page
 
@@ -71,6 +88,8 @@ stays in that subject's `css/` and `js/`. One CSS and one JS file per kind of pa
 - `data-subject` — which subject’s nav and logo to show; leave it off on the STEM home.
 - `data-lesson` — marks the lesson as opened (progress) and highlights its nav link.
 - Load, in order: GSAP (CDN), `assets/js/catalog.js`, `menu.js`, `core.js`, `fx.js`, then the page’s own script.
+- In `<head>`, after the stylesheet links: the icon links, `<link rel="manifest">` and the two
+  `theme-color` metas (copy them from any page, with the right `../` prefix).
 - Theme: one saved choice for the whole site (`localStorage["stayadd-theme"]`), applied by a
   one-line script in each page’s `<head>`.
 
@@ -93,29 +112,40 @@ Interpret chains can drive it. The parts:
 
 - a short topic list on the left (`.tabs a[href="#key"]`); one `<section class="topic" data-key>`
   per topic, shown one at a time, with Previous / Next filled in automatically;
-- each topic: a header band (`.t-head`: eyebrow, serif title with one italic word, lede, a small
-  `svg.t-art` drawing), then three steps on one rail —
+- each topic: a header (`.t-head`: eyebrow, title with one italic word, lede; an old `svg.t-art`
+  drawing is hidden), then three steps, each opened by a heavy rule and a quiet label —
   **1 Understand** (`.notes` with two `.note` columns and a `.formula` line),
   **2 Experiment** (one `.lab`: figure, Controls / Results in the dock, “What just happened”),
   **3 Interpret** (`.chain` buttons with `data-set` that load the lab, and one `.tip`).
 - not every topic needs a lab: step 2 can be **Look closely**, one `figure.plate` (a drawing, optionally
   a `.plate-table`), and the chains then become plain `<p class="chain">` lines to remember.
+- figure lessons (Biology 1–15, 18–21) skip the lab: step 2 is a `figure.plate` drawn with the generic
+  figure parts at the end of `biology/css/lab.css` (`.f`, `.l`, `.mk`, `text.tc` + colour classes `.cg .cb .cr .ca .cv .ct .cp`).
 - long subtopics (Biology 16–17): a `.toc` of `data-goto` buttons in the header band; Understand holds
   numbered `.sec` sections (the sections, then summary and key terms, with `.sec-table`,
   `.practical`, `.punnett`, `dl.terms`); Interpret ends with a `.checklist[data-check]` remembered on the device.
 
 ## Design system
 
-Editorial layout × scientific instrument, shared by every subject.
+Carbon and paper × scientific instrument, shared by every subject.
 
-- **Type:** Newsreader for headlines (one italic accent word), Inter for interface text,
-  IBM Plex Mono for every number, axis and label.
-- **Colour:** charcoal and warm off-white carry the page. Accents are roles in `base.css`:
+- **Type:** Space Grotesk for headlines (tight tracking; hero headlines in capitals), IBM Plex Sans
+  for text you read (lesson prose at 17px in `--text`, in a `--measure` column of 680px),
+  one Newsreader *italic* accent word per headline (`<em>` inside any heading or `.display`),
+  IBM Plex Mono for every number, axis and label (section rails like `01 / Subjects`).
+- **Colour:** paper `--bg #f0f0e9` and carbon `#111513` carry the page; lime `--lime #c9ff61` is
+  the one accent (primary buttons, live marks, highlights). Subject tints `--chem`, `--phys`,
+  `--bio`, `--math` are fills only, never text on paper. Meaning-bound roles in `base.css`:
   chemistry `--c-a`, `--c-b`, `--c-energy`, `--c-cation`, `--c-anion`, `--c-electron`, the four
   factors; physics `--c-mech`, `--c-ray`, `--c-waves`, `--c-vx`, `--c-vy`, the six topics; biology `--c-bio`,
   `--c-enzyme`, `--c-substrate`, `--c-product`, `--c-denat`, `--c-ph`.
+- **Carbon bands:** add `class="on-dark"` to any element to give it the dark palette in either
+  theme (the header, footer, home hero, and every lesson `.lab`). Colour roles are declared on
+  `:root, .on-dark`, so they pick up the dark palette inside it. A script that reads colours
+  should read them from its own element, not from `document.documentElement`.
+- **Shape:** square corners (`--radius` 3px), 1px rules, no shadows.
 - **Figures:** SVGs take the class `fig` and the shared parts `ax`, `tk`, `gl`, `guide`, `ser`.
   Canvas drawings use flat shapes in the role colours — no gradients, glow or glass.
-- **Motion** stays inside framed figures and carries information. Wheel scrolling eases 10% of
-  the remaining distance per frame and lands when within half a pixel
-  (`StayAdd.smoothScroll.to(y)` / `.jump(y)`).
+- **Motion** stays inside framed figures and carries information. Wheel, trackpad and touch
+  scrolling stay native; only moves the page makes itself glide (`StayAdd.smoothScroll.to(y)` /
+  `.jump(y)`), and they jump for reduced motion.

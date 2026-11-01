@@ -3,46 +3,55 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Refraction · stay add. Physics</title>
+<meta name="description" content="An interactive refraction lab for IGCSE Physics: aim a laser into water, glass or diamond, read the angles and find the refractive index with Snell’s law.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="../../assets/css/base.css">
 <link rel="stylesheet" href="../css/lab.css">
 <link rel="stylesheet" href="../../assets/css/menu.css">
 </head>
 <body data-root="../../" data-subject="physics" data-page="lab" data-lesson="refraction">
 <header data-site-header></header>
-<header class="bar">
-  <nav class="crumb" aria-label="Breadcrumb"><a href="../index.html#topics">Waves</a><span>/</span><a href="#">3.2 Light</a><span>/</span><b>Refraction</b></nav>
+<div class="bar">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="../index.html#topics">Physics</a><span>/</span><a href="../index.html#topics">3 Waves, light &amp; sound</a><span>/</span><b>Refraction</b></nav>
   <nav class="stepper" aria-label="Lab steps">
-    <button class="done"><span class="s-n">1</span>Predict</button>
-    <button aria-current="step"><span class="s-n">2</span>Play</button>
-    <button><span class="s-n">3</span>Prove</button>
+    <a href="#predict"><span class="s-n">1</span>Predict</a>
+    <a href="#stage" aria-current="step"><span class="s-n">2</span>Play</a>
+    <a href="#prove"><span class="s-n">3</span>Prove</a>
   </nav>
-  <a class="btn btn-primary btn-sm" href="#">Continue to Prove <span class="arr" aria-hidden="true">→</span></a>
-</header>
+  <a class="btn btn-primary btn-sm" href="#prove">Continue to Prove <span class="arr" aria-hidden="true">→</span></a>
+</div>
 
 <div class="app">
   <aside class="rail" aria-label="Lessons in 3.2 Light">
     <p class="eyebrow">3.2 &nbsp;Light</p>
     <ol class="lessons">
-      <li class="done"><a href="#"><span class="n">✓</span><span>Reflection<small>Plane mirrors</small></span></a></li>
-      <li class="on"><a href="#" aria-current="page"><span class="n">2</span><span>Refraction<small>Snell’s law</small></span></a></li>
-      <li><a href="#"><span class="n">3</span><span>Critical angle<small>Total internal reflection</small></span><span class="tag">Supp.</span></a></li>
-      <li><a href="#"><span class="n">4</span><span>Thin lenses<small>Ray diagrams</small></span></a></li>
-      <li><a href="#"><span class="n">5</span><span>Dispersion<small>Prism and spectrum</small></span></a></li>
-      <li><a href="#"><span class="n">6</span><span>Checkpoint<small>10 exam-style questions</small></span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">1</span><span>Reflection<small>Plane mirrors</small></span></a></li>
+      <li class="on"><a href="refraction.html" aria-current="page"><span class="n">2</span><span>Refraction<small>Snell’s law</small></span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">3</span><span>Critical angle<small>Total internal reflection</small></span><span class="tag">Supp.</span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">4</span><span>Thin lenses<small>Ray diagrams</small></span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">5</span><span>Dispersion<small>Prism and spectrum</small></span></a></li>
+      <li class="soon"><a aria-disabled="true"><span class="n">6</span><span>Checkpoint<small>10 exam-style questions</small></span></a></li>
     </ol>
     <div class="mastery">
-      <div class="m-row"><span>Topic progress</span><span class="num">4 / 10</span></div>
-      <div class="steps" style="--tc:var(--c-waves)"><i class="done"></i><i class="done"></i><i class="done"></i><i class="done"></i><i class="now"></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="m-row"><span>Topic progress</span><span class="num">1 / 6</span></div>
+      <div class="steps" style="--tc:var(--c-waves)"><i></i><i class="now"></i><i></i><i></i><i></i><i></i></div>
       <p>Most missed: <b>measuring angles from the normal</b>, not from the surface.</p>
     </div>
   </aside>
 
   <main class="center">
+    <h1 class="sr-only">Refraction: a Snell’s law lab</h1>
     <section class="card stage" id="stage" aria-label="Refraction experiment">
       <header class="stage-head">
         <span><span class="eyebrow">Fig. 3.2</span> Refraction at a plane boundary</span>
@@ -102,7 +111,7 @@
   </main>
 
   <aside class="panel" aria-label="Controls">
-    <section class="group">
+    <section class="group" id="predict">
       <h2 class="eyebrow">Your prediction</h2>
       <p class="prediction">The ray bends <b>towards the normal</b> <span class="verdict">Correct</span></p>
     </section>
@@ -139,7 +148,7 @@
         <dt>Critical angle</dt><dd class="num" id="dC">41.8°</dd>
       </dl>
     </section>
-    <section class="group marks">
+    <section class="group marks" id="prove">
       <div class="g-row"><h2 class="eyebrow">Mark scheme</h2><span class="num muted">2 / 3</span></div>
       <ul>
         <li class="got">Light slows down entering the medium</li>

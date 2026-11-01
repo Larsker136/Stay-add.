@@ -16,8 +16,19 @@
   const live = (s) => s.topics.flatMap((t) => t.lessons.filter((l) => l.status === "live").map((l) => ({ ...l, t })));
 
   /* ---------- 1. Facts ---------- */
-  const facts = { subjects: SA.subjects().length, lessons: SA.subjects().reduce((n, s) => n + live(s).length, 0), topics: SA.subjects().reduce((n, s) => n + s.topics.length, 0) };
+  const facts = { subjects: SA.subjects().length, lessons: SA.subjects().reduce((n, s) => n + live(s).length, 0) };
   document.querySelectorAll("[data-fact]").forEach((el) => (el.textContent = facts[el.dataset.fact]));
+
+  // the hero's text link: the lesson opened most recently on this device, else the page's own pick
+  const resume = $("[data-resume]"), progress = SA.progress?.all() || {};
+  const recent = SA.allLessons().filter((l) => l.status === "live" && progress[l.id]?.at).sort((a, b) => progress[b.id].at - progress[a.id].at)[0];
+  if (recent) {
+    if (resume) { resume.href = SA.url(recent.href); resume.textContent = `Continue: ${recent.subject.name} · ${recent.title}`; }
+    // the closing band follows: the big arrow and its button go back to the same lesson
+    const cta = $("[data-resume-cta]"), btn = $("[data-resume-btn]");
+    if (cta) { cta.href = SA.url(recent.href); cta.setAttribute("aria-label", `Continue with ${recent.title}`); }
+    if (btn) { btn.href = SA.url(recent.href); btn.firstChild.textContent = `Continue with ${recent.title} `; }
+  }
 
   /* ---------- 2. Subject cards ---------- */
   // a small graph from each subject, drawn with the shared figure classes (they follow the theme)
@@ -56,23 +67,26 @@
         <text x="96" y="62" class="ser">more collisions</text>
       </svg>`
   };
-  const cards = $("[data-subjects]");
-  if (cards) {
+  // each subject is one large row: number, kicker, name, its graph, how much is live, an arrow
+  const TINT = { chemistry: "chem", physics: "phys", biology: "bio" };
+  const KICKER = { chemistry: "Matter & change", physics: "Energy & the universe", biology: "Life & living systems" };
+  const ARROW = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
+  const rows = $("[data-subjects]");
+  if (rows) {
     const progress = SA.progress.all();
-    cards.innerHTML = SA.subjects().map((s, i) => {
+    rows.innerHTML = SA.subjects().map((s, i) => {
       const lessons = live(s), opened = lessons.filter((l) => progress[l.id]?.visited).length;
       return `
-        <article class="subject">
-          <div class="subject-top"><span class="num">${String(i + 1).padStart(2, "0")}</span><span class="eyebrow">${s.syllabus}</span><span class="status">${lessons.length} live</span></div>
-          <h3 class="display"><a href="${SA.url(s.home)}">${s.name}</a></h3>
-          <p class="subject-hint">${s.hint}. ${s.topics.length} syllabus topics.</p>
-          ${ART[s.id] ? `<div class="subject-art">${ART[s.id]}</div>` : ""}
-          <ul class="subject-lessons">${lessons.map((l) => `<li><a href="${SA.url(l.href)}"><span class="num">${l.t.num}</span><span><b>${l.title}</b><small>${l.t.title}</small></span><i aria-hidden="true">${progress[l.id]?.visited ? "opened" : "→"}</i></a></li>`).join("")}</ul>
-          <div class="subject-foot">
-            <div class="subject-prog"><div class="steps">${lessons.map((l) => `<i class="${progress[l.id]?.visited ? "done" : ""}"></i>`).join("")}</div><span class="num">${opened} / ${lessons.length} opened</span></div>
-            <a class="btn btn-primary btn-sm" href="${SA.url(s.home)}">Open ${s.name} <span class="arr" aria-hidden="true">→</span></a>
-          </div>
-        </article>`;
+        <a class="sx-row" href="${SA.url(s.home)}" style="--sc:var(--${TINT[s.id] || "lime"})">
+          <span class="sx-n num">${String(i + 1).padStart(2, "0")} /</span>
+          <span class="sx-name"><span class="eyebrow">${KICKER[s.id] || s.hint} · ${s.syllabus.replace("Cambridge IGCSE ", "")}</span><span class="sx-title">${s.name}</span></span>
+          <span class="sx-art" aria-hidden="true">${ART[s.id] || ""}</span>
+          <span class="sx-meta">
+            <span class="status">${lessons.length} live · ${s.topics.length} topics</span>
+            ${opened ? `<span class="num">${opened} of ${lessons.length} opened</span>` : ""}
+          </span>
+          <span class="sx-go">${ARROW}</span>
+        </a>`;
     }).join("");
   }
 
@@ -82,7 +96,8 @@
   const canvas = $("[data-k-canvas]", fig), temp = $("[data-k-temp]", fig), status = $("[data-k-status]", fig);
   const N = 34, R = 4.5, V300 = 70, HARD = 1.7 * V300;
   let W = 0, H = 0, ctx, ps = [], rings = [], hits = [], T = 300, auto = !still, visible = false, last = performance.now(), t0 = last, col = {};
-  const readColors = () => { const v = (n) => SA.cssVar(n); col = { ink: v("--ink-2"), line: v("--line-2"), ink3: v("--ink-3"), energy: v("--c-energy"), temp: v("--c-temp") }; };
+  // colours come from the figure's own band (the carbon hero), not the page root
+  const readColors = () => { const cs = getComputedStyle(fig), v = (n) => cs.getPropertyValue(n).trim(); col = { ink: v("--k-dot") || v("--ink-2"), line: v("--line-2"), ink3: v("--ink-3"), energy: v("--c-energy"), temp: v("--c-temp") }; };
 
   function resize() {
     const r = canvas.getBoundingClientRect();
@@ -152,10 +167,12 @@
 
   function readout() {
     temp.value = T; temp.style.setProperty("--pct", `${((T - 200) / 400) * 100}%`);
-    $("[data-k-tout]", fig).textContent = Math.round(T);
-    $("[data-k-t]", fig).textContent = Math.round(T);
-    $("[data-k-v]", fig).textContent = Math.sqrt(T / 300).toFixed(2);
-    $("[data-k-hits]", fig).textContent = (hits.length / 2).toFixed(1);
+    // the readouts are optional: the home figure keeps only the temperature
+    const put = (sel, v) => { const el = $(sel, fig); if (el) el.textContent = v; };
+    put("[data-k-tout]", Math.round(T));
+    put("[data-k-t]", Math.round(T));
+    put("[data-k-v]", Math.sqrt(T / 300).toFixed(2));
+    put("[data-k-hits]", (hits.length / 2).toFixed(1));
   }
 
   let uiClock = 0;

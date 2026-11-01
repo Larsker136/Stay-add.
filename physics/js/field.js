@@ -107,7 +107,7 @@
         const { cx, cy, a } = mag, h = a * 0.42;
         ctx.fillStyle = s.colors["--red"]; ctx.fillRect(cx - a, cy - h / 2, a, h);
         ctx.fillStyle = s.colors["--blue"]; ctx.fillRect(cx, cy - h / 2, a, h);
-        ctx.fillStyle = s.colors["--bg"]; ctx.font = "600 13px Inter, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillStyle = s.colors["--bg"]; ctx.font = "600 13px 'Space Grotesk', sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
         ctx.fillText("N", cx - a / 2, cy); ctx.fillText("S", cx + a / 2, cy);
         ctx.textAlign = "start"; ctx.globalAlpha = 1;
       },

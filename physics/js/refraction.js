@@ -142,8 +142,8 @@
     render();
   });
   document.querySelector(".stepper").addEventListener("click", (e) => {
-    const b = e.target.closest("button"); if (!b) return;
-    document.querySelectorAll(".stepper button").forEach((x) => x.toggleAttribute("aria-current", x === b));
+    const b = e.target.closest("a"); if (!b) return;
+    document.querySelectorAll(".stepper a").forEach((x) => x.toggleAttribute("aria-current", x === b));
     b.setAttribute("aria-current", "step");
   });
 

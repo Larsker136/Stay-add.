@@ -116,14 +116,23 @@
   function renderHeader() {
     const el = document.querySelector("[data-site-header]");
     if (!el) return;
+    // "Skip to content": the first stop for keyboard and screen-reader users
+    const main = document.querySelector("main");
+    if (main) {
+      main.id ||= "main";
+      el.insertAdjacentHTML("beforebegin", `<a class="skip-link" href="#${main.id}">Skip to content</a>`);
+    }
     const subject = SA.subject(), current = document.body.dataset.lesson;
     // inside a subject: its own links; on the STEM home: one link per subject
     const links = subject ? subject.nav : SA.subjects().map((s) => ({ id: s.id, label: s.name, href: s.home }));
     const isCurrent = (l) => !!current && l.id === current;
-    el.className = "nav";
+    el.className = "nav on-dark";
     el.innerHTML = `
       <div class="wrap nav-in">
-        <a class="logo" href="${SA.url(subject ? subject.home : "index.html")}" aria-label="stay add. ${subject ? subject.name + " home" : "home"}">stay add<span>.</span>${subject ? `<em>${subject.name}</em>` : ""}</a>
+        <div class="brand">
+          <a class="logo" href="${SA.url(subject ? subject.home : "index.html")}" aria-label="stay add. ${subject ? subject.name + " home" : "home"}">Stay add<span>.</span></a>
+          ${subject ? `<a class="brand-sub" href="${SA.url(subject.home)}">${subject.name}</a>` : ""}
+        </div>
         <nav class="links" aria-label="Main">
           ${links.map((l) => `<a href="${SA.url(l.href)}"${isCurrent(l) ? ' aria-current="page"' : ""}>${l.label}</a>`).join("")}
         </nav>
@@ -166,11 +175,11 @@
   function renderFooter() {
     const el = document.querySelector("[data-site-footer]");
     if (!el) return;
-    el.className = "footer";
+    el.className = "footer on-dark";
     el.innerHTML = `
       <div class="wrap foot">
-        <a class="logo" href="${SA.url("index.html")}">stay add<span>.</span></a>
-        <p>Stay addicted, keep adding. Not affiliated with Cambridge International.</p>
+        <a class="logo" href="${SA.url("index.html")}">Stay add<span>.</span></a>
+        <p>Stay addicted, keep adding · Not affiliated with Cambridge International</p>
         <nav aria-label="Footer">
           ${SA.subjects().map((s) => `<a href="${SA.url(s.home)}">${s.name}</a>`).join("")}
           <a href="${SA.url("index.html")}">All subjects</a>
@@ -208,8 +217,11 @@
         : `<div class="search-empty">No matches yet — more topics are on the way.</div>`;
       box.classList.add("is-open");
     }
+    // is-active: the field is in use (on phones it unfolds from an icon into a bar)
+    const close = () => box.classList.remove("is-open", "is-active");
     input.addEventListener("input", render);
-    input.addEventListener("focus", render);
+    input.addEventListener("focus", () => { box.classList.add("is-active"); render(); });
+    box.addEventListener("focusout", (e) => { if (e.relatedTarget && !box.contains(e.relatedTarget)) close(); });
     field.addEventListener("click", () => { box.classList.add("is-open"); input.focus(); });
     input.addEventListener("keydown", (e) => {
       const items = [...results.querySelectorAll(".search-item")];
@@ -220,14 +232,14 @@
       } else if (e.key === "Enter" && items[Math.max(active, 0)]) {
         items[Math.max(active, 0)].click();
       } else if (e.key === "Escape") {
-        input.blur(); box.classList.remove("is-open");
+        input.blur(); close();
       }
     });
     results.addEventListener("click", (e) => {
       const a = e.target.closest('[aria-disabled="true"]');
       if (a) e.preventDefault();
     });
-    document.addEventListener("click", (e) => { if (!box.contains(e.target)) box.classList.remove("is-open"); });
+    document.addEventListener("click", (e) => { if (!box.contains(e.target)) close(); });
     document.addEventListener("keydown", (e) => {
       if (e.key === "/" && !/input|textarea/i.test(document.activeElement.tagName)) { e.preventDefault(); input.focus(); }
     });
@@ -310,6 +322,14 @@
     });
   }
 
+  /* ---------- Web app ----------
+     sw.js (at the site root) caches the site so it installs as an app and opens
+     offline. Service workers only run over https:// or localhost, not file://. */
+  function registerServiceWorker() {
+    if (!("serviceWorker" in navigator) || location.protocol === "file:") return;
+    addEventListener("load", () => navigator.serviceWorker.register(SA.url("sw.js")).catch(() => { /* the site still works online */ }));
+  }
+
   /* ---------- Boot ---------- */
   renderHeader();
   renderFooter();
@@ -317,4 +337,5 @@
   hydrateIcons();
   initReveal();
   initQuizzes();
+  registerServiceWorker();
 })();
