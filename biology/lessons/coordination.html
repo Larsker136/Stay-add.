@@ -124,17 +124,44 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="14.1">A reflex arc through the spinal cord</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 240" role="img" aria-label="A heat receptor in the skin of the finger sends an impulse along a sensory neurone into the spinal cord; a relay neurone passes it to a motor neurone, which carries it to the biceps muscle, which contracts and pulls the hand away.">
-          <defs><marker id="aN1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="ar-h"/></marker></defs>
-          <ellipse class="f lt" cx="500" cy="120" rx="80" ry="70"/><path class="f" d="M480 86C470 110 470 130 480 154H520C530 130 530 110 520 86Z"/>
-          <text x="500" y="210" text-anchor="middle" class="k">spinal cord (section)</text>
-          <circle class="f cr dk" cx="60" cy="70" r="10"/><text x="60" y="46" text-anchor="middle" class="k">heat receptor</text>
-          <path class="l cb w3" d="M70 70H440C470 70 486 90 494 104"/><circle class="f cb" cx="430" cy="70" r="8"/>
-          <path class="l cv w3" d="M494 110H506"/>
-          <path class="l cg w3" d="M506 116C506 150 470 170 440 170H170"/><circle class="f cg" cx="510" cy="126" r="8"/>
-          <ellipse class="f ca" cx="120" cy="170" rx="50" ry="20"/><text x="120" y="208" text-anchor="middle" class="k">muscle (effector) contracts</text>
-          <g class="tc"><text class="cb" x="250" y="60">sensory neurone →</text><text class="cv" x="530" y="100">relay neurone</text><text class="cg" x="250" y="190">← motor neurone</text></g>
-          <text x="320" y="230" text-anchor="middle" class="ser">fast, automatic, no thinking needed</text>
+        <svg class="fig" viewBox="0 0 700 330" role="img" aria-label="A reflex arc. A finger touches a flame. A heat receptor in the skin starts an impulse in a sensory neurone, which runs up the arm to its cell body in a ganglion beside the spinal cord, then into the grey matter. There a relay neurone passes the impulse, across synapses, to a motor neurone, which leaves the spinal cord and runs to the biceps muscle. The muscle contracts and the hand is pulled away.">
+          <defs>
+            <marker id="rB" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cb"/></marker>
+            <marker id="rG" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cg"/></marker>
+          </defs>
+          <!-- flame -->
+          <path class="f ca" style="--fm:45%" d="M44 152C30 140 32 118 46 98C50 116 62 118 60 132C64 126 66 120 64 112C76 128 70 150 54 156Z"/>
+          <path class="l" d="M38 160H66V176"/>
+          <!-- arm: forearm up to the hand, upper arm to the shoulder -->
+          <path class="f lt" d="M70 150C80 128 112 138 132 160L272 238C304 246 380 242 412 234L416 276C380 286 300 292 262 284C250 280 240 272 234 264L104 196C86 186 66 170 70 150Z"/>
+          <ellipse class="f cr" style="--fm:30%" cx="330" cy="258" rx="54" ry="15"/>
+          <circle class="f cr dk" cx="78" cy="156" r="5"/>
+          <!-- spinal cord in cross-section: white matter outside, grey matter butterfly inside -->
+          <ellipse class="f lt" cx="566" cy="176" rx="92" ry="76"/>
+          <path class="f" style="--fm:26%" d="M566 124C534 114 504 136 516 156C504 178 510 208 534 212C550 216 558 202 566 202C574 202 582 216 598 212C622 206 628 176 616 156C628 136 598 114 566 124Z"/>
+          <circle class="f lt" cx="566" cy="166" r="4"/>
+          <ellipse class="f cb" style="--fm:28%" cx="494" cy="104" rx="15" ry="11"/>
+          <!-- sensory neurone: receptor → arm → cell body in ganglion → dorsal horn -->
+          <path class="l cb w3" d="M84 160C140 196 200 236 266 242C334 246 402 206 446 150C462 126 476 110 494 104C510 100 522 118 534 138" marker-end="url(#rB)"/>
+          <circle class="f cb dk" cx="494" cy="104" r="5"/>
+          <!-- relay neurone inside the grey matter -->
+          <path class="l cv w3" d="M540 146C552 160 552 176 544 192"/>
+          <circle class="f cv dk" cx="548" cy="168" r="4"/>
+          <!-- motor neurone: cell body in the ventral horn → muscle -->
+          <circle class="f cg dk" cx="538" cy="200" r="6"/>
+          <path class="l cg w3" d="M534 206C506 232 466 256 428 262C400 266 384 262 372 260" marker-end="url(#rG)"/>
+          <path class="l cg" d="M370 260l-10-8M370 260l-12 2M370 260l-8 10"/>
+          <!-- synapses -->
+          <g class="f" style="--fm:50%"><circle cx="538" cy="142" r="2.5"/><circle cx="544" cy="196" r="2.5"/></g>
+          <!-- labels -->
+          <g class="k"><text x="20" y="88">stimulus: heat</text><text x="20" y="240">receptor in skin</text><text x="494" y="58" text-anchor="middle">cell body (ganglion)</text><text x="566" y="282" text-anchor="middle">relay neurone</text><text x="330" y="312" text-anchor="middle">effector: biceps muscle contracts</text></g>
+          <path class="guide" d="M78 162L60 228M494 92V64M548 172L566 270M330 274V300"/>
+          <text x="566" y="296" text-anchor="middle">in the spinal cord · synapses either side</text>
+          <text x="330" y="324" text-anchor="middle">→ hand pulled away</text>
+          <text x="220" y="196" class="tc cb">sensory neurone →</text>
+          <text x="470" y="238" class="tc cg" text-anchor="middle">← motor neurone</text>
+          <text x="566" y="22" text-anchor="middle" class="ser">spinal cord, cut across</text>
+          <text x="650" y="176" text-anchor="end">grey</text><text x="650" y="250" text-anchor="end">white</text>
         </svg>
       </div>
       <figcaption>The impulse goes into the <b>spinal cord</b> and straight back out — the brain finds out a moment later, which is when you feel the pain.</figcaption>
@@ -242,18 +269,32 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="14.2">Structure of the eye</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 260" role="img" aria-label="Section through the eye: light enters through the cornea and pupil, passes the iris and lens held by suspensory ligaments and ciliary muscles, and is focused on the retina at the fovea. The optic nerve leaves at the back, at the blind spot.">
-          <circle class="f lt" cx="300" cy="130" r="100"/><path class="l cr w3" d="M390 90A100 100 0 0 1 390 170"/>
-          <path class="f cb lt" d="M206 96C188 112 188 148 206 164C214 150 214 110 206 96Z"/>
-          <path class="l cv w5" d="M214 92V114M214 146V168"/>
-          <ellipse class="f cb" cx="236" cy="130" rx="12" ry="28"/>
-          <path class="l ca" d="M236 102L226 74M236 158L226 186"/><path class="f ca dk" d="M222 70h10v8h-10zM222 182h10v8h-10z"/>
-          <path class="l ca w5" d="M396 130H470"/>
-          <circle class="f cr dk" cx="398" cy="124" r="4"/>
-          <path class="l dash" d="M120 104L236 120L396 128M120 156L236 140L396 132"/>
-          <path class="guide" d="M196 112L150 40M214 100L170 30M236 150L170 230M228 74L250 30M398 124L460 70M300 30V40M440 130L490 160"/>
-          <g class="k"><text x="140" y="36" text-anchor="middle">cornea</text><text x="170" y="22" text-anchor="middle">iris · pupil</text><text x="170" y="244" text-anchor="middle">lens</text><text x="270" y="24">ciliary muscle · suspensory ligaments</text><text x="464" y="66">fovea</text><text x="300" y="56" text-anchor="middle">retina</text><text x="494" y="164">optic nerve (blind spot)</text></g>
-          <text x="100" y="134" class="ser">light</text>
+        <svg class="fig" viewBox="0 0 700 330" role="img" aria-label="Horizontal section through the eye. Light enters from the left through the transparent cornea and the pupil, the gap in the iris, and is focused by the lens onto the retina at the back, meeting at the fovea. The lens is held by suspensory ligaments attached to the ciliary muscle. The eye is filled with vitreous humour. The optic nerve leaves at the back, at the blind spot, carrying impulses to the brain.">
+          <!-- light rays -->
+          <path class="l ca dash" d="M110 132L248 150L306 164L500 176M110 220L248 202L306 188L500 176"/>
+          <!-- eyeball: sclera, choroid and retina -->
+          <circle class="f lt" cx="380" cy="176" r="120"/>
+          <path class="l cr" style="--lw:7;opacity:.55" d="M420 62A114 114 0 0 1 420 290"/>
+          <!-- cornea and front chamber -->
+          <path class="f cb" style="--fm:16%" d="M276 104C240 130 240 222 276 248C266 220 262 132 276 104Z"/>
+          <!-- iris (with the pupil between), ciliary muscle and suspensory ligaments, lens -->
+          <path class="l cv" style="--lw:8" d="M286 120V158M286 194V232"/>
+          <ellipse class="f ca dk" cx="298" cy="106" rx="8" ry="6"/><ellipse class="f ca dk" cx="298" cy="246" rx="8" ry="6"/>
+          <path class="l" style="--lw:1.2" d="M298 112L306 138M298 240L306 214M302 110L312 140M302 242L312 212"/>
+          <ellipse class="f cb" style="--fm:30%" cx="308" cy="176" rx="15" ry="38"/>
+          <!-- fovea, optic nerve at the blind spot -->
+          <path class="l cr" style="--lw:3" d="M496 168Q490 176 496 184"/>
+          <path class="l ca" style="--lw:14" d="M492 214C540 222 600 234 660 236"/>
+          <circle class="f ca dk" cx="492" cy="212" r="5"/>
+          <!-- labels, top -->
+          <path class="guide" d="M252 150L210 42M286 132L262 26M298 100L318 26M306 140L398 44M454 82L560 60"/>
+          <g class="k"><text x="206" y="40" text-anchor="end">cornea</text><text x="258" y="22" text-anchor="end">iris</text><text x="322" y="22">ciliary muscle</text><text x="402" y="40">suspensory ligaments</text><text x="564" y="60">retina</text></g>
+          <text x="206" y="52" text-anchor="end">refracts light</text><text x="564" y="72">rods and cones</text>
+          <!-- labels, bottom and right -->
+          <path class="guide" d="M284 176L206 296M310 214L318 300M500 176L560 160M492 212L560 196M600 234L604 274"/>
+          <g class="k"><text x="202" y="300" text-anchor="end">pupil</text><text x="318" y="314" text-anchor="middle">lens</text><text x="564" y="158">fovea</text><text x="564" y="194">blind spot</text><text x="606" y="290" text-anchor="middle">optic nerve</text></g>
+          <text x="202" y="312" text-anchor="end">gap in the iris</text><text x="318" y="326" text-anchor="middle">focuses light</text><text x="564" y="170">sharpest image</text><text x="564" y="206">no receptors</text><text x="606" y="302" text-anchor="middle">→ brain</text>
+          <text x="400" y="246" class="ser">vitreous humour</text><text x="104" y="176" text-anchor="end" class="ser">light</text>
         </svg>
       </div>
       <figcaption>Light is refracted at the <b>cornea</b> and fine-focused by the <b>lens</b> onto the <b>retina</b>; the sharpest image falls on the fovea.</figcaption>
@@ -347,15 +388,33 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="14.3">Endocrine glands in the body</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 280" role="img" aria-label="Outline of a body with the main endocrine glands: pituitary in the brain, adrenal glands on top of the kidneys, pancreas below the stomach, ovaries in females and testes in males.">
-          <circle class="f lt" cx="320" cy="44" r="28"/><path class="f lt" d="M290 76H350L366 200H274Z"/><path class="l" d="M300 200L294 270M340 200L346 270M290 86L256 170M350 86L384 170"/>
-          <circle class="f cv dk" cx="320" cy="48" r="5"/>
-          <g class="f cr"><ellipse cx="304" cy="146" rx="9" ry="13"/><ellipse cx="336" cy="146" rx="9" ry="13"/></g><g class="f ca dk"><path d="M298 132l6-6 6 6z"/><path d="M330 132l6-6 6 6z"/></g>
-          <path class="f ct" d="M300 118C312 112 340 112 348 118C338 124 312 124 300 118Z"/>
-          <g class="f cp"><circle cx="300" cy="184" r="6"/><circle cx="340" cy="184" r="6"/></g>
-          <path class="guide" d="M325 48H440M340 130H440M348 118L440 100M346 184H440M296 132L200 120M300 184L200 200"/>
-          <g class="k"><text x="444" y="52">pituitary gland (brain)</text><text x="444" y="104">pancreas: insulin, glucagon</text><text x="444" y="134">kidney</text><text x="444" y="188">ovaries: oestrogen</text></g>
-          <g class="k" text-anchor="end"><text x="196" y="124">adrenal glands: adrenaline</text><text x="196" y="204">(testes in males: testosterone)</text></g>
+        <svg class="fig" viewBox="0 0 700 400" role="img" aria-label="A body outline showing the endocrine glands: the pituitary gland in the brain; the adrenal glands on top of the kidneys, which make adrenaline; the pancreas, which makes insulin and glucagon; the ovaries in females, which make oestrogen; and the testes in males, which make testosterone. Hormones are carried in the blood.">
+          <!-- body -->
+          <g class="l" style="--lw:20;stroke:var(--line-2)"><path d="M296 104C270 124 260 170 252 250M404 104C430 124 440 170 448 250"/></g>
+          <g class="l" style="--lw:28;stroke:var(--line-2)"><path d="M326 286V392M374 286V392"/></g>
+          <circle class="f lt" cx="350" cy="50" r="32"/>
+          <path class="f lt" d="M338 80H362V94H338Z"/>
+          <path class="f lt" d="M300 92H400C420 96 428 112 428 132L420 252C418 272 412 282 404 288H296C288 282 282 272 280 252L272 132C272 112 280 96 300 92Z"/>
+          <!-- pituitary in the brain -->
+          <path class="l" style="--lw:1;opacity:.5" d="M326 52C326 34 374 34 374 52"/>
+          <circle class="f cv dk" cx="350" cy="60" r="5"/>
+          <!-- kidneys with adrenal glands on top -->
+          <g class="f cr" style="--fm:12%"><ellipse cx="326" cy="196" rx="10" ry="16"/><ellipse cx="374" cy="196" rx="10" ry="16"/></g>
+          <g class="f ca dk"><path d="M316 182l10-12 10 12z"/><path d="M364 182l10-12 10 12z"/></g>
+          <!-- pancreas -->
+          <path class="f ct" style="--fm:40%" d="M318 150C344 140 390 142 404 152C390 162 344 162 318 156Z"/>
+          <!-- ovaries (female) and testes (male) -->
+          <path class="l cp" style="--lw:2;opacity:.6" d="M330 262C340 250 360 250 370 262"/>
+          <g class="f cp dk"><ellipse cx="326" cy="264" rx="7" ry="5"/><ellipse cx="374" cy="264" rx="7" ry="5"/></g>
+          <g class="f cb" style="--fm:40%"><ellipse cx="343" cy="304" rx="6" ry="8"/><ellipse cx="357" cy="304" rx="6" ry="8"/></g>
+          <!-- labels -->
+          <path class="guide" d="M344 60H200M318 176H200M320 264H200M402 152H500M362 304H500M384 200H500"/>
+          <g class="k" text-anchor="end"><text x="196" y="58">pituitary gland</text><text x="196" y="174">adrenal glands</text><text x="196" y="262">ovaries (female)</text></g>
+          <g class="tc" text-anchor="end"><text class="cv" x="196" y="72">controls other glands</text><text class="ca" x="196" y="186">adrenaline</text><text class="cp" x="196" y="274">oestrogen</text></g>
+          <g class="k"><text x="504" y="150">pancreas</text><text x="504" y="198">kidney</text><text x="504" y="302">testes (male)</text></g>
+          <g class="tc"><text class="ct" x="504" y="162">insulin, glucagon</text><text class="cb" x="504" y="314">testosterone</text></g>
+          <text x="504" y="210">(not a gland here)</text>
+          <text x="350" y="396" text-anchor="middle" class="ser">every hormone travels in the blood plasma</text>
         </svg>
       </div>
       <figcaption>Each gland releases its hormone into the <b>blood</b>, which carries it everywhere — but only <b>target organs</b> respond.</figcaption>

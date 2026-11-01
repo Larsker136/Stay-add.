@@ -224,22 +224,50 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="9.2">The human heart, seen from the front</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 300" role="img" aria-label="A simplified front view of the heart. The body's right side appears on the left of the diagram. Vena cava enters the right atrium; the right ventricle pumps into the pulmonary artery; pulmonary veins enter the left atrium; the thick-walled left ventricle pumps into the aorta. The septum divides the sides; valves sit between atria and ventricles and at the base of the arteries.">
-          <defs><marker id="aH" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="ar-h"/></marker></defs>
-          <path class="f cb" d="M180 90H310V150H180Z"/><path class="f cr" d="M330 90H460V150H330Z"/>
-          <path class="f cb" d="M180 156H310V230C310 260 280 270 250 270C210 270 180 250 180 220Z"/>
-          <path class="f cr dk" d="M330 156H460V220C460 260 420 280 380 276C350 272 330 260 330 240Z"/>
-          <path class="f cb lt" d="M196 170H294V226C294 246 274 254 252 254C222 254 196 240 196 220Z"/>
-          <path class="f cr lt" d="M354 172H440V218C440 244 414 258 386 256C364 254 354 244 354 232Z"/>
-          <rect class="f dk" x="310" y="90" width="20" height="180"/>
-          <path class="l w3" d="M196 153H294M346 153H444"/>
-          <path class="l cb w5" d="M220 90V30"/><path class="l cb w5" d="M290 156C290 100 300 60 270 34"/><path class="l cr w5" d="M380 90C380 40 420 30 470 30"/><path class="l cr w5" d="M450 100H520M450 120H520"/>
-          <path class="ar" d="M220 40V80" marker-end="url(#aH)"/><path class="ar" d="M510 110H470" marker-end="url(#aH)"/>
-          <g text-anchor="middle" class="k"><text x="245" y="124">right atrium</text><text x="395" y="124">left atrium</text><text x="245" y="214">right ventricle</text><text x="395" y="220">left ventricle</text></g>
-          <g class="k"><text x="160" y="40" text-anchor="end">vena cava</text><text x="240" y="22">pulmonary artery</text><text x="474" y="26">aorta</text><text x="526" y="114">pulmonary veins</text><text x="320" y="292" text-anchor="middle">septum</text></g>
-          <path class="guide" d="M164 36H214M320 270V282M200 153L120 160M294 153L300 153"/>
-          <text x="116" y="164" text-anchor="end">valves</text>
-          <text x="30" y="290" class="ser">the body’s right is on the left of the picture</text>
+        <svg class="fig" viewBox="0 0 700 392" role="img" aria-label="Front view of the heart, drawn as if facing the person, so the heart's right side is on the left of the picture. The vena cava brings deoxygenated blood into the right atrium; it passes the tricuspid valve into the right ventricle, which pumps it through a semilunar valve into the pulmonary artery to the lungs. Pulmonary veins bring oxygenated blood from the lungs into the left atrium; it passes the bicuspid valve into the thick-walled left ventricle, which pumps it through a semilunar valve into the aorta to the body. The septum divides the two sides. Coronary arteries run over the surface.">
+          <defs>
+            <marker id="hB" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cb"/></marker>
+            <marker id="hR" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cr"/></marker>
+          </defs>
+          <!-- behind the heart: inferior vena cava, the two pulmonary arteries, the pulmonary veins -->
+          <path class="l cb" style="--lw:24" d="M206 190C188 226 180 300 180 380"/>
+          <path class="l cb" style="--lw:17" d="M306 108C268 92 200 86 124 86"/>
+          <path class="l cb" style="--lw:17" d="M306 108C362 112 446 116 566 118"/>
+          <path class="l cr" style="--lw:13" d="M440 152H568M440 180H568"/>
+          <!-- heart muscle and its four chambers -->
+          <path class="f cp" style="--fm:30%" d="M198 124C192 100 300 98 312 112H332C346 98 456 100 456 124L462 210C468 276 410 334 346 354C276 344 206 292 200 214Z"/>
+          <path class="f cb" style="--fm:24%" d="M212 132H284V200H212C204 178 204 150 212 132Z"/>
+          <path class="f cb" style="--fm:24%" d="M214 214H300V312C272 316 230 290 220 248Z"/>
+          <path class="f cr" style="--fm:24%" d="M374 132H444C450 154 450 178 446 200H374Z"/>
+          <path class="f cr" style="--fm:24%" d="M354 214H426C430 262 402 306 362 326C352 300 350 252 354 214Z"/>
+          <!-- in front: aorta, pulmonary trunk, superior vena cava -->
+          <path class="l cr" style="--lw:24" d="M350 216C346 160 344 100 352 70C364 32 420 22 462 34C496 44 512 64 516 92"/>
+          <path class="l cr w3" d="M382 44L374 12M406 34L404 4M430 30L438 2"/>
+          <path class="l cb" style="--lw:22" d="M298 216C298 172 300 132 306 106"/>
+          <path class="l cb" style="--lw:26" d="M228 22V122"/>
+          <!-- valves: flaps between atria and ventricles, cups at the base of the arteries -->
+          <g class="l w3" style="stroke:var(--ink)"><path d="M216 204L234 222M282 204L264 222M378 204L394 222M424 204L410 222"/><path d="M288 226q5-10 10 0q5-10 10 0M340 226q5-10 10 0q5-10 10 0"/></g>
+          <!-- coronary arteries on the surface -->
+          <path class="l cr" style="--lw:2.5" d="M362 240C392 252 420 276 428 312M392 252C378 270 372 292 372 318"/>
+          <!-- blood flow -->
+          <path class="l cb w3" d="M228 30V106" marker-end="url(#hB)"/>
+          <path class="l cb w3" d="M248 152V250" marker-end="url(#hB)"/>
+          <path class="l cb w3" d="M168 86H134" marker-end="url(#hB)"/>
+          <path class="l cb w3" d="M530 118H558" marker-end="url(#hB)"/>
+          <path class="l cr w3" d="M562 166H458" marker-end="url(#hR)"/>
+          <path class="l cr w3" d="M408 152V256" marker-end="url(#hR)"/>
+          <path class="l cr w3" d="M508 62L516 90" marker-end="url(#hR)"/>
+          <!-- chamber names -->
+          <g text-anchor="middle" class="k"><text x="248" y="146">right atrium</text><text x="262" y="278">right ventricle</text><text x="410" y="146">left atrium</text><text x="392" y="290">left ventricle</text></g>
+          <!-- labels on the left -->
+          <path class="guide" d="M214 36H156M222 214H156M292 224L156 248M190 342H156M324 296V370"/>
+          <g class="k" text-anchor="end"><text x="152" y="40">vena cava</text><text x="150" y="62">pulmonary artery</text><text x="152" y="218">tricuspid valve</text><text x="152" y="252">semilunar valve</text><text x="152" y="346">vena cava</text></g>
+          <g text-anchor="end"><text x="152" y="52">from the body</text><text x="150" y="74">to the lungs</text><text x="152" y="358">from the body</text></g>
+          <text x="324" y="384" text-anchor="middle" class="k">septum</text>
+          <!-- labels on the right -->
+          <path class="guide" d="M432 213H582M356 226L582 242M458 272H582M428 306H582"/>
+          <g class="k"><text x="530" y="78">aorta</text><text x="586" y="114">pulmonary artery</text><text x="586" y="160">pulmonary veins</text><text x="586" y="217">bicuspid valve</text><text x="586" y="246">semilunar valve</text><text x="586" y="276">thickest wall</text><text x="586" y="310">coronary artery</text></g>
+          <g><text x="530" y="90">to the body</text><text x="586" y="126">to the lungs</text><text x="586" y="172">from the lungs</text><text x="586" y="288">(left ventricle)</text></g>
         </svg>
       </div>
       <figcaption>Deoxygenated blood (<b style="color:var(--blue)">blue</b>) fills the right side; oxygenated blood (<b style="color:var(--red)">red</b>) the left. Notice the much thicker wall of the <b>left ventricle</b>.</figcaption>
@@ -429,9 +457,38 @@
   </div>
 
   <div class="step">
-    <div class="step-h"><span class="step-n">2</span><div><h2>Look closely</h2><p>A blood smear</p></div></div>
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Cut a vessel and watch it seal, stage by stage</p></div></div>
+    <div class="lab on-dark" data-lab data-mode="clot">
+      <div class="lab-h"><p class="lab-title" data-fig="9.4">How a cut seals itself</p><div class="btns"><button class="ghost" type="button" data-play>Play all stages</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <svg class="fig" data-svg viewBox="0 0 640 260" role="img" aria-label="Skin above a small blood vessel with red blood cells, platelets and dissolved fibrinogen flowing through it. In stages, the skin and vessel are cut and blood escapes; platelets stick to the wound; fibrinogen is converted to fibrin threads; the threads trap red cells to form a clot; the clot dries into a scab."></svg>
+          <p class="key"><span><i style="background:var(--red)"></i>red blood cell</span><span><i style="background:var(--amber)"></i>platelet</span><span><i style="background:var(--violet)"></i>fibrinogen, then fibrin threads</span></p>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Stage</p>
+              <div class="seg seg-6" role="group" aria-label="Stage"><button type="button" data-stage="0">Flow<small>1</small></button><button type="button" data-stage="1">Cut<small>2</small></button><button type="button" data-stage="2">Platelets<small>3</small></button><button type="button" data-stage="3">Fibrin<small>4</small></button><button type="button" data-stage="4">Clot<small>5</small></button><button type="button" data-stage="5">Scab<small>6</small></button></div>
+              <div class="btns"><button class="sc" type="button" data-back>← Back</button><button class="sc" type="button" data-fwd>Next stage →</button></div>
+            </div>
+            <div class="group"><p>What if <span class="hint">a clotting factor is missing?</span></p>
+              <div class="btns"><button class="sc" type="button" data-toggle aria-pressed="false">No clotting factor</button></div>
+            </div>
+          </div>
+          <div class="block block-results">
+            <p class="block-h">Results</p>
+            <div class="rows" data-results></div>
+          </div>
+        </div>
+        <div class="explain">
+          <p class="block-h">What just happened</p>
+          <div class="result" data-explain aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
     <figure class="plate">
-      <div class="plate-h"><p class="lab-title" data-fig="9.4">Cells in a stained blood smear</p></div>
+      <div class="plate-h"><p class="lab-title" data-fig="9.5">Cells in a stained blood smear</p></div>
       <div class="plate-fig">
         <svg class="fig" viewBox="0 0 640 220" role="img" aria-label="Many red blood cells, pale in the centre because they are biconcave; one phagocyte with a lobed nucleus; one lymphocyte with a large round nucleus; small platelets.">
           <rect class="f cr lt" x="20" y="20" width="600" height="160" rx="10"/>
@@ -452,7 +509,9 @@
     <div class="interpret">
       <div class="chains">
         <p class="chain"><span>Oxygen in lungs</span><span>binds haemoglobin</span><span>carried in red cells</span><span>released in tissues</span></p>
-        <p class="chain"><span>Skin cut</span><span>platelets activated</span><span>fibrinogen → fibrin</span><span>clot seals wound (Supp.)</span></p>
+        <button class="chain" type="button" data-set='{"stage":2}'><span>Skin cut</span><span>platelets stick to the wound</span><span>release chemicals</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"stage":4}'><span>Fibrinogen (soluble)</span><span>fibrin (insoluble threads)</span><span>mesh traps red cells</span><span>clot seals wound (Supp.)</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"stage":4,"noFactor":true}'><span>Clotting factor missing</span><span>no fibrin forms</span><span>no mesh</span><span>bleeding continues</span><em>Show in the lab</em></button>
         <p class="chain"><span>Pathogen enters</span><span>phagocyte engulfs it</span><span>lymphocytes make antibodies</span></p>
       </div>
       <p class="tip"><b>Exam tip.</b> In a micrograph, identify white cells by the <b>nucleus</b>: lobed = phagocyte, large and round = lymphocyte. Red cells have none.</p>
@@ -481,6 +540,7 @@
 <script src="../../assets/js/menu.js"></script>
 <script src="../../assets/js/core.js"></script>
 <script src="../../assets/js/fx.js"></script>
+<script src="../js/blood.js"></script>
 <script src="../../assets/js/lesson.js"></script>
 </body>
 </html>

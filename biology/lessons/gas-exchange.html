@@ -109,21 +109,47 @@
   <div class="step">
     <div class="step-h"><span class="step-n">2</span><div><h2>Look closely</h2><p>One alveolus</p></div></div>
     <figure class="plate">
-      <div class="plate-h"><p class="lab-title" data-fig="11.1">Gas exchange between an alveolus and a capillary</p></div>
+      <div class="plate-h"><p class="lab-title" data-fig="11.1">The breathing system, and gas exchange in an alveolus</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 230" role="img" aria-label="An alveolus full of air beside a capillary. Oxygen diffuses from the air into a red blood cell; carbon dioxide diffuses from the blood plasma into the air. Blood arrives deoxygenated from the pulmonary artery and leaves oxygenated to the pulmonary vein.">
-          <defs><marker id="aG1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cr"/></marker><marker id="aG2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cb"/></marker></defs>
-          <path class="l w5" d="M200 10V40"/>
-          <circle class="f cp lt" cx="200" cy="120" r="84"/><circle class="f lt" cx="200" cy="120" r="76"/>
-          <path class="l cb w5" style="--lw:24" opacity=".35" d="M310 20C320 70 320 170 310 220"/>
-          <ellipse class="f cr" cx="316" cy="70" rx="7" ry="10"/><ellipse class="f cr" cx="318" cy="120" rx="7" ry="10"/><ellipse class="f cr" cx="316" cy="170" rx="7" ry="10"/>
-          <path class="l cr w3" d="M240 110H304" marker-end="url(#aG1)"/><path class="l cb w3" d="M304 140H240" marker-end="url(#aG2)"/>
-          <text x="200" y="124" text-anchor="middle" class="k">air in alveolus</text>
-          <text x="250" y="102" class="tc cr">O₂</text><text x="250" y="158" class="tc cb">CO₂</text>
-          <text x="400" y="30" class="k">from pulmonary artery: deoxygenated</text><text x="400" y="216" class="k">to pulmonary vein: oxygenated</text>
-          <text x="400" y="110">capillary wall and alveolus wall:</text><text x="400" y="124">each one cell thick</text>
-          <text x="400" y="150">moist lining — gases dissolve first</text>
-          <path class="guide" d="M276 120L396 116"/>
+        <svg class="fig" viewBox="0 0 700 318" role="img" aria-label="Left: the breathing system. Air passes the larynx and goes down the trachea, held open by rings of cartilage, which splits into two bronchi; these branch into bronchioles ending in alveoli inside the two lungs. Ribs with intercostal muscles between them surround the lungs and the diaphragm lies beneath. Right: one alveolus enlarged, with a capillary around it. Oxygen diffuses from the air into the blood; carbon dioxide diffuses from the blood into the air.">
+          <defs>
+            <marker id="gR" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cr"/></marker>
+            <marker id="gB" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cb"/></marker>
+          </defs>
+          <!-- thorax wall: ribs with intercostal muscles, diaphragm below -->
+          <path class="l" style="--lw:1;opacity:.5" d="M140 104V290M380 104V290"/>
+          <g class="l cr" style="--lw:1.5"><path d="M136 132l8 14M136 172l8 14M136 212l8 14M136 252l8 14M376 132l8 14M376 172l8 14M376 212l8 14M376 252l8 14"/></g>
+          <g class="f" style="--fm:30%"><ellipse cx="140" cy="120" rx="7" ry="10"/><ellipse cx="140" cy="160" rx="7" ry="10"/><ellipse cx="140" cy="200" rx="7" ry="10"/><ellipse cx="140" cy="240" rx="7" ry="10"/><ellipse cx="140" cy="280" rx="7" ry="10"/><ellipse cx="380" cy="120" rx="7" ry="10"/><ellipse cx="380" cy="160" rx="7" ry="10"/><ellipse cx="380" cy="200" rx="7" ry="10"/><ellipse cx="380" cy="240" rx="7" ry="10"/><ellipse cx="380" cy="280" rx="7" ry="10"/></g>
+          <path class="l cr w5" d="M136 302C190 258 330 258 384 302"/>
+          <!-- lungs -->
+          <path class="f cp" style="--fm:22%" d="M238 96C200 92 158 150 154 250C152 282 174 294 204 290L246 280C254 220 254 150 238 96Z"/>
+          <path class="f cp" style="--fm:22%" d="M282 96C320 92 362 150 366 250C368 282 346 294 316 290L274 280C266 220 266 150 282 96Z"/>
+          <!-- larynx, trachea with cartilage rings, bronchi, bronchioles, alveoli -->
+          <rect class="f" style="--fm:30%" x="248" y="20" width="24" height="20" rx="4"/>
+          <path class="l" style="--lw:16" d="M260 40V120M260 118L222 150M260 118L298 150"/>
+          <g class="l" style="--lw:2;stroke:var(--paper)"><path d="M252 54H268M252 66H268M252 78H268M252 90H268M252 102H268"/></g>
+          <g class="l w3"><path d="M222 150L196 182L178 212M196 182L206 224M222 150L214 198L200 242M214 198L230 238M298 150L324 182L342 212M324 182L314 224M298 150L306 198L320 242M306 198L290 238"/></g>
+          <g class="f cp dk"><circle cx="176" cy="218" r="6"/><circle cx="206" cy="230" r="6"/><circle cx="198" cy="248" r="6"/><circle cx="232" cy="244" r="6"/><circle cx="344" cy="218" r="6"/><circle cx="314" cy="230" r="6"/><circle cx="322" cy="248" r="6"/><circle cx="288" cy="244" r="6"/></g>
+          <!-- labels, left of the drawing -->
+          <path class="guide" d="M248 30H132M252 72H132M144 160H132M140 186L132 200M156 286L132 296"/>
+          <g class="k" text-anchor="end"><text x="128" y="34">larynx</text><text x="128" y="76">trachea</text><text x="128" y="164">rib</text><text x="128" y="204">intercostal muscles</text><text x="128" y="300">diaphragm</text></g>
+          <g text-anchor="end"><text x="128" y="88">rings of cartilage</text><text x="128" y="100">keep it open</text></g>
+          <!-- labels, right of the drawing -->
+          <path class="guide" d="M300 152L390 140M326 190L390 186M352 260L390 240M322 250L390 274"/>
+          <g class="k"><text x="394" y="144">bronchus</text><text x="394" y="190">bronchiole</text><text x="394" y="244">lung</text><text x="394" y="278">alveoli</text></g>
+          <!-- one alveolus, enlarged -->
+          <text x="590" y="24" text-anchor="middle" class="ser">one alveolus, enlarged</text>
+          <path class="l" style="--lw:14" d="M512 52L546 92"/>
+          <circle class="f cp" style="--fm:16%" cx="588" cy="140" r="64"/>
+          <circle class="l cb dash" style="--lw:1" cx="588" cy="140" r="58"/>
+          <path class="l cb" style="--lw:14" d="M484 252C520 232 560 220 592 214"/>
+          <path class="l cr" style="--lw:14" d="M592 214C626 208 664 192 676 146"/>
+          <g class="f cr dk"><ellipse cx="530" cy="234" rx="6" ry="4"/><ellipse cx="610" cy="210" rx="6" ry="4"/><ellipse cx="660" cy="184" rx="5" ry="4"/></g>
+          <path class="l cr w3" d="M606 150L622 196" marker-end="url(#gR)"/><path class="l cb w3" d="M560 210L550 168" marker-end="url(#gB)"/>
+          <text x="626" y="160" class="tc cr">O₂</text><text x="524" y="186" class="tc cb">CO₂</text>
+          <text x="588" y="126" text-anchor="middle" class="k">air</text>
+          <text x="484" y="278">deoxygenated blood in</text><text x="696" y="68" text-anchor="end">oxygenated out ↓</text>
+          <text x="590" y="300" text-anchor="middle">walls one cell thick · moist lining</text>
         </svg>
       </div>
       <figcaption>Oxygen diffuses <b>into</b> the blood and carbon dioxide <b>out</b>, each down its own concentration gradient, across just two thin cells.</figcaption>
@@ -205,21 +231,47 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="11.2">The thorax during inhalation and exhalation</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 260" role="img" aria-label="Inhalation: the ribcage is raised and wider, the diaphragm is flat and low, lungs are larger and air flows in. Exhalation: the ribcage is lower and narrower, the diaphragm is domed, lungs are smaller and air flows out.">
-          <defs><marker id="aB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="ar-h"/></marker></defs>
-          <text class="ser" x="160" y="22" text-anchor="middle">Breathing in</text><text class="ser" x="480" y="22" text-anchor="middle">Breathing out</text><path class="split" d="M320 30V250"/>
-          <path class="l w3" d="M160 34V70"/><path class="l w3" d="M478 34V76"/>
-          <path class="l" d="M70 80C80 64 240 64 250 80M66 110C76 94 244 94 254 110M66 140C76 124 244 124 254 140M70 170C80 154 240 154 250 170"/>
-          <path class="f cp" d="M100 80C90 120 90 190 110 200H150V80C140 70 110 70 100 80Z"/><path class="f cp" d="M220 80C230 120 230 190 210 200H170V80C180 70 210 70 220 80Z"/>
-          <path class="l cr w5" d="M70 208H250"/>
-          <path class="l" d="M410 96C420 84 540 84 550 96M406 120C416 108 544 108 554 120M406 144C416 132 544 132 554 144M410 168C420 156 540 156 550 168"/>
-          <path class="f cp" d="M430 96C424 124 424 166 440 176H470V96C462 88 438 88 430 96Z"/><path class="f cp" d="M530 96C536 124 536 166 520 176H490V96C498 88 522 88 530 96Z"/>
-          <path class="l cr w5" d="M410 200C440 150 520 150 550 200"/>
-          <path class="ar" d="M184 40V66" marker-end="url(#aB)"/><path class="ar" d="M500 72V44" marker-end="url(#aB)"/>
-          <path class="ar" d="M264 110V90" marker-end="url(#aB)"/><path class="ar" d="M160 214V232" marker-end="url(#aB)"/>
-          <path class="ar" d="M566 96V118" marker-end="url(#aB)"/><path class="ar" d="M480 190V172" marker-end="url(#aB)"/>
-          <g class="k"><text x="190" y="54">air in</text><text x="506" y="58">air out</text><text x="270" y="102">ribs up, out</text><text x="170" y="246">diaphragm flattens</text><text x="572" y="112">ribs down, in</text><text x="480" y="246" text-anchor="middle">diaphragm domes</text></g>
-          <text x="160" y="190" text-anchor="middle" class="tc cb">volume ↑ pressure ↓</text><text x="480" y="160" text-anchor="middle" class="tc cb">volume ↓ pressure ↑</text>
+        <svg class="fig" viewBox="0 0 690 330" role="img" aria-label="Front view of the chest. Breathing in: the external intercostal muscles contract, the ribs move up and out, the diaphragm contracts and flattens, the lungs fill, volume rises, pressure falls and air flows in. Breathing out: the muscles relax, the ribs move down and in, the diaphragm relaxes and domes up, volume falls, pressure rises and air flows out.">
+          <defs><marker id="bA" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="ar-h"/></marker><marker id="bR" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cr"/></marker></defs>
+          <path class="f cp" style="--fm:22%" d="M162 88C110 74 58 114 58 158.0C58 194 99.6 210 162 202Z"/>
+          <path class="f cp" style="--fm:22%" d="M178 88C230 74 282 114 282 158.0C282 194 240.4 210 178 202Z"/>
+          <path class="l" style="--lw:12" d="M170 30V90"/>
+          <path class="l cr" style="--lw:1.5" d="M58 104.0l-6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M282 104.0l6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M58 134.0l-6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M282 134.0l6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M58 164.0l-6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M282 164.0l6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M58 194.0l-6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M282 194.0l6 16"/>
+          <path class="l" style="--lw:3;stroke:var(--ink-3);opacity:.75" d="M164 90C111.0 78.0 52 90.0 48 116M176 90C229.0 78.0 288 90.0 292 116M164 120C111.0 108.0 52 120.0 48 146M176 120C229.0 108.0 288 120.0 292 146M164 150C111.0 138.0 52 150.0 48 176M176 150C229.0 138.0 288 150.0 292 176M164 180C111.0 168.0 52 180.0 48 206M176 180C229.0 168.0 288 180.0 292 206M164 210C111.0 198.0 52 210.0 48 236M176 210C229.0 198.0 288 210.0 292 236"/>
+          <path class="l" style="--lw:5;stroke:var(--ink-3);opacity:.75" d="M170 86V224"/>
+          <path class="l cr w5" d="M46 250C110 232 230 232 294 250"/>
+          <path class="f cp" style="--fm:22%" d="M512 88C470 74 428 114 428 141.2C428 170 461.6 186 512 178Z"/>
+          <path class="f cp" style="--fm:22%" d="M528 88C570 74 612 114 612 141.2C612 170 578.4 186 528 178Z"/>
+          <path class="l" style="--lw:12" d="M520 30V90"/>
+          <path class="l cr" style="--lw:1.5" d="M426 113.6l-6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M614 113.6l6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M426 143.6l-6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M614 143.6l6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M426 173.6l-6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M614 173.6l6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M426 203.6l-6 16"/>
+          <path class="l cr" style="--lw:1.5" d="M614 203.6l6 16"/>
+          <path class="l" style="--lw:3;stroke:var(--ink-3);opacity:.75" d="M514 90C470.0 82.8 420 99.6 416 132M526 90C570.0 82.8 620 99.6 624 132M514 120C470.0 112.8 420 129.6 416 162M526 120C570.0 112.8 620 129.6 624 162M514 150C470.0 142.8 420 159.6 416 192M526 150C570.0 142.8 620 159.6 624 192M514 180C470.0 172.8 420 189.6 416 222M526 180C570.0 172.8 620 189.6 624 222M514 210C470.0 202.8 420 219.6 416 252M526 210C570.0 202.8 620 219.6 624 252"/>
+          <path class="l" style="--lw:5;stroke:var(--ink-3);opacity:.75" d="M520 86V224"/>
+          <path class="l cr w5" d="M414 250C450 170 590 170 626 250"/>
+          <text class="ser" x="170" y="20" text-anchor="middle">Breathing in</text><text class="ser" x="520" y="20" text-anchor="middle">Breathing out</text>
+          <path class="split" d="M345 30V330"/>
+          <path class="ar" d="M190 26V60" marker-end="url(#bA)"/><text x="196" y="40" class="k">air in</text>
+          <path class="ar" d="M540 60V26" marker-end="url(#bA)"/><text x="546" y="40" class="k">air out</text>
+          <path class="ar" d="M302 150L314 124" marker-end="url(#bA)"/><text x="236" y="64" class="k">ribs up, out ↗</text>
+          <path class="ar" d="M634 110L642 140" marker-end="url(#bA)"/><text x="580" y="64" class="k">ribs down, in ↘</text>
+          <path class="l cr w3" d="M170 220V244" marker-end="url(#bR)"/>
+          <path class="l cr w3" d="M520 246V206" marker-end="url(#bR)"/>
+          <g text-anchor="middle"><text x="170" y="274" class="tc cr">diaphragm contracts, flattens</text><text x="520" y="274" class="tc cr">diaphragm relaxes, domes up</text>
+          <text x="170" y="294" class="tc cb">thorax volume ↑ · pressure ↓ · air in</text><text x="520" y="294" class="tc cb">thorax volume ↓ · pressure ↑ · air out</text>
+          <text x="170" y="312">external intercostal muscles contract</text><text x="520" y="312">external intercostals relax</text></g>
         </svg>
       </div>
       <figcaption>Air always moves from <b>higher to lower pressure</b>. Making the thorax bigger lowers the pressure inside, so air rushes in.</figcaption>

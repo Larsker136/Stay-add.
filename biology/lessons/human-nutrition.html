@@ -239,20 +239,38 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="7.2">The alimentary canal and associated organs</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 340" role="img" aria-label="Front view of the digestive system: mouth and salivary gland, oesophagus, liver on the left with the gall bladder beneath it, stomach on the right, pancreas below the stomach, duodenum leading to the coiled small intestine, framed by the large intestine, ending in the rectum and anus.">
-          <ellipse class="f cp" cx="240" cy="28" rx="34" ry="12"/><circle class="f cp dk" cx="282" cy="38" r="7"/>
-          <path class="l cp w5" d="M240 40V122"/>
-          <path class="f cv" d="M120 112C150 98 236 104 250 118C240 140 190 158 128 156C112 146 110 122 120 112Z"/>
-          <ellipse class="f ct" cx="196" cy="162" rx="10" ry="7"/>
-          <path class="f cr" d="M240 118C300 104 338 130 332 168C326 200 282 208 262 192C278 182 298 172 292 152C288 138 262 136 240 140Z"/>
-          <path class="f ca" d="M232 212C262 202 322 204 338 212C322 220 262 222 232 220Z"/>
-          <path class="l cp w5" d="M262 194C238 200 222 214 230 234"/>
-          <path class="l cb" opacity=".55" style="--lw:14" d="M156 306V238H344V300"/>
-          <path class="l cp w3" d="M232 236C200 242 186 250 190 256H316C322 262 312 268 300 268H186C178 274 186 282 196 282H316C324 288 316 296 300 296H210"/>
-          <path class="l cb w5" d="M156 306C160 322 200 324 222 324V336"/>
-          <path class="guide" d="M274 28H376M289 38H376M240 80H376M332 160H376M338 212H376M344 250H376M318 276H376M222 330H376M126 132H100M188 164H100M230 230H120"/>
-          <g class="k"><text x="380" y="31">mouth</text><text x="380" y="42">salivary gland</text><text x="380" y="84">oesophagus</text><text x="380" y="164">stomach</text><text x="380" y="216">pancreas</text><text x="380" y="254">large intestine (colon)</text><text x="380" y="280">small intestine (ileum)</text><text x="380" y="334">rectum → anus</text></g>
-          <g class="k" text-anchor="end"><text x="96" y="136">liver</text><text x="96" y="168">gall bladder</text><text x="116" y="234">duodenum</text></g>
+        <svg class="fig" viewBox="0 0 680 432" role="img" aria-label="The digestive system drawn inside a body outline, front view. Mouth and salivary glands in the head; the oesophagus runs down to the stomach on the body's left (right of the picture). The large liver sits on the other side with the gall bladder beneath it. The pancreas lies below the stomach. The duodenum curves from the stomach into the coiled ileum (small intestine), which is framed by the large intestine: colon rising up one side, across, and down the other, ending in the rectum and anus. The appendix hangs from the start of the colon.">
+          <!-- body outline -->
+          <circle class="f lt" cx="330" cy="56" r="40"/>
+          <path class="f lt" d="M316 94H344V112H316Z"/>
+          <path class="f lt" d="M252 110C230 114 210 132 206 172V398C206 410 214 418 226 418H434C446 418 454 410 454 398V172C450 132 430 114 408 110Z"/>
+          <!-- mouth and salivary glands -->
+          <path class="f cp" style="--fm:40%" d="M314 70Q330 80 346 70Q330 76 314 70Z"/>
+          <circle class="f cp dk" cx="300" cy="74" r="7"/><circle class="f cp dk" cx="360" cy="74" r="7"/>
+          <!-- oesophagus -->
+          <path class="l cp" style="--lw:8" d="M330 76V120C330 140 340 156 356 168"/>
+          <!-- large intestine (behind) with appendix -->
+          <path class="l cb" style="--lw:18;opacity:.55" d="M252 392V274H420V368C420 388 372 388 350 392"/>
+          <path class="l cb" style="--lw:10;opacity:.55" d="M346 392V414"/>
+          <path class="l cb" style="--lw:5;opacity:.7" d="M250 400C246 410 240 416 232 420"/>
+          <!-- small intestine: duodenum then the coiled ileum -->
+          <path class="l cp" style="--lw:7" d="M354 226C332 232 306 236 304 250C302 262 318 266 334 262"/>
+          <path class="l cp" style="--lw:6" d="M300 296H390C404 296 404 312 390 312H290C276 312 276 328 290 328H390C404 328 404 344 390 344H290C276 344 276 360 290 360H380C392 360 396 372 386 378C376 384 300 380 262 386"/>
+          <!-- liver and gall bladder -->
+          <path class="f cv" style="--fm:30%" d="M222 158C258 140 340 140 358 158C350 178 300 204 234 216C218 198 214 174 222 158Z"/>
+          <path class="f ct" style="--fm:45%" d="M292 200C302 196 312 204 308 214C304 222 292 222 288 214C286 208 288 202 292 200Z"/>
+          <!-- stomach -->
+          <path class="f cr" style="--fm:30%" d="M352 162C382 150 422 158 426 190C430 224 400 246 368 238C352 234 344 224 350 214C366 222 390 216 394 196C396 178 374 172 356 178Z"/>
+          <!-- pancreas -->
+          <path class="f ca" style="--fm:40%" d="M300 240C332 230 392 232 414 242C398 252 332 254 300 248Z"/>
+          <!-- labels, left -->
+          <path class="guide" d="M314 72L200 60M236 176H200M290 210H200M304 252H200M252 326H200M240 410H200"/>
+          <g class="k" text-anchor="end"><text x="196" y="64">mouth</text><text x="196" y="180">liver</text><text x="196" y="214">gall bladder</text><text x="196" y="256">duodenum</text><text x="196" y="330">large intestine</text><text x="196" y="414">appendix</text></g>
+          <g text-anchor="end"><text x="196" y="76">teeth, saliva</text><text x="196" y="192">makes bile</text><text x="196" y="226">stores bile</text><text x="196" y="342">colon: absorbs water</text></g>
+          <!-- labels, right -->
+          <path class="guide" d="M368 74L466 62M332 108H466M424 190H466M412 244H466M398 320H466M420 360H466M352 398L466 398M346 414H466"/>
+          <g class="k"><text x="470" y="66">salivary glands</text><text x="470" y="112">oesophagus</text><text x="470" y="194">stomach</text><text x="470" y="248">pancreas</text><text x="470" y="324">small intestine (ileum)</text><text x="470" y="364">colon</text><text x="470" y="402">rectum</text><text x="470" y="418">anus</text></g>
+          <g><text x="470" y="124">peristalsis</text><text x="470" y="206">acid, protease</text><text x="470" y="260">enzymes</text><text x="470" y="336">digestion, absorption</text></g>
         </svg>
       </div>
       <figcaption>Bile from the <b>liver</b> (stored in the gall bladder) and juice from the <b>pancreas</b> both flow into the <b>duodenum</b>, the first part of the small intestine.</figcaption>
@@ -437,16 +455,39 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="7.4">Structure of a villus</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 260" role="img" aria-label="A single villus: a finger-like projection covered in a one-cell-thick epithelium with microvilli; inside, a network of capillaries fed by an arteriole and drained by a venule, and a central lacteal.">
-          <path class="f cp" d="M200 240V90C200 30 300 30 300 90V240"/>
-          <path class="f cp lt" d="M212 240V92C212 46 288 46 288 92V240"/>
-          <path class="l cp" d="M206 100l-6-3M206 120l-6-3M206 140l-6-3M206 160l-6-3M206 180l-6-3M294 100l6-3M294 120l6-3M294 140l6-3M294 160l6-3M294 180l6-3M230 50l-3-6M250 44l0-6M270 50l3-6"/>
-          <path class="l cr w3" d="M222 240V100C222 64 278 64 278 100V240"/>
-          <path class="l cr" d="M222 120H278M222 150H278M222 180H278M222 210H278"/>
-          <path class="l cv w5" d="M250 240V96"/>
-          <path class="guide" d="M200 96L120 80M294 140L380 130M278 180L380 180M250 120L380 100M222 230L120 230M278 236L380 236"/>
-          <g class="k"><text x="384" y="104">lacteal (fats)</text><text x="384" y="134">microvilli on epithelium</text><text x="384" y="184">capillary network</text><text x="384" y="240">venule → hepatic portal vein</text></g>
-          <g class="k" text-anchor="end"><text x="116" y="84">wall one cell thick</text><text x="116" y="234">arteriole</text></g>
+        <svg class="fig" viewBox="0 0 700 300" role="img" aria-label="Left: a strip of small intestine wall covered in finger-like villi, one of them boxed. Right: that villus enlarged. Its surface is a single layer of epithelial cells with microvilli. Inside, an arteriole brings blood up one side into a capillary network that drains into a venule; in the centre is a lacteal. Glucose and amino acids are absorbed into the capillaries; fatty acids and glycerol into the lacteal.">
+          <defs>
+            <marker id="vR" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cr"/></marker>
+            <marker id="vA" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk ca"/></marker>
+          </defs>
+          <!-- the intestine wall, with villi -->
+          <text x="100" y="40" text-anchor="middle" class="ser">small intestine wall</text>
+          <path class="f cp" style="--fm:26%" d="M16 270V210H24V150C24 132 44 132 44 150V210H56V140C56 122 76 122 76 140V210H88V146C88 128 108 128 108 146V210H120V138C120 120 140 120 140 138V210H152V150C152 132 172 132 172 150V210H184V270Z"/>
+          <path class="l cr" d="M16 236H184"/><text x="100" y="290" text-anchor="middle">muscle and blood vessels below</text>
+          <rect class="l dash" x="84" y="116" width="28" height="98"/>
+          <text x="98" y="110" text-anchor="middle">enlarged →</text>
+          <!-- one villus, enlarged: epithelium (one cell thick) with microvilli -->
+          <path class="f cp" style="--fm:30%" d="M264 286V96C264 28 400 28 400 96V286Z"/>
+          <path class="f cp" style="--fm:8%" d="M280 286V98C280 48 384 48 384 98V286Z"/>
+          <g class="l cp"><path d="M264 110H280M264 134H280M264 158H280M264 182H280M264 206H280M264 230H280M264 254H280M384 110H400M384 134H400M384 158H400M384 182H400M384 206H400M384 230H400M384 254H400M276 64L288 74M300 46L306 60M332 40V54M364 46L358 60M388 64L376 74"/></g>
+          <g class="l" style="--lw:1.2"><path d="M264 100h-5M264 112h-5M264 124h-5M264 136h-5M264 148h-5M264 160h-5M264 172h-5M264 184h-5M264 196h-5M264 208h-5M264 220h-5M264 232h-5M264 244h-5M264 256h-5M264 268h-5M400 100h5M400 112h5M400 124h5M400 136h5M400 148h5M400 160h5M400 172h5M400 184h5M400 196h5M400 208h5M400 220h5M400 232h5M400 244h5M400 256h5M400 268h5M270 66l-4-3M282 50l-3-4M298 40l-2-5M316 34l-1-5M332 33v-5M348 34l1-5M366 40l2-5M382 50l3-4M394 66l4-3"/></g>
+          <!-- blood: arteriole up the left, capillary network across, venule down the right -->
+          <path class="l cr w3" d="M294 290V100C294 76 314 66 332 66"/>
+          <path class="l cb w3" d="M332 66C350 66 370 76 370 100V290"/>
+          <g class="l" style="--lw:2"><path class="cr" d="M294 120H318M294 160H318M294 200H318M294 240H318"/><path class="cb" d="M346 120H370M346 160H370M346 200H370M346 240H370"/></g>
+          <!-- the lacteal in the middle -->
+          <rect class="f ca" style="--fm:30%" x="322" y="88" width="20" height="202" rx="10"/>
+          <!-- absorption -->
+          <path class="l cr w3" d="M210 150H286" marker-end="url(#vR)"/>
+          <path class="l ca w3" d="M470 180H350" marker-end="url(#vA)"/>
+          <g class="tc cr" text-anchor="middle"><text x="244" y="130">glucose,</text><text x="244" y="142">amino acids</text></g>
+          <g class="tc ca"><text x="478" y="176">fatty acids,</text><text x="478" y="190">glycerol</text></g>
+          <!-- labels -->
+          <path class="guide" d="M259 92L210 92M272 70L210 66M294 274L210 274M370 110L470 110M342 220L470 228M370 274L470 274"/>
+          <g class="k" text-anchor="end"><text x="206" y="62">microvilli</text><text x="206" y="88">epithelium:</text><text x="206" y="278">arteriole</text></g>
+          <g text-anchor="end"><text x="206" y="100">one cell thick</text></g>
+          <g class="k"><text x="476" y="114">capillary network</text><text x="476" y="232">lacteal</text><text x="476" y="278">venule</text></g>
+          <g><text x="476" y="126">blood takes glucose away</text><text x="476" y="244">lymph takes fats away</text><text x="476" y="290">→ hepatic portal vein → liver</text></g>
         </svg>
       </div>
       <figcaption>Glucose and amino acids enter the <b>capillaries</b> and go to the liver; fatty acids and glycerol enter the <b>lacteal</b>. Blood flow keeps the concentration gradient steep.</figcaption>

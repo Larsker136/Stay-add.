@@ -197,17 +197,34 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="13.2">The urinary system</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 260" role="img" aria-label="Two bean-shaped kidneys, each with a renal artery from the aorta and a renal vein to the vena cava, and a ureter running down to the bladder; the urethra leaves the bladder. One kidney is cut open to show cortex, medulla and ureter.">
-          <path class="l cr w5" d="M300 10V240"/><path class="l cb w5" d="M340 10V240"/>
-          <path class="f cr" d="M220 50C180 50 172 130 194 160C214 180 244 164 238 136C234 120 254 108 248 84C244 64 234 50 220 50Z"/>
-          <path class="f cr" d="M420 50C460 50 468 130 446 160C426 180 396 164 402 136C406 120 386 108 392 84C396 64 406 50 420 50Z"/>
-          <path class="f cr lt" d="M420 62C446 62 452 124 436 148C424 160 410 150 414 134C418 120 404 110 408 90C410 74 414 62 420 62Z"/>
-          <path class="l cr w3" d="M300 96H244M300 96C330 96 360 96 396 96" /><path class="l cb w3" d="M340 112H400M340 112H238"/>
-          <path class="l ca w3" d="M238 136C260 170 290 196 304 214M402 136C380 170 350 196 336 214"/>
-          <ellipse class="f ca" cx="320" cy="224" rx="30" ry="20"/><path class="l ca w3" d="M320 244V258"/>
-          <path class="guide" d="M196 110L120 110M220 96L120 70M260 170L120 170M320 228L120 228M430 80L520 70M420 120L520 120M300 30H380M340 40L380 40M270 112L120 144"/>
-          <g class="k" text-anchor="end"><text x="116" y="74">renal artery</text><text x="116" y="114">kidney</text><text x="116" y="148" class="tc cb">renal vein</text><text x="116" y="174">ureter</text><text x="116" y="232">bladder → urethra</text></g>
-          <g class="k"><text x="524" y="74">cortex</text><text x="524" y="124">medulla</text><text x="384" y="34">aorta</text><text x="384" y="44">vena cava</text></g>
+        <svg class="fig" viewBox="0 0 700 372" role="img" aria-label="The urinary system, front view. The aorta and vena cava run down the middle. A renal artery from the aorta enters each kidney and a renal vein returns to the vena cava. A ureter runs from each kidney down to the bladder, which empties through the urethra. The kidney on the right is cut open to show the outer cortex, the medulla with its pyramids, and the pelvis that drains into the ureter.">
+          <defs><g id="kid"><path d="M220 92C180 92 168 140 172 170C176 206 198 214 220 212C238 210 244 194 240 180C236 168 252 160 250 150C248 138 236 130 240 118C242 104 236 92 220 92Z"/></g></defs>
+          <!-- great vessels -->
+          <path class="l cr" style="--lw:14" d="M336 24V276"/>
+          <!-- renal arteries pass behind the vena cava -->
+          <path class="l cr" style="--lw:6" d="M336 138C300 136 270 138 246 140M336 138C400 136 430 138 454 140"/>
+          <path class="l cb" style="--lw:16" d="M366 24V276"/>
+          <!-- renal veins pass in front of the aorta -->
+          <path class="l cb" style="--lw:8" d="M366 158C320 160 280 160 246 158M366 158C400 160 430 160 454 158"/>
+          <!-- kidneys: whole on the left, cut open on the right -->
+          <g class="f cr" style="--fm:34%"><use href="#kid"/></g>
+          <g transform="translate(700 0) scale(-1 1)">
+            <g class="f cr" style="--fm:16%"><use href="#kid"/></g>
+            <g class="f cr" style="--fm:46%"><path d="M192 108L210 104L222 140Z"/><path d="M180 140L184 120L218 146Z"/><path d="M182 172L190 192L218 160Z"/><path d="M204 200L222 202L224 164Z"/></g>
+            <path class="f ca" style="--fm:45%" d="M222 132C238 138 248 146 252 152C248 160 238 168 222 172C232 162 232 142 222 132Z"/>
+          </g>
+          <!-- ureters, bladder, urethra -->
+          <path class="l ca" style="--lw:5" d="M246 176C260 220 300 262 326 292M454 176C440 220 400 262 374 292"/>
+          <path class="f ca" style="--fm:35%" d="M310 286C310 270 390 270 390 286C394 318 372 336 350 336C328 336 306 318 310 286Z"/>
+          <path class="l ca" style="--lw:6" d="M350 336V366"/>
+          <!-- labels -->
+          <text x="326" y="18" text-anchor="end" class="k">aorta</text><text x="376" y="18" class="k">vena cava</text>
+          <text x="292" y="130" text-anchor="middle" class="tc cr">renal artery</text><text x="300" y="178" text-anchor="middle" class="tc cb">renal vein</text>
+          <path class="guide" d="M174 150H140M292 246H140M312 304H140M350 356H140M524 112L548 104M512 146H548M466 160L548 196"/>
+          <g class="k" text-anchor="end"><text x="136" y="154">kidney</text><text x="136" y="250">ureter</text><text x="136" y="308">bladder</text><text x="136" y="360">urethra</text></g>
+          <g text-anchor="end"><text x="136" y="166">filters the blood</text><text x="136" y="262">carries urine down</text><text x="136" y="320">stores urine</text></g>
+          <g class="k"><text x="552" y="108">cortex</text><text x="552" y="150">medulla</text><text x="552" y="200">pelvis → ureter</text></g>
+          <text x="480" y="236" text-anchor="middle" class="ser">cut open</text>
         </svg>
       </div>
       <figcaption>Blood enters each kidney in the <b>renal artery</b> and leaves, cleaned, in the <b>renal vein</b>. Urine drains down the <b>ureter</b>.</figcaption>
@@ -288,16 +305,31 @@
     <figure class="plate">
       <div class="plate-h"><p class="lab-title" data-fig="13.3">A nephron (simplified)</p></div>
       <div class="plate-fig">
-        <svg class="fig" viewBox="0 0 640 260" role="img" aria-label="Blood arrives at the glomerulus inside the Bowman's capsule; water, glucose, urea and ions are filtered into the capsule. The filtrate flows along the tubule, where glucose, some ions and water are reabsorbed into a capillary. Urine leaves through the collecting duct.">
-          <defs><marker id="aN" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cg"/></marker></defs>
-          <path class="f ca lt" d="M60 60A50 50 0 1 0 140 100L120 100A30 30 0 1 1 80 70Z"/>
-          <circle class="f cr" cx="96" cy="100" r="26"/><path class="l cr w3" d="M20 90H72M72 110H20"/>
-          <path class="l ca w5" d="M140 100C200 100 200 60 260 60H420C460 60 470 100 470 140V230"/>
-          <path class="l cr dash" d="M200 30H440C490 30 500 90 500 140V230"/>
-          <g class="l cg w3"><path d="M240 64V40" marker-end="url(#aN)"/><path d="M300 64V40" marker-end="url(#aN)"/><path d="M360 64V40" marker-end="url(#aN)"/><path d="M474 160H494" marker-end="url(#aN)"/></g>
-          <g class="k"><text x="96" y="168" text-anchor="middle">glomerulus in Bowman’s capsule</text><text x="10" y="34">blood in (high pressure)</text><text x="270" y="22">capillary: reabsorbed into blood</text><text x="300" y="84" text-anchor="middle">tubule</text><text x="470" y="250" text-anchor="middle">collecting duct → urine</text></g>
-          <g class="tc cg"><text x="240" y="110" text-anchor="middle">all glucose</text><text x="320" y="110" text-anchor="middle">some ions</text><text x="400" y="110" text-anchor="middle">much water</text></g>
-          <text x="150" y="210" class="k">filtered: water, glucose, urea, ions</text><text x="150" y="226">stay in blood: cells, proteins</text>
+        <svg class="fig" viewBox="0 0 700 334" role="img" aria-label="A nephron. Blood enters the glomerulus, a knot of capillaries, at high pressure; water, glucose, urea and ions are forced into the cup-shaped Bowman's capsule, while blood cells and proteins stay in the blood. The filtrate flows along the coiled tubule, down and up the loop, along another coiled section and into the collecting duct. A capillary runs alongside: all the glucose, some ions and much of the water are reabsorbed into it. Urine — water, urea and excess ions — leaves down the collecting duct to the ureter.">
+          <defs><marker id="nG" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk cg"/></marker><marker id="nA" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 1L10 5L0 9z" class="mk ca"/></marker></defs>
+          <!-- capillary that takes reabsorbed substances back into the blood -->
+          <path class="l cr dash" style="--lw:2.5" d="M140 70C190 60 260 70 300 76C330 80 470 64 528 66V300"/>
+          <!-- blood in, glomerulus -->
+          <path class="l cr" style="--lw:7" d="M14 104H96"/>
+          <path class="l cr" style="--lw:4" d="M100 96C92 80 116 76 120 90C126 104 106 112 104 100C100 86 132 82 134 98C136 114 112 120 108 108M128 96C142 84 146 70 140 70"/>
+          <!-- Bowman's capsule: a double-walled cup around it -->
+          <path class="f ca" style="--fm:30%" d="M92 70A44 44 0 1 1 92 134L100 126A33 33 0 1 0 100 78Z"/>
+          <!-- the tubule: coiled, loop, coiled, collecting duct -->
+          <path class="l ca" style="--lw:8" d="M150 128C170 140 176 112 194 120S214 142 232 128S252 108 268 120S290 130 300 120V282C300 300 330 300 330 282V124C330 108 352 116 364 106S386 88 402 100S424 112 440 100S464 86 500 88V308"/>
+          <!-- filtration and reabsorption -->
+          <path class="l ca w3" d="M126 108L150 114" marker-end="url(#nA)"/>
+          <path class="l cg w3" d="M196 112V82" marker-end="url(#nG)"/><path class="l cg w3" d="M262 112V84" marker-end="url(#nG)"/>
+          <path class="l cg w3" d="M508 170H522" marker-end="url(#nG)"/><path class="l cg w3" d="M508 230H522" marker-end="url(#nG)"/>
+          <!-- labels -->
+          <g class="k"><text x="14" y="94">blood in</text><text x="120" y="166" text-anchor="middle">glomerulus</text><text x="120" y="180" text-anchor="middle">in Bowman’s capsule</text><text x="216" y="164" text-anchor="middle">tubule</text><text x="315" y="320" text-anchor="middle">loop</text><text x="470" y="200" text-anchor="end">collecting duct</text></g>
+          <text x="14" y="120">high pressure</text>
+          <g class="tc cg" text-anchor="middle"><text x="196" y="54">all glucose</text><text x="270" y="54">some ions</text></g>
+          <g class="tc cg"><text x="542" y="174">water</text></g><text x="542" y="188">as much as the body needs</text>
+          <text x="372" y="54" class="tc cr">capillary: back to the blood</text><text x="542" y="304" class="tc cr">→ renal vein</text>
+          <text x="500" y="326" text-anchor="middle" class="k">urine → ureter</text>
+          <rect class="f lt" x="12" y="214" width="268" height="74"/>
+          <text x="22" y="234" class="k">filtered into the capsule</text><text x="22" y="248">water, glucose, urea, ions</text>
+          <text x="22" y="266" class="k">too big — stay in the blood</text><text x="22" y="278" dy="0">blood cells, proteins</text>
         </svg>
       </div>
       <figcaption>Filtration takes out <b>far more</b> than the body wants to lose. Reabsorption then saves the glucose and most of the water; urea stays in the tubule.</figcaption>

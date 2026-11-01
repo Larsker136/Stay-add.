@@ -95,6 +95,10 @@
         if (cut && inWound(o) && o.y < VT + 16) {
           if (o.kind === "plt" && sticky && Math.random() < 0.5) { o.state = "stuck"; o.y = VT - 4 - Math.random() * 30; o.x = GX0 + Math.random() * (GX1 - GX0); continue; }
           if (o.kind === "fib" && fibrin) { o.x = -20; continue; }   // turned into a thread
+          // the mesh catches red cells pushed into the wound: they fill it as a clot
+          if (o.kind === "rbc" && sealed() && cells.filter((c) => c.state === "stuck").length < 16 && Math.random() < 0.4) {
+            o.state = "stuck"; o.x = GX0 + 4 + Math.random() * (GX1 - GX0 - 8); o.y = SKIN - 28 + Math.random() * (VT - SKIN + 20); continue;
+          }
           if (Math.random() < 0.08 * leak) o.state = "out";
         }
       }
@@ -126,11 +130,11 @@
     function paint() {
       $$("[data-stage]", lab).forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.stage === st.stage)));
       $("[data-toggle]", lab).setAttribute("aria-pressed", String(st.noFactor));
-      $("[data-prev]", lab).disabled = st.stage === 0; $("[data-next]", lab).disabled = st.stage === 5;
+      $("[data-back]", lab).disabled = st.stage === 0; $("[data-fwd]", lab).disabled = st.stage === 5;
     }
     $$("[data-stage]", lab).forEach((b) => b.addEventListener("click", () => { stopAuto(); setStage(+b.dataset.stage); }));
-    $("[data-next]", lab).addEventListener("click", () => { stopAuto(); setStage(st.stage + 1); });
-    $("[data-prev]", lab).addEventListener("click", () => { stopAuto(); setStage(st.stage - 1); });
+    $("[data-fwd]", lab).addEventListener("click", () => { stopAuto(); setStage(st.stage + 1); });
+    $("[data-back]", lab).addEventListener("click", () => { stopAuto(); setStage(st.stage - 1); });
     $("[data-toggle]", lab).addEventListener("click", () => { st.noFactor = !st.noFactor; thrG.innerHTML = ""; threads = []; cells.forEach((o) => o.state === "stuck" && (o.state = "out")); paint(); drawStatic(); explain(); });
     const playBtn = $("[data-play]", lab);
     function stopAuto() { clearInterval(auto); auto = 0; playBtn.textContent = "Play all stages"; }
