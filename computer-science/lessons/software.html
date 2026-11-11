@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Software · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 4: system and application software, the operating system, firmware, interrupts, high- and low-level languages, assemblers, compilers, interpreters and IDEs — with live labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-software">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>4</span>Software</p>
+      <a href="#types" data-full="4.1 · OS, firmware, interrupts">Types of software</a>
+      <a href="#languages" data-full="4.2 · translators and IDEs">Languages and translators</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 2</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 4.1 Types of software and interrupts ======================= -->
+<section class="topic" data-key="types">
+  <header class="t-head">
+    <p class="eyebrow"><span>4.1</span>Software</p>
+    <h1>Layers of software between you and the <em>hardware</em></h1>
+    <p class="lede">Applications do the jobs you want. The operating system sits underneath, managing the hardware so applications don’t have to — and it responds instantly when a device interrupts.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s411"><span>4.1.1</span>System and application software</button><button type="button" data-goto="s412"><span>4.1.2</span>The operating system</button><button type="button" data-goto="s413"><span>4.1.3</span>Hardware, firmware and the OS</button><button type="button" data-goto="s414"><span>4.1.4</span>Interrupts</button><button type="button" data-goto="ck41"><span>4.1.5</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f lt" x="20" y="14" width="160" height="22" rx="4"/><rect class="f cb lt" x="20" y="40" width="160" height="22" rx="4"/><rect class="f cp lt" x="20" y="66" width="160" height="22" rx="4"/><rect class="f ca lt" x="20" y="92" width="160" height="22" rx="4"/><rect class="f" x="20" y="118" width="160" height="16" rx="4"/>
+      <g text-anchor="middle"><text x="100" y="29">user</text><text x="100" y="55">applications</text><text x="100" y="81">operating system</text><text x="100" y="107">firmware</text></g>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Four sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s411"><span class="sec-n">4.1.1</span><div class="sec-b">
+        <h3>System software and application software</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th></th><th>System software</th><th>Application software</th></tr>
+          <tr><td>Purpose</td><td>provides the services the computer needs to run; manages hardware and runs applications</td><td>lets the user carry out a task</td></tr>
+          <tr><td>Examples</td><td>operating systems; <b>utility software</b> such as anti-virus, firewalls, defragmentation, backup, compression, disk formatting</td><td>word processors, spreadsheets, web browsers, games, photo editors</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s412"><span class="sec-n">4.1.2</span><div class="sec-b">
+        <h3>The operating system</h3>
+        <p>The OS manages the computer’s resources. Its functions include:</p>
+        <ul>
+          <li><b>managing files</b> — creating, naming, saving, moving and deleting files and folders</li>
+          <li><b>handling interrupts</b></li>
+          <li>providing an <b>interface</b> (GUI or command line) between user and computer</li>
+          <li><b>managing peripherals and drivers</b> — sending and receiving data to and from devices</li>
+          <li><b>managing memory</b> — allocating RAM to programs, moving data to and from virtual memory</li>
+          <li><b>managing multitasking</b> — sharing processor time between programs</li>
+          <li>providing a <b>platform for running applications</b></li>
+          <li>providing <b>system security</b> — user accounts, passwords, access rights</li>
+          <li><b>managing user accounts</b></li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s413"><span class="sec-n">4.1.3</span><div class="sec-b">
+        <h3>Hardware, firmware and the operating system</h3>
+        <ul>
+          <li>applications run <b>on</b> the operating system, which runs on the hardware</li>
+          <li><b>firmware</b> is software stored in ROM that provides low-level control of the hardware</li>
+          <li>the <b>bootloader</b> (firmware) runs when the computer is switched on, checks the hardware and loads the operating system into RAM</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s414"><span class="sec-n">4.1.4</span><div class="sec-b">
+        <h3>Interrupts</h3>
+        <ul>
+          <li>an <b>interrupt</b> is a signal sent to the processor to get its attention</li>
+          <li><b>hardware interrupts</b>: a key pressed, the mouse moved, a printer out of paper, a device disconnected</li>
+          <li><b>software interrupts</b>: a division by zero, two programs trying to use the same memory, a program requesting a service</li>
+          <li>interrupts have <b>priorities</b>; a higher-priority interrupt is handled first</li>
+        </ul>
+        <ol>
+          <li>the interrupt is placed in a queue; at the end of the current fetch–decode–execute cycle the CPU checks for interrupts</li>
+          <li>if there is one with a higher priority than the current task, the CPU <b>saves the state</b> (register contents) of the current task</li>
+          <li>it runs the <b>interrupt service routine (ISR)</b> that handles that interrupt</li>
+          <li>it <b>restores</b> the saved state and continues the original task</li>
+        </ol>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Interrupt the CPU</p></div></div>
+    <div class="lab" data-lab data-mode="interrupt">
+      <div class="lab-h"><p class="lab-title" data-fig="4.1">Handling an interrupt</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 190" role="img" aria-label="A timeline of CPU cycles: pink blocks are the user's program; when an interrupt arrives the CPU saves its state, runs the interrupt service routine in another colour, loads its state back and continues."></svg></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Send an interrupt</p><div class="bench-grid"><button class="sc" type="button" data-irq="key">Press a key</button><button class="sc" type="button" data-irq="paper">Printer out of paper</button><button class="sc" type="button" data-irq="div0">Divide by zero</button><button class="sc" type="button" data-irq="power">Power failing</button></div></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"irqs":["key"]}'><span>Interrupt signal</span><span>finish current cycle</span><span>save state</span><span>run ISR</span><span>restore, continue</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"irqs":["paper","power"]}'><span>Two interrupts at once</span><span>compare priorities</span><span>higher priority handled first</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Computer switched on</span><span>bootloader in ROM runs</span><span>OS loaded into RAM</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> When asked for OS functions, give each one with what it does — “manages memory: allocates RAM to each program so they don’t overwrite each other”.</p>
+      <div class="checklist" data-check="4.1" id="ck41">
+        <div class="checklist-h"><p>4.1.5 Checklist · I can…</p><span class="num">0 / 4</span></div>
+        <label><input type="checkbox"><span>compare system and application software, with examples of utilities</span></label>
+        <label><input type="checkbox"><span>describe the functions of an operating system</span></label>
+        <label><input type="checkbox"><span>explain the roles of hardware, firmware and the OS</span></label>
+        <label><input type="checkbox"><span>describe how interrupts are generated and handled</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 4.2 Programming languages, translators and IDEs ======================= -->
+<section class="topic" data-key="languages" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>4.2</span>Software</p>
+    <h1>From code you can read to code the CPU can <em>run</em></h1>
+    <p class="lede">Programmers write in languages close to English. The CPU only understands machine code. Translators — compilers, interpreters and assemblers — bridge the gap.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s421"><span>4.2.1</span>High- and low-level languages</button><button type="button" data-goto="s422"><span>4.2.2</span>Assembly language</button><button type="button" data-goto="s423"><span>4.2.3</span>Compilers and interpreters</button><button type="button" data-goto="s424"><span>4.2.4</span>IDEs</button><button type="button" data-goto="ck42"><span>4.2.5</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cp lt" x="10" y="30" width="70" height="80" rx="6"/><text x="45" y="60" text-anchor="middle" style="font:500 11px var(--font-mono)">x ← 6</text><text x="45" y="78" text-anchor="middle" style="font:500 11px var(--font-mono)">y ← x+1</text>
+      <path class="l w3" d="M86 70H112"/><path class="mk" d="M110 64l8 6-8 6z"/>
+      <rect class="f lt" x="120" y="30" width="70" height="80" rx="6"/><text x="155" y="60" text-anchor="middle" style="font:500 10px var(--font-mono)">10110001</text><text x="155" y="78" text-anchor="middle" style="font:500 10px var(--font-mono)">00000110</text>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Four sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s421"><span class="sec-n">4.2.1</span><div class="sec-b">
+        <h3>High-level and low-level languages</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th></th><th>High-level (Python, Java, C#)</th><th>Low-level (assembly, machine code)</th></tr>
+          <tr><td>Reads like</td><td>English and maths — easier to read, write, understand and debug</td><td>mnemonics or binary — hard for humans</td></tr>
+          <tr><td>Hardware</td><td><b>portable</b>: runs on different CPUs after translation</td><td>written for one particular CPU’s instruction set</td></tr>
+          <tr><td>Control</td><td>one statement may become many machine instructions</td><td>direct control of hardware and memory; can be very efficient and fast</td></tr>
+          <tr><td>Used for</td><td>most applications</td><td>device drivers, embedded systems, code that must be small and fast</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s422"><span class="sec-n">4.2.2</span><div class="sec-b">
+        <h3>Assembly language and assemblers</h3>
+        <ul>
+          <li><b>assembly language</b> uses <b>mnemonics</b> (e.g. LDA, ADD, STO) — each usually stands for one machine code instruction</li>
+          <li>it must be translated into machine code by an <b>assembler</b></li>
+          <li>programmers use it for direct control of the hardware, to make use of special CPU instructions, and to write code that runs quickly in little memory</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s423"><span class="sec-n">4.2.3</span><div class="sec-b">
+        <h3>Compilers and interpreters</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th></th><th>Compiler</th><th>Interpreter</th></tr>
+          <tr><td>How</td><td>translates the <b>whole program</b> at once into machine code</td><td>translates and executes <b>one line at a time</b></td></tr>
+          <tr><td>Output</td><td>an <b>executable file</b> that can be run without the compiler</td><td>no executable; the interpreter is needed every time</td></tr>
+          <tr><td>Errors</td><td>an <b>error report</b> for the whole program after compiling; nothing runs until all are fixed</td><td>stops at the <b>first error</b>; can be fixed and continued — good for debugging</td></tr>
+          <tr><td>Speed</td><td>the executable runs fast</td><td>slower — translated every time it runs</td></tr>
+          <tr><td>Best for</td><td>distributing finished programs (source code stays private)</td><td>developing and testing programs</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s424"><span class="sec-n">4.2.4</span><div class="sec-b">
+        <h3>Integrated development environments (IDEs)</h3>
+        <p>An IDE is software that provides tools to help write and test programs:</p>
+        <ul>
+          <li><b>code editor</b> — with prettyprint (colour coding), auto-indentation, auto-completion and line numbers</li>
+          <li><b>run-time environment</b> — to run the program</li>
+          <li><b>translator</b> — a built-in compiler and/or interpreter</li>
+          <li><b>error diagnostics</b> — highlights errors and suggests fixes</li>
+          <li><b>debugging tools</b> — breakpoints, stepping through the code line by line, and watching variable values</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Same program, two translators</p></div></div>
+    <div class="lab" data-lab data-mode="translate">
+      <div class="lab-h"><p class="lab-title" data-fig="4.2">Compiler or interpreter?</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div class="codelist" data-code></div><p class="key"><span>output</span></p><div class="log" data-log></div></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Controls</p><div class="btns"><button class="btn btn-primary btn-sm" type="button" data-int>Run with interpreter</button><button class="btn btn-primary btn-sm" type="button" data-cmp>Compile, then run</button></div><div class="btns" style="margin-top:8px"><button class="sc" type="button" data-fix aria-pressed="false">Fix the error on line 4</button></div></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"run":"int"}'><span>Interpreter</span><span>one line at a time</span><span>stops at the first error</span><span>easy debugging</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"run":"cmp"}'><span>Compiler with an error</span><span>error report</span><span>no executable, nothing runs</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"run":"cmp","fixed":true}'><span>Compiler, no errors</span><span>executable produced</span><span>runs fast, no translator needed</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Match the translator to the language: high-level → compiler or interpreter; assembly → <b>assembler</b>.</p>
+      <div class="checklist" data-check="4.2" id="ck42">
+        <div class="checklist-h"><p>4.2.5 Checklist · I can…</p><span class="num">0 / 4</span></div>
+        <label><input type="checkbox"><span>compare high-level and low-level languages</span></label>
+        <label><input type="checkbox"><span>explain what assembly language and an assembler are</span></label>
+        <label><input type="checkbox"><span>compare compilers and interpreters and when each is used</span></label>
+        <label><input type="checkbox"><span>describe the common functions of an IDE</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../../assets/js/kit.js"></script>
+<script src="../js/software.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/cards-explain.js"></script>
+<script src="../../assets/js/flashcards.js"></script>
+<script src="../js/drills.js"></script>
+<script src="../../assets/js/practice.js"></script>
+</body>
+</html>

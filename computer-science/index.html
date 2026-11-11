@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>stay add. Computer Science</title>
+<meta name="description" content="Interactive Cambridge IGCSE Computer Science: binary, hardware, networks, algorithms, programming, databases and logic, explained plainly with live simulations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="../assets/css/subject-home.css">
+<link rel="stylesheet" href="css/lab.css">
+<link rel="stylesheet" href="../assets/css/menu.css">
+</head>
+<body data-root="../" data-subject="computer-science" data-page="home">
+<header data-site-header></header>
+
+<main>
+  <!-- ================= Hero ================= -->
+  <section class="wrap hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow">Cambridge IGCSE Computer Science &nbsp;·&nbsp; 0478 / 0984</p>
+      <h1 class="display">Everything is a pattern of <em>bits</em>.</h1>
+      <p class="lead">A letter, a pixel, a sound, an instruction for the CPU — inside a computer each one is just a row of 1s and 0s. Learn to read those rows, and the rest of the course — hardware, networks, algorithms, logic — starts to make sense.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="lessons/data-representation.html">Start with binary <span class="arr" aria-hidden="true">→</span></a>
+        <a class="text-link" href="#topics">All 10 topics</a>
+      </div>
+      <dl class="facts">
+        <div><dt>Syllabus topics</dt><dd class="display" data-cs-fact="topics">10</dd></div>
+        <div><dt>Exam papers</dt><dd class="display" data-cs-fact="papers">2</dd></div>
+        <div><dt>Live lessons</dt><dd class="display" data-cs-fact="live">10</dd></div>
+      </dl>
+    </div>
+
+    <figure class="instrument" data-hero aria-label="One byte: eight bits you can switch, with the denary and hexadecimal values">
+      <figcaption class="inst-head">
+        <span><span class="eyebrow">Fig. 1</span> One byte, eight bits</span>
+        <span class="status" data-hero-status>Counting</span>
+      </figcaption>
+      <svg class="fig" viewBox="0 0 640 280" role="img" aria-label="Eight boxes with place values 128, 64, 32, 16, 8, 4, 2 and 1. Each box shows 1 or 0; click to switch. Below, the place values of the 1s are added to give the denary number, and the two groups of four bits give the two hexadecimal digits." data-hero-svg></svg>
+      <div class="inst-ctl">
+        <div class="btns"><button class="sc" type="button" data-hero-op="inc">+1</button><button class="sc" type="button" data-hero-op="shl">Shift left ×2</button><button class="sc" type="button" data-hero-op="shr">Shift right ÷2</button><button class="sc" type="button" data-hero-op="clear">Clear</button></div>
+      </div>
+      <dl class="readouts">
+        <div><dt>binary</dt><dd><b data-hero-r="bin">01001101</b></dd></div>
+        <div><dt>denary</dt><dd><b data-hero-r="den">77</b></dd></div>
+        <div><dt>hexadecimal</dt><dd><b data-hero-r="hex">4D</b></dd></div>
+      </dl>
+      <div class="working">
+        <div><span class="w-k">click a bit</span><span>switch it between 0 and 1</span></div>
+        <div><span class="w-k">shift left</span><span>every bit moves one place → value × 2</span></div>
+      </div>
+    </figure>
+  </section>
+
+  <!-- ================= Topics ================= -->
+  <section class="topics-band" id="topics">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div><p class="eyebrow">§1 &nbsp;The syllabus</p><h2 class="display">Ten topics, <em>two</em> papers.</h2></div>
+        <div class="sec-aside">
+          <p>Paper 1 is about computer systems: how data is stored and sent, the hardware, software, the internet and new technologies. Paper 2 is about solving problems: algorithms, programming, databases and logic.</p>
+          <ul class="legend"><li><span class="status" style="--sc:var(--c-cs)">Live</span></li><li><span class="status paused">Coming soon</span></li></ul>
+        </div>
+      </header>
+      <div class="strands" data-strands></div>
+    </div>
+  </section>
+
+  <!-- ================= Labs ================= -->
+  <section class="labs-sec" id="labs">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div><p class="eyebrow">§2 &nbsp;Labs</p><h2 class="display">Every lab, <em>one</em> list.</h2></div>
+        <div class="sec-aside"><p>All <b data-lab-count>the</b> interactive labs in Computer Science, gathered from the lessons and grouped by topic. Each one opens straight on its subtopic.</p></div>
+      </header>
+      <div class="lab-index" data-lab-index></div>
+    </div>
+  </section>
+
+  <!-- ================= Method ================= -->
+  <section class="wrap method-sec" id="method">
+    <header class="method-intro reveal">
+      <p class="eyebrow">§3 &nbsp;How a lesson works</p>
+      <h2 class="display">Understand, try, <em>explain.</em></h2>
+      <p>Every Computer Science lesson has the same three steps as the rest of stay add. Here is one subtopic of the Data representation lesson.</p>
+    </header>
+    <ol class="method">
+      <li class="reveal">
+        <span class="m-n display">i.</span>
+        <div><h3 class="display">Understand</h3><p>Short numbered sections, in plain words, with worked examples.</p></div>
+        <div class="m-eg"><span class="eyebrow">From the lesson</span><p class="quote">“Each place in a binary number is worth <b>double</b> the place to its right: 1, 2, 4, 8, 16, 32, 64, 128.”</p></div>
+      </li>
+      <li class="reveal">
+        <span class="m-n display">ii.</span>
+        <div><h3 class="display">Experiment</h3><p>Switch bits, step through the CPU, run a sort, build a logic circuit — and watch the result change.</p></div>
+        <div class="m-eg"><span class="eyebrow">Readings</span>
+          <table class="num"><tr><th>binary</th><th>denary</th></tr><tr><td>0000 1010</td><td>10</td></tr><tr><td>0001 0100</td><td>20</td></tr><tr><td>0010 1000</td><td>40</td></tr></table>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="m-n display">iii.</span>
+        <div><h3 class="display">Interpret</h3><p>The chain to remember, one exam tip, and a checklist.</p></div>
+        <div class="m-eg"><span class="eyebrow">Chain</span><p class="m-chain"><span>logical shift left</span><span>bits move one place</span><span>0 fills the right</span><span>value × 2</span></p></div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ================= Syllabus map ================= -->
+  <section class="map-sec" id="map">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div><p class="eyebrow">§4 &nbsp;Syllabus map</p><h2 class="display">How the topics <em>connect</em>.</h2></div>
+        <div class="sec-aside"><p>Paper 1 topics are on the left, Paper 2 on the right. Hardware leads to logic gates, and data representation to programming and databases. Open a topic to light its star, finish its flashcards to fill it in half, and still know them a few days later to make it secure. Progress is kept on this device only.</p></div>
+      </header>
+      <div class="map reveal">
+        <figure class="map-fig">
+          <figcaption><span><span class="eyebrow">Map</span> Cambridge IGCSE Computer Science</span><span class="num muted"><b data-uni-lit>0</b> / <span data-uni-total>0</span> explored</span></figcaption>
+          <div class="sky" data-universe></div>
+        </figure>
+        <aside class="map-side">
+          <ul class="map-legend">
+            <li><i class="lg lg-secure"></i>Secure<small>cards still known days later</small></li>
+            <li><i class="lg lg-fading"></i>Due for review<small>secure, cards to see again</small></li>
+            <li><i class="lg lg-practised"></i>Practised<small>flashcards finished</small></li>
+            <li><i class="lg lg-opened"></i>Opened<small>lesson opened</small></li>
+            <li><i class="lg lg-ready"></i>Not started<small>lesson live</small></li>
+          </ul>
+          <div class="map-next" data-uni-next></div>
+          <span class="steps map-steps" data-uni-bar></span>
+          <button class="text-btn uni-reset" type="button" data-uni-reset hidden>Reset my progress</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Closing ================= -->
+  <section class="closing">
+    <div class="wrap closing-in">
+      <h2 class="display">Your first byte takes <em>one minute.</em></h2>
+      <div>
+        <p>No sign-up. Open Data representation and switch the bits yourself — progress stays on this device.</p>
+        <a class="btn btn-primary" href="lessons/data-representation.html">Open Data representation <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../assets/js/catalog.js"></script>
+<script src="../assets/js/menu.js"></script>
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/fx.js"></script>
+<script src="../assets/js/subject-home.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

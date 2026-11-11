@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Data representation · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 1: binary, denary and hexadecimal, binary addition and overflow, logical shifts, two&#x27;s complement, character sets, sound and images, file sizes and compression — with live labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-data-representation">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>1</span>Data representation</p>
+      <a href="#numbers" data-full="1.1 · binary, hex, two’s complement">Number systems</a>
+      <a href="#media" data-full="1.2 · characters, sound, pixels">Text, sound and images</a>
+      <a href="#storage" data-full="1.3 · file sizes, lossy, lossless">Storage and compression</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 3</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 1.1 Number systems ======================= -->
+<section class="topic" data-key="numbers">
+  <header class="t-head">
+    <p class="eyebrow"><span>1.1</span>Data representation</p>
+    <h1>Counting with only <em>two</em> digits</h1>
+    <p class="lede">A computer is built from billions of tiny switches that are either on or off. So it stores every number, letter and instruction in binary — base 2 — and programmers often write those long binary strings in hexadecimal to keep them short.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s111"><span>1.1.1</span>What is binary?</button><button type="button" data-goto="s112"><span>1.1.2</span>Converting binary and denary</button><button type="button" data-goto="s113"><span>1.1.3</span>What is hexadecimal?</button><button type="button" data-goto="s114"><span>1.1.4</span>Converting hexadecimal</button><button type="button" data-goto="s115"><span>1.1.5</span>Adding binary numbers</button><button type="button" data-goto="s116"><span>1.1.6</span>Logical shifts</button><button type="button" data-goto="s117"><span>1.1.7</span>Positive and negative integers</button><button type="button" data-goto="ck11"><span>1.1.8</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="bit0" x="14" y="50" width="38" height="44" rx="6"/><rect class="bit1" x="58" y="50" width="38" height="44" rx="6"/><rect class="bit0" x="102" y="50" width="38" height="44" rx="6"/><rect class="bit1" x="146" y="50" width="38" height="44" rx="6"/>
+      <g text-anchor="middle" style="font:500 22px var(--font-mono)"><text x="33" y="80" style="fill:var(--ink-4)">0</text><text x="77" y="80" style="fill:var(--ink)">1</text><text x="121" y="80" style="fill:var(--ink-4)">0</text><text x="165" y="80" style="fill:var(--ink)">1</text></g>
+      <g text-anchor="middle"><text x="33" y="40">8</text><text x="77" y="40">4</text><text x="121" y="40">2</text><text x="165" y="40">1</text></g><text x="100" y="118" text-anchor="middle" class="k">4 + 1 = 5</text>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Seven sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s111"><span class="sec-n">1.1.1</span><div class="sec-b">
+        <h3>What is binary?</h3>
+        <ul>
+          <li>computers are made of <b>logic gates</b> and switches that have only two states: on and off — written as <b>1</b> and <b>0</b></li>
+          <li>so all data and instructions must be converted to <b>binary</b> (base 2) before a computer can <b>process</b> them</li>
+          <li>one binary digit is a <b>bit</b>; 4 bits make a <b>nibble</b>; 8 bits make a <b>byte</b></li>
+          <li>humans normally count in <b>denary</b> (base 10), using the digits 0–9</li>
+        </ul>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Number system</th><th>Base</th><th>Digits used</th><th>Place values (right to left)</th></tr>
+          <tr><td>Denary</td><td>10</td><td>0–9</td><td>1, 10, 100, 1000 …</td></tr>
+          <tr><td>Binary</td><td>2</td><td>0, 1</td><td>1, 2, 4, 8, 16, 32, 64, 128 …</td></tr>
+          <tr><td>Hexadecimal</td><td>16</td><td>0–9, A–F</td><td>1, 16, 256, 4096 …</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s112"><span class="sec-n">1.1.2</span><div class="sec-b">
+        <h3>Converting between binary and denary</h3>
+        <p><b>Binary → denary</b>: write the place values above the bits, then add up the place values where there is a 1.</p>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th><th></th></tr>
+          <tr><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>64 + 8 + 4 + 1 = <b>77</b></td></tr>
+        </table></div>
+        <p><b>Denary → binary</b>: work from the largest place value down. If it fits, write 1 and subtract; if not, write 0.</p>
+        <p class="formula">150: 128 fits → 1, left 22 · 64 → 0 · 32 → 0 · 16 fits → 1, left 6 · 8 → 0 · 4 fits → 1, left 2 · 2 fits → 1, left 0 · 1 → 0 = 1001 0110</p>
+        <p>With 8 bits the smallest value is 0 and the largest is <b>255</b> (all 1s). In general n bits store 2ⁿ different values.</p>
+      </div></article>
+
+      <article class="sec" id="s113"><span class="sec-n">1.1.3</span><div class="sec-b">
+        <h3>What is hexadecimal?</h3>
+        <ul>
+          <li>hexadecimal (hex) is <b>base 16</b>: it uses 0–9 then <b>A=10, B=11, C=12, D=13, E=14, F=15</b></li>
+          <li>one hex digit stands for exactly <b>4 bits</b> (a nibble), so a byte is always two hex digits</li>
+          <li>it is used because it is <b>shorter and easier for humans to read</b> than binary and fewer mistakes are made copying it — but the computer still stores binary</li>
+        </ul>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Where hex is used</th><th>Example</th></tr>
+          <tr><td>HTML colour codes</td><td>#FF8800 = red FF, green 88, blue 00</td></tr>
+          <tr><td>MAC addresses</td><td>00:1A:2B:3C:4D:5E</td></tr>
+          <tr><td>IPv6 addresses</td><td>2001:0db8:85a3::8a2e:0370:7334</td></tr>
+          <tr><td>Error messages and memory dumps</td><td>error at address 0x3FA2</td></tr>
+          <tr><td>Assembly / machine code</td><td>instructions written as hex bytes</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s114"><span class="sec-n">1.1.4</span><div class="sec-b">
+        <h3>Converting hexadecimal</h3>
+        <p><b>Hex ↔ binary</b>: convert each hex digit to 4 bits, or split the binary into groups of 4 from the right.</p>
+        <p class="formula">B7 → B = 1011, 7 = 0111 → 1011 0111 · 0011 1100 → 3, C → 3C</p>
+        <p><b>Hex → denary</b>: multiply the left digit by 16 and add the right digit.</p>
+        <p class="formula">B7 = 11 × 16 + 7 = 183 · 3C = 3 × 16 + 12 = 60</p>
+        <p><b>Denary → hex</b>: divide by 16; the whole-number answer is the first digit, the remainder is the second. 200 ÷ 16 = 12 remainder 8 → <b>C8</b>.</p>
+      </div></article>
+
+      <article class="sec" id="s115"><span class="sec-n">1.1.5</span><div class="sec-b">
+        <h3>Adding binary numbers</h3>
+        <p>Add column by column from the right, carrying into the next column, just like denary addition.</p>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Column adds up to</th><th>Write</th><th>Carry</th></tr>
+          <tr><td>0 + 0</td><td>0</td><td>0</td></tr>
+          <tr><td>0 + 1 or 1 + 0</td><td>1</td><td>0</td></tr>
+          <tr><td>1 + 1 (= 2)</td><td>0</td><td>1</td></tr>
+          <tr><td>1 + 1 + 1 (= 3)</td><td>1</td><td>1</td></tr>
+        </table></div>
+        <p class="note-k"><b>Overflow</b> If the answer needs more bits than are available — a carry out of the leftmost bit of a byte — an <b>overflow error</b> happens. The 9th bit is lost and the stored result is wrong. An 8-bit register can only hold 0–255.</p>
+      </div></article>
+
+      <article class="sec" id="s116"><span class="sec-n">1.1.6</span><div class="sec-b">
+        <h3>Logical binary shifts</h3>
+        <ul>
+          <li>a <b>logical shift</b> moves every bit left or right by a number of places; the empty places are filled with <b>0</b>s</li>
+          <li>each shift <b>left</b> multiplies by 2; each shift <b>right</b> divides by 2</li>
+          <li>bits shifted off the end are <b>lost</b> — so a left shift can cause overflow, and a right shift loses precision (the answer is rounded down)</li>
+        </ul>
+        <p class="formula">0001 0110 (22) ← 2 places = 0101 1000 (88) = 22 × 4</p>
+      </div></article>
+
+      <article class="sec" id="s117"><span class="sec-n">1.1.7</span><div class="sec-b">
+        <h3>Positive and negative binary integers: two’s complement</h3>
+        <ul>
+          <li>in <b>two’s complement</b> the leftmost bit (the most significant bit) has a <b>negative</b> place value: −128 in a byte</li>
+          <li>if the MSB is 0 the number is positive; if it is 1 the number is negative</li>
+          <li>an 8-bit two’s complement number holds <b>−128 to +127</b></li>
+        </ul>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>−128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th><th></th></tr>
+          <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>−128 + 64 + 32 + 8 + 4 = <b>−20</b></td></tr>
+        </table></div>
+        <p><b>To write a negative number</b>: write the positive version in binary, <b>invert</b> every bit (0↔1), then <b>add 1</b>.</p>
+        <p class="formula">−20: 20 = 0001 0100 → invert 1110 1011 → add 1 → 1110 1100</p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Switch bits, shift them, add them</p></div></div>
+    <div class="lab" data-lab data-mode="bits">
+      <div class="lab-h"><p class="lab-title" data-fig="1.1">One byte: binary, denary, hex</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <div class="bits" data-bits></div>
+          <p class="key"><span>click a bit to switch it · the small number is its place value</span></p>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Read the byte as</p><div class="seg" data-k="mode" role="group" aria-label="Number type"><button type="button" data-v="unsigned">unsigned<small>0 to 255</small></button><button type="button" data-v="twos">two’s complement<small>−128 to 127</small></button></div></div>
+            <div class="inline-f"><label class="field">denary<input type="number" data-den-in></label><label class="field">hex<input type="text" maxlength="2" data-hex-in></label></div>
+            <div class="group"><p>Operations</p><div class="btns"><button class="sc" type="button" data-op="shl">Shift left</button><button class="sc" type="button" data-op="shr">Shift right</button><button class="sc" type="button" data-op="neg">Invert + 1</button><button class="sc" type="button" data-op="clear">Clear</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+    <div class="lab" data-lab data-mode="add">
+      <div class="lab-h"><p class="lab-title" data-fig="1.2">Binary addition and overflow</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <div class="carry" data-carry></div>
+          <div class="bits" data-a></div>
+          <p class="key"><span>+</span></p>
+          <div class="bits" data-b></div>
+          <p class="key"><span>=</span></p>
+          <div class="bits" data-s></div>
+          <p class="key"><span>switch bits in the top two rows · red numbers are carries</span></p>
+        </figure>
+        <div class="dock">
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"n":22,"mode":"unsigned","op":"shl"}'><span>Shift left one place</span><span>every bit moves left, 0 fills in</span><span>value × 2</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"n":200,"mode":"unsigned","op":"shl"}'><span>Shift left with a 1 at the left end</span><span>that 1 falls off</span><span>overflow: answer wrong</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"n":20,"mode":"twos","op":"neg"}'><span>Positive number</span><span>invert all bits</span><span>add 1</span><span>its negative in two’s complement</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Show your working: write the place values (128 … 1) above the bits. For hex, always convert one <b>nibble</b> (4 bits) at a time.</p>
+      <div class="checklist" data-check="1.1" id="ck11">
+        <div class="checklist-h"><p>1.1.8 Checklist · I can…</p><span class="num">0 / 7</span></div>
+        <label><input type="checkbox"><span>explain why computers use binary</span></label>
+        <label><input type="checkbox"><span>convert between binary and denary (up to 16 bits)</span></label>
+        <label><input type="checkbox"><span>convert between hexadecimal, binary and denary</span></label>
+        <label><input type="checkbox"><span>give uses of hexadecimal and why it is used</span></label>
+        <label><input type="checkbox"><span>add two binary bytes and identify overflow</span></label>
+        <label><input type="checkbox"><span>perform logical left and right shifts and explain their effect</span></label>
+        <label><input type="checkbox"><span>use two’s complement for positive and negative 8-bit integers</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 1.2 Text, sound and images ======================= -->
+<section class="topic" data-key="media" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.2</span>Data representation</p>
+    <h1>Letters, sounds and pictures as <em>numbers</em></h1>
+    <p class="lede">A character set gives every letter a number. A sound is measured thousands of times a second. A picture is cut into a grid of coloured dots. In every case the more bits you use, the better the copy — and the bigger the file.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s121"><span>1.2.1</span>Character sets</button><button type="button" data-goto="s122"><span>1.2.2</span>Representing sound</button><button type="button" data-goto="s123"><span>1.2.3</span>Representing images</button><button type="button" data-goto="ck12"><span>1.2.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="l" style="--fc:var(--ink-4)" d="M10 70C30 20 50 20 70 70S110 120 130 70S170 20 190 70"/>
+      <path class="l cp w3" d="M10 70H30V34H50V34H70V70H90V106H110V106H130V70H150V34H170V34H190V70"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s121"><span class="sec-n">1.2.1</span><div class="sec-b">
+        <h3>Character sets</h3>
+        <ul>
+          <li>a <b>character set</b> is a list of characters a computer can use, each with a unique binary code</li>
+          <li>when you press a key, the computer stores the code for that character</li>
+          <li>codes are in order: in ASCII ‘A’ = 65, ‘B’ = 66 … and ‘a’ = 97, so sorting text can compare codes</li>
+        </ul>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th></th><th>ASCII</th><th>Unicode</th></tr>
+          <tr><td>Bits per character</td><td>7 bits (extended ASCII: 8)</td><td>up to 32 bits (commonly 16)</td></tr>
+          <tr><td>Characters</td><td>128 (256 extended)</td><td>over a million possible</td></tr>
+          <tr><td>Covers</td><td>English letters, digits, punctuation, control codes</td><td>almost every written language, symbols and emoji</td></tr>
+          <tr><td>Trade-off</td><td>less storage per character</td><td>more characters, but uses more storage</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s122"><span class="sec-n">1.2.2</span><div class="sec-b">
+        <h3>Representing sound</h3>
+        <ul>
+          <li>sound is an <b>analogue</b> wave; to store it, the wave’s <b>amplitude</b> (height) is measured at regular intervals — <b>sampling</b> — and each measurement stored in binary</li>
+          <li><b>sample rate</b>: the number of samples taken per second (hertz, e.g. 44 100 Hz)</li>
+          <li><b>sample resolution</b>: the number of bits used to store each sample (e.g. 16 bits)</li>
+          <li>a higher sample rate and higher resolution give a <b>more accurate</b> recording that sounds closer to the original, but a <b>larger file</b></li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s123"><span class="sec-n">1.2.3</span><div class="sec-b">
+        <h3>Representing images</h3>
+        <ul>
+          <li>a bitmap image is a grid of <b>pixels</b> (picture elements); each pixel’s colour is stored as a binary number</li>
+          <li><b>resolution</b>: the number of pixels in the image — width × height (e.g. 1920 × 1080)</li>
+          <li><b>colour depth</b>: the number of bits used for each pixel; n bits give 2ⁿ colours (1 bit = 2 colours, 8 bits = 256, 24 bits ≈ 16.7 million)</li>
+          <li>increasing the resolution or the colour depth improves the <b>quality</b> of the image but increases the <b>file size</b></li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Sample a sound, store a picture</p></div></div>
+    <div class="lab" data-lab data-mode="media">
+      <div class="lab-h"><p class="lab-title" data-fig="1.3">Sampling a sound · storing an image</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <svg class="fig" data-svg viewBox="0 0 640 300" role="img" aria-label="Sound: a grey sound wave and pink steps showing the values stored at the chosen sample rate and resolution. Image: a picture drawn as a grid of pixels at the chosen resolution and colour depth."></svg>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Store a</p><div class="seg" data-k="kind" role="group" aria-label="Media"><button type="button" data-v="sound">sound</button><button type="button" data-v="image">image</button></div></div>
+            <div data-for="sound">
+              <div class="group"><p>Sample rate</p><label class="ctl"><input class="range" type="range" min="2" max="48" step="1" data-k="rate" style="--rc:var(--c-cs)"><output class="num"><b data-out="rate"></b> kHz</output></label></div>
+              <div class="group"><p>Sample resolution</p><label class="ctl"><input class="range" type="range" min="1" max="8" step="1" data-k="res" style="--rc:var(--c-cs)"><output class="num"><b data-out="res"></b> bits</output></label></div>
+            </div>
+            <div data-for="image" hidden>
+              <div class="group"><p>Resolution</p><label class="ctl"><input class="range" type="range" min="4" max="40" step="2" data-k="px" style="--rc:var(--c-cs)"><output class="num"><b data-out="px"></b> px wide</output></label></div>
+              <div class="group"><p>Colour depth</p><label class="ctl"><input class="range" type="range" min="1" max="8" step="1" data-k="depth" style="--rc:var(--c-cs)"><output class="num"><b data-out="depth"></b> bits</output></label></div>
+            </div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"kind":"sound","rate":40,"res":8}'><span>Higher sample rate and resolution</span><span>closer to the real wave</span><span>better quality, bigger file</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"kind":"sound","rate":3,"res":2}'><span>Few samples, few bits</span><span>steps miss the real shape</span><span>poor quality, small file</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"kind":"image","px":40,"depth":8}'><span>More pixels, more bits per pixel</span><span>sharper, more colours</span><span>bigger file</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Define the terms exactly: sample rate = samples <b>per second</b>; sample resolution = bits <b>per sample</b>; colour depth = bits <b>per pixel</b>; resolution = <b>number of pixels</b>.</p>
+      <div class="checklist" data-check="1.2" id="ck12">
+        <div class="checklist-h"><p>1.2.4 Checklist · I can…</p><span class="num">0 / 4</span></div>
+        <label><input type="checkbox"><span>explain what a character set is and compare ASCII and Unicode</span></label>
+        <label><input type="checkbox"><span>describe how sound is sampled and stored</span></label>
+        <label><input type="checkbox"><span>explain the effect of sample rate and sample resolution</span></label>
+        <label><input type="checkbox"><span>explain the effect of image resolution and colour depth</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 1.3 Data storage and compression ======================= -->
+<section class="topic" data-key="storage" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.3</span>Data representation</p>
+    <h1>How big is the file, and how much <em>smaller</em> can it get?</h1>
+    <p class="lede">Every file’s size can be worked out from how it is stored. Compression then shrinks it — either by throwing detail away, or by spotting patterns and writing them more briefly.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s131"><span>1.3.1</span>Units of data storage</button><button type="button" data-goto="s132"><span>1.3.2</span>File size calculation</button><button type="button" data-goto="s133"><span>1.3.3</span>Introduction to compression</button><button type="button" data-goto="s134"><span>1.3.4</span>Types of compression</button><button type="button" data-goto="ck13"><span>1.3.5</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cp" x="20" y="30" width="70" height="90" rx="6"/><rect class="f cp dk" x="130" y="70" width="50" height="50" rx="6"/>
+      <path class="l w3" d="M96 76H124"/><path class="mk" d="M122 70l8 6-8 6z"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Four sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s131"><span class="sec-n">1.3.1</span><div class="sec-b">
+        <h3>Units of data storage</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Unit</th><th>Size</th></tr>
+          <tr><td>bit</td><td>a single 0 or 1</td></tr>
+          <tr><td>nibble</td><td>4 bits</td></tr>
+          <tr><td>byte</td><td>8 bits</td></tr>
+          <tr><td>kibibyte (KiB)</td><td>1024 bytes</td></tr>
+          <tr><td>mebibyte (MiB)</td><td>1024 KiB</td></tr>
+          <tr><td>gibibyte (GiB)</td><td>1024 MiB</td></tr>
+          <tr><td>tebibyte (TiB)</td><td>1024 GiB</td></tr>
+          <tr><td>pebibyte (PiB) · exbibyte (EiB)</td><td>1024 TiB · 1024 PiB</td></tr>
+        </table></div>
+        <p class="note-k"><b>Why 1024?</b> Memory is built in powers of 2, and 2¹⁰ = 1024. Cambridge uses the binary prefixes KiB, MiB, GiB.</p>
+      </div></article>
+
+      <article class="sec" id="s132"><span class="sec-n">1.3.2</span><div class="sec-b">
+        <h3>File size calculation</h3>
+        <p class="formula">image file size (bits) = width × height × colour depth</p>
+        <p class="formula">sound file size (bits) = sample rate × sample resolution × length in seconds</p>
+        <ol>
+          <li>image 800 × 600, 8-bit colour: 800 × 600 × 8 = 3 840 000 bits</li>
+          <li>÷ 8 = 480 000 bytes; ÷ 1024 = 468.75 KiB</li>
+        </ol>
+        <p>For stereo sound, multiply by 2 (two channels).</p>
+      </div></article>
+
+      <article class="sec" id="s133"><span class="sec-n">1.3.3</span><div class="sec-b">
+        <h3>Introduction to compression</h3>
+        <p><b>Compression</b> reduces the size of a file. This means it:</p>
+        <ul>
+          <li>uses <b>less storage space</b> on a device</li>
+          <li>is <b>faster to transmit</b> over a network and uses less <b>bandwidth</b></li>
+          <li>takes less time to upload and download, and streams more smoothly</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s134"><span class="sec-n">1.3.4</span><div class="sec-b">
+        <h3>Lossy and lossless compression</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th></th><th>Lossy</th><th>Lossless</th></tr>
+          <tr><td>What happens</td><td><b>permanently removes</b> data that is less noticeable to humans</td><td>finds <b>patterns</b> and stores them more efficiently; no data lost</td></tr>
+          <tr><td>Can be restored?</td><td>no — the original cannot be recovered</td><td>yes — exactly the original</td></tr>
+          <tr><td>How (images)</td><td>reduce resolution or colour depth</td><td>run-length encoding (RLE)</td></tr>
+          <tr><td>How (sound)</td><td>reduce sample rate or resolution; remove sounds humans cannot hear (perceptual music shaping)</td><td>—</td></tr>
+          <tr><td>Use for</td><td>photos (JPEG), music (MP3), video</td><td>text, program files, spreadsheets — where every bit matters</td></tr>
+        </table></div>
+        <p><b>Run-length encoding</b> replaces a run of the same value with the value and a count: <code class="i">WWWWWBBB</code> → <code class="i">5W 3B</code>.</p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Calculate sizes, then compress</p></div></div>
+    <div class="lab" data-lab data-mode="filesize">
+      <div class="lab-h"><p class="lab-title" data-fig="1.4">File size calculator</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><p class="sql" data-calc></p></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>File type</p><div class="seg" data-k="kind" role="group" aria-label="File type"><button type="button" data-v="image">image</button><button type="button" data-v="sound">sound</button></div></div>
+            <div class="inline-f" data-for="image"><label class="field">width (px)<input type="number" min="1" data-k="w"></label><label class="field">height (px)<input type="number" min="1" data-k="h"></label><label class="field">colour depth (bits)<input type="number" min="1" max="32" data-k="depth"></label></div>
+            <div class="inline-f" data-for="sound" hidden><label class="field">sample rate (Hz)<input type="number" min="1" data-k="rate"></label><label class="field">resolution (bits)<input type="number" min="1" data-k="sres"></label><label class="field">length (s)<input type="number" min="1" data-k="secs"></label><label class="field">channels<input type="number" min="1" max="2" data-k="ch"></label></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+    <div class="lab" data-lab data-mode="rle">
+      <div class="lab-h"><p class="lab-title" data-fig="1.5">Run-length encoding</p><div class="btns"><button class="ghost" type="button" data-noise>Random pixels</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><div class="pixels" data-pixels></div><p class="key"><span>click pixels to change them</span></p></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Encoded</p><div class="rle-out" data-rle></div></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <p class="chain"><span>Lossy</span><span>detail removed for good</span><span>much smaller file</span><span>fine for photos and music</span></p>
+        <p class="chain"><span>Lossless</span><span>patterns stored briefly</span><span>exact original restored</span><span>needed for text and programs</span></p>
+        <button class="chain" type="button" data-set='{"noise":true}'><span>Few repeating runs</span><span>many short runs</span><span>RLE may make the file bigger</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Never say lossless “removes” anything. And for a text file, always choose <b>lossless</b> — losing one character could change the meaning or break a program.</p>
+      <div class="checklist" data-check="1.3" id="ck13">
+        <div class="checklist-h"><p>1.3.5 Checklist · I can…</p><span class="num">0 / 5</span></div>
+        <label><input type="checkbox"><span>state the units of data storage and convert between them</span></label>
+        <label><input type="checkbox"><span>calculate the file size of an image and a sound file</span></label>
+        <label><input type="checkbox"><span>explain why files are compressed</span></label>
+        <label><input type="checkbox"><span>compare lossy and lossless compression with examples</span></label>
+        <label><input type="checkbox"><span>explain how run-length encoding works</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../../assets/js/kit.js"></script>
+<script src="../js/data-representation.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/cards-explain.js"></script>
+<script src="../../assets/js/flashcards.js"></script>
+<script src="../js/drills.js"></script>
+<script src="../../assets/js/practice.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Boolean logic · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 10: the NOT, AND, OR, NAND, NOR and XOR logic gates, truth tables, logic expressions and logic circuits from problem statements — with live circuit simulators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-boolean-logic">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>10</span>Boolean logic</p>
+      <a href="#gates" data-full="10.1 · six gates and their symbols">Logic gates</a>
+      <a href="#tables" data-full="10.2 · truth tables, expressions">Truth tables and expressions</a>
+      <a href="#circuits" data-full="10.3 · from a problem to a circuit">Logic circuits</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 3</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 10.1 Logic gates ======================= -->
+<section class="topic" data-key="gates">
+  <header class="t-head">
+    <p class="eyebrow"><span>10.1</span>Boolean logic</p>
+    <h1>Six gates that make every <em>decision</em></h1>
+    <p class="lede">A logic gate takes one or two binary inputs and produces one binary output by a fixed rule. Combine enough of them and you get adders, memory — a whole CPU.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s1011"><span>10.1.1</span>What a logic gate is</button><button type="button" data-goto="s1012"><span>10.1.2</span>The six gates</button><button type="button" data-goto="ck101"><span>10.1.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="wire-on" d="M14 52H64M14 88H64"/><path class="gate on" d="M64 36H100A34 34 0 0 1 100 104H64Z"/><path class="wire-on" d="M134 70H186"/>
+      <text x="96" y="74" text-anchor="middle" class="k">AND</text>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s1011"><span class="sec-n">10.1.1</span><div class="sec-b">
+        <h3>What a logic gate is</h3>
+        <ul>
+          <li>a <b>logic gate</b> is an electronic component that performs a Boolean operation on one or more binary inputs to produce a single binary output</li>
+          <li>1 means TRUE / on; 0 means FALSE / off</li>
+          <li>a <b>truth table</b> lists every possible combination of inputs and the output for each; n inputs give 2ⁿ rows</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s1012"><span class="sec-n">10.1.2</span><div class="sec-b">
+        <h3>The six gates</h3>
+        <figure class="plate in-sec">
+          <div class="plate-h"><p class="lab-title" data-fig="10.1">Standard logic gate symbols</p></div>
+          <div class="plate-fig"><svg class="fig" viewBox="0 0 640 230" role="img" aria-label="The symbols for AND (D shape), OR (curved shield), NOT (triangle with a circle), NAND (AND with a circle), NOR (OR with a circle) and XOR (OR with an extra curved line at the inputs)."><path class="gate" d="M60 24H90A22 22 0 0 1 90 68H60Z"/><path class="l" style="--lw:2" d="M34 36H60"/><path class="l" style="--lw:2" d="M34 56H60"/><path class="l" style="--lw:2" d="M112 46H134"/><text x="84" y="92" text-anchor="middle" class="k">AND</text><path class="gate" d="M260 24Q276 46 260 68Q298 68 318 46Q298 24 260 24Z"/><path class="l" style="--lw:2" d="M234 36H266"/><path class="l" style="--lw:2" d="M234 56H266"/><path class="l" style="--lw:2" d="M318 46H340"/><text x="284" y="92" text-anchor="middle" class="k">OR</text><path class="gate" d="M460 26L500 46L460 66Z"/><circle class="bub" cx="505" cy="46" r="5"/><path class="l" style="--lw:2" d="M434 46H460"/><path class="l" style="--lw:2" d="M510 46H532"/><text x="484" y="92" text-anchor="middle" class="k">NOT</text><path class="gate" d="M60 134H90A22 22 0 0 1 90 178H60Z"/><circle class="bub" cx="117" cy="156" r="5"/><path class="l" style="--lw:2" d="M34 146H60"/><path class="l" style="--lw:2" d="M34 166H60"/><path class="l" style="--lw:2" d="M122 156H144"/><text x="84" y="202" text-anchor="middle" class="k">NAND</text><path class="gate" d="M260 134Q276 156 260 178Q298 178 318 156Q298 134 260 134Z"/><circle class="bub" cx="323" cy="156" r="5"/><path class="l" style="--lw:2" d="M234 146H266"/><path class="l" style="--lw:2" d="M234 166H266"/><path class="l" style="--lw:2" d="M328 156H350"/><text x="284" y="202" text-anchor="middle" class="k">NOR</text><path class="gate" d="M460 134Q476 156 460 178Q498 178 518 156Q498 134 460 134Z"/><path class="l" style="--fc:var(--ink-2);--lw:2" d="M452 134Q468 156 452 178"/><path class="l" style="--lw:2" d="M434 146H466"/><path class="l" style="--lw:2" d="M434 166H466"/><path class="l" style="--lw:2" d="M518 156H540"/><text x="484" y="202" text-anchor="middle" class="k">XOR</text></svg></div>
+          <figcaption>A small circle on the output means <b>NOT</b>: NAND is AND followed by NOT; NOR is OR followed by NOT.</figcaption>
+        </figure>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>A</th><th>B</th><th>AND</th><th>OR</th><th>NAND</th><th>NOR</th><th>XOR</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+        </table></div>
+        <p><b>NOT</b> has one input: NOT 0 = 1, NOT 1 = 0.</p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Switch the inputs of each gate</p></div></div>
+    <div class="lab" data-lab data-mode="gates">
+      <div class="lab-h"><p class="lab-title" data-fig="10.2">One logic gate</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 220" role="img" aria-label="A large logic gate symbol with input wires A and B on the left and output X on the right. Lit wires carry 1."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Gate</p><div class="seg" data-k="gate" role="group" aria-label="Gate"><button type="button" data-v="AND">AND</button><button type="button" data-v="OR">OR</button><button type="button" data-v="NOT">NOT</button><button type="button" data-v="NAND">NAND</button><button type="button" data-v="NOR">NOR</button><button type="button" data-v="XOR">XOR</button></div></div>
+            <div class="group"><p>Inputs</p><div class="btns"><button class="sc" type="button" data-in="a">A</button><button class="sc" type="button" data-in="b">B</button></div></div>
+            <div data-tt></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"gate":"XOR","a":1,"b":1}'><span>XOR with both inputs 1</span><span>inputs the same</span><span>output 0</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"gate":"NAND","a":1,"b":1}'><span>NAND</span><span>AND then NOT</span><span>0 only when both are 1</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"gate":"NOR","a":0,"b":0}'><span>NOR</span><span>OR then NOT</span><span>1 only when both are 0</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Draw the symbols carefully: the AND gate has a flat back and round front; OR has a curved back and pointed front; don’t forget NOT circles.</p>
+      <div class="checklist" data-check="10.1" id="ck101">
+        <div class="checklist-h"><p>10.1.3 Checklist · I can…</p><span class="num">0 / 2</span></div>
+        <label><input type="checkbox"><span>draw and identify the symbols for the six gates</span></label>
+        <label><input type="checkbox"><span>write the truth table for each gate</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 10.2 Truth tables and logic expressions ======================= -->
+<section class="topic" data-key="tables" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>10.2</span>Boolean logic</p>
+    <h1>Every input, every <em>output</em></h1>
+    <p class="lede">A truth table for a circuit lists all the input combinations and works out the output for each — gate by gate, column by column.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s1021"><span>10.2.1</span>Truth tables for circuits</button><button type="button" data-goto="s1022"><span>10.2.2</span>Logic expressions</button><button type="button" data-goto="ck102"><span>10.2.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f lt" x="30" y="14" width="140" height="112" rx="4"/><path class="l" d="M30 34H170M65 14V126M100 14V126M135 14V126"/>
+      <g text-anchor="middle" style="font:500 11px var(--font-mono)"><text x="47" y="28">A</text><text x="82" y="28">B</text><text x="117" y="28">C</text><text x="152" y="28">X</text></g>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s1021"><span class="sec-n">10.2.1</span><div class="sec-b">
+        <h3>Truth tables for circuits</h3>
+        <ol>
+          <li>write every input combination in binary order: for 3 inputs, 000 to 111 — <b>8 rows</b></li>
+          <li>add a working column for the output of each gate in the circuit</li>
+          <li>fill each column from the inputs and the earlier columns, left to right</li>
+          <li>the last column is the output X</li>
+        </ol>
+      </div></article>
+
+      <article class="sec" id="s1022"><span class="sec-n">10.2.2</span><div class="sec-b">
+        <h3>Logic expressions</h3>
+        <ul>
+          <li>a <b>logic expression</b> writes a circuit in words: <code class="i">X = (A AND B) OR (NOT C)</code></li>
+          <li>use <b>brackets</b> to show which operation is done first</li>
+          <li>to write an expression from a circuit, start at the output gate and work backwards to the inputs</li>
+          <li>to write one from a truth table, look at each row where X = 1 and join them with OR</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Simulate a circuit and read its truth table</p></div></div>
+    <div class="lab" data-lab data-mode="circuit">
+      <div class="lab-h"><p class="lab-title" data-fig="10.3">Logic circuit simulator</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 240" role="img" aria-label="A logic circuit with inputs A, B and C on the left, gates in the middle and the output X on the right. Click an input to switch it; wires carrying 1 are lit."></svg><div data-tt style="overflow-x:auto;margin-top:8px"></div><p class="key"><span>click an input box, or a row of the truth table</span></p></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Circuit</p><div class="bench-grid" data-k="c"><button class="sc" type="button" data-v="c1">(A AND B) OR NOT C</button><button class="sc" type="button" data-v="c2">NOT (A OR B) AND C</button><button class="sc" type="button" data-v="c3">(A NAND B) XOR C</button><button class="sc" type="button" data-v="alarm">Alarm problem</button></div></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"c":"c1","A":0,"B":0,"C":1}'><span>A AND B = 0, NOT C = 0</span><span>OR of two 0s</span><span>X = 0</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"c":"c2","A":0,"B":0,"C":1}'><span>A OR B = 0 → NOR gives 1</span><span>1 AND C = 1</span><span>X = 1</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Always list inputs in binary counting order (000, 001, 010 …) so no row is missed or repeated.</p>
+      <div class="checklist" data-check="10.2" id="ck102">
+        <div class="checklist-h"><p>10.2.3 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>complete a truth table for a circuit with up to three inputs</span></label>
+        <label><input type="checkbox"><span>write a logic expression from a circuit or truth table</span></label>
+        <label><input type="checkbox"><span>complete a truth table from a logic expression</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 10.3 Logic circuits ======================= -->
+<section class="topic" data-key="circuits" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>10.3</span>Boolean logic</p>
+    <h1>From a problem statement to a <em>circuit</em></h1>
+    <p class="lede">Exam questions describe a situation in words — an alarm, a safety system — and ask for the circuit. Turn each condition into a gate, then wire them together.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s1031"><span>10.3.1</span>Drawing a circuit from an expression</button><button type="button" data-goto="s1032"><span>10.3.2</span>Circuits from problem statements</button><button type="button" data-goto="ck103"><span>10.3.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <path class="wire-on" d="M10 40H50M10 64H50"/><path class="gate on" d="M50 30H70A22 22 0 0 1 70 74H50Z"/><path class="wire-on" d="M92 52H110V80H122"/><path class="wire-off" d="M10 110H110V100H122"/>
+      <path class="gate" d="M118 70Q132 90 118 110Q150 110 172 90Q150 70 118 70Z"/><path class="wire-on" d="M172 90H196"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s1031"><span class="sec-n">10.3.1</span><div class="sec-b">
+        <h3>Drawing a circuit from an expression</h3>
+        <ol>
+          <li>find the operations inside the innermost brackets — those gates go nearest the inputs</li>
+          <li>draw each gate with its input wires from A, B or C (an input can branch to more than one gate)</li>
+          <li>feed the outputs of those gates into the next gate, until one gate gives X</li>
+        </ol>
+        <p>Example: <code class="i">X = (A AND B) OR (NOT C)</code> — an AND gate (A, B) and a NOT gate (C), both feeding an OR gate.</p>
+      </div></article>
+
+      <article class="sec" id="s1032"><span class="sec-n">10.3.2</span><div class="sec-b">
+        <h3>Circuits from problem statements</h3>
+        <p class="formula">“The alarm X sounds if the door is open (A = 1) AND the system is armed (B = 1), OR if a window is broken (C = 1).”</p>
+        <ol>
+          <li>give each condition its letter and say what 1 means</li>
+          <li>translate the words: “and” → AND, “or” → OR, “not” / “is off” → NOT, “either but not both” → XOR</li>
+          <li>write the expression with brackets: <code class="i">X = (A AND B) OR C</code></li>
+          <li>draw the circuit and check it with a truth table</li>
+        </ol>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Test the alarm circuit</p></div></div>
+    <div class="lab" data-lab data-mode="circuit" data-start="alarm">
+      <div class="lab-h"><p class="lab-title" data-fig="10.4">Problem-statement circuits</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 240" role="img" aria-label="A logic circuit with inputs A, B and C on the left, gates in the middle and the output X on the right. Click an input to switch it; wires carrying 1 are lit."></svg><div data-tt style="overflow-x:auto;margin-top:8px"></div><p class="key"><span>click an input box, or a row of the truth table</span></p></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Circuit</p><div class="bench-grid" data-k="c"><button class="sc" type="button" data-v="c1">(A AND B) OR NOT C</button><button class="sc" type="button" data-v="c2">NOT (A OR B) AND C</button><button class="sc" type="button" data-v="c3">(A NAND B) XOR C</button><button class="sc" type="button" data-v="alarm">Alarm problem</button></div></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"c":"alarm","A":1,"B":0,"C":0}'><span>Door open, but not armed</span><span>A AND B = 0, C = 0</span><span>no alarm</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"c":"alarm","A":0,"B":0,"C":1}'><span>Window broken</span><span>C = 1</span><span>alarm sounds whatever A and B are</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Don’t simplify the expression unless asked — draw exactly the gates the statement describes, with each input connected.</p>
+      <div class="checklist" data-check="10.3" id="ck103">
+        <div class="checklist-h"><p>10.3.3 Checklist · I can…</p><span class="num">0 / 2</span></div>
+        <label><input type="checkbox"><span>draw a logic circuit from a logic expression</span></label>
+        <label><input type="checkbox"><span>write an expression and draw a circuit from a problem statement</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../../assets/js/kit.js"></script>
+<script src="../js/boolean-logic.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/cards-explain.js"></script>
+<script src="../../assets/js/flashcards.js"></script>
+<script src="../js/drills.js"></script>
+<script src="../../assets/js/practice.js"></script>
+</body>
+</html>

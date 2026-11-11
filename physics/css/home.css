@@ -41,7 +41,7 @@
 .readouts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
 .readouts div { padding: 11px 18px 12px; border-right: 1px solid var(--line); }
 .readouts div:last-child { border: 0; }
-.readouts dt { font: italic 400 14px var(--font-display); color: var(--ink-3); }
+.readouts dt { font: italic 400 14px var(--font-serif); color: var(--ink-3); }
 .readouts dd { font: 12px var(--font-mono); color: var(--ink-3); }
 .readouts b { font: 500 19px var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-right: 2px; }
 .working { padding: 11px 18px 13px; border-top: 1px solid var(--line); background: var(--bg-2); font-size: 12.5px; color: var(--ink-2); display: grid; gap: 3px; }
@@ -64,8 +64,15 @@
    graph, then progress and (when there is one) a link. */
 .topics-sec { padding-top: 24px; padding-bottom: 120px; }
 .topics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 20px; }
-.topic { display: flex; flex-direction: column; min-width: 0; padding: 22px 24px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .15s; }
-.topic:hover { border-color: var(--line-2); }
+.topic { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 22px 24px 20px; background: var(--surface); border: 1px solid color-mix(in srgb, var(--tc) 30%, var(--line)); border-radius: var(--radius); }
+/* hover like the Biology and CS cards: stronger border, lift, shadow. The lift uses
+   `translate` so it never fights the reveal's `transform`; only the reveal is delayed. */
+.topics .topic, .js .topics .topic.rv { transition: opacity .8s var(--ease), transform .8s var(--ease), border-color .2s, translate .2s var(--ease), box-shadow .2s; transition-delay: var(--d, 0s), var(--d, 0s), 0s, 0s, 0s; }
+.topic:hover { border-color: color-mix(in srgb, var(--tc) 70%, var(--line)); translate: 0 -2px; box-shadow: var(--shadow); }
+/* the whole card opens the topic: the title link stretches over it */
+.t-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.t-link:focus-visible { outline: none; }
+.topic:has(.t-link:focus-visible) { outline: 2px solid var(--tc); outline-offset: 2px; }
 .t-meta { display: flex; justify-content: space-between; align-items: center; }
 .t-num { font: 500 12px var(--font-mono); color: var(--tc); }
 .topic h3 { font: 400 26px/1.12 var(--font-display); letter-spacing: -0.015em; margin-top: 14px; min-height: 2.24em; }
@@ -74,7 +81,6 @@
 .t-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
 .t-progress { flex: 1; max-width: 160px; display: grid; gap: 8px; }
 .t-progress .num { font-size: 12px; color: var(--ink-3); }
-.t-foot .text-link { font-size: 13.5px; text-align: right; }
 
 .fig .plot { fill: none; stroke: var(--tc); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .fig .plot-2 { fill: none; stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 5 4; }
@@ -115,7 +121,7 @@
 .m-eg th { font: 500 11px var(--font-mono); color: var(--ink-3); text-align: left; padding: 3px 24px 5px 0; border-bottom: 1px solid var(--line); }
 .m-eg td { padding: 4px 24px 0 0; color: var(--ink-2); }
 .m-eg td:last-child { color: var(--ink); }
-.quote { font: italic 400 16px/1.45 var(--font-display) !important; color: var(--ink) !important; }
+.quote { font: italic 400 16px/1.45 var(--font-serif) !important; color: var(--ink) !important; }
 .quote mark { background: none; color: inherit; text-decoration: underline; text-decoration-color: var(--amber); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
 
 /* ---------- Closing & footer ---------- */
@@ -136,7 +142,6 @@
   .topic { padding: 18px 18px 16px; }
   .topic h3 { font-size: 23px; }
   .t-foot { flex-direction: column; align-items: stretch; gap: 10px; }
-  .t-foot .text-link { text-align: left; }
   .t-progress { max-width: none; }
   .method-sec { grid-template-columns: 1fr; gap: 32px; }
   .method-intro { position: static; }
@@ -179,7 +184,7 @@
 /* reveal on scroll */
 .js .rv { opacity: 0; transform: translateY(16px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
 .js .rv.in { opacity: 1; transform: none; }
-.topics .rv:nth-child(3n+2) { transition-delay: .06s; } .topics .rv:nth-child(3n+3) { transition-delay: .12s; }
+.topics .rv:nth-child(3n+2) { --d: .06s; } .topics .rv:nth-child(3n+3) { --d: .12s; }
 
 /* ---------- Scroll scenes ----------
    The page stays still; only the framed figure on the right changes. */

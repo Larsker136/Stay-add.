@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Data transmission · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 2: packets and packet switching, serial and parallel, simplex and duplex, USB, parity, checksums, echo checks, check digits, ARQ and encryption — with live labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-data-transmission">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>2</span>Data transmission</p>
+      <a href="#methods" data-full="2.1 · packets, serial, parallel, USB">Types and methods</a>
+      <a href="#errors" data-full="2.2 · parity, checksum, check digit">Error detection</a>
+      <a href="#encryption" data-full="2.3 · symmetric and asymmetric">Encryption</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 3</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 2.1 Types and methods of data transmission ======================= -->
+<section class="topic" data-key="methods">
+  <header class="t-head">
+    <p class="eyebrow"><span>2.1</span>Data transmission</p>
+    <h1>Data travels in <em>packets</em></h1>
+    <p class="lede">A file sent across the internet is chopped into small packets, each labelled with where it is going. Routers pass each packet on separately, and the receiver puts them back together.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s211"><span>2.1.1</span>Data packets</button><button type="button" data-goto="s212"><span>2.1.2</span>Methods of data transmission</button><button type="button" data-goto="s213"><span>2.1.3</span>Universal serial bus (USB)</button><button type="button" data-goto="ck21"><span>2.1.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cb" x="10" y="54" width="34" height="30" rx="5"/><rect class="f cb" x="156" y="54" width="34" height="30" rx="5"/>
+      <circle class="f" cx="100" cy="30" r="12"/><circle class="f" cx="100" cy="110" r="12"/><path class="l" d="M44 64L88 34M44 74L88 106M112 34L156 64M112 106L156 74"/>
+      <g class="f cp dk"><rect x="58" y="40" width="16" height="11" rx="2"/><rect x="126" y="88" width="16" height="11" rx="2"/></g>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s211"><span class="sec-n">2.1.1</span><div class="sec-b">
+        <h3>Data packets</h3>
+        <p>Data sent over a network is broken into <b>packets</b> — small units of data. Each packet has three parts:</p>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Part</th><th>Contains</th></tr>
+          <tr><td>Packet header</td><td>the <b>destination</b> IP address, the <b>originator’s</b> (sender’s) IP address, and the <b>packet number</b></td></tr>
+          <tr><td>Payload</td><td>the actual data being sent</td></tr>
+          <tr><td>Trailer</td><td>a way of identifying the <b>end of the packet</b>, and an <b>error check</b> (e.g. a checksum or CRC)</td></tr>
+        </table></div>
+        <h4>Packet switching</h4>
+        <ol>
+          <li>the data is broken into packets</li>
+          <li>each packet may take a <b>different route</b> — each <b>router</b> reads the destination address and forwards the packet along the best available path</li>
+          <li>packets may arrive <b>out of order</b></li>
+          <li>the receiver <b>reorders</b> them using the packet numbers; any missing packets are requested again</li>
+        </ol>
+        <p>Benefits: no single path is tied up; if a link fails or is busy, packets go another way. Drawback: packets can be delayed or lost and must be reassembled.</p>
+      </div></article>
+
+      <article class="sec" id="s212"><span class="sec-n">2.1.2</span><div class="sec-b">
+        <h3>Methods of data transmission</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Method</th><th>How</th><th>Advantages</th><th>Disadvantages</th></tr>
+          <tr><td>Serial</td><td>bits sent <b>one at a time</b> down a single wire</td><td>reliable over long distances; bits arrive in order; cheaper cable</td><td>slower than parallel</td></tr>
+          <tr><td>Parallel</td><td>several bits sent <b>at the same time</b> down several wires</td><td>faster over short distances</td><td>bits can arrive skewed (out of sync) over long distances; more expensive</td></tr>
+          <tr><td>Simplex</td><td>data goes <b>one way only</b></td><td>simple</td><td>no reply possible — e.g. computer → monitor</td></tr>
+          <tr><td>Half-duplex</td><td>both ways, but <b>one direction at a time</b></td><td>two-way with one channel</td><td>slower — e.g. walkie-talkie</td></tr>
+          <tr><td>Full-duplex</td><td>both ways <b>at the same time</b></td><td>fastest two-way</td><td>needs more channels — e.g. phone call, broadband</td></tr>
+        </table></div>
+        <p>Exam questions combine them: “serial half-duplex”, “parallel simplex” and so on.</p>
+      </div></article>
+
+      <article class="sec" id="s213"><span class="sec-n">2.1.3</span><div class="sec-b">
+        <h3>Universal serial bus (USB)</h3>
+        <ul>
+          <li>USB is a standard for connecting devices; it uses <b>serial</b> transmission</li>
+          <li>when a device is plugged in, the computer automatically detects it and loads (or prompts for) the <b>driver</b></li>
+        </ul>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Benefits</th><th>Drawbacks</th></tr>
+          <tr><td>devices are recognised automatically</td><td>maximum cable length is short (about 5 m)</td></tr>
+          <tr><td>only fits one way; hard to connect incorrectly</td><td>older versions are slower</td></tr>
+          <tr><td>an industry standard: works on most computers</td><td>limited power supply for large devices</td></tr>
+          <tr><td>can supply power and charge devices</td><td></td></tr>
+        </table></div>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Send a message through the routers</p></div></div>
+    <div class="lab" data-lab data-mode="packets">
+      <div class="lab-h"><p class="lab-title" data-fig="2.1">Packet switching</p><div class="btns"><button class="btn btn-primary btn-sm" type="button" data-send>Send</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 300" role="img" aria-label="A network: a sender on the left, a receiver on the right and five routers between them joined by links. Numbered packets move along different routes."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <label class="field">message<input type="text" maxlength="24" data-k="msg"></label>
+            <div class="group"><p>Network fault</p><div class="btns"><button class="sc" type="button" data-toggle="cut" aria-pressed="false">Break link R3–R4</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"send":true}'><span>Data split into packets</span><span>each router picks a route</span><span>arrive out of order</span><span>reordered by packet number</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"cut":true,"send":true}'><span>A link fails</span><span>routers send packets another way</span><span>message still arrives</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Parallel over a long cable</span><span>bits skewed, out of sync</span><span>use serial instead</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> List the header contents precisely: <b>destination address, originator address, packet number</b>. The trailer holds the <b>end-of-packet</b> marker and the <b>error check</b>.</p>
+      <div class="checklist" data-check="2.1" id="ck21">
+        <div class="checklist-h"><p>2.1.4 Checklist · I can…</p><span class="num">0 / 5</span></div>
+        <label><input type="checkbox"><span>describe the structure of a packet</span></label>
+        <label><input type="checkbox"><span>describe packet switching and the role of routers</span></label>
+        <label><input type="checkbox"><span>compare serial and parallel transmission</span></label>
+        <label><input type="checkbox"><span>describe simplex, half-duplex and full-duplex with examples</span></label>
+        <label><input type="checkbox"><span>explain the benefits and drawbacks of USB</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 2.2 Methods of error detection ======================= -->
+<section class="topic" data-key="errors" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>2.2</span>Data transmission</p>
+    <h1>Did it arrive <em>exactly</em> as sent?</h1>
+    <p class="lede">Interference can flip a 1 into a 0 on the way. Parity bits, checksums, echo checks and check digits all add a little extra data so mistakes can be spotted — and the data sent again.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s221"><span>2.2.1</span>Parity check</button><button type="button" data-goto="s222"><span>2.2.2</span>Checksum, echo check and ARQ</button><button type="button" data-goto="s223"><span>2.2.3</span>Check digits</button><button type="button" data-goto="ck22"><span>2.2.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="bit1" x="10" y="50" width="20" height="30" rx="3" style="stroke-dasharray:3 2"/><rect class="bit1" x="34" y="50" width="20" height="30" rx="3"/><rect class="bit0" x="58" y="50" width="20" height="30" rx="3"/><rect class="bit1" x="82" y="50" width="20" height="30" rx="3" style="stroke:var(--c-err)"/><rect class="bit0" x="106" y="50" width="20" height="30" rx="3"/><rect class="bit1" x="130" y="50" width="20" height="30" rx="3"/><rect class="bit0" x="154" y="50" width="20" height="30" rx="3"/>
+      <text x="92" y="106" text-anchor="middle" class="tc cr">flipped</text>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s221"><span class="sec-n">2.2.1</span><div class="sec-b">
+        <h3>Parity check</h3>
+        <ul>
+          <li>errors happen during transmission because of <b>interference</b>: data can be lost, gained or changed</li>
+          <li>sender and receiver agree on <b>odd</b> or <b>even</b> parity</li>
+          <li>one bit of each byte — the <b>parity bit</b> — is set so that the byte has an odd (or even) number of 1s</li>
+          <li>the receiver counts the 1s; if the count is wrong, an error has occurred</li>
+          <li>a <b>parity block</b> adds a parity byte (a parity bit for each column too), so the receiver can find <b>which bit</b> is wrong — where the faulty row and column cross</li>
+        </ul>
+        <p class="note-k"><b>Limit</b> If <b>two</b> bits flip (or any even number), the count stays odd/even and the error is <b>not detected</b>.</p>
+      </div></article>
+
+      <article class="sec" id="s222"><span class="sec-n">2.2.2</span><div class="sec-b">
+        <h3>Checksum, echo check and ARQ</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Method</th><th>How it works</th></tr>
+          <tr><td>Checksum</td><td>the sender calculates a value from the data using an agreed algorithm and sends it with the data; the receiver recalculates it — if the values differ, an error occurred and the data is requested again</td></tr>
+          <tr><td>Echo check</td><td>the receiver sends a copy of the data <b>back</b> to the sender, which compares it with the original; any difference means an error and the data is resent (but the error may have happened on the way back)</td></tr>
+          <tr><td>Automatic repeat query (ARQ)</td><td>the receiver checks the data with an error-detection method, then sends a positive <b>acknowledgement</b>, or a negative one to ask for it again; if the sender gets no acknowledgement before a <b>timeout</b>, it resends automatically</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s223"><span class="sec-n">2.2.3</span><div class="sec-b">
+        <h3>Check digits</h3>
+        <ul>
+          <li>a <b>check digit</b> is a final digit calculated from all the other digits of a code, such as an ISBN or a product barcode</li>
+          <li>it detects <b>data entry</b> errors: a digit typed wrongly, two digits swapped (transposition), digits missed out or added</li>
+          <li>the computer recalculates the check digit from the entered digits; if it does not match, the number is rejected</li>
+        </ul>
+        <p class="formula">ISBN-13: multiply digits alternately by 1 and 3 · add · MOD 10 · check digit = 10 − remainder (10 → 0)</p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Send bytes through a noisy line, then check a barcode</p></div></div>
+    <div class="lab" data-lab data-mode="parity">
+      <div class="lab-h"><p class="lab-title" data-fig="2.2">Parity check</p><div class="btns"><button class="btn btn-primary btn-sm" type="button" data-tx>Transmit</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <p class="key"><span>sent: click the 7 data bits; the dashed parity bit sets itself</span></p>
+          <div class="bits" data-sent></div>
+          <p class="key"><span>received (red outline = flipped by noise)</span></p>
+          <div class="bits" data-recv></div>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Parity</p><div class="seg" data-k="type" role="group" aria-label="Parity"><button type="button" data-v="even">even</button><button type="button" data-v="odd">odd</button></div></div>
+            <div class="group"><p>Noise on the line</p><div class="seg" data-k="noise" role="group" aria-label="Bits flipped"><button type="button" data-v="0">none</button><button type="button" data-v="1">flip 1 bit</button><button type="button" data-v="2">flip 2 bits</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+    <div class="lab" data-lab data-mode="check">
+      <div class="lab-h"><p class="lab-title" data-fig="2.3">ISBN-13 check digit</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-work></div></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Controls</p><label class="field">ISBN (12 or 13 digits)<input type="text" inputmode="numeric" maxlength="17" data-isbn></label></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"noise":1,"type":"even","tx":true}'><span>One bit flipped</span><span>count of 1s changes</span><span>parity check fails</span><span>ARQ requests resend</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"noise":2,"type":"even","tx":true}'><span>Two bits flipped</span><span>count stays even</span><span>error not detected</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"isbn":"9780143007234"}'><span>Check digit recalculated</span><span>does not match</span><span>entry rejected</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Keep the purposes apart: parity, checksum and echo check find <b>transmission</b> errors; a check digit finds <b>data entry</b> errors.</p>
+      <div class="checklist" data-check="2.2" id="ck22">
+        <div class="checklist-h"><p>2.2.4 Checklist · I can…</p><span class="num">0 / 5</span></div>
+        <label><input type="checkbox"><span>explain why errors happen during transmission</span></label>
+        <label><input type="checkbox"><span>use odd and even parity, including parity blocks</span></label>
+        <label><input type="checkbox"><span>describe checksums and echo checks</span></label>
+        <label><input type="checkbox"><span>describe ARQ with acknowledgements and timeouts</span></label>
+        <label><input type="checkbox"><span>calculate and use a check digit</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 2.3 Encryption ======================= -->
+<section class="topic" data-key="encryption" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>2.3</span>Data transmission</p>
+    <h1>Scramble it so only the right person can <em>read</em> it</h1>
+    <p class="lede">Encryption doesn’t stop data being intercepted — it makes intercepted data useless. Only someone with the right key can turn the ciphertext back into plaintext.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s231"><span>2.3.1</span>What is encryption?</button><button type="button" data-goto="s232"><span>2.3.2</span>Types of encryption</button><button type="button" data-goto="ck23"><span>2.3.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cv" x="60" y="60" width="80" height="60" rx="8"/><path class="l cv w5" d="M76 60V44A24 24 0 0 1 124 44V60"/><circle class="f cv dk" cx="100" cy="88" r="7"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s231"><span class="sec-n">2.3.1</span><div class="sec-b">
+        <h3>What is encryption?</h3>
+        <ul>
+          <li><b>encryption</b> scrambles data using an algorithm and a <b>key</b>, so that if it is intercepted it cannot be understood</li>
+          <li>the original data is the <b>plaintext</b>; the scrambled data is the <b>ciphertext</b></li>
+          <li>encryption does <b>not</b> stop data being intercepted or deleted — it stops it being <b>understood</b></li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s232"><span class="sec-n">2.3.2</span><div class="sec-b">
+        <h3>Symmetric and asymmetric encryption</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th></th><th>Symmetric</th><th>Asymmetric</th></tr>
+          <tr><td>Keys</td><td>one key — the <b>same</b> key encrypts and decrypts</td><td>a <b>public key</b> and a <b>private key</b> that work as a pair</td></tr>
+          <tr><td>How</td><td>sender and receiver must both have the key</td><td>the receiver publishes their public key; senders encrypt with it; only the receiver’s <b>private</b> key can decrypt</td></tr>
+          <tr><td>Problem</td><td>the key must be sent to the receiver — if it is intercepted, the data can be read</td><td>slower; but the private key never has to be sent</td></tr>
+        </table></div>
+        <figure class="plate in-sec">
+          <div class="plate-h"><p class="lab-title" data-fig="2.4">Asymmetric encryption</p></div>
+          <div class="plate-fig">
+            <svg class="fig" viewBox="0 0 640 170" role="img" aria-label="Bob publishes his public key. Alice encrypts her message with Bob's public key and sends the ciphertext. Only Bob's private key, which he keeps secret, can decrypt it.">
+              <defs><marker id="aE1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1L10 5L0 9z" class="ar-h"/></marker></defs>
+              <rect class="f cb" x="20" y="60" width="110" height="50" rx="8"/><text x="75" y="90" text-anchor="middle" class="k">Alice: plaintext</text>
+              <rect class="f cv" x="260" y="60" width="120" height="50" rx="8"/><text x="320" y="90" text-anchor="middle" class="k">ciphertext</text>
+              <rect class="f cg" x="510" y="60" width="110" height="50" rx="8"/><text x="565" y="90" text-anchor="middle" class="k">Bob: plaintext</text>
+              <path class="ar" d="M134 85H254" marker-end="url(#aE1)"/><path class="ar" d="M384 85H504" marker-end="url(#aE1)"/>
+              <text x="194" y="76" text-anchor="middle" class="tc ct">Bob’s public key</text><text x="444" y="76" text-anchor="middle" class="tc cp">Bob’s private key</text>
+              <text x="320" y="140" text-anchor="middle">anyone can have the public key · only Bob has the private key</text>
+            </svg>
+          </div>
+          <figcaption>A message encrypted with Bob’s <b>public</b> key can only be decrypted with Bob’s <b>private</b> key.</figcaption>
+        </figure>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Encrypt a message with a key</p></div></div>
+    <div class="lab" data-lab data-mode="cipher">
+      <div class="lab-h"><p class="lab-title" data-fig="2.5">Caesar cipher: symmetric encryption</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-wheel style="overflow-x:auto"></div></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <label class="field">plaintext<input type="text" maxlength="40" data-k="text"></label>
+            <div class="group"><p>Key</p><label class="ctl"><input class="range" type="range" min="1" max="25" step="1" data-k="key" style="--rc:var(--c-cs)"><output class="num">shift <b data-out="key"></b></output></label></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"text":"PASSWORD","key":13}'><span>Plaintext + key</span><span>encryption algorithm</span><span>ciphertext</span><span>useless if intercepted</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Symmetric</span><span>same key both ways</span><span>key must be shared</span><span>key could be intercepted</span></p>
+        <p class="chain"><span>Asymmetric</span><span>encrypt with receiver’s public key</span><span>decrypt with their private key</span><span>private key never sent</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Say encryption makes data <b>meaningless</b> or <b>unreadable</b> if intercepted — not that it “stops hackers getting the data”.</p>
+      <div class="checklist" data-check="2.3" id="ck23">
+        <div class="checklist-h"><p>2.3.3 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>explain the purpose of encryption, plaintext and ciphertext</span></label>
+        <label><input type="checkbox"><span>describe symmetric encryption and its weakness</span></label>
+        <label><input type="checkbox"><span>describe asymmetric encryption with public and private keys</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../../assets/js/kit.js"></script>
+<script src="../js/data-transmission.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/cards-explain.js"></script>
+<script src="../../assets/js/flashcards.js"></script>
+<script src="../js/drills.js"></script>
+<script src="../../assets/js/practice.js"></script>
+</body>
+</html>

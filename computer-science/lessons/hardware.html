@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Hardware · stay add. Computer Science</title>
+<meta name="description" content="IGCSE Computer Science topic 3: the CPU, von Neumann architecture, the fetch–decode–execute cycle, CPU performance, embedded systems, input and output devices, sensors, primary and secondary storage, virtual memory, cloud storage and network hardware.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="computer-science" data-page="lesson" data-lesson="cs-hardware">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>3</span>Hardware</p>
+      <a href="#architecture" data-full="3.1 · CPU and the FDE cycle">Computer architecture</a>
+      <a href="#devices" data-full="3.2 · input, output, sensors">Input and output devices</a>
+      <a href="#storage" data-full="3.3 · RAM, ROM, disks, cloud">Data storage</a>
+      <a href="#network" data-full="3.4 · NIC, MAC, IP, router">Network hardware</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 4</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0478</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<!-- ======================= 3.1 Computer architecture ======================= -->
+<section class="topic" data-key="architecture">
+  <header class="t-head">
+    <p class="eyebrow"><span>3.1</span>Hardware</p>
+    <h1>The CPU: fetch, decode, <em>execute</em></h1>
+    <p class="lede">The central processing unit runs every program the same way: fetch the next instruction from memory, work out what it means, do it — billions of times a second.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s311"><span>3.1.1</span>The CPU</button><button type="button" data-goto="s312"><span>3.1.2</span>Von Neumann architecture</button><button type="button" data-goto="s313"><span>3.1.3</span>The FDE cycle</button><button type="button" data-goto="s314"><span>3.1.4</span>CPU performance</button><button type="button" data-goto="s315"><span>3.1.5</span>Instruction sets</button><button type="button" data-goto="s316"><span>3.1.6</span>Embedded systems</button><button type="button" data-goto="ck31"><span>3.1.7</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cp" x="50" y="30" width="100" height="80" rx="8"/><g class="l"><path d="M64 30V16M80 30V16M96 30V16M112 30V16M128 30V16M64 110V124M80 110V124M96 110V124M112 110V124M128 110V124M50 50H36M50 70H36M50 90H36M150 50H164M150 70H164M150 90H164"/></g>
+      <text x="100" y="76" text-anchor="middle" class="k big">CPU</text>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Six sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s311"><span class="sec-n">3.1.1</span><div class="sec-b">
+        <h3>The CPU</h3>
+        <ul>
+          <li>the <b>central processing unit (CPU)</b> processes instructions and data that are input into the computer so that the result can be output</li>
+          <li>a <b>microprocessor</b> is a type of integrated circuit on a single chip that contains a CPU</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s312"><span class="sec-n">3.1.2</span><div class="sec-b">
+        <h3>Von Neumann architecture</h3>
+        <p>In the <b>von Neumann</b> (stored-program) model, instructions and data are both stored in the same memory, and the CPU fetches them one at a time.</p>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Component</th><th>Role</th></tr>
+          <tr><td>Arithmetic logic unit (ALU)</td><td>carries out calculations and logical operations (comparisons)</td></tr>
+          <tr><td>Control unit (CU)</td><td>decodes instructions and sends control signals to manage the flow of data through the CPU</td></tr>
+          <tr><td>Program counter (PC)</td><td>holds the <b>address of the next instruction</b> to be fetched</td></tr>
+          <tr><td>Memory address register (MAR)</td><td>holds the <b>address</b> of the memory location being read from or written to</td></tr>
+          <tr><td>Memory data register (MDR)</td><td>holds the <b>data or instruction</b> fetched from, or to be written to, memory</td></tr>
+          <tr><td>Current instruction register (CIR)</td><td>holds the <b>instruction being decoded and executed</b></td></tr>
+          <tr><td>Accumulator (ACC)</td><td>holds the result of calculations done by the ALU</td></tr>
+          <tr><td>Address bus</td><td>carries addresses from the CPU to memory — <b>one direction</b></td></tr>
+          <tr><td>Data bus</td><td>carries data and instructions between the CPU and memory — <b>both directions</b></td></tr>
+          <tr><td>Control bus</td><td>carries control signals (e.g. read, write, clock) — both directions</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s313"><span class="sec-n">3.1.3</span><div class="sec-b">
+        <h3>The fetch–decode–execute cycle</h3>
+        <ol>
+          <li><b>Fetch</b>: the address in the PC is copied to the MAR; it is sent along the address bus to memory; the instruction at that address is sent along the data bus to the MDR; it is copied to the CIR; the PC is incremented</li>
+          <li><b>Decode</b>: the control unit decodes the instruction in the CIR</li>
+          <li><b>Execute</b>: the instruction is carried out — for example the ALU does a calculation and the result goes in the accumulator</li>
+        </ol>
+      </div></article>
+
+      <article class="sec" id="s314"><span class="sec-n">3.1.4</span><div class="sec-b">
+        <h3>CPU performance</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Factor</th><th>Effect</th></tr>
+          <tr><td>Clock speed (GHz)</td><td>the number of cycles per second; higher → more instructions fetched and executed per second</td></tr>
+          <tr><td>Number of cores</td><td>each core can process instructions independently; more cores → more instructions at once (if the software can split the work)</td></tr>
+          <tr><td>Cache size</td><td>cache is very fast memory inside the CPU storing frequently used instructions and data; larger cache → fewer slow trips to RAM</td></tr>
+        </table></div>
+        <p class="note-k"><b>Not always faster</b> Doubling the cores doesn’t double the speed: some tasks can’t be split, and the cores must communicate with each other.</p>
+      </div></article>
+
+      <article class="sec" id="s315"><span class="sec-n">3.1.5</span><div class="sec-b">
+        <h3>Instruction sets</h3>
+        <p>An <b>instruction set</b> is the list of all the commands (machine code operations) a particular CPU can process — for example ADD, LOAD, STORE, JUMP. Programs must be translated into this set before the CPU can run them.</p>
+      </div></article>
+
+      <article class="sec" id="s316"><span class="sec-n">3.1.6</span><div class="sec-b">
+        <h3>Embedded systems</h3>
+        <ul>
+          <li>an <b>embedded system</b> is a computer system with a <b>dedicated function</b> inside a larger device</li>
+          <li>examples: washing machines, microwave ovens, central heating, security systems, traffic lights, vending machines, car engine management</li>
+          <li>usually small, low-power and cheap to mass-produce; often controlled by <b>firmware</b> stored in ROM</li>
+          <li>a general-purpose computer (a laptop) can do many tasks; an embedded system does one</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Run a program one step at a time</p></div></div>
+    <div class="lab" data-lab data-mode="fde">
+      <div class="lab-h"><p class="lab-title" data-fig="3.1">The fetch–decode–execute cycle</p><div class="btns"><button class="btn btn-primary btn-sm" type="button" data-next>Next step</button><button class="ghost" type="button" data-run>Run to end</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 270" role="img" aria-label="The CPU with its control unit, ALU, registers and cache, joined to memory by the address, data and control buses. Memory holds the program LDA 5, ADD 6, STO 7, HLT and the data 12 and 30."></svg></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Registers</p><div class="regs" data-regs></div></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"steps":4}'><span>PC → MAR</span><span>address bus to memory</span><span>instruction → MDR</span><span>MDR → CIR, PC + 1</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"steps":12}'><span>CU decodes ADD 6</span><span>value fetched from address 6</span><span>ALU adds it</span><span>result in the accumulator</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Larger cache</span><span>data found inside the CPU</span><span>fewer trips to RAM</span><span>faster processing</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Describe the fetch stage register by register, in order, naming the bus each time: PC → MAR → (address bus) → memory → (data bus) → MDR → CIR, and PC incremented.</p>
+      <div class="checklist" data-check="3.1" id="ck31">
+        <div class="checklist-h"><p>3.1.7 Checklist · I can…</p><span class="num">0 / 6</span></div>
+        <label><input type="checkbox"><span>describe the role of the CPU and a microprocessor</span></label>
+        <label><input type="checkbox"><span>describe the ALU, CU, registers and buses in von Neumann architecture</span></label>
+        <label><input type="checkbox"><span>describe the fetch–decode–execute cycle</span></label>
+        <label><input type="checkbox"><span>explain how clock speed, cores and cache affect performance</span></label>
+        <label><input type="checkbox"><span>explain what an instruction set is</span></label>
+        <label><input type="checkbox"><span>describe embedded systems with examples</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 3.2 Input and output devices ======================= -->
+<section class="topic" data-key="devices" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>3.2</span>Hardware</p>
+    <h1>Getting data in, getting results <em>out</em></h1>
+    <p class="lede">Input devices turn the world — a keypress, a photo, a temperature — into binary. Output devices turn binary back into light, sound, movement or print.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s321"><span>3.2.1</span>Input devices</button><button type="button" data-goto="s322"><span>3.2.2</span>Output devices</button><button type="button" data-goto="s323"><span>3.2.3</span>Sensors</button><button type="button" data-goto="ck32"><span>3.2.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cb" x="14" y="80" width="60" height="30" rx="4"/><g class="f lt"><rect x="20" y="86" width="10" height="7" rx="1"/><rect x="34" y="86" width="10" height="7" rx="1"/><rect x="48" y="86" width="10" height="7" rx="1"/><rect x="20" y="97" width="38" height="7" rx="1"/></g>
+      <rect class="f cp" x="110" y="24" width="76" height="54" rx="4"/><path class="l w3" d="M148 78V96M130 100H166"/><path class="l w3" d="M78 94H104"/><path class="mk" d="M102 88l8 6-8 6z"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s321"><span class="sec-n">3.2.1</span><div class="sec-b">
+        <h3>Input devices</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Device</th><th>How it works / use</th></tr>
+          <tr><td>Barcode scanner</td><td>a laser or light shines on the black and white bars; the reflected light is read by sensors and converted to a number (e.g. shop checkouts)</td></tr>
+          <tr><td>QR code scanner</td><td>a camera captures the 2D pattern of squares, which can store much more data (e.g. a web address)</td></tr>
+          <tr><td>Digital camera</td><td>light passes through a lens onto a sensor made of millions of light-sensitive elements; each becomes a pixel value</td></tr>
+          <tr><td>Keyboard</td><td>each key press completes a circuit; the character code is sent to the computer</td></tr>
+          <tr><td>Microphone</td><td>sound vibrates a diaphragm, creating an electrical signal that is sampled and converted to binary</td></tr>
+          <tr><td>Optical mouse</td><td>an LED lights the surface; a small camera takes many images per second and compares them to work out the movement</td></tr>
+          <tr><td>2D and 3D scanners</td><td>light scans a document (2D) or lasers measure the shape of an object from many angles (3D)</td></tr>
+          <tr><td>Touch screens</td><td><b>resistive</b>: two layers pressed together complete a circuit (cheap, works with gloves); <b>capacitive</b>: a finger changes the electric field at that point (multi-touch, clearer); <b>infrared</b>: a grid of infrared beams is broken by the touch</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s322"><span class="sec-n">3.2.2</span><div class="sec-b">
+        <h3>Output devices</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Device</th><th>How it works / use</th></tr>
+          <tr><td>Actuator</td><td>a motor, valve, pump or switch that produces <b>movement</b> from a signal (e.g. opening a window)</td></tr>
+          <tr><td>DLP projector</td><td>millions of tiny mirrors tilt to reflect light towards or away from the lens</td></tr>
+          <tr><td>LCD projector</td><td>light passes through liquid crystal panels that let through red, green and blue</td></tr>
+          <tr><td>Inkjet printer</td><td>tiny droplets of ink are squirted onto the paper from a moving print head (thermal bubble or piezoelectric)</td></tr>
+          <tr><td>Laser printer</td><td>a laser draws the page as static charge on a drum; toner sticks to the charged areas and is fused onto the paper with heat — fast for large volumes</td></tr>
+          <tr><td>3D printer</td><td>builds a solid object layer by layer from a digital model (e.g. melted plastic)</td></tr>
+          <tr><td>LED and LCD screens</td><td>LCD: liquid crystals in each pixel are back-lit by LEDs; LED screens use LEDs directly for each pixel</td></tr>
+          <tr><td>Speaker</td><td>an electrical signal moves a cone, creating sound waves</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s323"><span class="sec-n">3.2.3</span><div class="sec-b">
+        <h3>Sensors</h3>
+        <ul>
+          <li>a <b>sensor</b> is an input device that measures a physical property of the environment and sends the reading as data (usually <b>analogue</b>, converted to digital by an ADC)</li>
+          <li>types: acoustic (sound), accelerometer, flow, gas, humidity, infrared, level, light, magnetic field, moisture, pH, pressure, proximity, temperature</li>
+          <li>sensors don’t make decisions — a microprocessor compares the readings with stored values</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Pick the right sensor</p></div></div>
+    <div class="lab" data-lab data-mode="sensor">
+      <div class="lab-h"><p class="lab-title" data-fig="3.2">Which sensor?</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-q></div><div class="bench-grid" data-opts></div></figure>
+        <div class="dock"><div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div></div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <p class="chain"><span>Finger touches capacitive screen</span><span>electric field changes at that point</span><span>coordinates calculated</span></p>
+        <p class="chain"><span>Laser charges the drum</span><span>toner sticks to charged areas</span><span>fused onto paper by heat</span></p>
+        <p class="chain"><span>Sensor reading (analogue)</span><span>ADC converts to digital</span><span>microprocessor compares with stored value</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> For “how does it work” questions, describe the steps in order and name the key part (drum, mirrors, laser, light-sensitive cells) — not just what it is used for.</p>
+      <div class="checklist" data-check="3.2" id="ck32">
+        <div class="checklist-h"><p>3.2.4 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>describe how common input devices work, including the three touch screens</span></label>
+        <label><input type="checkbox"><span>describe how common output devices work</span></label>
+        <label><input type="checkbox"><span>choose a suitable sensor for a given situation</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 3.3 Data storage ======================= -->
+<section class="topic" data-key="storage" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>3.3</span>Hardware</p>
+    <h1>Fast and forgetful, or slow and <em>permanent</em></h1>
+    <p class="lede">Primary storage sits right next to the CPU and is fast; secondary storage keeps your files when the power goes off. When RAM runs out, part of the disk pretends to be RAM.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s331"><span>3.3.1</span>Primary storage</button><button type="button" data-goto="s332"><span>3.3.2</span>Secondary storage</button><button type="button" data-goto="s333"><span>3.3.3</span>Virtual memory</button><button type="button" data-goto="s334"><span>3.3.4</span>Cloud storage</button><button type="button" data-goto="ck33"><span>3.3.5</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f cb" x="14" y="56" width="90" height="30" rx="3"/><g class="f cb dk"><rect x="22" y="62" width="14" height="18"/><rect x="42" y="62" width="14" height="18"/><rect x="62" y="62" width="14" height="18"/><rect x="82" y="62" width="14" height="18"/></g>
+      <circle class="f ca" cx="152" cy="70" r="34"/><circle class="f ca dk" cx="152" cy="70" r="6"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Four sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s331"><span class="sec-n">3.3.1</span><div class="sec-b">
+        <h3>Primary storage: RAM and ROM</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th></th><th>RAM (random access memory)</th><th>ROM (read only memory)</th></tr>
+          <tr><td>Volatile?</td><td><b>volatile</b> — contents lost when power is off</td><td><b>non-volatile</b> — contents kept</td></tr>
+          <tr><td>Can be changed?</td><td>read and write</td><td>read only</td></tr>
+          <tr><td>Stores</td><td>data, programs and parts of the OS <b>currently in use</b></td><td>the <b>bootstrap</b> / start-up instructions (firmware)</td></tr>
+        </table></div>
+        <p>Primary storage is <b>directly accessed by the CPU</b>.</p>
+      </div></article>
+
+      <article class="sec" id="s332"><span class="sec-n">3.3.2</span><div class="sec-b">
+        <h3>Secondary storage</h3>
+        <p>Non-volatile storage for files and programs not currently in use; not directly accessed by the CPU.</p>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Type</th><th>How it works</th><th>Pros / cons</th></tr>
+          <tr><td>Magnetic (HDD)</td><td>spinning <b>platters</b> coated in magnetic material; a read/write <b>head</b> on an actuator arm magnetises tiny areas (sectors on tracks) to store 1s and 0s</td><td>cheap per GB, large capacity · moving parts, slower, can be damaged by knocks</td></tr>
+          <tr><td>Optical (CD, DVD, Blu-ray)</td><td>a <b>laser</b> reads pits and lands on the disc surface by the reflection of light; burning creates the pattern</td><td>cheap, portable · small capacity, scratches easily</td></tr>
+          <tr><td>Solid state (SSD, USB flash, SD)</td><td><b>NAND/NOR flash</b> memory: <b>transistors</b> (with control and floating gates) trap electrons to store data — no moving parts</td><td>fast access, low power, robust, silent · more expensive per GB, limited write cycles</td></tr>
+        </table></div>
+      </div></article>
+
+      <article class="sec" id="s333"><span class="sec-n">3.3.3</span><div class="sec-b">
+        <h3>Virtual memory</h3>
+        <ul>
+          <li>when RAM is full, part of <b>secondary storage</b> is used as if it were RAM — <b>virtual memory</b></li>
+          <li>data not currently needed is moved (paged) from RAM to the virtual memory, freeing RAM; it is moved back when needed</li>
+          <li>it lets more programs run than RAM alone could hold, but accessing it is much slower</li>
+          <li>if pages are swapped in and out constantly, the computer slows dramatically — <b>disk thrashing</b></li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s334"><span class="sec-n">3.3.4</span><div class="sec-b">
+        <h3>Cloud storage</h3>
+        <p>Data stored on remote <b>servers</b> owned by a provider and accessed over the internet.</p>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Advantages</th><th>Disadvantages</th></tr>
+          <tr><td>access files from any device, anywhere with internet</td><td>needs an internet connection</td></tr>
+          <tr><td>no need to buy or maintain storage hardware; easy to increase capacity</td><td>ongoing subscription cost</td></tr>
+          <tr><td>provider backs the data up</td><td>security and privacy depend on the provider; data could be hacked</td></tr>
+          <tr><td>easy to share files and collaborate</td><td>uploading large files can be slow</td></tr>
+        </table></div>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Open programs until RAM runs out</p></div></div>
+    <div class="lab" data-lab data-mode="vmem">
+      <div class="lab-h"><p class="lab-title" data-fig="3.3">RAM and virtual memory</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph">
+          <p class="key"><span>RAM — each box is one page</span></p><div class="cells" data-ram></div>
+          <p class="key" style="margin-top:12px"><span>virtual memory on the secondary storage</span></p><div class="cells" data-disk></div>
+        </figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Open or switch to a program <span class="hint">click again to close</span></p><div class="bench-grid"><button class="sc" type="button" data-app="browser">browser</button><button class="sc" type="button" data-app="music">music</button><button class="sc" type="button" data-app="game">game</button><button class="sc" type="button" data-app="editor">editor</button><button class="sc" type="button" data-app="video call">video call</button></div></div>
+            <div class="group"><p>Amount of RAM</p><div class="seg" data-k="ram" role="group" aria-label="RAM"><button type="button" data-v="8">8 pages</button><button type="button" data-v="12">12 pages</button><button type="button" data-v="20">20 pages</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"open":["browser","game","video call","editor"],"ram":8}'><span>Too many programs, little RAM</span><span>constant swapping to disk</span><span>disk thrashing</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"open":["browser","game","video call","editor"],"ram":20}'><span>More RAM fitted</span><span>everything fits</span><span>no virtual memory needed, faster</span><em>Show in the lab</em></button>
+        <p class="chain"><span>SSD: no moving parts</span><span>faster access, more robust</span><span>good for laptops</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> For storage choice questions, justify with the scenario: capacity, speed, portability, durability, cost.</p>
+      <div class="checklist" data-check="3.3" id="ck33">
+        <div class="checklist-h"><p>3.3.5 Checklist · I can…</p><span class="num">0 / 4</span></div>
+        <label><input type="checkbox"><span>compare RAM and ROM</span></label>
+        <label><input type="checkbox"><span>describe how magnetic, optical and solid state storage work</span></label>
+        <label><input type="checkbox"><span>explain virtual memory and disk thrashing</span></label>
+        <label><input type="checkbox"><span>discuss the advantages and disadvantages of cloud storage</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 3.4 Network hardware ======================= -->
+<section class="topic" data-key="network" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>3.4</span>Hardware</p>
+    <h1>Addresses on the <em>network</em></h1>
+    <p class="lede">Every device that joins a network needs a network interface card with a fixed MAC address, and an IP address so that routers know where to send its data.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s341"><span>3.4.1</span>NICs and MAC addresses</button><button type="button" data-goto="s342"><span>3.4.2</span>IP addresses</button><button type="button" data-goto="s343"><span>3.4.3</span>Routers</button><button type="button" data-goto="ck34"><span>3.4.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
+      <rect class="f" x="70" y="56" width="60" height="28" rx="6"/><text x="100" y="74" text-anchor="middle" class="k">router</text>
+      <g class="f cb"><rect x="10" y="14" width="40" height="26" rx="4"/><rect x="150" y="14" width="40" height="26" rx="4"/><rect x="80" y="104" width="40" height="26" rx="4"/></g>
+      <path class="l" d="M50 30L76 56M150 30L124 56M100 84V104"/>
+    </svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s341"><span class="sec-n">3.4.1</span><div class="sec-b">
+        <h3>Network interface cards and MAC addresses</h3>
+        <ul>
+          <li>a <b>network interface card (NIC)</b> lets a device connect to a network (wired or wireless)</li>
+          <li>each NIC has a <b>media access control (MAC) address</b> assigned by the manufacturer — a unique, permanent address</li>
+          <li>a MAC address is 48 bits, written as 6 pairs of hex digits: the first half is the <b>manufacturer ID</b>, the second half the <b>serial number</b> of the device</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s342"><span class="sec-n">3.4.2</span><div class="sec-b">
+        <h3>IP addresses</h3>
+        <ul>
+          <li>an <b>internet protocol (IP) address</b> identifies a device on a network; it is assigned when the device connects</li>
+          <li><b>IPv4</b>: 32 bits, written as 4 denary numbers 0–255 separated by dots (e.g. 192.168.0.24)</li>
+          <li><b>IPv6</b>: 128 bits, written as 8 groups of 4 hex digits separated by colons — created because IPv4 is running out of addresses</li>
+          <li><b>static</b> IP addresses never change (good for servers); <b>dynamic</b> addresses are allocated each time the device connects and may change</li>
+        </ul>
+      </div></article>
+
+      <article class="sec" id="s343"><span class="sec-n">3.4.3</span><div class="sec-b">
+        <h3>Routers</h3>
+        <ul>
+          <li>a <b>router</b> connects networks together — for example a home network to the internet</li>
+          <li>it receives data packets, reads the destination IP address and forwards each packet towards its destination</li>
+          <li>it can assign IP addresses to devices on its network (dynamic allocation)</li>
+          <li>a router stores a table of addresses so it knows where to send data</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Look inside an IP and a MAC address</p></div></div>
+    <div class="lab" data-lab data-mode="address">
+      <div class="lab-h"><p class="lab-title" data-fig="3.4">IP and MAC addresses</p><button class="ghost" type="button" data-reset>Reset</button></div>
+      <div class="lab-body">
+        <figure class="graph"><div data-out-addr style="overflow-x:auto"></div></figure>
+        <div class="dock">
+          <div class="block"><p class="block-h">Controls</p><label class="field">IPv4 address<input type="text" data-k="ip"></label><label class="field">MAC address<input type="text" data-k="mac"></label></div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"ip":"192.168.300.1"}'><span>A part above 255</span><span>does not fit in 8 bits</span><span>not a valid IPv4 address</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Device joins network</span><span>router allocates a dynamic IP</span><span>packets reach it by that IP</span></p>
+        <p class="chain"><span>IPv4: 32 bits</span><span>about 4.3 billion addresses</span><span>not enough → IPv6, 128 bits</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> The MAC address belongs to the <b>device</b> and never changes; the IP address belongs to the <b>connection</b> and can change.</p>
+      <div class="checklist" data-check="3.4" id="ck34">
+        <div class="checklist-h"><p>3.4.4 Checklist · I can…</p><span class="num">0 / 4</span></div>
+        <label><input type="checkbox"><span>describe the role of a NIC and the structure of a MAC address</span></label>
+        <label><input type="checkbox"><span>compare IPv4 and IPv6</span></label>
+        <label><input type="checkbox"><span>compare static and dynamic IP addresses</span></label>
+        <label><input type="checkbox"><span>describe the role of a router</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../../assets/js/kit.js"></script>
+<script src="../js/hardware.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/cards-explain.js"></script>
+<script src="../../assets/js/flashcards.js"></script>
+<script src="../js/drills.js"></script>
+<script src="../../assets/js/practice.js"></script>
+</body>
+</html>

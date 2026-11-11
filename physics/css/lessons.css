@@ -1,0 +1,153 @@
+/* Physics lessons (one per syllabus topic, lessons/*.html). Not for the standalone
+   labs/ pages, which use lab.css. Same parts as the Computer Science lessons:
+   1. figure parts — .f a filled shape, .l a line, .mk an arrowhead, text.tc coloured text;
+      colour .cg .cb .cr .ca .cv .ct .cp, strength .lt / .dk, weight .w3 / .w5
+   2. lesson parts · 3. lab widgets · 4. physics figures (vectors, rays, fields, circuits) */
+
+/* ---------- 1. Figure parts ---------- */
+.fig .plot { fill: none; stroke: var(--c-phys); stroke-width: 2; stroke-linejoin: round; }
+.fig .area { fill: color-mix(in srgb, var(--c-phys) 9%, transparent); }
+.fig .pt { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+.fig .ar { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.fig .ar.dash { stroke-dasharray: 5 4; }
+.fig .ar-h { fill: var(--ink-3); }
+.fig .pn-t { font: italic 400 17px var(--font-serif); fill: var(--ink); }
+.fig .split { stroke: var(--line); stroke-width: 1; }
+.fig .cg { --fc: var(--green); } .fig .cb { --fc: var(--blue); } .fig .cr { --fc: var(--red); } .fig .ca { --fc: var(--amber); }
+.fig .cv { --fc: var(--violet); } .fig .ct { --fc: var(--teal); } .fig .cp { --fc: var(--rose); }
+.fig .f { fill: color-mix(in srgb, var(--fc, var(--ink-3)) var(--fm, 13%), var(--surface)); stroke: var(--fc, var(--ink-3)); stroke-width: 1.5; }
+.fig .f.lt { --fm: 5%; } .fig .f.dk { --fm: 38%; } .fig .f.no-s { stroke: none; }
+.fig .l { fill: none; stroke: var(--fc, var(--ink-3)); stroke-width: var(--lw, 1.75); stroke-linecap: round; stroke-linejoin: round; }
+.fig .l.w3 { --lw: 3; } .fig .l.w5 { --lw: 5; } .fig .l.dash { stroke-dasharray: 5 4; }
+.fig .mk { fill: var(--fc, var(--ink-3)); }
+.fig text.tc { fill: var(--fc, var(--ink)); font-weight: 500; }
+.fig text.big { font-size: 13px; }
+.fig text.k, .fig text.stage { fill: var(--ink); font-weight: 500; }
+.fig text.mono-b { font: 500 13px var(--font-mono); fill: var(--ink); }
+.fig .bit1 { fill: color-mix(in srgb, var(--c-bit) 20%, var(--surface)); stroke: var(--c-bit); stroke-width: 1.5; }
+.fig .bit0 { fill: var(--surface); stroke: var(--line-2); stroke-width: 1.5; }
+.fig .wire-on { fill: none; stroke: var(--c-bit); stroke-width: 3; stroke-linecap: round; }
+.fig .wire-off { fill: none; stroke: var(--c-off); stroke-width: 3; stroke-linecap: round; }
+.fig .gate { fill: var(--surface); stroke: var(--ink-2); stroke-width: 2; stroke-linejoin: round; }
+.fig .gate.on { fill: color-mix(in srgb, var(--c-bit) 12%, var(--surface)); stroke: var(--c-bit); }
+.fig .bub { fill: var(--surface); stroke: var(--ink-2); stroke-width: 2; }
+
+/* a slider with its value: label · track · output (the label is optional) */
+.ctl { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; font-size: 13px; color: var(--ink-2); }
+.ctl:not(:has(> span)) { grid-template-columns: 1fr auto; }
+.ctl output { font-size: 12.5px; color: var(--ink-3); min-width: 52px; text-align: right; white-space: nowrap; }
+.ctl output b { font-weight: 500; color: var(--ink); }
+
+/* ---------- 2. Lesson parts ---------- */
+[data-subject="physics"] { --t-accent: var(--c-phys); }
+.tag-s { font: 500 10.5px var(--font-mono); padding: 1px 5px; border: 1px solid var(--line-2); border-radius: 4px; color: var(--ink-3); font-weight: 500; }
+.plate.in-sec { margin: 6px 0; box-shadow: none; }
+/* pseudocode, written the way Cambridge prints it */
+.code { margin: 0; padding: 12px 16px; background: var(--bg-2); border: 1px solid var(--line); border-left: 3px solid var(--c-phys); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font: 13px/1.7 var(--font-mono); color: var(--ink); white-space: pre; overflow-x: auto; tab-size: 3; }
+.code .kw { color: var(--c-phys); font-weight: 500; }
+.code .cm { color: var(--ink-3); font-style: italic; }
+code.i { font: 13px var(--font-mono); padding: 1px 5px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; color: var(--ink); }
+.sec-b .checklist { margin-top: 4px; }
+
+/* ---------- 3. Lab widgets ---------- */
+.bits { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.bits.b16 { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+.bit { display: grid; gap: 2px; justify-items: center; padding: 6px 0 8px; border: 1px solid var(--line-2); border-radius: 8px; background: var(--surface); font: 500 20px var(--font-mono); color: var(--ink-3); transition: background-color .15s, border-color .15s, color .15s; }
+.bit small { font: 10.5px var(--font-mono); color: var(--ink-3); }
+.bit[aria-pressed="true"] { background: color-mix(in srgb, var(--c-bit) 14%, var(--surface)); border-color: var(--c-bit); color: var(--ink); }
+.bit.sign small { color: var(--c-err); }
+.bit.flip { border-color: var(--c-err); box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-err) 25%, transparent); }
+.bit.par { border-style: dashed; }
+.bit:disabled { cursor: default; }
+.carry { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; font: 11px var(--font-mono); color: var(--c-err); text-align: center; min-height: 14px; }
+.big-read { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: baseline; font: 500 15px var(--font-mono); color: var(--ink); }
+.big-read span { color: var(--ink-3); font-size: 12px; margin-right: 6px; }
+.field { display: grid; gap: 6px; font-size: 13px; color: var(--ink-2); }
+.field input, .field select, .field textarea { font: 14px var(--font-mono); padding: 7px 10px; border: 1px solid var(--line-2); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); width: 100%; min-width: 0; }
+.field textarea { resize: vertical; min-height: 64px; }
+.inline-f { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+.regs { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 6px; }
+.reg { padding: 6px 10px 7px; border: 1px solid var(--line-2); border-radius: 8px; background: var(--surface); transition: border-color .2s, background-color .2s; }
+.reg b { display: block; font: 500 10.5px var(--font-mono); letter-spacing: .06em; color: var(--ink-3); }
+.reg span { font: 500 15px var(--font-mono); color: var(--ink); }
+.reg.hot { border-color: var(--c-phys); background: color-mix(in srgb, var(--c-phys) 10%, var(--surface)); }
+.tt { width: 100%; border-collapse: collapse; font: 13px var(--font-mono); }
+.tt th { font: 500 11px var(--font-mono); letter-spacing: .04em; color: var(--ink-3); padding: 5px 6px; border-bottom: 1px solid var(--line-2); text-align: center; }
+.tt td { padding: 5px 6px; border-bottom: 1px solid var(--line); text-align: center; color: var(--ink-2); }
+.tt tr.now td { background: color-mix(in srgb, var(--c-phys) 10%, transparent); color: var(--ink); }
+.tt td.one { color: var(--c-bit); font-weight: 500; }
+.tt td.out { font-weight: 600; color: var(--ink); }
+.cells { display: flex; flex-wrap: wrap; gap: 6px; }
+.cell-v { min-width: 40px; padding: 8px 6px; text-align: center; border: 1px solid var(--line-2); border-radius: 8px; font: 500 15px var(--font-mono); background: var(--surface); color: var(--ink); transition: background-color .2s, border-color .2s, transform .25s; }
+.cell-v small { display: block; font: 10px var(--font-mono); color: var(--ink-3); }
+.cell-v.cmp { border-color: var(--c-addr); background: color-mix(in srgb, var(--c-addr) 14%, var(--surface)); }
+.cell-v.hit { border-color: var(--c-bit); background: color-mix(in srgb, var(--c-bit) 18%, var(--surface)); }
+.cell-v.done { border-color: var(--c-phys); background: color-mix(in srgb, var(--c-phys) 10%, var(--surface)); }
+.cell-v.miss { opacity: .45; }
+.sql { font: 13px/1.7 var(--font-mono); padding: 10px 14px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--ink); white-space: pre-wrap; }
+.sql .kw { color: var(--c-phys); font-weight: 600; }
+.qtable { width: 100%; border-collapse: collapse; font-size: 13px; }
+.qtable th { font: 500 11px var(--font-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line-2); }
+.qtable td { padding: 6px 8px; border-bottom: 1px solid var(--line); color: var(--ink-2); font-family: var(--font-mono); font-size: 12.5px; }
+.qtable tr.match td { color: var(--ink); background: color-mix(in srgb, var(--c-bit) 9%, transparent); }
+.qtable tr.no td { opacity: .4; }
+.qtable th.pick, .qtable td.pick { box-shadow: inset 0 0 0 999px color-mix(in srgb, var(--c-phys) 6%, transparent); }
+.log { font: 12.5px/1.6 var(--font-mono); color: var(--ink-2); padding: 10px 12px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-sm); min-height: 60px; max-height: 180px; overflow: auto; white-space: pre-wrap; }
+.log .err { color: var(--c-err); }
+.log .ok { color: var(--c-bit); }
+.sc:disabled { opacity: .45; cursor: default; }
+@container (max-width: 520px) { .bit { font-size: 16px; } .bits { gap: 4px; } }
+.graph > .bits, .graph > .carry, .graph > .pixels { margin: 6px 4px; }
+.pixels { display: grid; gap: 2px; padding: 8px; background: var(--bg-2); border-radius: 8px; }
+.px { aspect-ratio: 1; border-radius: 2px; background: #f4f1e8; border: 1px solid var(--line); padding: 0; }
+.px.on { background: #1c1c1c; border-color: #1c1c1c; }
+.rle-out { display: grid; gap: 4px; font: 12.5px var(--font-mono); color: var(--ink-2); }
+.rle-out span { color: var(--ink-3); margin-right: 8px; }
+.rle-out b { color: var(--c-phys); font-weight: 600; }
+.bench-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 6px; }
+.bench-grid .sc { text-align: center; padding: 8px 6px; }
+.codelist { font: 13px/1.8 var(--font-mono); padding: 8px 0; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-sm); margin-bottom: 8px; overflow-x: auto; }
+.codelist div { padding: 0 12px; white-space: pre; transition: background-color .2s; }
+.codelist .ln { display: inline-block; width: 26px; color: var(--ink-4); }
+.codelist .now { background: color-mix(in srgb, var(--c-phys) 14%, transparent); }
+.codelist .badl { background: color-mix(in srgb, var(--c-err) 16%, transparent); color: var(--c-err); }
+.url-parts { display: flex; flex-wrap: wrap; font: 500 16px var(--font-mono); padding: 10px 12px; background: var(--bg-2); border-radius: 8px; overflow-x: auto; }
+.url-legend { display: flex; gap: 16px; padding: 6px 12px; font: 11px var(--font-mono); }
+.up-p { color: var(--green); } .up-d { color: var(--blue); } .up-f { color: var(--amber); }
+.blocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; }
+.blk { display: grid; gap: 4px; padding: 10px; border: 1.5px solid var(--c-bit); border-radius: 8px; background: color-mix(in srgb, var(--c-bit) 6%, var(--surface)); font-size: 12px; color: var(--ink-3); }
+.blk b { color: var(--ink); font-size: 13px; }
+.blk code.i { font-size: 12px; }
+.blk.bad { border-color: var(--c-err); background: color-mix(in srgb, var(--c-err) 7%, var(--surface)); }
+.meter { height: 10px; margin-top: 10px; border-radius: 6px; background: var(--line); overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; transition: width .3s, background-color .3s; }
+.prog { display: flex; flex-wrap: wrap; gap: 4px; max-height: 150px; overflow: auto; }
+.cmd { display: inline-flex; align-items: center; gap: 4px; padding: 2px 2px 2px 6px; border: 1px solid var(--line-2); border-radius: 6px; font: 500 11.5px var(--font-mono); background: var(--surface); }
+.cmd span { color: var(--ink-4); }
+.cmd .ghost { padding: 0 6px; font-size: 13px; line-height: 1.4; }
+.rules { display: grid; gap: 4px; font: 12px/1.5 var(--font-mono); }
+.rule { padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink-2); transition: opacity .2s, border-color .2s; }
+.rule b { color: var(--c-phys); }
+.rule.out { opacity: .35; }
+.rule.fired { border-color: var(--c-bit); background: color-mix(in srgb, var(--c-bit) 12%, var(--surface)); color: var(--ink); }
+.q-h { font: 500 20px/1.3 var(--font-display); margin: 4px 4px 10px; color: var(--ink); }
+.codelist .kw { color: var(--c-phys); font-weight: 500; }
+.codelist.clickable div { cursor: pointer; }
+.codelist.clickable div:hover { background: color-mix(in srgb, var(--c-phys) 7%, transparent); }
+.field-s { font: 13px var(--font-mono); padding: 6px 8px; border: 1px solid var(--line-2); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); min-width: 0; width: 100%; }
+.dock .block-h .hint { text-transform: none; letter-spacing: 0; color: var(--ink-4); font-size: 11px; }
+
+/* ---------- 4. Physics figures ---------- */
+.fig .vec { fill: none; stroke: var(--fc, var(--c-mech)); stroke-width: 2.5; stroke-linecap: round; }
+.fig .ray { fill: none; stroke: var(--amber); stroke-width: 2; }
+.fig .ray.dash { stroke-dasharray: 5 4; }
+.fig .lens { fill: color-mix(in srgb, var(--teal) 14%, var(--surface)); stroke: var(--teal); stroke-width: 1.5; }
+.fig .wire { fill: none; stroke: var(--ink-2); stroke-width: 2; stroke-linejoin: round; }
+.fig .comp { fill: var(--surface); stroke: var(--ink-2); stroke-width: 2; }
+.fig .ground { stroke: var(--ink-3); stroke-width: 2; }
+.fig .water { fill: color-mix(in srgb, var(--blue) 14%, var(--surface)); stroke: var(--blue); stroke-width: 1.25; }
+.fig .ptc { fill: var(--c-phys); }
+.formula b { color: var(--c-phys); }
+
+/* a Supp. tag inside a contents button is not a number column */
+.toc button .tag-s { min-width: 0; margin-left: -8px; align-self: center; font: 500 10.5px var(--font-mono); }

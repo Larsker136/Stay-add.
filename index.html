@@ -8,7 +8,14 @@
 <meta name="description" content="stay add. is a STEM study site for Cambridge IGCSE: friendly explanations with interactive labs, with Chemistry, Physics and Biology.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/landing.css">
 <link rel="stylesheet" href="assets/css/menu.css">
@@ -17,93 +24,88 @@
 <header data-site-header></header>
 
 <main>
-  <!-- ================= Hero ================= -->
-  <section class="wrap st-hero">
-    <div class="st-hero-copy">
-      <p class="eyebrow">Cambridge IGCSE &nbsp;·&nbsp; Science</p>
-      <h1 class="display">Understand it first. <em>Then</em> write it for full marks.</h1>
-      <p class="lead">Every idea is explained in plain words, tried in a small lab, and finished with the cause → effect chain the examiner wants. <b>Stay addicted, keep adding</b> — one topic at a time.</p>
-      <div class="st-actions">
-        <a class="btn btn-primary" href="#subjects">Choose a subject <span class="arr" aria-hidden="true">→</span></a>
-        <a class="text-link" href="biology/lessons/enzymes.html">Newest: Biology · Enzymes</a>
-      </div>
-      <dl class="st-facts">
-        <div><dt>Subjects</dt><dd class="display" data-fact="subjects">2</dd></div>
-        <div><dt>Live lessons</dt><dd class="display" data-fact="lessons">4</dd></div>
-        <div><dt>Syllabus topics</dt><dd class="display" data-fact="topics">18</dd></div>
-      </dl>
-    </div>
-
-    <figure class="st-inst" data-kinetic aria-label="Particles in a box: temperature sets their speed">
-      <figcaption class="st-inst-head">
-        <span><span class="eyebrow">Fig. 0</span> One idea, two subjects</span>
-        <span class="status" data-k-status>Sweeping</span>
-      </figcaption>
-      <canvas data-k-canvas aria-hidden="true"></canvas>
-      <div class="st-inst-ctl">
-        <label class="st-ctl"><span>Temperature</span><input class="range" type="range" min="200" max="600" step="5" value="300" data-k-temp><output class="num"><b data-k-tout>300</b> K</output></label>
-      </div>
-      <dl class="st-read">
-        <div><dt>T</dt><dd><b data-k-t>300</b> K</dd></div>
-        <div><dt>mean speed</dt><dd><b data-k-v>1.00</b> × at 300 K</dd></div>
-        <div><dt>hard hits</dt><dd><b data-k-hits>0</b> / s</dd></div>
-      </dl>
-      <div class="st-work">
-        <a href="chemistry/lessons/collision-theory.html"><span class="w-k">Chemistry</span><span>hotter → more collisions reach Eₐ → faster rate</span></a>
-        <a href="physics/index.html#scenes"><span class="w-k">Physics</span><span>average kinetic energy ∝ absolute temperature</span></a>
-      </div>
-    </figure>
-  </section>
-
-  <!-- ================= Subjects ================= -->
-  <section class="st-band" id="subjects">
+  <!-- ================= Hero (carbon) ================= -->
+  <section class="hx on-dark">
     <div class="wrap">
-      <header class="st-head reveal">
-        <div><p class="eyebrow">§1 &nbsp;Subjects</p><h2 class="display">Pick a subject, <em>keep</em> adding.</h2></div>
-        <p class="st-aside">Each subject follows its own Cambridge syllabus, topic by topic. Switch any time from the <b>Menu</b>, top right.</p>
-      </header>
-      <div class="st-grid" data-subjects></div>
-      <div class="st-later">
-        <article class="reveal"><div class="st-later-m"><span class="num">04</span><span class="status paused">Coming later</span></div><h3>Mathematics</h3><p>Number, algebra, geometry and statistics.</p></article>
+      <div class="hx-grid">
+        <div class="hx-copy">
+          <p class="eyebrow">Cambridge IGCSE · Chemistry · Physics · Biology</p>
+          <h1 class="hx-title">Understand it.<br>Then write it<br><span>for full marks.</span></h1>
+          <p class="hx-lead">Every idea explained in plain words, tried in a small lab, and finished with the cause → effect chain the examiner wants.</p>
+          <div class="hx-actions">
+            <a class="btn btn-primary btn-lg" href="#subjects">Choose a subject <span class="arr" aria-hidden="true">↗</span></a>
+            <a class="text-link" href="biology/lessons/enzymes.html" data-resume>Start here: Biology · Enzymes</a>
+          </div>
+          <p class="hx-note">Free · No sign-up · Your progress stays on this device</p>
+        </div>
+
+        <figure class="hx-fig" data-kinetic aria-label="Particles in a box: temperature sets their speed">
+          <figcaption class="hx-fig-head">
+            <span class="num">Fig. 001</span>
+            <span>One idea, two subjects</span>
+            <span class="status" data-k-status>Sweeping</span>
+          </figcaption>
+          <canvas data-k-canvas aria-hidden="true"></canvas>
+          <div class="hx-ctl">
+            <label class="st-ctl"><span class="eyebrow">Change the temperature</span><input class="range" type="range" min="200" max="600" step="5" value="300" data-k-temp><output class="num"><b data-k-tout>300</b> K</output></label>
+          </div>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- ================= How a topic works ================= -->
-  <section class="wrap st-method">
-    <header class="st-method-intro reveal">
-      <p class="eyebrow">§2 &nbsp;How a topic works</p>
-      <h2 class="display">Understand, try, <em>remember.</em></h2>
-      <p>Every topic in every subject has the same three steps, so you always know where you are. Here is one, from Electrolysis.</p>
-    </header>
-    <ol class="st-steps">
-      <li class="reveal">
-        <span class="st-n display">i.</span>
-        <div><h3 class="display">Understand</h3><p>The idea in plain words, with the exam definition next to it.</p></div>
-        <div class="st-eg"><span class="eyebrow">From the lesson</span><p class="st-quote">“<b>Electrolysis</b> is the breakdown of an ionic compound, when molten or in aqueous solution, by passing an electric current through it.”</p></div>
-      </li>
-      <li class="reveal">
-        <span class="st-n display">ii.</span>
-        <div><h3 class="display">Experiment</h3><p>Change one thing in a small lab and read what just happened.</p></div>
-        <div class="st-eg"><span class="eyebrow">Readings</span>
-          <table class="num"><tr><th>Electrode</th><th>Product</th></tr><tr><td>cathode (−)</td><td>lead</td></tr><tr><td>anode (+)</td><td>bromine</td></tr></table>
-        </div>
-      </li>
-      <li class="reveal">
-        <span class="st-n display">iii.</span>
-        <div><h3 class="display">Interpret</h3><p>The cause → effect chains to remember, and one exam tip.</p></div>
-        <div class="st-eg"><span class="eyebrow">Chain</span><p class="st-chain"><span>Pb²⁺ ions</span><span>to the cathode</span><span>gain 2 electrons</span><span>lead forms</span></p></div>
-      </li>
-    </ol>
+  <!-- ================= 01 Subjects (paper) ================= -->
+  <section class="sx" id="subjects">
+    <div class="wrap">
+      <div class="sec-rail"><span>01 / Subjects</span></div>
+      <header class="sec-head reveal">
+        <h2 class="display">Four subjects.<br>One way of <em>learning.</em></h2>
+        <p>Each subject follows its own Cambridge syllabus, topic by topic. Start with what you need for the next test.</p>
+      </header>
+      <div class="sx-list" data-subjects></div>
+    </div>
   </section>
 
-  <!-- ================= Closing ================= -->
-  <section class="st-closing">
-    <div class="wrap st-closing-in">
-      <h2 class="display">Your first topic takes <em>five minutes.</em></h2>
-      <div>
-        <p>No sign-up. Open a lesson and start — your progress stays on this device.</p>
-        <div class="st-actions"><a class="btn btn-primary" href="chemistry/lessons/electrolysis.html">Start with Electrolysis <span class="arr" aria-hidden="true">→</span></a><a class="text-link" href="physics/labs/refraction.html">or try the refraction lab</a></div>
+  <!-- ================= 02 How a topic works (carbon) ================= -->
+  <section class="lx on-dark" id="how">
+    <div class="wrap">
+      <div class="sec-rail"><span>02 / How a topic works</span></div>
+      <header class="sec-head reveal">
+        <h2 class="display">Read less.<br>Try <em>more.</em></h2>
+        <p>Every topic, in every subject, works the same way: change one thing, watch what happens, then learn the words that get the marks.</p>
+      </header>
+      <ol class="lx-steps">
+        <li class="reveal">
+          <span class="lx-n num">01 / Understand</span>
+          <h3>Get the idea.</h3>
+          <p>The idea in plain words, with the exam definition next to it.</p>
+        </li>
+        <li class="reveal">
+          <span class="lx-n num">02 / Experiment</span>
+          <h3>Change one thing.</h3>
+          <p>A small lab: move a slider, flip a switch, read what just happened.</p>
+        </li>
+        <li class="reveal">
+          <span class="lx-n num">03 / Interpret</span>
+          <h3>Write it for marks.</h3>
+          <p>The cause → effect chains to remember, and one exam tip.</p>
+        </li>
+      </ol>
+      <div class="lx-foot"><a class="btn btn-primary" href="chemistry/lessons/electrolysis.html">Open the Electrolysis lab <span class="arr" aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <!-- ================= Keep adding (lime) ================= -->
+  <section class="kx">
+    <div class="wrap">
+      <div class="sec-rail"><span>The next topic is yours</span></div>
+      <a class="kx-cta" href="biology/lessons/enzymes.html" data-resume-cta aria-label="Start with Enzymes">
+        <span class="kx-title">Keep<br>adding</span>
+        <svg class="kx-arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 36L36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4"/></svg>
+      </a>
+      <div class="kx-foot">
+        <p>Stay addicted, keep adding.<br>Your first topic takes five minutes.</p>
+        <a class="btn btn-ink" href="biology/lessons/enzymes.html" data-resume-btn>Start with Enzymes <span class="arr" aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>

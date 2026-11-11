@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js");try{const t=new URLSearchParams(location.search).get("theme")||localStorage.getItem("stayadd-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Motion, forces and energy · stay add. Physics</title>
+<meta name="description" content="IGCSE Physics topic 1: measurement, scalars and vectors, speed and acceleration graphs, mass, weight and density, forces, springs, moments, momentum, energy, work and power, energy resources and pressure — with live labs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/lesson.css">
+<link rel="stylesheet" href="../css/lessons.css">
+<link rel="stylesheet" href="../../assets/css/menu.css">
+</head>
+<body data-root="../../" data-subject="physics" data-page="lesson" data-lesson="ph-motion-forces-energy">
+<header data-site-header></header>
+
+<div class="l-app">
+  <aside class="side">
+    <nav class="tabs" aria-label="Subtopics">
+      <p class="nav-group"><span>1</span>Motion, forces &amp; energy</p>
+      <a href="#measurement" data-full="1.1 · measuring, scalars, vectors">Physical quantities</a>
+      <a href="#motion" data-full="1.2 · speed, velocity, graphs">Motion</a>
+      <a href="#mass-weight" data-full="1.3 · W = mg">Mass and weight</a>
+      <a href="#density" data-full="1.4 · ρ = m/V, floating">Density</a>
+      <a href="#forces" data-full="1.5 · springs, moments, stability">Forces</a>
+      <a href="#momentum" data-full="1.6 · p = mv, impulse">Momentum</a>
+      <a href="#energy" data-full="1.7 · stores, work, resources, power">Energy, work and power</a>
+      <a href="#pressure" data-full="1.8 · p = F/A, liquids">Pressure</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-row"><span>Subtopics opened</span><span class="side-count">0 / 8</span></div>
+      <div class="side-steps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p>Cambridge IGCSE <b>0625</b> · each subtopic: numbered sections, a lab, then chains and a checklist.</p>
+    </div>
+  </aside>
+
+  <main class="l-main">
+<section class="topic" data-key="measurement">
+  <header class="t-head">
+    <p class="eyebrow"><span>1.1</span>Motion, forces &amp; energy</p>
+    <h1>Measure it, then say which <em>way</em></h1>
+    <p class="lede">Physics starts with careful measurement. Some quantities only have a size; others — like force and velocity — also have a direction, and that changes how you add them.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s111"><span>1.1.1</span>Measuring length, volume and time</button><button type="button" data-goto="s112"><span>1.1.2</span>Scalars and vectors</button><button type="button" data-goto="s113"><span>1.1.3</span>Adding vectors at right angles <span class="tag-s">Supp.</span></button><button type="button" data-goto="ck11"><span>1.1.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false"><path class="vec" d="M30 110L120 110" style="--fc:var(--blue)"/><path class="vec" d="M120 110L170 40" style="--fc:var(--violet)"/><path class="vec" d="M30 110L170 40" style="--fc:var(--red);stroke-width:3.5"/></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s111"><span class="sec-n">1.1.1</span><div class="sec-b">
+        <h3>Measuring length, volume and time</h3>
+        <ul>
+          <li><b>rulers</b> and <b>measuring tapes</b> measure length; read at eye level to avoid parallax error</li>
+          <li><b>measuring cylinders</b> measure liquid volume — read the bottom of the meniscus</li>
+          <li><b>stopwatches</b> and clocks measure time intervals</li>
+          <li>to measure something very small or short, measure <b>many</b> and divide: the thickness of one sheet = thickness of 100 sheets ÷ 100; the period of a pendulum = time for 20 swings ÷ 20</li>
+        </ul>
+      </div></article>
+      <article class="sec" id="s112"><span class="sec-n">1.1.2</span><div class="sec-b">
+        <h3>Scalars and vectors</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th></th><th>Scalar</th><th>Vector</th></tr>
+          <tr><td>Has</td><td>size (magnitude) only</td><td>size <b>and direction</b></td></tr>
+          <tr><td>Examples</td><td>distance, speed, time, mass, energy, temperature</td><td>force, weight, velocity, acceleration, momentum, electric field strength, gravitational field strength</td></tr>
+        </table></div>
+      </div></article>
+      <article class="sec" id="s113"><span class="sec-n">1.1.3</span><div class="sec-b">
+        <h3>Adding vectors at right angles <span class="tag-s">Supp.</span></h3>
+        <ul>
+          <li>draw the vectors <b>tip to tail</b>; the <b>resultant</b> goes from the start of the first to the end of the last</li>
+          <li>for two vectors at right angles, use Pythagoras for the size and trigonometry for the angle — or a <b>scale drawing</b></li>
+        </ul>
+        <p class="formula">R = √(F₁² + F₂²) · angle θ = tan⁻¹(F₂ / F₁)</p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Change the forces and the angle</p></div></div>
+    <div class="lab" data-lab data-mode="vectors">
+      <div class="lab-h"><p class="lab-title" data-fig="1.1">Adding two forces</p><div class="btns"><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="Two force arrows from one point and the resultant drawn as the diagonal of their parallelogram."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Force F₁</p><label class="ctl"><input class="range" type="range" min="0" max="60" step="1" data-k="a" style="--rc:var(--c-phys)" aria-label="Force F₁"><output class="num"><b data-out="a"></b> N</output></label></div>
+            <div class="group"><p>Force F₂</p><label class="ctl"><input class="range" type="range" min="0" max="60" step="1" data-k="b" style="--rc:var(--c-phys)" aria-label="Force F₂"><output class="num"><b data-out="b"></b> N</output></label></div>
+            <div class="group"><p>Angle between them</p><label class="ctl"><input class="range" type="range" min="0" max="180" step="5" data-k="angle" style="--rc:var(--c-phys)" aria-label="Angle between them"><output class="num"><b data-out="angle"></b> °</output></label></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"a": 30, "b": 40, "angle": 90}'><span>30 N and 40 N at 90°</span><span>Pythagoras</span><span>R = 50 N</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"a": 30, "b": 40, "angle": 0}'><span>Same direction</span><span>add</span><span>70 N</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"a": 30, "b": 40, "angle": 180}'><span>Opposite directions</span><span>subtract</span><span>10 N</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> For a vector answer give the <b>size and the direction</b> — “50 N at 53° to the 30 N force”.</p>
+      <div class="checklist" data-check="1.1" id="ck11">
+        <div class="checklist-h"><p>1.1.4 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>describe how to measure length, volume and time, including for small quantities</span></label>
+        <label><input type="checkbox"><span>tell scalars from vectors with examples</span></label>
+        <label><input type="checkbox"><span>find the resultant of two vectors at right angles (Supp.)</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" data-key="motion" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.2</span>Motion, forces &amp; energy</p>
+    <h1>Speed, velocity and <em>acceleration</em></h1>
+    <p class="lede">How far, how fast, and how quickly the speed changes — and the two graphs that show it all at a glance.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s121"><span>1.2.1</span>Speed and velocity</button><button type="button" data-goto="s122"><span>1.2.2</span>Acceleration</button><button type="button" data-goto="s123"><span>1.2.3</span>Distance–time and speed–time graphs</button><button type="button" data-goto="s124"><span>1.2.4</span>Falling and terminal velocity <span class="tag-s">Supp.</span></button><button type="button" data-goto="ck12"><span>1.2.5</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false"><path class="ax" d="M20 14V120H190"/><path class="l w3" style="--fc:var(--blue)" d="M20 120L70 40H130L180 120"/></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Four sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s121"><span class="sec-n">1.2.1</span><div class="sec-b">
+        <h3>Speed and velocity</h3>
+        <p class="formula">speed = distance ÷ time · v = s / t</p>
+        <ul>
+          <li><b>average speed</b> = total distance ÷ total time</li>
+          <li><b>velocity</b> is speed in a given direction — a vector</li>
+        </ul>
+      </div></article>
+      <article class="sec" id="s122"><span class="sec-n">1.2.2</span><div class="sec-b">
+        <h3>Acceleration</h3>
+        <p class="formula">acceleration = change in velocity ÷ time taken · a = Δv / Δt</p>
+        <ul>
+          <li>measured in m/s²; a negative acceleration is a <b>deceleration</b></li>
+          <li>near the Earth’s surface, an object falling with no air resistance accelerates at <b>g ≈ 9.8 m/s²</b></li>
+        </ul>
+      </div></article>
+      <article class="sec" id="s123"><span class="sec-n">1.2.3</span><div class="sec-b">
+        <h3>Distance–time and speed–time graphs</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Graph</th><th>Gradient means</th><th>Shapes</th></tr>
+          <tr><td>distance–time</td><td>speed</td><td>straight sloping line: constant speed · flat: at rest · curving upwards: accelerating</td></tr>
+          <tr><td>speed–time</td><td>acceleration</td><td>straight sloping line: constant acceleration · flat: constant speed · <b>area under the line = distance travelled</b></td></tr>
+        </table></div>
+      </div></article>
+      <article class="sec" id="s124"><span class="sec-n">1.2.4</span><div class="sec-b">
+        <h3>Falling and terminal velocity <span class="tag-s">Supp.</span></h3>
+        <ol>
+          <li>at first only weight acts, so the object accelerates at g</li>
+          <li>as it speeds up, <b>air resistance</b> increases, so the resultant force — and the acceleration — get smaller</li>
+          <li>when air resistance equals weight the resultant force is zero: the object falls at a constant <b>terminal velocity</b></li>
+        </ol>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Shape a journey and read its graphs</p></div></div>
+    <div class="lab" data-lab data-mode="motion">
+      <div class="lab-h"><p class="lab-title" data-fig="1.2">A journey in three parts</p><div class="btns"><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="A graph of a journey: accelerating, constant speed, decelerating, with a car moving along the bottom."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Graph</p><div class="seg" data-k="show" role="group" aria-label="Graph"><button type="button" data-v="vt">speed–time</button><button type="button" data-v="st">distance–time</button></div></div>
+            <div class="group"><p>Acceleration</p><label class="ctl"><input class="range" type="range" min="0.5" max="4" step="0.5" data-k="a" style="--rc:var(--c-phys)" aria-label="Acceleration"><output class="num"><b data-out="a"></b> m/s²</output></label></div>
+            <div class="group"><p>Time at constant speed</p><label class="ctl"><input class="range" type="range" min="0" max="12" step="1" data-k="cruise" style="--rc:var(--c-phys)" aria-label="Time at constant speed"><output class="num"><b data-out="cruise"></b> s</output></label></div>
+            <div class="group"><p>Deceleration</p><label class="ctl"><input class="range" type="range" min="0.5" max="4" step="0.5" data-k="d" style="--rc:var(--c-phys)" aria-label="Deceleration"><output class="num"><b data-out="d"></b> m/s²</output></label></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"show": "vt", "a": 4}'><span>Steeper line on speed–time</span><span>bigger gradient</span><span>greater acceleration</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"show": "st"}'><span>Distance–time graph</span><span>gradient</span><span>speed</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Air resistance = weight</span><span>resultant force 0</span><span>terminal velocity</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> On a speed–time graph, find distance from the <b>area</b> — split it into triangles and rectangles and add them.</p>
+      <div class="checklist" data-check="1.2" id="ck12">
+        <div class="checklist-h"><p>1.2.5 Checklist · I can…</p><span class="num">0 / 5</span></div>
+        <label><input type="checkbox"><span>use speed = distance ÷ time and average speed</span></label>
+        <label><input type="checkbox"><span>use a = Δv / Δt and understand deceleration</span></label>
+        <label><input type="checkbox"><span>draw and interpret distance–time and speed–time graphs</span></label>
+        <label><input type="checkbox"><span>find distance from the area under a speed–time graph</span></label>
+        <label><input type="checkbox"><span>explain terminal velocity (Supp.)</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" data-key="mass-weight" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.3</span>Motion, forces &amp; energy</p>
+    <h1>Mass is matter; weight is a <em>force</em></h1>
+    <p class="lede">Your mass is the same on the Moon as on Earth. Your weight — the pull of gravity on that mass — is not.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s131"><span>1.3.1</span>Mass and weight</button><button type="button" data-goto="s132"><span>1.3.2</span>Gravitational field strength</button><button type="button" data-goto="ck13"><span>1.3.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false"><circle class="f cb" cx="100" cy="60" r="34"/><path class="vec" style="--fc:var(--red)" d="M100 94V130"/></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s131"><span class="sec-n">1.3.1</span><div class="sec-b">
+        <h3>Mass and weight</h3>
+        <ul>
+          <li><b>mass</b> is a measure of the quantity of matter in an object at rest relative to the observer (kg)</li>
+          <li><b>weight</b> is a gravitational force on an object that has mass (N)</li>
+          <li>weights (and so masses) can be compared using a <b>balance</b></li>
+        </ul>
+      </div></article>
+      <article class="sec" id="s132"><span class="sec-n">1.3.2</span><div class="sec-b">
+        <h3>Gravitational field strength</h3>
+        <p class="formula">W = m g · g = W / m</p>
+        <ul>
+          <li><b>g</b> is the gravitational field strength — the force per unit mass (N/kg); on Earth g ≈ 9.8 N/kg</li>
+          <li>g is also the acceleration of free fall (m/s²) — the same number <span class="tag-s">Supp.</span></li>
+          <li>weight is the effect of a gravitational field on a mass</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Take a mass to another planet</p></div></div>
+    <div class="lab" data-lab data-mode="weight">
+      <div class="lab-h"><p class="lab-title" data-fig="1.3">The same mass on four worlds</p><div class="btns"><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="A mass hanging from a spring balance with an arrow for its weight; the arrow is longer where gravity is stronger."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Mass</p><label class="ctl"><input class="range" type="range" min="1" max="120" step="1" data-k="m" style="--rc:var(--c-phys)" aria-label="Mass"><output class="num"><b data-out="m"></b> kg</output></label></div>
+            <div class="group"><p>Where</p><div class="seg" data-k="place" role="group" aria-label="Where"><button type="button" data-v="Moon">Moon</button><button type="button" data-v="Mars">Mars</button><button type="button" data-v="Earth">Earth</button><button type="button" data-v="Jupiter">Jupiter</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"place": "Moon"}'><span>Same mass on the Moon</span><span>smaller g</span><span>smaller weight</span><em>Show in the lab</em></button>
+        <p class="chain"><span>W = m g</span><span>60 kg × 9.8 N/kg</span><span>588 N</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Never give weight in kilograms: weight is a <b>force</b>, in newtons.</p>
+      <div class="checklist" data-check="1.3" id="ck13">
+        <div class="checklist-h"><p>1.3.3 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>define mass and weight</span></label>
+        <label><input type="checkbox"><span>use W = mg</span></label>
+        <label><input type="checkbox"><span>explain that g is the force per unit mass (and the acceleration of free fall, Supp.)</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" data-key="density" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.4</span>Motion, forces &amp; energy</p>
+    <h1>Why some things <em>float</em></h1>
+    <p class="lede">A ship of steel floats; a pebble sinks. Density — how much mass is packed into each cubic centimetre — decides.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s141"><span>1.4.1</span>Density</button><button type="button" data-goto="s142"><span>1.4.2</span>Measuring density</button><button type="button" data-goto="s143"><span>1.4.3</span>Floating and sinking <span class="tag-s">Supp.</span></button><button type="button" data-goto="ck14"><span>1.4.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false"><rect class="water" x="20" y="60" width="160" height="70"/><rect class="f ca dk" x="44" y="44" width="34" height="30"/><rect class="f dk" x="118" y="96" width="30" height="30"/></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s141"><span class="sec-n">1.4.1</span><div class="sec-b">
+        <h3>Density</h3>
+        <p class="formula">density = mass ÷ volume · ρ = m / V</p>
+        <ul><li>units: kg/m³ or g/cm³ (1 g/cm³ = 1000 kg/m³); water is about 1 g/cm³</li></ul>
+      </div></article>
+      <article class="sec" id="s142"><span class="sec-n">1.4.2</span><div class="sec-b">
+        <h3>Measuring density</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Object</th><th>Mass</th><th>Volume</th></tr>
+          <tr><td>liquid</td><td>balance: mass of cylinder with liquid − empty cylinder</td><td>read from the measuring cylinder</td></tr>
+          <tr><td>regular solid</td><td>balance</td><td>measure the sides with a ruler and calculate</td></tr>
+          <tr><td>irregular solid</td><td>balance</td><td><b>displacement</b>: lower it into water in a measuring cylinder; the rise in level is its volume</td></tr>
+        </table></div>
+      </div></article>
+      <article class="sec" id="s143"><span class="sec-n">1.4.3</span><div class="sec-b">
+        <h3>Floating and sinking <span class="tag-s">Supp.</span></h3>
+        <ul>
+          <li>an object <b>floats</b> in a liquid if it is less dense than the liquid, and <b>sinks</b> if it is denser</li>
+          <li>one liquid floats on another if it is less dense — oil on water</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Choose a material and a liquid</p></div></div>
+    <div class="lab" data-lab data-mode="density">
+      <div class="lab-h"><p class="lab-title" data-fig="1.4">Will it float?</p><div class="btns"><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="A beaker of liquid with a block of the chosen material either floating with part of it above the surface or resting on the bottom."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Material</p><div class="bench-grid" data-k="mat"><button class="sc" type="button" data-v="cork">cork</button><button class="sc" type="button" data-v="wood">wood</button><button class="sc" type="button" data-v="ice">ice</button><button class="sc" type="button" data-v="plastic">plastic</button><button class="sc" type="button" data-v="aluminium">aluminium</button><button class="sc" type="button" data-v="iron">iron</button></div></div>
+            <div class="group"><p>Volume</p><label class="ctl"><input class="range" type="range" min="20" max="400" step="10" data-k="vol" style="--rc:var(--c-phys)" aria-label="Volume"><output class="num"><b data-out="vol"></b> cm³</output></label></div>
+            <div class="group"><p>Liquid</p><div class="bench-grid" data-k="liq"><button class="sc" type="button" data-v="oil">oil</button><button class="sc" type="button" data-v="water">water</button><button class="sc" type="button" data-v="salt water">salt water</button><button class="sc" type="button" data-v="mercury">mercury</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"mat": "iron", "liq": "mercury"}'><span>Iron in mercury</span><span>iron less dense than mercury</span><span>it floats!</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"mat": "wood", "vol": 400}'><span>Bigger block</span><span>more mass and volume</span><span>same density, still floats</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Show the formula, the substitution and the unit: ρ = 540 g ÷ 200 cm³ = 2.7 g/cm³.</p>
+      <div class="checklist" data-check="1.4" id="ck14">
+        <div class="checklist-h"><p>1.4.4 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>use ρ = m / V</span></label>
+        <label><input type="checkbox"><span>describe how to find the density of liquids, regular and irregular solids</span></label>
+        <label><input type="checkbox"><span>predict floating and sinking from densities (Supp.)</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" data-key="forces" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.5</span>Motion, forces &amp; energy</p>
+    <h1>Forces stretch, turn and <em>accelerate</em></h1>
+    <p class="lede">A resultant force changes how an object moves. Forces can also change its shape — and, if they act off-centre, make it turn.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s151"><span>1.5.1</span>Effects of forces</button><button type="button" data-goto="s152"><span>1.5.2</span>Springs and Hooke’s law</button><button type="button" data-goto="s153"><span>1.5.3</span>Turning effect: moments</button><button type="button" data-goto="s154"><span>1.5.4</span>Centre of gravity</button><button type="button" data-goto="ck15"><span>1.5.5</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false"><path class="l w3" style="--fc:var(--ink-2)" d="M60 14V24L46 34L74 44L46 54L74 64L46 74L74 84L60 94V100"/><rect class="f cb" x="44" y="100" width="32" height="26" rx="3"/><path class="f" d="M140 110L156 74L172 110Z"/><rect class="f lt" x="100" y="68" width="112" height="8" rx="2"/></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Four sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s151"><span class="sec-n">1.5.1</span><div class="sec-b">
+        <h3>Effects of forces</h3>
+        <ul>
+          <li>forces can change an object’s <b>size and shape</b>, its <b>speed</b> and its <b>direction</b> of motion</li>
+          <li>several forces on an object combine into one <b>resultant</b>; along a straight line, add those in one direction and subtract those in the other</li>
+          <li>if the resultant force is zero, an object stays at rest or keeps moving at a <b>constant velocity</b></li>
+          <li><b>friction</b> (and air resistance, drag) acts against motion and heats the surfaces</li>
+        </ul>
+        <p class="formula">F = m a   <span class="tag-s">Supp.</span> · resultant force = mass × acceleration</p>
+        <p><span class="tag-s">Supp.</span> An object moving in a circle at constant speed needs a force <b>towards the centre</b>; a bigger speed, mass or smaller radius needs a bigger force.</p>
+      </div></article>
+      <article class="sec" id="s152"><span class="sec-n">1.5.2</span><div class="sec-b">
+        <h3>Springs and Hooke’s law</h3>
+        <ul>
+          <li>a <b>load–extension graph</b> is a straight line through the origin while the spring obeys Hooke’s law</li>
+          <li>the <b>limit of proportionality</b> is the point beyond which extension is no longer proportional to load</li>
+        </ul>
+        <p class="formula">F = k x   <span class="tag-s">Supp.</span> · k = spring constant (N/m), x = extension</p>
+      </div></article>
+      <article class="sec" id="s153"><span class="sec-n">1.5.3</span><div class="sec-b">
+        <h3>Turning effect: moments</h3>
+        <p class="formula">moment = force × perpendicular distance from the pivot</p>
+        <ul>
+          <li>a moment is measured in N m; levers, spanners and see-saws use it</li>
+          <li><b>principle of moments</b>: for an object in equilibrium, sum of clockwise moments = sum of anticlockwise moments</li>
+          <li>for equilibrium there must also be <b>no resultant force</b></li>
+        </ul>
+      </div></article>
+      <article class="sec" id="s154"><span class="sec-n">1.5.4</span><div class="sec-b">
+        <h3>Centre of gravity</h3>
+        <ul>
+          <li>the <b>centre of gravity</b> is the point where the whole weight of an object seems to act</li>
+          <li>find it for a flat shape by hanging it from different points and drawing plumb lines; they cross at the centre of gravity</li>
+          <li>an object is more <b>stable</b> with a low centre of gravity and a wide base; it topples if its weight acts outside its base</li>
+        </ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Stretch a spring, then balance a beam</p></div></div>
+    <div class="lab" data-lab data-mode="spring">
+      <div class="lab-h"><p class="lab-title" data-fig="1.5">Loading a spring</p><div class="btns"><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="A spring with masses hanging from it and its load–extension graph; the line bends after the limit of proportionality."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Load</p><label class="ctl"><input class="range" type="range" min="0" max="10" step="1" data-k="n" style="--rc:var(--c-phys)" aria-label="Load"><output class="num"><b data-out="n"></b> N</output></label></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+    <div class="lab" data-lab data-mode="moments">
+      <div class="lab-h"><p class="lab-title" data-fig="1.6">Balancing a beam</p><div class="btns"><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="A beam on a central pivot with a weight on each side; it tilts towards the side with the larger moment."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Left weight</p><label class="ctl"><input class="range" type="range" min="1" max="10" step="1" data-k="w1" style="--rc:var(--red)" aria-label="Left weight"><output class="num"><b data-out="w1"></b> N</output></label></div>
+            <div class="group"><p>Left distance</p><label class="ctl"><input class="range" type="range" min="1" max="5" step="0.5" data-k="d1" style="--rc:var(--red)" aria-label="Left distance"><output class="num"><b data-out="d1"></b> m</output></label></div>
+            <div class="group"><p>Right weight</p><label class="ctl"><input class="range" type="range" min="1" max="10" step="1" data-k="w2" style="--rc:var(--violet)" aria-label="Right weight"><output class="num"><b data-out="w2"></b> N</output></label></div>
+            <div class="group"><p>Right distance</p><label class="ctl"><input class="range" type="range" min="1" max="5" step="0.5" data-k="d2" style="--rc:var(--violet)" aria-label="Right distance"><output class="num"><b data-out="d2"></b> m</output></label></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"n": 9}'><span>Load past 6 N</span><span>beyond the limit of proportionality</span><span>line curves</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"w1": 3, "d1": 4, "w2": 6, "d2": 2}'><span>3 N × 4 m = 6 N × 2 m</span><span>moments equal</span><span>balanced</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Weight acts outside the base</span><span>turning moment</span><span>object topples</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> In moment calculations, the distance must be <b>perpendicular</b> to the force, measured from the pivot.</p>
+      <div class="checklist" data-check="1.5" id="ck15">
+        <div class="checklist-h"><p>1.5.5 Checklist · I can…</p><span class="num">0 / 5</span></div>
+        <label><input type="checkbox"><span>describe the effects of forces and find a resultant along a line</span></label>
+        <label><input type="checkbox"><span>describe the load–extension graph and limit of proportionality; use F = kx (Supp.)</span></label>
+        <label><input type="checkbox"><span>calculate moments and use the principle of moments</span></label>
+        <label><input type="checkbox"><span>describe how to find the centre of gravity and its effect on stability</span></label>
+        <label><input type="checkbox"><span>use F = ma (Supp.)</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" data-key="momentum" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.6</span>Motion, forces &amp; energy</p>
+    <h1>Momentum is always <em>conserved</em></h1>
+    <p class="lede">In every collision and explosion, the total momentum before equals the total after. That one rule predicts how fast things move once they’ve hit.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s161"><span>1.6.1</span>Momentum <span class="tag-s">Supp.</span></button><button type="button" data-goto="s162"><span>1.6.2</span>Conservation of momentum <span class="tag-s">Supp.</span></button><button type="button" data-goto="s163"><span>1.6.3</span>Impulse and force <span class="tag-s">Supp.</span></button><button type="button" data-goto="ck16"><span>1.6.4</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false"><rect class="f cb" x="20" y="70" width="60" height="40" rx="6"/><rect class="f cr" x="110" y="76" width="44" height="34" rx="6"/><path class="vec" style="--fc:var(--blue)" d="M40 54H90"/></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Three sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s161"><span class="sec-n">1.6.1</span><div class="sec-b">
+        <h3>Momentum <span class="tag-s">Supp.</span></h3>
+        <p class="formula">momentum = mass × velocity · p = m v   (kg m/s)</p>
+        <ul><li>momentum is a vector — choose one direction as positive</li></ul>
+      </div></article>
+      <article class="sec" id="s162"><span class="sec-n">1.6.2</span><div class="sec-b">
+        <h3>Conservation of momentum <span class="tag-s">Supp.</span></h3>
+        <ul>
+          <li>when objects collide or push apart, and no external force acts, the <b>total momentum is conserved</b></li>
+          <li>if two objects stick together: m₁u₁ + m₂u₂ = (m₁ + m₂) v</li>
+          <li>in an explosion from rest the total momentum stays zero, so the parts move apart with equal and opposite momentum</li>
+        </ul>
+      </div></article>
+      <article class="sec" id="s163"><span class="sec-n">1.6.3</span><div class="sec-b">
+        <h3>Impulse and force <span class="tag-s">Supp.</span></h3>
+        <p class="formula">impulse = F Δt = Δ(m v) · resultant force = change in momentum ÷ time</p>
+        <p>Crumple zones, airbags and seatbelts make the collision last <b>longer</b>, so for the same change in momentum the force on the person is <b>smaller</b>.</p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Collide two trolleys</p></div></div>
+    <div class="lab" data-lab data-mode="momentum">
+      <div class="lab-h"><p class="lab-title" data-fig="1.7">Two trolleys collide</p><div class="btns"><button class="ghost" type="button" data-go>Replay</button><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="Two trolleys on a track: the left one moves into the right one and they either stick together or bounce."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Mass of trolley 1</p><label class="ctl"><input class="range" type="range" min="1" max="5" step="0.5" data-k="m1" style="--rc:var(--blue)" aria-label="Mass of trolley 1"><output class="num"><b data-out="m1"></b> kg</output></label></div>
+            <div class="group"><p>Velocity of trolley 1</p><label class="ctl"><input class="range" type="range" min="-3" max="5" step="0.5" data-k="u1" style="--rc:var(--blue)" aria-label="Velocity of trolley 1"><output class="num"><b data-out="u1"></b> m/s</output></label></div>
+            <div class="group"><p>Mass of trolley 2</p><label class="ctl"><input class="range" type="range" min="1" max="5" step="0.5" data-k="m2" style="--rc:var(--red)" aria-label="Mass of trolley 2"><output class="num"><b data-out="m2"></b> kg</output></label></div>
+            <div class="group"><p>Velocity of trolley 2</p><label class="ctl"><input class="range" type="range" min="-3" max="3" step="0.5" data-k="u2" style="--rc:var(--red)" aria-label="Velocity of trolley 2"><output class="num"><b data-out="u2"></b> m/s</output></label></div>
+            <div class="group"><p>Collision</p><div class="seg" data-k="kind" role="group" aria-label="Collision"><button type="button" data-v="stick">stick together</button><button type="button" data-v="bounce">bounce apart</button></div></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"m1": 2, "u1": 3, "m2": 1, "u2": 0, "kind": "stick"}'><span>2 kg at 3 m/s hits 1 kg at rest</span><span>momentum 6 kg m/s shared by 3 kg</span><span>both move at 2 m/s</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Airbag</span><span>longer collision time</span><span>smaller force for the same Δp</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Write the conservation equation <b>first</b>, with signs for direction, then solve it.</p>
+      <div class="checklist" data-check="1.6" id="ck16">
+        <div class="checklist-h"><p>1.6.4 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>use p = mv (Supp.)</span></label>
+        <label><input type="checkbox"><span>apply conservation of momentum to collisions and explosions (Supp.)</span></label>
+        <label><input type="checkbox"><span>use impulse = FΔt = Δ(mv) and explain safety features (Supp.)</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" data-key="energy" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.7</span>Motion, forces &amp; energy</p>
+    <h1>Energy is stored, transferred — never <em>lost</em></h1>
+    <p class="lede">Energy moves between stores: kinetic, gravitational, chemical, thermal… The total stays the same, but some always ends up spread out as useless heat.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s171"><span>1.7.1</span>Energy stores and transfers</button><button type="button" data-goto="s172"><span>1.7.2</span>Work done</button><button type="button" data-goto="s173"><span>1.7.3</span>Energy resources</button><button type="button" data-goto="s174"><span>1.7.4</span>Efficiency and power</button><button type="button" data-goto="ck17"><span>1.7.5</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false"><path class="l w3" style="--fc:var(--ink-3)" d="M20 30C60 30 70 120 100 120S140 30 180 30"/><circle class="f cr dk" cx="34" cy="22" r="10"/></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Four sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s171"><span class="sec-n">1.7.1</span><div class="sec-b">
+        <h3>Energy stores and transfers</h3>
+        <ul>
+          <li><b>stores</b>: kinetic, gravitational potential, chemical, elastic (strain), nuclear, electrostatic, internal (thermal)</li>
+          <li><b>transfers</b>: by forces (mechanical work), electrical currents (electrical work), heating, and waves (light, sound)</li>
+          <li>energy is <b>conserved</b>: it can’t be created or destroyed, only transferred</li>
+        </ul>
+        <p class="formula">KE = ½ m v² · ΔGPE = m g Δh   <span class="tag-s">Supp.</span></p>
+      </div></article>
+      <article class="sec" id="s172"><span class="sec-n">1.7.2</span><div class="sec-b">
+        <h3>Work done</h3>
+        <p class="formula">work done = force × distance moved in the direction of the force · W = F d = ΔE</p>
+        <p>Work is a transfer of energy: when a force moves an object, the work done equals the energy transferred (J).</p>
+      </div></article>
+      <article class="sec" id="s173"><span class="sec-n">1.7.3</span><div class="sec-b">
+        <h3>Energy resources</h3>
+        <div class="table-wrap"><table class="sec-table">
+          <tr><th>Resource</th><th>Renewable?</th><th>Advantages</th><th>Disadvantages</th></tr>
+          <tr><td>Fossil fuels (coal, oil, gas)</td><td>no</td><td>reliable, high output on demand</td><td>CO₂ (climate change), other pollution; will run out</td></tr>
+          <tr><td>Nuclear (fission)</td><td>no</td><td>huge energy from little fuel, no CO₂ while running</td><td>radioactive waste; risk of accidents; expensive</td></tr>
+          <tr><td>Wind</td><td>yes</td><td>no fuel, no pollution while running</td><td>unreliable; noise, visual impact</td></tr>
+          <tr><td>Hydroelectric (dams)</td><td>yes</td><td>reliable, quick to respond</td><td>floods valleys and habitats; few suitable sites</td></tr>
+          <tr><td>Tides, waves</td><td>yes</td><td>tides predictable</td><td>expensive; affects wildlife</td></tr>
+          <tr><td>Geothermal</td><td>yes</td><td>reliable</td><td>only in volcanic areas</td></tr>
+          <tr><td>Solar (cells and panels)</td><td>yes</td><td>free energy, no pollution while running</td><td>none at night, less on cloudy days</td></tr>
+          <tr><td>Biofuels</td><td>yes</td><td>carbon neutral-ish</td><td>uses farmland</td></tr>
+        </table></div>
+        <p>Most of our energy comes originally from the <b>Sun</b> (fossil fuels, wind, waves, biofuels); not from the Sun: nuclear, geothermal, tides. <span class="tag-s">Supp.</span> The Sun’s energy comes from <b>nuclear fusion</b>.</p>
+      </div></article>
+      <article class="sec" id="s174"><span class="sec-n">1.7.4</span><div class="sec-b">
+        <h3>Efficiency and power</h3>
+        <p class="formula">efficiency = useful energy output ÷ total energy input (× 100 %) · power P = W / t = ΔE / t</p>
+        <ul><li>power is the rate of doing work / transferring energy, in watts (1 W = 1 J/s)</li></ul>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Release a ball and watch the stores</p></div></div>
+    <div class="lab" data-lab data-mode="energy">
+      <div class="lab-h"><p class="lab-title" data-fig="1.8">Energy on a track</p><div class="btns"><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="A ball rolling along a curved track, with bar charts of its gravitational potential, kinetic and thermal energy."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Starting height</p><label class="ctl"><input class="range" type="range" min="1" max="10" step="0.5" data-k="h" style="--rc:var(--c-phys)" aria-label="Starting height"><output class="num"><b data-out="h"></b> m</output></label></div>
+            <div class="group"><p>Mass</p><label class="ctl"><input class="range" type="range" min="0.5" max="5" step="0.5" data-k="m" style="--rc:var(--c-phys)" aria-label="Mass"><output class="num"><b data-out="m"></b> kg</output></label></div>
+            <div class="btns"><button class="sc" type="button" data-toggle="friction" aria-pressed="false">Friction on</button></div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"friction": false}'><span>No friction</span><span>GPE ↔ KE</span><span>returns to the same height</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"friction": true}'><span>Friction</span><span>energy to thermal store</span><span>lower each swing</span><em>Show in the lab</em></button>
+        <p class="chain"><span>Power</span><span>energy transferred per second</span><span>P = ΔE / t</span></p>
+      </div>
+      <p class="tip"><b>Exam tip.</b> When describing energy transfers name the <b>stores</b> and the <b>pathway</b>: “chemical store of the fuel → by heating → thermal store of the water”.</p>
+      <div class="checklist" data-check="1.7" id="ck17">
+        <div class="checklist-h"><p>1.7.5 Checklist · I can…</p><span class="num">0 / 5</span></div>
+        <label><input type="checkbox"><span>name energy stores and describe transfers; state conservation of energy</span></label>
+        <label><input type="checkbox"><span>use KE = ½mv² and ΔGPE = mgΔh (Supp.)</span></label>
+        <label><input type="checkbox"><span>use W = Fd = ΔE</span></label>
+        <label><input type="checkbox"><span>describe energy resources with their advantages and disadvantages</span></label>
+        <label><input type="checkbox"><span>use efficiency and P = W/t = ΔE/t</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topic" data-key="pressure" hidden>
+  <header class="t-head">
+    <p class="eyebrow"><span>1.8</span>Motion, forces &amp; energy</p>
+    <h1>Force spread over an <em>area</em></h1>
+    <p class="lede">A sharp knife cuts, a wide tyre doesn’t sink. And the deeper you dive, the harder the water presses on you.</p>
+    <nav class="toc" aria-label="In this subtopic"><button type="button" data-goto="s181"><span>1.8.1</span>Pressure</button><button type="button" data-goto="s182"><span>1.8.2</span>Pressure in liquids</button><button type="button" data-goto="ck18"><span>1.8.3</span>Checklist</button></nav>
+    <svg class="t-art fig" viewBox="0 0 200 140" aria-hidden="true" focusable="false"><rect class="water" x="40" y="30" width="120" height="100"/><path class="l w3" d="M40 20V130H160V20"/><circle class="f cr dk" cx="100" cy="100" r="6"/></svg>
+  </header>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">1</span><div><h2>Understand</h2><p>Two sections and a checklist</p></div></div>
+    <div class="secs">
+      <article class="sec" id="s181"><span class="sec-n">1.8.1</span><div class="sec-b">
+        <h3>Pressure</h3>
+        <p class="formula">pressure = force ÷ area · p = F / A   (Pa = N/m²)</p>
+        <p>A larger area spreads the force and lowers the pressure (snowshoes, wide tyres); a smaller area increases it (knives, nails, drawing pins).</p>
+      </div></article>
+      <article class="sec" id="s182"><span class="sec-n">1.8.2</span><div class="sec-b">
+        <h3>Pressure in liquids</h3>
+        <ul>
+          <li>pressure in a liquid <b>increases with depth</b> and with the <b>density</b> of the liquid</li>
+          <li>at a given depth it acts <b>equally in all directions</b></li>
+        </ul>
+        <p class="formula">Δp = ρ g Δh   <span class="tag-s">Supp.</span></p>
+      </div></article>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">2</span><div><h2>Experiment</h2><p>Change the area, then the depth</p></div></div>
+    <div class="lab" data-lab data-mode="pressure">
+      <div class="lab-h"><p class="lab-title" data-fig="1.9">Pressure on a surface and in a liquid</p><div class="btns"><button class="ghost" type="button" data-reset>Reset</button></div></div>
+      <div class="lab-body">
+        <figure class="graph"><svg class="fig" data-svg viewBox="0 0 640 290" role="img" aria-label="Either a block resting on the ground, or a tank of liquid with a point at a chosen depth and pressure arrows acting in every direction."></svg></figure>
+        <div class="dock">
+          <div class="block">
+            <p class="block-h">Controls</p>
+            <div class="group"><p>Situation</p><div class="seg" data-k="kind" role="group" aria-label="Situation"><button type="button" data-v="solid">block on the ground</button><button type="button" data-v="liquid">in a liquid</button></div></div>
+            <div data-for="solid">
+            <div class="group"><p>Force (weight)</p><label class="ctl"><input class="range" type="range" min="100" max="2000" step="50" data-k="F" style="--rc:var(--c-phys)" aria-label="Force (weight)"><output class="num"><b data-out="F"></b> N</output></label></div>
+            <div class="group"><p>Contact area</p><label class="ctl"><input class="range" type="range" min="0.005" max="0.1" step="0.005" data-k="A" style="--rc:var(--c-phys)" aria-label="Contact area"><output class="num"><b data-out="A"></b> m²</output></label></div>
+            </div>
+            <div data-for="liquid" hidden>
+            <div class="group"><p>Depth</p><label class="ctl"><input class="range" type="range" min="0" max="12" step="0.5" data-k="depth" style="--rc:var(--c-phys)" aria-label="Depth"><output class="num"><b data-out="depth"></b> m</output></label></div>
+            <div class="group"><p>Liquid</p><div class="bench-grid" data-k="liq"><button class="sc" type="button" data-v="water">water</button><button class="sc" type="button" data-v="sea water">sea water</button><button class="sc" type="button" data-v="oil">oil</button><button class="sc" type="button" data-v="mercury">mercury</button></div></div>
+            </div>
+          </div>
+          <div class="block block-results"><p class="block-h">Results</p><div class="rows" data-results></div></div>
+        </div>
+        <div class="explain"><p class="block-h">What just happened</p><div class="result" data-explain aria-live="polite"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="step-n">3</span><div><h2>Interpret</h2><p>Chains to remember, then check yourself</p></div></div>
+    <div class="interpret">
+      <div class="chains">
+        <button class="chain" type="button" data-set='{"kind": "solid", "A": 0.005}'><span>Small area</span><span>same force</span><span>high pressure</span><em>Show in the lab</em></button>
+        <button class="chain" type="button" data-set='{"kind": "liquid", "depth": 12}'><span>Deep water</span><span>Δp = ρgh</span><span>much greater pressure</span><em>Show in the lab</em></button>
+      </div>
+      <p class="tip"><b>Exam tip.</b> Check the units: area in m² gives pressure in Pa. If the area is in cm², convert first (1 m² = 10 000 cm²).</p>
+      <div class="checklist" data-check="1.8" id="ck18">
+        <div class="checklist-h"><p>1.8.3 Checklist · I can…</p><span class="num">0 / 3</span></div>
+        <label><input type="checkbox"><span>use p = F/A and explain everyday examples</span></label>
+        <label><input type="checkbox"><span>describe how pressure in a liquid depends on depth and density</span></label>
+        <label><input type="checkbox"><span>use Δp = ρgΔh (Supp.)</span></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <nav class="pager" aria-label="Subtopics">
+      <a href="#" data-prev><small>Previous</small><span></span></a>
+      <a href="#" data-next><small>Next</small><span></span></a>
+    </nav>
+  </main>
+</div>
+
+<footer data-site-footer></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="../../assets/js/catalog.js"></script>
+<script src="../../assets/js/menu.js"></script>
+<script src="../../assets/js/core.js"></script>
+<script src="../../assets/js/fx.js"></script>
+<script src="../../assets/js/kit.js"></script>
+<script src="../js/motion-forces-energy.js"></script>
+<script src="../../assets/js/lesson.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/cards-explain.js"></script>
+<script src="../../assets/js/flashcards.js"></script>
+<script src="../js/drills.js"></script>
+<script src="../../assets/js/practice.js"></script>
+</body>
+</html>
