@@ -109,6 +109,109 @@
   const lessonId = document.body.dataset.lesson;
   if (lessonId) SA.progress.mark(lessonId, { visited: true });
 
+  /* ---------- Memory: what this learner actually knows (this browser only) ----------
+     One record, localStorage["stayadd-memory"]:
+       { v: 1,
+         items:   { "card:<lesson>/<topic>/<hash>": { box, due, n, miss, at },
+                    "calc:<lesson>/<topic>/<id>", "plan:<lesson>/<topic>/plan": the same shape },
+         lessons: { "<lesson>": { topics: ["key", …], cards: { key: count } } } }
+     items   — every flashcard the learner has marked. Boxes 1–5 are spaced
+               reviews: "I knew it" moves a card up one box only when it is due
+               (so knowing it twice in one sitting counts once); "Still
+               learning" sends it back to box 1. Box n comes back after
+               INTERVAL[n] days, at the start of that day.
+     lessons — noted by lesson pages, so a subject home knows each lesson's
+               subtopics and card counts without loading them.
+     topicState(lesson, topic) reads this plus the lesson's own keys
+     (stayadd-<lesson>-opened, -cards) and gives one of:
+       new → opened (topic shown) → practised (a full flashcard run)
+       → secure (80% of its cards in box 2 or higher) → fading (secure, with
+       cards due again). */
+  const MEMORY_KEY = "stayadd-memory";
+  const DAY = 864e5, INTERVAL = [0, 1, 3, 7, 16, 35], SECURE_BOX = 2, SECURE_SHARE = 0.8;
+  const readJSON = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch (e) { return fallback; } };
+  const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
+  let memo = null, byTopic = null;   // the parsed record, and its items grouped by "lesson/topic"
+  const fresh = () => ({ v: 1, items: {}, lessons: {} });
+  const load = () => {
+    if (!memo) { memo = readJSON(MEMORY_KEY, null); if (!memo || memo.v !== 1) memo = fresh(); memo.items ||= {}; memo.lessons ||= {}; }
+    return memo;
+  };
+  const store = () => { byTopic = null; try { localStorage.setItem(MEMORY_KEY, JSON.stringify(memo)); } catch (e) { /* storage unavailable */ } };
+  addEventListener("storage", (e) => { if (e.key === MEMORY_KEY || e.key === null) { memo = null; byTopic = null; } });   // another tab wrote it
+  const grouped = () => {
+    if (!byTopic) {
+      byTopic = {};
+      Object.entries(load().items).forEach(([id, it]) => {
+        if (!id.startsWith("card:")) return;   // topic states count flashcards; calc: and plan: items are kept for review
+        const where = id.slice(id.indexOf(":") + 1, id.lastIndexOf("/"));
+        (byTopic[where] ||= []).push(it);
+      });
+    }
+    return byTopic;
+  };
+  // FNV-1a: a short, stable id for a card from its question text
+  const hash = (text) => { let h = 0x811c9dc5; for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 0x01000193); } return (h >>> 0).toString(36); };
+  const sameList = (a, b) => !!a && !!b && a.length === b.length && a.every((x, i) => x === b[i]);
+
+  SA.memory = {
+    cardId: (lesson, topic, question) => `card:${lesson}/${topic}/${hash(question)}`,
+    item: (id) => load().items[id] || null,
+
+    // the learner marked an item: ok = "I knew it"
+    review(id, ok, now = Date.now()) {
+      const m = load(), it = m.items[id] || { box: 0, due: 0, n: 0, miss: 0 };
+      if (!ok) { it.box = 1; it.miss += 1; it.due = dayStart(now) + INTERVAL[1] * DAY; }
+      else if (it.box === 0 || now >= it.due) { it.box = Math.min(it.box + 1, INTERVAL.length - 1); it.due = dayStart(now) + INTERVAL[it.box] * DAY; }
+      it.n += 1; it.at = now;
+      m.items[id] = it;
+      store();
+      return it;
+    },
+
+    // lesson pages note their subtopics and how many cards each has
+    noteTopics(lesson, keys) {
+      const m = load(), rec = (m.lessons[lesson] ||= {});
+      if (sameList(rec.topics, keys)) return;
+      rec.topics = keys.slice();
+      store();
+    },
+    noteCards(lesson, topic, count) {
+      const m = load(), rec = (m.lessons[lesson] ||= {}), cards = (rec.cards ||= {});
+      if (cards[topic] === count) return;
+      cards[topic] = count;
+      store();
+    },
+    lessonTopics: (lesson) => load().lessons[lesson]?.topics || null,
+
+    topicState(lesson, topic, now = Date.now()) {
+      const items = grouped()[`${lesson}/${topic}`] || [];
+      const total = load().lessons[lesson]?.cards?.[topic] || 0;
+      const strong = items.filter((it) => it.box >= SECURE_BOX).length;
+      const due = items.filter((it) => it.box > 0 && now >= it.due).length;
+      const opened = readJSON(`stayadd-${lesson}-opened`, []).includes(topic);
+      const runs = readJSON(`stayadd-${lesson}-cards`, {});
+      const practised = [topic, `${topic}:explain`, `${topic}:all`].some((k) => runs[k]);
+      const state = total && strong >= total * SECURE_SHARE ? (due ? "fading" : "secure")
+        : practised ? "practised" : opened ? "opened" : "new";
+      return { state, total, strong, due };
+    },
+
+    // forget one subject's lessons (the "Reset" on its home), leaving other subjects alone
+    forget(lessons) {
+      const m = load(), set = new Set(lessons);
+      Object.keys(m.items).forEach((id) => { if (set.has(id.slice(id.indexOf(":") + 1).split("/")[0])) delete m.items[id]; });
+      lessons.forEach((l) => {
+        delete m.lessons[l];
+        ["opened", "cards", "checklist"].forEach((k) => { try { localStorage.removeItem(`stayadd-${l}-${k}`); } catch (e) { /* storage unavailable */ } });
+      });
+      store();
+      const all = SA.progress.all();
+      lessons.forEach((l) => delete all[l]);
+      try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(all)); } catch (e) { /* storage unavailable */ }
+    }
+  };
+
   /* ---------- Header & footer ---------- */
   const MOON = '<svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
   const SUN = '<svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
@@ -116,14 +219,23 @@
   function renderHeader() {
     const el = document.querySelector("[data-site-header]");
     if (!el) return;
+    // "Skip to content": the first stop for keyboard and screen-reader users
+    const main = document.querySelector("main");
+    if (main) {
+      main.id ||= "main";
+      el.insertAdjacentHTML("beforebegin", `<a class="skip-link" href="#${main.id}">Skip to content</a>`);
+    }
     const subject = SA.subject(), current = document.body.dataset.lesson;
     // inside a subject: its own links; on the STEM home: one link per subject
     const links = subject ? subject.nav : SA.subjects().map((s) => ({ id: s.id, label: s.name, href: s.home }));
     const isCurrent = (l) => !!current && l.id === current;
-    el.className = "nav";
+    el.className = "nav on-dark";
     el.innerHTML = `
       <div class="wrap nav-in">
-        <a class="logo" href="${SA.url(subject ? subject.home : "index.html")}" aria-label="stay add. ${subject ? subject.name + " home" : "home"}">stay add<span>.</span>${subject ? `<em>${subject.name}</em>` : ""}</a>
+        <div class="brand">
+          <a class="logo" href="${SA.url(subject ? subject.home : "index.html")}" aria-label="stay add. ${subject ? subject.name + " home" : "home"}">Stay add<span>.</span></a>
+          ${subject ? `<a class="brand-sub" href="${SA.url(subject.home)}">${subject.name}</a>` : ""}
+        </div>
         <nav class="links" aria-label="Main">
           ${links.map((l) => `<a href="${SA.url(l.href)}"${isCurrent(l) ? ' aria-current="page"' : ""}>${l.label}</a>`).join("")}
         </nav>
@@ -166,11 +278,11 @@
   function renderFooter() {
     const el = document.querySelector("[data-site-footer]");
     if (!el) return;
-    el.className = "footer";
+    el.className = "footer on-dark";
     el.innerHTML = `
       <div class="wrap foot">
-        <a class="logo" href="${SA.url("index.html")}">stay add<span>.</span></a>
-        <p>Stay addicted, keep adding. Not affiliated with Cambridge International.</p>
+        <a class="logo" href="${SA.url("index.html")}">Stay add<span>.</span></a>
+        <p>Stay addicted, keep adding · Not affiliated with Cambridge International</p>
         <nav aria-label="Footer">
           ${SA.subjects().map((s) => `<a href="${SA.url(s.home)}">${s.name}</a>`).join("")}
           <a href="${SA.url("index.html")}">All subjects</a>
@@ -208,8 +320,11 @@
         : `<div class="search-empty">No matches yet — more topics are on the way.</div>`;
       box.classList.add("is-open");
     }
+    // is-active: the field is in use (on phones it unfolds from an icon into a bar)
+    const close = () => box.classList.remove("is-open", "is-active");
     input.addEventListener("input", render);
-    input.addEventListener("focus", render);
+    input.addEventListener("focus", () => { box.classList.add("is-active"); render(); });
+    box.addEventListener("focusout", (e) => { if (e.relatedTarget && !box.contains(e.relatedTarget)) close(); });
     field.addEventListener("click", () => { box.classList.add("is-open"); input.focus(); });
     input.addEventListener("keydown", (e) => {
       const items = [...results.querySelectorAll(".search-item")];
@@ -220,46 +335,17 @@
       } else if (e.key === "Enter" && items[Math.max(active, 0)]) {
         items[Math.max(active, 0)].click();
       } else if (e.key === "Escape") {
-        input.blur(); box.classList.remove("is-open");
+        input.blur(); close();
       }
     });
     results.addEventListener("click", (e) => {
       const a = e.target.closest('[aria-disabled="true"]');
       if (a) e.preventDefault();
     });
-    document.addEventListener("click", (e) => { if (!box.contains(e.target)) box.classList.remove("is-open"); });
+    document.addEventListener("click", (e) => { if (!box.contains(e.target)) close(); });
     document.addEventListener("keydown", (e) => {
       if (e.key === "/" && !/input|textarea/i.test(document.activeElement.tagName)) { e.preventDefault(); input.focus(); }
     });
-  }
-
-  /* ---------- Library (home page) ----------
-     Topics with a live lesson are written into the page as a featured card;
-     the rest are listed here in the smallest tier (a rule, no box). */
-  function renderLibrary() {
-    const el = document.querySelector("[data-library]");
-    if (!el || !SA.catalog) return;
-    const subject = SA.catalog.subjects.find((s) => s.id === (el.dataset.library || "chemistry"));
-    const progress = SA.progress.all();
-    const topics = subject.topics.filter((t) => !document.querySelector(`[data-topic="${t.id}"]`));
-    const live = topics.filter((t) => t.lessons.some((l) => l.status === "live"));
-    const soon = topics.filter((t) => !t.lessons.some((l) => l.status === "live"));
-    el.innerHTML = live.map((t) => {
-      const ls = t.lessons.filter((l) => l.status === "live"), done = ls.filter((l) => progress[l.id]?.visited).length;
-      return `
-      <article class="topic t-mid reveal">
-        <div class="t-meta"><span class="t-num">${String(t.num).padStart(2, "0")}</span><span class="status">${done ? "In progress" : "Live now"}</span></div>
-        <h3 class="display">${t.title}</h3>
-        <p class="t-desc">${t.blurb}</p>
-        <ul class="t-lessons">${ls.map((l) => `<li><a href="${SA.url(l.href)}"><b>${l.title}</b><span>${l.blurb}</span></a></li>`).join("")}</ul>
-        <a class="btn btn-primary btn-sm" href="${SA.url(ls[0].href)}">Open ${t.num}.1 ${ls[0].title} <span class="arr" aria-hidden="true">→</span></a>
-      </article>`;
-    }).join("") + soon.map((t) => `
-      <article class="topic t-small reveal">
-        <div class="t-meta"><span class="t-num">${String(t.num).padStart(2, "0")}</span><span class="status paused">Coming soon</span></div>
-        <h3>${t.title}</h3>
-        <p class="t-desc">${t.blurb}</p>
-      </article>`).join("");
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -310,11 +396,19 @@
     });
   }
 
+  /* ---------- Web app ----------
+     sw.js (at the site root) caches the site so it installs as an app and opens
+     offline. Service workers only run over https:// or localhost, not file://. */
+  function registerServiceWorker() {
+    if (!("serviceWorker" in navigator) || location.protocol === "file:") return;
+    addEventListener("load", () => navigator.serviceWorker.register(SA.url("sw.js")).catch(() => { /* the site still works online */ }));
+  }
+
   /* ---------- Boot ---------- */
   renderHeader();
   renderFooter();
-  renderLibrary();
   hydrateIcons();
   initReveal();
   initQuizzes();
+  registerServiceWorker();
 })();

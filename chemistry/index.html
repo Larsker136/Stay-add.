@@ -8,9 +8,17 @@
 <meta name="description" content="Interactive Cambridge IGCSE Chemistry: see what particles do, then learn exactly how to explain it for full marks.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="../assets/css/base.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="../assets/css/subject-home.css">
 <link rel="stylesheet" href="../assets/css/menu.css">
 </head>
 <body data-root="../" data-subject="chemistry" data-page="home">
@@ -25,12 +33,12 @@
         <h1 class="display">Chemistry you can <em>measure</em>, not just memorise.</h1>
         <p class="lead">Every idea in the syllabus becomes something you can change and watch. See what the particles do, then learn exactly how to write it for full marks.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="lessons/collision-theory.html">Open the collision lab <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-primary" href="lessons/states-of-matter.html">Start with States of matter <span class="arr" aria-hidden="true">→</span></a>
           <a class="text-link" href="#topics">Browse all 12 topics</a>
         </div>
         <dl class="facts reveal">
           <div><dt>Syllabus topics</dt><dd class="display">12</dd></div>
-          <div><dt>Factors in the first lab</dt><dd class="display">4</dd></div>
+          <div><dt>Interactive labs</dt><dd class="display">39</dd></div>
           <div><dt>Scales in one zoom</dt><dd class="display">10<sup>9</sup></dd></div>
         </dl>
       </div>
@@ -146,69 +154,34 @@
   </section>
 
   <!-- ================= Topics ================= -->
-  <section class="topics-sec wrap" id="topics">
-    <header class="sec-head reveal">
-      <div>
-        <p class="eyebrow">§1 &nbsp;The syllabus</p>
-        <h2 class="display">Twelve topics, <em>one</em> syllabus.</h2>
-      </div>
-      <div class="sec-aside">
-        <p>Lessons go live one topic at a time. Each one is a lab you can change, a short explanation in the language examiners reward, and a quick check.</p>
-        <ul class="legend">
-          <li><span class="status">Live</span></li>
-          <li><span class="status paused">Coming soon</span></li>
-        </ul>
-      </div>
-    </header>
-
-    <div class="topics">
-      <article class="reveal topic t-feature" data-topic="chemical-reactions" style="--tc:var(--c-energy)">
-        <div class="t-body">
-          <div class="t-meta"><span class="t-num">06</span><span class="status" style="--sc:var(--ok)">Live now</span></div>
-          <h3 class="display">Chemical reactions</h3>
-          <p class="t-desc">Rates of reaction, reversible reactions and redox. Start with why reactions go faster at all.</p>
-          <p class="eyebrow next-h">Lessons</p>
-          <ol class="next" data-lessons>
-            <li class="is-next" data-lesson="collision-theory"><span class="n">6.1</span><a href="lessons/collision-theory.html">Collision theory</a><small data-lesson-state>Start · 15 min</small></li>
-            <li><span class="n">6.2</span>Measuring the rate of a reaction<small>soon</small></li>
-            <li><span class="n">6.3</span>Surface area and particle size<small>soon</small></li>
-            <li><span class="n">6.4</span>Reversible reactions and equilibrium<small>soon</small></li>
-            <li><span class="n">6.5</span>Redox<small>soon</small></li>
-          </ol>
-          <div class="t-foot">
-            <div class="t-progress">
-              <div class="steps" data-topic-steps><i></i><i></i><i></i><i></i><i></i></div>
-              <span class="num" data-topic-count>0 / 5 lessons</span>
-            </div>
-            <a class="btn btn-primary btn-sm" href="lessons/collision-theory.html">Open 6.1 Collision theory <span class="arr" aria-hidden="true">→</span></a>
-          </div>
+  <section class="topics-band" id="topics">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div><p class="eyebrow">§1 &nbsp;The syllabus</p><h2 class="display">Twelve topics, <em>four</em> strands.</h2></div>
+        <div class="sec-aside">
+          <p>Every topic is a lesson numbered like the syllabus: short sections, live labs you can change, chains to remember and a checklist. Supplement content is marked, so you only study what your paper needs.</p>
+          <ul class="legend"><li><span class="status" style="--sc:var(--c-chem)">Live</span></li><li><span class="tag">Supp.</span> Supplement only</li></ul>
         </div>
-        <svg class="fig t-fig" viewBox="0 0 520 300" role="img" aria-label="Product formed against time at 25 and 50 degrees Celsius; the hotter reaction has the steeper initial gradient and reaches the same final amount sooner">
-          <path class="gl" d="M52 214H500M52 168H500M52 122H500M52 76H500M52 30H500"/>
-          <path class="area" d="M52 260C92 170 130 118 190 90S300 64 500 60V260Z"/>
-          <path class="plot-2" d="M52 260C112 196 172 146 250 112S380 72 500 66"/>
-          <path class="plot" d="M52 260C92 170 130 118 190 90S300 64 500 60"/>
-          <path class="guide" d="M52 260L120 140"/>
-          <path class="ax" d="M52 20V260H506"/>
-          <path class="tk" d="M52 260v5M141.6 260v5M231.2 260v5M320.8 260v5M410.4 260v5M500 260v5M47 260h5M47 214h5M47 168h5M47 122h5M47 76h5M47 30h5"/>
-          <g text-anchor="middle"><text x="52" y="280">0</text><text x="141.6" y="280">20</text><text x="231.2" y="280">40</text><text x="320.8" y="280">60</text><text x="410.4" y="280">80</text><text x="500" y="280">100</text></g>
-          <g text-anchor="end"><text x="42" y="263">0</text><text x="42" y="171">40</text><text x="42" y="79">80</text></g>
-          <text x="52" y="12">volume of H₂ / cm³</text>
-          <text x="506" y="296" text-anchor="end">t / s</text>
-          <text x="196" y="80" class="lbl-ink">50 °C</text>
-          <text x="262" y="132" class="lbl-ink">25 °C</text>
-          <text x="126" y="132" class="ser">steeper = faster</text>
-          <text x="500" y="50" text-anchor="end">same final volume</text>
-        </svg>
-      </article>
+      </header>
+      <div class="strands" data-strands></div>
     </div>
-    <div class="topics topics-small" data-library="chemistry"></div>
+  </section>
+
+  <!-- ================= Labs ================= -->
+  <section class="labs-sec" id="labs">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div><p class="eyebrow">§2 &nbsp;Labs</p><h2 class="display">Every lab, <em>one</em> list.</h2></div>
+        <div class="sec-aside"><p>All <b data-lab-count>the</b> interactive labs in Chemistry, gathered from the lessons and grouped by topic. Each one opens straight on its subtopic.</p></div>
+      </header>
+      <div class="lab-index" data-lab-index></div>
+    </div>
   </section>
 
   <!-- ================= Method ================= -->
   <section class="method-sec wrap">
     <header class="method-intro reveal">
-      <p class="eyebrow">§2 &nbsp;How a lesson works</p>
+      <p class="eyebrow">§3 &nbsp;How a lesson works</p>
       <h2 class="display">See it, explain it, <em>write it.</em></h2>
       <p>Every lesson follows the same three steps, built around how examiners award marks: intuition first, then the exact wording that scores.</p>
     </header>
@@ -237,20 +210,21 @@
   <section class="map-sec" id="map">
     <div class="wrap">
       <header class="sec-head reveal">
-        <div><p class="eyebrow">§3 &nbsp;Syllabus map</p><h2 class="display">How the topics <em>connect</em>.</h2></div>
-        <div class="sec-aside"><p>Topics build on each other: you need the mole before electrolysis, and bonding before organic chemistry. Each lesson you open fills in its topic here — progress is kept on this device only.</p></div>
+        <div><p class="eyebrow">§4 &nbsp;Syllabus map</p><h2 class="display">How the topics <em>connect</em>.</h2></div>
+        <div class="sec-aside"><p>Topics build on each other: you need the mole before electrolysis, and bonding before organic chemistry. Open a topic to light its star, finish its flashcards to fill it in half, and still know them a few days later to make it secure. Progress is kept on this device only.</p></div>
       </header>
       <div class="map reveal">
         <figure class="map-fig">
-          <figcaption><span><span class="eyebrow">Fig. 3</span> Cambridge IGCSE Chemistry, 12 topics</span><span class="num muted"><b data-uni-lit>0</b> / <span data-uni-total>12</span> explored</span></figcaption>
+          <figcaption><span><span class="eyebrow">Map</span> Cambridge IGCSE Chemistry</span><span class="num muted"><b data-uni-lit>0</b> / <span data-uni-total>12</span> explored</span></figcaption>
           <div class="sky" data-universe></div>
         </figure>
         <aside class="map-side">
           <ul class="map-legend">
-            <li><i class="lg lg-mastered"></i>Mastered<small>quiz done</small></li>
-            <li><i class="lg lg-explored"></i>Explored<small>lesson opened</small></li>
-            <li><i class="lg lg-ready"></i>Ready<small>lesson live</small></li>
-            <li><i class="lg lg-soon"></i>Coming soon</li>
+            <li><i class="lg lg-secure"></i>Secure<small>cards still known days later</small></li>
+            <li><i class="lg lg-fading"></i>Due for review<small>secure, cards to see again</small></li>
+            <li><i class="lg lg-practised"></i>Practised<small>flashcards finished</small></li>
+            <li><i class="lg lg-opened"></i>Opened<small>lesson opened</small></li>
+            <li><i class="lg lg-ready"></i>Not started<small>lesson live</small></li>
           </ul>
           <div class="map-next" data-uni-next></div>
           <span class="steps map-steps" data-uni-bar></span>
@@ -266,7 +240,7 @@
       <h2 class="display">stay <em>add</em>icted. Stay <em>add</em>itional.</h2>
       <div>
         <p>Two meanings, one habit: curiosity that keeps you coming back, and understanding that keeps adding up. No sign-up needed.</p>
-        <a class="btn btn-primary" href="lessons/collision-theory.html">Open the collision lab <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-primary" href="lessons/states-of-matter.html">Start with topic 1 <span class="arr" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -279,6 +253,7 @@
 <script src="../assets/js/menu.js"></script>
 <script src="../assets/js/core.js"></script>
 <script src="../assets/js/fx.js"></script>
+<script src="../assets/js/subject-home.js"></script>
 <script src="js/home.js"></script>
 </body>
 </html>

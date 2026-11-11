@@ -12,6 +12,12 @@
   border: 1px solid var(--line-2); color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1;
   transition: border-color .15s, background-color .15s;
 }
+
+::selection {
+  background-color: #b5ef45;
+  color: #000000;
+}
+
 .sm-toggle:hover { border-color: var(--ink-3); }
 .sm-toggle[aria-expanded="true"] { border-color: var(--ink); background: var(--bg-2); }
 .sm-toggle-textWrap { position: relative; display: inline-block; height: 1em; overflow: hidden; white-space: nowrap; width: var(--sm-toggle-width, auto); }

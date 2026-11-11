@@ -3,8 +3,8 @@
    1. Hero instrument: energy distribution of particles, with Eₐ and a catalyst.
    2. Powers of ten: a sticky section; scrolling zooms the framed figure from a
       beaker of acid down to one collision. Motion stays inside the figure.
-   3. Syllabus map: the 12 topics and how they build on each other, filled in
-      by this browser's progress (SA.progress).
+   3. Topic cards: the 12 topic lessons in four strands, each with a small figure.
+   (The labs list and the syllabus map are shared: assets/js/subject-home.js.)
    ========================================================================== */
 (function () {
   "use strict";
@@ -336,107 +336,53 @@
   }
 
   /* =======================================================================
-     3. Syllabus map + the live topic's lesson list
+     3. Topic cards: twelve topics in four strands, each with a small figure
      ======================================================================= */
-  function initMap() {
-    const el = $("[data-universe]");
+  function initTopics() {
+    const el = $("[data-strands]");
     if (!el || !SA.catalog) return;
-    const subject = SA.subject("chemistry");
-    const progress = SA.progress ? SA.progress.all() : {};
-
-    // positions on a 1000 × 600 plane, and which topics build on which
-    const POS = { 1: [110, 150], 2: [250, 300], 3: [190, 480], 4: [420, 440], 5: [500, 220], 6: [640, 350], 7: [370, 110], 8: [770, 130], 9: [860, 300], 10: [740, 500], 11: [560, 540], 12: [880, 450] };
-    const LINKS = [[1, 2], [2, 3], [2, 7], [3, 4], [3, 5], [5, 6], [3, 6], [7, 8], [2, 8], [8, 9], [4, 9], [9, 10], [6, 11], [11, 10], [3, 12], [7, 6]];
-
-    const nodes = subject.topics.map((t) => {
-      const live = t.lessons.filter((l) => l.status === "live");
-      const done = live.filter((l) => progress[l.id]?.visited);
-      const mastered = live.filter((l) => progress[l.id]?.quiz);
-      const state = !live.length ? "soon" : mastered.length === live.length ? "mastered" : done.length ? "explored" : "ready";
-      return { ...t, live, state, x: POS[t.num][0], y: POS[t.num][1] };
-    });
-    const byNum = Object.fromEntries(nodes.map((n) => [n.num, n]));
-    const lit = (n) => n.state === "explored" || n.state === "mastered";
-
-    let grid = "";
-    for (let x = 50; x < 1000; x += 50) grid += `M${x} 0V600`;
-    for (let y = 50; y < 600; y += 50) grid += `M0 ${y}H1000`;
-    el.innerHTML = `
-      <svg class="fig sky-map" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of IGCSE Chemistry topics and how they connect">
-        <path class="gl" d="${grid}"/>
-        ${LINKS.map(([a, b]) => {
-          const A = byNum[a], B = byNum[b], cls = lit(A) && lit(B) ? "lit" : lit(A) || lit(B) ? "path" : "";
-          return `<line class="sky-link ${cls}" x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}"/>`;
-        }).join("")}
-        ${nodes.map((n) => {
-          const href = n.live[0] ? SA.url(n.live[0].href) : null;
-          const right = n.x > 800;
-          const open = href ? `<a href="${href}"` : `<g tabindex="0"`, close = href ? "</a>" : "</g>";
-          return `${open} class="sky-star is-${n.state}" data-num="${n.num}" transform="translate(${n.x} ${n.y})" aria-label="Topic ${n.num}: ${n.title} — ${n.state}">
-              <circle class="hit" r="26"/>
-              ${n.state === "ready" ? '<circle class="ring" r="15"/>' : ""}
-              ${n.state === "mastered" ? '<circle class="orbit" r="14"/>' : ""}
-              <circle class="core" r="${n.state === "soon" ? 6 : 8}"/>
-              <text x="${right ? -16 : 16}" y="5" text-anchor="${right ? "end" : "start"}">${n.title}</text>
-            ${close}`;
-        }).join("")}
-      </svg>
-      <div class="sky-tip" role="tooltip" hidden></div>`;
-
-    const tip = $(".sky-tip", el);
-    const STATE = { soon: "Coming soon", ready: "Ready to explore", explored: "Explored", mastered: "Mastered" };
-    function showTip(node) {
-      const n = byNum[node.dataset.num];
-      const box = el.getBoundingClientRect(), r = node.querySelector(".core").getBoundingClientRect();
-      tip.innerHTML = `
-        <span class="tip-num">Topic ${String(n.num).padStart(2, "0")} · <span class="tip-state is-${n.state}">${STATE[n.state]}</span></span>
-        <b>${n.title}</b>
-        <p>${n.blurb}</p>
-        ${n.live.map((l) => `<span class="tip-lesson">${SA.icon ? SA.icon(progress[l.id]?.visited ? "check" : "arrowRight") : ""}${l.title}${progress[l.id]?.quiz ? ` · quiz ${progress[l.id].quiz}` : ""}</span>`).join("")}`;
-      tip.hidden = false;
-      const x = r.left + r.width / 2 - box.left, y = r.top - box.top;
-      tip.style.left = `${clamp(x, 128, box.width - 128)}px`;
-      tip.style.top = `${y}px`;
-      tip.classList.toggle("is-below", y < 170);
+    const subject = SA.subject("chemistry"), progress = SA.progress ? SA.progress.all() : {};
+    const STRANDS = [["Particles and bonding", "How matter is built, and how to count it", [1, 2, 3]], ["Reactions and energy", "What happens when substances react, how fast, and with what energy", [4, 5, 6, 7]], ["Elements and the Earth", "The Periodic Table, metals, and chemistry in air and water", [8, 9, 10]], ["Carbon and the laboratory", "Organic compounds, and the techniques that identify substances", [11, 12]]];
+    const LAYOUT = { 2: [[3, 2], [3, 2]], 3: [[3, 2], [3, 1], [3, 1]], 4: [[4, 2], [2, 1], [2, 1], [6, 1]] };
+    const UI = ["#c4302b", "#e8662a", "#f2b92c", "#d8d23a", "#8cc63f", "#3fae5a", "#2f9e8a", "#2a8fb0", "#2c6fc0", "#3a52c0", "#4a3cb0", "#5a2ca0"];
+    const MINI = {
+      1: () => [[20, "cb", [[0, 0], [1, 0], [2, 0], [0, 1], [1, 1], [2, 1]].map(([c, r]) => [c * 14, r * 14])], [110, "ct", [[0, 20], [12, 14], [26, 22], [8, 4], [22, 2], [34, 12]]], [196, "cr", [[0, 0], [40, 18], [14, 40], [50, 44], [30, 4]]]].map(([x, c, pts]) => `<rect class="f lt" x="${x - 6}" y="30" width="72" height="70" rx="6"/>${pts.map(([dx, dy]) => `<circle class="f ${c} dk" cx="${x + 10 + dx}" cy="${52 + dy}" r="6"/>`).join("")}`).join("") + `<g text-anchor="middle"><text x="50" y="118">solid</text><text x="136" y="118">liquid</text><text x="226" y="118">gas</text></g>`,
+      2: () => `<circle class="f cr dk" cx="70" cy="66" r="8"/><circle class="shell" cx="70" cy="66" r="24"/><circle class="shell" cx="70" cy="66" r="44"/>${[0, 1].map((k) => `<circle class="e" cx="${70 + 24 * Math.cos(k * Math.PI)}" cy="66" r="3.5"/>`).join("")}${[0, 1, 2, 3, 4, 5, 6, 7].map((k) => `<circle class="e" cx="${70 + 44 * Math.cos(k * Math.PI / 4)}" cy="${66 + 44 * Math.sin(k * Math.PI / 4)}" r="3.5"/>`).join("")}<circle class="shell" cx="180" cy="66" r="26"/><circle class="shell" cx="222" cy="66" r="26"/><circle class="e" cx="201" cy="60" r="3.5"/><circle class="e" cx="201" cy="72" r="3.5"/><text x="180" y="70" text-anchor="middle" class="k">H</text><text x="222" y="70" text-anchor="middle" class="k">H</text><text x="200" y="118" text-anchor="middle">shared pair</text>`,
+      3: () => `<path class="l ca" style="--lw:2" d="M140 14L200 112H80Z"/><path class="l" d="M104 76H176M140 76V112"/><text x="140" y="62" text-anchor="middle" class="big">m</text><text x="114" y="104" text-anchor="middle" class="big">n</text><text x="166" y="104" text-anchor="middle" class="big">Mr</text><text x="40" y="60" text-anchor="middle">n = m ÷ Mr</text><text x="240" y="60" text-anchor="middle">6.02 × 10²³</text>`,
+      4: () => `<path class="glass" d="M60 40V116H220V40"/><rect class="liq" style="--lc:var(--blue)" x="62" y="62" width="156" height="52"/><rect class="f dk" x="90" y="30" width="12" height="70"/><rect class="f dk" x="178" y="30" width="12" height="70"/><path class="l" d="M96 30V14H184V30"/><circle class="f cr dk" cx="120" cy="88" r="5"/><circle class="f cb dk" cx="160" cy="80" r="5"/><text x="96" y="128" text-anchor="middle">−</text><text x="184" y="128" text-anchor="middle">+</text>`,
+      5: () => `<path class="l" d="M30 14V116H260"/><path class="l ca" style="--lw:2" d="M34 60H90C120 60 124 22 146 22S172 96 200 96H250"/><path class="l cr" d="M230 60V96"/><path class="mk cr" d="M230 96l-4 -8h8z"/><text x="236" y="82">ΔH</text><text x="150" y="16">Eₐ</text>`,
+      6: () => `<path class="l" d="M30 14V116H260"/><path class="l ca" style="--lw:2" d="M32 114C60 40 100 26 256 22"/><path class="l" style="stroke-dasharray:4 4" d="M32 114C80 66 140 40 256 32"/><text x="200" y="60">faster</text>`,
+      7: () => UI.map((c, i) => `<rect x="${20 + i * 20}" y="44" width="20" height="30" fill="${c}"/>`).join("") + `<text x="20" y="92">0</text><text x="260" y="92" text-anchor="end">14</text><text x="140" y="30" text-anchor="middle">acid · neutral · alkali</text>`,
+      8: () => Array.from({ length: 4 }, (_, r) => Array.from({ length: 18 }, (_, c) => (r === 0 && c > 0 && c < 17) || (r < 3 && c > 1 && c < 12) ? "" : `<rect class="f ${c === 0 && r ? "cb dk" : c === 16 ? "ca dk" : c === 17 ? "cv dk" : "lt"}" x="${14 + c * 14}" y="${24 + r * 18}" width="12" height="16" rx="2"/>`).join("")).join("") + `<text x="14" y="112">Group I</text><text x="266" y="112" text-anchor="end">VII · VIII</text>`,
+      9: () => ["K", "Na", "Ca", "Mg", "Al", "Zn", "Fe", "Cu", "Ag"].map((m, i) => `<rect class="f ${i === 6 ? "ca dk" : "lt"}" x="${18 + i * 28}" y="40" width="24" height="40" rx="4"/><text x="${30 + i * 28}" y="64" text-anchor="middle" class="${i === 6 ? "k" : ""}">${m}</text>`).join("") + `<text x="18" y="100">more reactive</text><text x="266" y="100" text-anchor="end">less →</text>`,
+      10: () => `<circle class="f cg" cx="100" cy="76" r="40"/><circle cx="34" cy="28" r="14" fill="var(--amber)"/><path class="l cr" style="stroke-dasharray:3 3" d="M100 36V12M124 42l14 -20"/><text x="170" y="56">CO₂ · CH₄</text><text x="170" y="74">infrared trapped</text>`,
+      11: () => `${[0, 1, 2].map((i) => `<text x="${80 + i * 50}" y="70" text-anchor="middle" class="k">C</text><text x="${80 + i * 50}" y="34" text-anchor="middle">H</text><text x="${80 + i * 50}" y="108" text-anchor="middle">H</text><path class="bond" d="M${80 + i * 50} 56V40M${80 + i * 50} 76V96"/>`).join("")}<text x="40" y="70" text-anchor="middle">H</text><text x="220" y="70" text-anchor="middle">H</text><path class="bond" d="M48 66H72M88 66H122M138 66H172M188 66H212"/><text x="250" y="70" text-anchor="middle">propane</text>`,
+      12: () => `<rect class="f lt" x="60" y="10" width="160" height="112"/><path class="l" style="stroke-dasharray:4 3" d="M60 104H220"/><path class="l cb" d="M60 24H220"/>${[["#c4302b", 90, 80], ["#2c6fc0", 90, 40], ["#3fae5a", 140, 60], ["#c4302b", 190, 80]].map(([c, x, y]) => `<ellipse cx="${x}" cy="${y}" rx="8" ry="5" fill="${c}" opacity=".8"/>`).join("")}<text x="240" y="66">Rf</text>`
+    };
+    const shapeOf = ([c, r]) => (r > 1 ? "tall" : c >= 4 ? "wide" : "small");
+    function card(t, size) {
+      const num = String(t.num).padStart(2, "0"), shape = shapeOf(size), l = t.lessons[0], more = t.lessons.slice(1), opened = progress[l.id]?.visited;
+      return `<article class="b-topic ${shape}" style="--c:${size[0]};--r:${size[1]}">
+        <svg class="fig b-fig" viewBox="0 0 280 132" aria-hidden="true">${MINI[t.num]()}</svg>
+        <div class="b-copy">
+          <div class="t-meta"><span class="t-num">${num}</span><span class="status" style="--sc:var(--c-chem)">${opened ? "In progress" : "Live"}</span></div>
+          <h4><a class="b-link" href="${SA.url(l.href)}">${t.title}</a></h4><p>${t.blurb}</p>
+          ${shape === "small" ? "" : `<p class="b-lesson">${l.blurb}</p>`}
+          ${more.length ? `<p class="b-also">Also: ${more.map((m) => m.title).join(", ")}</p>` : ""}
+          <span class="b-go" aria-hidden="true">${opened ? "Continue" : "Open"} →</span>
+        </div>
+      </article>`;
     }
-    $$(".sky-star", el).forEach((n) => {
-      n.addEventListener("pointerenter", () => showTip(n));
-      n.addEventListener("focus", () => showTip(n));
-      n.addEventListener("pointerleave", () => (tip.hidden = true));
-      n.addEventListener("blur", () => (tip.hidden = true));
-    });
-
-    // side panel
-    const litCount = nodes.filter(lit).length;
-    $("[data-uni-lit]").textContent = litCount;
-    $("[data-uni-total]").textContent = nodes.length;
-    $("[data-uni-bar]").innerHTML = nodes.map((n) => `<i class="${lit(n) ? "done" : n.state === "ready" ? "now" : ""}"></i>`).join("");
-    const pairs = nodes.flatMap((n) => n.live.map((l) => ({ l, n })));
-    const next = pairs.find(({ l }) => !progress[l.id]?.visited) || pairs.find(({ l }) => !progress[l.id]?.quiz);
-    $("[data-uni-next]").innerHTML = next
-      ? `<p class="eyebrow">Next</p><b>${next.l.title}</b><p>Topic ${next.n.num} · ${next.n.title}. ${progress[next.l.id]?.visited ? "Finish the quick check to master it." : "Open the lab to fill in this topic."}</p>
-         <a class="btn btn-primary btn-sm" href="${SA.url(next.l.href)}">${progress[next.l.id]?.visited ? "Finish the quick check" : "Open the lesson"} <span class="arr" aria-hidden="true">→</span></a>`
-      : `<p class="eyebrow">Up to date</p><b>Every live lesson done</b><p>New topics fill in here as lessons launch.</p>`;
-    const reset = $("[data-uni-reset]");
-    reset.hidden = !litCount;
-    reset.addEventListener("click", () => { SA.progress.reset(); location.reload(); });
-
-    // the live topic card: lesson states and progress ticks
-    const items = $$("[data-lessons] li");
-    let doneCount = 0;
-    items.forEach((li) => {
-      const pr = li.dataset.lesson && progress[li.dataset.lesson];
-      if (!pr) return;
-      doneCount++;
-      li.classList.add("is-done");
-      li.querySelector("[data-lesson-state]").textContent = pr.quiz ? `Quiz ${pr.quiz}` : "Explored";
-    });
-    $$("[data-topic-steps] i").forEach((i, k) => i.classList.toggle("done", k < doneCount));
-    const cnt = $("[data-topic-count]");
-    if (cnt) cnt.textContent = `${doneCount} / ${items.length} lessons`;
+    el.innerHTML = STRANDS.map(([title, sub, nums], k) => {
+      const ts = nums.map((n) => subject.topics.find((t) => t.num === n)), sizes = LAYOUT[ts.length];
+      return `<section class="strand" aria-labelledby="strand-${k}">
+        <header class="strand-h"><span class="num">topics ${nums[0]}–${nums.at(-1)}</span><h3 id="strand-${k}">${title}</h3><p>${sub}</p></header>
+        <div class="strand-grid">${ts.map((t, i) => card(t, sizes[i])).join("")}</div>
+      </section>`;
+    }).join("");
   }
 
   initHero();
   initZoom();
-  initMap();
+  initTopics();
 })();

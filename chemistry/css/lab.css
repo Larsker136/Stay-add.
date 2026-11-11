@@ -31,7 +31,7 @@
 .lessons a { display: flex; gap: 12px; align-items: flex-start; padding: 9px 10px; border-radius: 7px; font-size: 13.5px; color: var(--ink-2); line-height: 1.4; transition: background-color .15s, color .15s; }
 .lessons a[href]:hover { background: var(--bg-2); color: var(--ink); }
 .lessons small { display: block; font-size: 12px; color: var(--ink-3); margin-top: 1px; }
-.lessons .n { width: 14px; flex: none; text-align: right; font: 12px/1.6 var(--font-mono); color: var(--ink-4); }
+.lessons .n { width: 14px; flex: none; text-align: right; font: 12px/1.6 var(--font-mono); color: var(--ink-3); }
 .lessons .soon a { color: var(--ink-3); cursor: default; }
 .lessons .on a { background: var(--surface); color: var(--ink); font-weight: 500; box-shadow: inset 0 0 0 1px var(--line), inset 2px 0 0 var(--c-energy); }
 .lessons .on .n { color: var(--c-energy); }
@@ -125,7 +125,7 @@
 .stats div:nth-child(odd) { padding-right: 14px; border-right: 1px solid var(--line); }
 .stats div:nth-child(even) { padding-left: 14px; }
 .stats div:nth-last-child(-n+2) { border-bottom: 0; }
-.stats dt { font: italic 400 14px var(--font-display); color: var(--ink-3); }
+.stats dt { font: italic 400 14px var(--font-serif); color: var(--ink-3); }
 .stats dd { font: 12px var(--font-mono); color: var(--ink-3); }
 .stats b { font: 500 24px var(--font-mono); color: var(--ink); letter-spacing: -0.02em; margin-right: 2px; }
 .stats .is-key b { color: var(--c-energy); }
@@ -159,7 +159,7 @@
 .chain li:not(:last-child)::after { content: ""; position: absolute; left: 8px; top: 20px; bottom: 2px; width: 1px; background: var(--line); }
 .chain li:last-child { color: var(--ink); font-weight: 500; padding-bottom: 2px; }
 .chain li:last-child::before { border-color: var(--c-energy); color: var(--c-energy); }
-.phrase { margin-top: 12px; padding: 10px 0 0; border-top: 1px dashed var(--line-2); font: italic 400 15px/1.45 var(--font-display); color: var(--ink); }
+.phrase { margin-top: 12px; padding: 10px 0 0; border-top: 1px dashed var(--line-2); font: italic 400 15px/1.45 var(--font-serif); color: var(--ink); }
 .phrase span { display: block; font: 500 10.5px var(--font-mono); font-style: normal; letter-spacing: .09em; text-transform: uppercase; color: var(--c-energy); margin-bottom: 4px; }
 .explain-note { display: flex; gap: 8px; margin-top: 10px; font-size: 12.5px; color: var(--ink-3); }
 .explain-note .ic { width: 13px; height: 13px; margin-top: 3px; }

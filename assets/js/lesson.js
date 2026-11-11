@@ -8,6 +8,10 @@
       lab.applyState) and glides to it.
    4. Long topics: contents buttons (data-goto="id") glide to a section, and
       .checklist[data-check] boxes are remembered on this device.
+   5. Step buttons: a row under each topic header, one button per step —
+      01 Understand, 02 Experiment / Look closely, 03 Interpret,
+      04 Flashcards — that glides down to it. The Flashcards step is added
+      by flashcards.js, so the row is built once the page's scripts have run.
    Load after core.js and fx.js; the page's own lab script can load before or after.
    ========================================================================== */
 (function () {
@@ -21,6 +25,8 @@
 
   /* ---------- 1. Topics, one at a time ---------- */
   const OPENED_KEY = `stayadd-${document.body.dataset.lesson || "lesson"}-opened`;
+  // let the subject home know this lesson's subtopics (its map lights them from the learner's memory)
+  if (document.body.dataset.lesson) SA.memory?.noteTopics(document.body.dataset.lesson, topics.map((t) => t.dataset.key).filter(Boolean));
   let opened = [];
   try { opened = JSON.parse(localStorage.getItem(OPENED_KEY)) || []; } catch (e) { opened = []; }
 
@@ -33,7 +39,7 @@
     $$(".side-steps i").forEach((tick, k) => (tick.className = k === i ? "now" : opened.includes(topics[k]?.dataset.key) ? "done" : ""));
     const count = $(".side-count");
     if (count) count.textContent = `${opened.filter((o) => topics.some((t) => t.dataset.key === o)).length} / ${topics.length}`;
-    const prev = topics[i - 1], next = topics[i + 1], pPrev = $("[data-prev]"), pNext = $("[data-next]");
+    const prev = topics[i - 1], next = topics[i + 1], pPrev = $(".pager [data-prev]"), pNext = $(".pager [data-next]");   // labs may have their own Next buttons
     if (pPrev && pNext) {
       pPrev.hidden = !prev; pNext.hidden = !next;
       if (prev) { pPrev.href = `#${prev.dataset.key}`; pPrev.querySelector("span").textContent = `← ${tabs[i - 1].textContent}`; }
@@ -61,20 +67,25 @@
 
   /* ---------- 3. Interpret chains → the lab of the same topic ---------- */
   $$(".chain[data-set]").forEach((btn) => btn.addEventListener("click", () => {
-    const lab = btn.closest(".topic").querySelector("[data-lab]");
+    // a topic can have several labs: use the one with controls for most of the chain's keys
+    const state = JSON.parse(btn.dataset.set), labs = $$("[data-lab]", btn.closest(".topic"));
+    const score = (l) => Object.keys(state).filter((k) => l.querySelector(`[data-k="${k}"]`)).length;
+    const lab = labs.reduce((best, l) => (score(l) > score(best) ? l : best), labs[0]);
     if (!lab?.applyState) return;
-    lab.applyState(JSON.parse(btn.dataset.set));
+    lab.applyState(state);
     const y = lab.getBoundingClientRect().top + scrollY - parseFloat(getComputedStyle(lab).scrollMarginTop || 0);
     SA.smoothScroll ? SA.smoothScroll.to(y) : scrollTo({ top: y, behavior: "smooth" });
   }));
 
   /* ---------- 4. Long topics: in-topic contents and checklists ---------- */
   // contents buttons scroll to a section (they cannot be #links: the hash picks the topic)
-  $$("[data-goto]").forEach((btn) => btn.addEventListener("click", () => {
-    const el = document.getElementById(btn.dataset.goto);
-    if (!el) return;
+  function glideTo(el) {
     const y = el.getBoundingClientRect().top + scrollY - parseFloat(getComputedStyle(el).scrollMarginTop || 0);
     SA.smoothScroll ? SA.smoothScroll.to(y) : scrollTo({ top: y, behavior: "smooth" });
+  }
+  $$("[data-goto]").forEach((btn) => btn.addEventListener("click", () => {
+    const el = document.getElementById(btn.dataset.goto);
+    if (el) glideTo(el);
   }));
   // "I can…" lists: ticks are kept on this device
   const CHECK_KEY = `stayadd-${document.body.dataset.lesson || "lesson"}-checklist`;
@@ -94,6 +105,34 @@
     });
     paint();
   });
+
+  /* ---------- 5. Step buttons: 01 Understand … 04 Flashcards, under each topic header ---------- */
+  const topicSteps = (topic) => $$(":scope > .step", topic).filter((s) => $(".step-h .step-n", s));
+  function jumpButton(step) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "jump";
+    const n = document.createElement("span");
+    n.className = "num";
+    n.textContent = `0${$(".step-n", step).textContent.trim()}`;
+    b.append(n, $(".step-h h2", step).textContent.trim());
+    b.addEventListener("click", () => glideTo(step));
+    return b;
+  }
+  function buildJumps() {
+    topics.forEach((topic) => {
+      const steps = topicSteps(topic), head = $(".t-head", topic);
+      if (!steps.length || !head || $(".jumps", head)) return;
+      const row = document.createElement("nav");
+      row.className = "jumps";
+      row.setAttribute("aria-label", "Steps in this topic");
+      row.append(...steps.map(jumpButton));
+      head.append(row);
+    });
+  }
+  // the flashcards step is added by flashcards.js, which may load after this file
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", buildJumps);
+  else buildJumps();
 
   show(location.hash.slice(1) || topics[0].dataset.key, false);
 })();

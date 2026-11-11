@@ -8,9 +8,17 @@
 <meta name="description" content="Interactive Cambridge IGCSE Biology: friendly explanations of how living things work, with small labs and the cause → effect chains examiners reward.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/icons/icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="stay add.">
+<meta name="theme-color" content="#111513" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="../assets/css/base.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="../assets/css/subject-home.css">
 <link rel="stylesheet" href="css/lab.css">
 <link rel="stylesheet" href="../assets/css/menu.css">
 </head>
@@ -70,10 +78,21 @@
     </div>
   </section>
 
+  <!-- ================= Labs ================= -->
+  <section class="labs-sec" id="labs">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div><p class="eyebrow">§2 &nbsp;Labs</p><h2 class="display">Every lab, <em>one</em> list.</h2></div>
+        <div class="sec-aside"><p>All <b data-lab-count>the</b> interactive labs in Biology, gathered from the lessons and grouped by topic. Each one opens straight on its subtopic.</p></div>
+      </header>
+      <div class="lab-index" data-lab-index></div>
+    </div>
+  </section>
+
   <!-- ================= Method ================= -->
   <section class="wrap method-sec" id="method">
     <header class="method-intro reveal">
-      <p class="eyebrow">§2 &nbsp;How a lesson works</p>
+      <p class="eyebrow">§3 &nbsp;How a lesson works</p>
       <h2 class="display">Understand, try, <em>explain.</em></h2>
       <p>Every Biology lesson has the same three steps as the rest of stay add. Here is one topic of the Enzymes lesson.</p>
     </header>
@@ -98,6 +117,34 @@
     </ol>
   </section>
 
+  <!-- ================= Syllabus map ================= -->
+  <section class="map-sec" id="map">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <div><p class="eyebrow">§4 &nbsp;Syllabus map</p><h2 class="display">How the topics <em>connect</em>.</h2></div>
+        <div class="sec-aside"><p>Cells and molecules come first; nutrition, transport and the human body build on them, and inheritance and ecology bring it together. Open a topic to light its star, finish its flashcards to fill it in half, and still know them a few days later to make it secure. Progress is kept on this device only.</p></div>
+      </header>
+      <div class="map reveal">
+        <figure class="map-fig">
+          <figcaption><span><span class="eyebrow">Map</span> Cambridge IGCSE Biology</span><span class="num muted"><b data-uni-lit>0</b> / <span data-uni-total>0</span> explored</span></figcaption>
+          <div class="sky" data-universe></div>
+        </figure>
+        <aside class="map-side">
+          <ul class="map-legend">
+            <li><i class="lg lg-secure"></i>Secure<small>cards still known days later</small></li>
+            <li><i class="lg lg-fading"></i>Due for review<small>secure, cards to see again</small></li>
+            <li><i class="lg lg-practised"></i>Practised<small>flashcards finished</small></li>
+            <li><i class="lg lg-opened"></i>Opened<small>lesson opened</small></li>
+            <li><i class="lg lg-ready"></i>Not started<small>lesson live</small></li>
+          </ul>
+          <div class="map-next" data-uni-next></div>
+          <span class="steps map-steps" data-uni-bar></span>
+          <button class="text-btn uni-reset" type="button" data-uni-reset hidden>Reset my progress</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= Closing ================= -->
   <section class="closing">
     <div class="wrap closing-in">
@@ -117,6 +164,7 @@
 <script src="../assets/js/menu.js"></script>
 <script src="../assets/js/core.js"></script>
 <script src="../assets/js/fx.js"></script>
+<script src="../assets/js/subject-home.js"></script>
 <script src="js/enzyme.js"></script>
 <script src="js/home.js"></script>
 </body>

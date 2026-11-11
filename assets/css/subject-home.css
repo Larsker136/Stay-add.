@@ -1,0 +1,96 @@
+/* ==========================================================================
+   stay add. — parts every subject home shares (loaded by the four subject
+   index.html pages, after their home.css)
+   1. Every lab: the labs of all the subject's lessons, grouped by topic
+   2. Syllabus map: the topics as stars, linked by which builds on which
+   ========================================================================== */
+[data-subject="chemistry"] { --home-accent: var(--c-energy); }
+[data-subject="physics"] { --home-accent: var(--c-phys); }
+[data-subject="biology"] { --home-accent: var(--c-bio); }
+[data-subject="computer-science"] { --home-accent: var(--c-cs); }
+
+/* ---------- 1. Every lab ---------- */
+.labs-sec { padding: 104px 0 112px; border-top: 1px solid var(--line); scroll-margin-top: var(--header-h); }
+.lab-index { columns: 3 300px; column-gap: 28px; }
+.li-topic { break-inside: avoid; margin-bottom: 26px; }
+.li-topic h3 { display: flex; gap: 10px; align-items: baseline; padding-bottom: 8px; margin-bottom: 4px; border-bottom: 1px solid var(--line-2); font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+.li-topic h3 .num { font: 500 12px var(--font-mono); color: var(--home-accent, var(--ink-3)); }
+.li-topic ul { list-style: none; }
+.li-topic a { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 2px 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.li-topic a .fig { grid-row: span 2; font: 12px var(--font-mono); color: var(--ink-3); padding-top: 2px; }
+.li-topic a b { font-size: 14px; font-weight: 500; color: var(--ink); }
+.li-topic a small { font-size: 12.5px; color: var(--ink-3); }
+.li-topic a:hover b { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--home-accent, var(--ink)); }
+.li-loading { color: var(--ink-3); font-size: 14px; }
+
+/* ---------- 2. Syllabus map ---------- */
+.map-sec { background: var(--bg-2); border-top: 1px solid var(--line); padding: 112px 0 120px; }
+.map { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 32px; align-items: start; }
+.map-fig { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.map-fig figcaption { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 18px; border-bottom: 1px solid var(--line); font-size: 13.5px; font-weight: 500; }
+.map-fig figcaption .eyebrow { margin-right: 8px; }
+.map-fig figcaption .num { font-size: 12px; font-weight: 400; }
+.map-fig figcaption b { color: var(--ink); font-weight: 500; }
+.sky { position: relative; aspect-ratio: 5 / 3; }
+.sky-map { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sky-map .gl { stroke: var(--grid); }
+.sky-link { stroke: var(--line-2); stroke-width: 1.25; }
+.sky-link.path { stroke: var(--ink-3); stroke-dasharray: 3 4; }
+.sky-link.lit { stroke: var(--ink); stroke-width: 1.75; }
+.sky-star { outline: none; }
+.sky-star .hit { fill: transparent; }
+.sky-star .core { fill: var(--surface); stroke: var(--ink-4); stroke-width: 1.5; transition: r .2s var(--ease); }
+.sky-star text { fill: var(--ink-3); font: 500 14px var(--font-sans); paint-order: stroke; stroke: var(--surface); stroke-width: 5px; }
+.sky-star .tn { font: 500 12px var(--font-mono); fill: var(--ink-4); stroke-width: 4px; }
+.sky-star:hover .core, .sky-star:focus .core { stroke-width: 2.5; }
+.sky-star:hover text, .sky-star:focus text { fill: var(--ink); }
+.sky-star.is-ready .core { stroke: var(--home-accent, var(--ink)); stroke-width: 2; }
+.sky-star.is-ready text { fill: var(--ink); }
+.sky-star .ring { fill: none; stroke: var(--home-accent, var(--ink)); stroke-width: 1; stroke-dasharray: 2 3; }
+/* the learner's memory: opened (a dot) → practised (half) → secure (full, with an orbit) → fading (pale, orbit broken) */
+.sky-star:is(.is-opened, .is-practised, .is-secure, .is-fading) .core { stroke: var(--ink); }
+.sky-star:is(.is-opened, .is-practised, .is-secure, .is-fading) text { fill: var(--ink); }
+.sky-star .dot, .sky-star .half { fill: var(--ink); }
+.sky-star:is(.is-secure, .is-fading) .core { fill: var(--ink); }
+.sky-star.is-fading .core { fill-opacity: .4; }
+.sky-star .orbit { fill: none; stroke: var(--ink); stroke-width: 1; }
+.sky-star.is-fading .orbit { stroke-dasharray: 3 4; }
+
+.sky-tip { position: absolute; z-index: 5; width: 240px; padding: 14px 16px; translate: -50% calc(-100% - 16px); pointer-events: none; background: var(--raised); border: 1px solid var(--line-2); border-radius: var(--radius-sm); box-shadow: var(--shadow); }
+.sky-tip.is-below { translate: -50% 30px; }
+.sky-tip b { display: block; font: 400 20px/1.2 var(--font-display); margin: 2px 0 6px; }
+.sky-tip p { font-size: 13px; line-height: 1.45; color: var(--ink-2); margin: 8px 0 6px; }
+.tip-num { font: 500 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.tip-state { font: 500 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.tip-state.is-ready { color: var(--home-accent, var(--ink)); }
+.tip-state:is(.is-opened, .is-practised, .is-secure, .is-fading) { color: var(--ink); }
+.tip-lesson { display: flex; align-items: flex-start; gap: 6px; font-size: 13px; font-weight: 500; margin-top: 6px; }
+.tip-lesson .ic { flex: none; width: 13px; height: 13px; margin-top: 3px; color: var(--ink-3); }
+.tip-lesson small { display: block; font: 400 11px/1.5 var(--font-mono); color: var(--ink-3); }
+
+.map-side { display: grid; gap: 24px; }
+.map-legend { list-style: none; display: grid; gap: 10px; padding-bottom: 20px; border-bottom: 1px solid var(--line-2); font-size: 13.5px; color: var(--ink-2); }
+.map-legend li { display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 10px; }
+.map-legend small { font: 11px var(--font-mono); color: var(--ink-3); }
+.lg { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid var(--ink-4); background: var(--surface); }
+.lg-ready { border-color: var(--home-accent, var(--ink)); }
+.lg-opened { border-color: var(--ink); background: radial-gradient(circle, var(--ink) 0 2px, var(--surface) 2.5px); }
+.lg-practised { border-color: var(--ink); background: linear-gradient(90deg, var(--ink) 50%, var(--surface) 50%); }
+.lg-secure, .lg-fading { background: var(--ink); border-color: var(--ink); box-shadow: 0 0 0 3px var(--bg-2), 0 0 0 4px var(--ink); }
+.lg-fading { background: color-mix(in srgb, var(--ink) 40%, var(--surface)); box-shadow: 0 0 0 3px var(--bg-2), 0 0 0 4px color-mix(in srgb, var(--ink) 45%, transparent); }
+.map-next b { display: block; font: 400 26px/1.15 var(--font-display); margin: 8px 0 6px; }
+.map-next p { font-size: 14px; color: var(--ink-2); margin-bottom: 16px; }
+.map-steps { --tc: var(--ink); }
+.uni-reset { justify-self: start; }
+
+@media (max-width: 1080px) {
+  .map { grid-template-columns: minmax(0, 1fr); }
+  .map-side { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+@media (max-width: 720px) {
+  .labs-sec { padding: 72px 0 80px; }
+  .map-sec { padding: 72px 0 80px; }
+  .map-side { grid-template-columns: 1fr; }
+  .sky-star text { font-size: 22px; }
+  .sky-star .tn { display: none; }
+}
